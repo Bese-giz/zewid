@@ -71,7 +71,7 @@ export default function ContactPage() {
               Follow us for injera tips, product highlights, and behind-the-scenes content.
             </p>
             <a
-              href="https://www.tiktok.com/@zewid"
+              href="https://www.tiktok.com/@zewid.teff?_r=1&_t=ZN-96XftlHurpu"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-600 hover:text-green-700 font-semibold text-sm"
@@ -97,7 +97,7 @@ export default function ContactPage() {
               Like our page for updates, promotions, and community news.
             </p>
             <a
-              href="https://www.facebook.com/zewid"
+              href="https://www.facebook.com/share/18bFy7rTbL/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-600 hover:text-green-700 font-semibold text-sm"

@@ -57,7 +57,7 @@ export default function Footer() {
                 WhatsApp Business
               </a>
               <a
-                href="https://www.tiktok.com/@zewid"
+                href="https://www.tiktok.com/@zewid.teff?_r=1&_t=ZN-96XftlHurpu"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-gray-900 transition-colors"
@@ -68,7 +68,7 @@ export default function Footer() {
                 TikTok
               </a>
               <a
-                href="https://www.facebook.com/zewid"
+                href="https://www.facebook.com/share/18bFy7rTbL/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-blue-600 transition-colors"

@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
     description:
       "High-quality white teff, brown teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.",
-    url: "https://www.zewid.fi",
+    url: "https://www.zewid.com",
     locale: "en_FI",
     type: "website",
     siteName: "ZEWID | ዘውድ",
     images: [
       {
-        url: "https://www.zewid.fi/opengraph-image.jpg",
+        url: "https://www.zewid.com/opengraph-image.jpg",
         width: 1200,
         height: 630,
         alt: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",

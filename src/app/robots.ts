@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.zewid.fi/sitemap.xml",
+    sitemap: "https://www.zewid.com/sitemap.xml",
   };
 }

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Syne } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
+
+const syne = Syne({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-syne",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -63,7 +69,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen flex flex-col text-gray-900 antialiased`}>
+      <body className={`${inter.className} ${syne.variable} min-h-screen flex flex-col text-gray-900 antialiased`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

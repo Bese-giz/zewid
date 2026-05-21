@@ -17,7 +17,7 @@
   --color-olive-500: #6b8a3a;
   --color-olive-600: #5a7430;
   --color-olive-700: #4a6028;
-  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-syne), system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 }
 

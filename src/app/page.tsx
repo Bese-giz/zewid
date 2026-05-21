@@ -72,13 +72,13 @@ export default function HomePage() {
               href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-full bg-green-500 px-5 py-3 text-[14px] font-bold text-white shadow-lg shadow-green-500/25 transition-all hover:bg-green-600 hover:shadow-green-500/40 sm:w-auto md:px-8 md:py-4 md:text-lg"
+              className="w-full rounded-full bg-green-500 px-5 py-3 text-[14px] font-bold text-white shadow-[0_0_18px_4px_rgba(34,197,94,0.55)] transition-all hover:bg-green-400 hover:shadow-[0_0_28px_8px_rgba(34,197,94,0.75)] sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Order Now
             </a>
             <Link
               href="/products"
-              className="w-full rounded-full bg-white/95 px-5 py-3 text-[14px] font-bold text-gray-900 shadow-lg shadow-white/30 transition-all hover:bg-white hover:shadow-white/50 sm:w-auto md:px-8 md:py-4 md:text-lg"
+              className="w-full rounded-full border border-white/60 bg-white/95 px-5 py-3 text-[14px] font-bold text-gray-900 shadow-[0_0_18px_4px_rgba(255,255,255,0.45)] transition-all hover:border-white hover:bg-white hover:shadow-[0_0_28px_8px_rgba(255,255,255,0.65)] sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Products
             </Link>

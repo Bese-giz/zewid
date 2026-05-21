@@ -64,7 +64,7 @@ export default function HomePage() {
             Premium Ethiopian<br />
             <span className="text-green-400">Teff & Grains</span>
           </h1>
-          <p className="text-[13px] md:text-lg text-white/85 mb-6 md:mb-8 max-w-xl mx-auto leading-relaxed px-2">
+          <p className="text-[13px] md:text-lg text-white mb-6 md:mb-8 max-w-xl mx-auto leading-relaxed px-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
             High-quality white teff, brown teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.
           </p>
           <div className="mx-auto flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
@@ -72,13 +72,13 @@ export default function HomePage() {
               href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full rounded-full bg-green-500 px-5 py-3 text-[14px] font-bold text-white shadow-lg shadow-green-500/30 transition-all hover:bg-green-600 sm:w-auto md:px-8 md:py-4 md:text-lg"
+              className="w-full rounded-full bg-green-500 px-5 py-3 text-[14px] font-bold text-white shadow-lg shadow-green-500/25 transition-all hover:bg-green-600 hover:shadow-green-500/40 sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Order Now
             </a>
             <Link
               href="/products"
-              className="w-full rounded-full bg-white/95 px-5 py-3 text-[14px] font-bold text-gray-900 shadow-lg transition-all hover:bg-white sm:w-auto md:px-8 md:py-4 md:text-lg"
+              className="w-full rounded-full bg-white/95 px-5 py-3 text-[14px] font-bold text-gray-900 shadow-lg shadow-white/30 transition-all hover:bg-white hover:shadow-white/50 sm:w-auto md:px-8 md:py-4 md:text-lg"
             >
               Products
             </Link>
@@ -186,7 +186,7 @@ export default function HomePage() {
 
       {/* What Sets Us Apart */}
       <RevealSection delay={60}>
-      <section className="bg-[linear-gradient(180deg,#f6f2ea_0%,#f8fbf7_100%)] py-10 px-4 sm:px-6 lg:px-8 md:py-20">
+      <section className="bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 md:py-20">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-6 md:mb-10">
             <p className="text-green-600 font-semibold text-xs md:text-sm uppercase tracking-wide mb-2">Our Promise</p>

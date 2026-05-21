@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-beige-50: #fefcf9;
+  --color-beige-100: #faf5ed;
+  --color-beige-200: #f3e8d4;
+  --color-beige-300: #e8d5b3;
+  --color-beige-400: #d4a655;
+  --color-beige-500: #c8922e;
+  --color-brown-600: #7a4b2a;
+  --color-brown-700: #5c3820;
+  --color-brown-800: #3d2515;
+  --color-brown-900: #2a1a0e;
+  --color-gold-400: #e6b84d;
+  --color-gold-500: #d4a04a;
+  --color-gold-600: #b8860b;
+  --color-olive-500: #6b8a3a;
+  --color-olive-600: #5a7430;
+  --color-olive-700: #4a6028;
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #ffffff;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1f2937;
+  position: relative;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: transparent;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+  transition:
+    opacity 420ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 420ms ease;
+  will-change: opacity, transform, filter;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  width: 52px;
+  height: 52px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+@media (min-width: 768px) {
+  .whatsapp-float {
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+  }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.15) 100%);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 160, 74, 0.22), transparent);
+}
+
+.product-card {
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 197, 94, 0.22);
+  box-shadow: 0 22px 42px rgba(15, 23, 42, 0.09);
+}

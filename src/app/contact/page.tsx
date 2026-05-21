@@ -97,7 +97,7 @@ export default function ContactPage() {
               Like our page for updates, promotions, and community news.
             </p>
             <a
-              href="https://www.facebook.com/share/18bFy7rTbL/"
+              href="https://www.facebook.com/share/18fkuFhBQe/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-600 hover:text-green-700 font-semibold text-sm"

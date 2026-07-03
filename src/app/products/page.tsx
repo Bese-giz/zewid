@@ -55,6 +55,42 @@ const products = [
       "Direct from Ethiopia",
     ],
   },
+  {
+    name: "Berbere",
+    weight: "1 kg pack",
+    description:
+      "Authentic Ethiopian Berbere spice blend. Rich, flavorful, and perfect for wot (stews).",
+    image: "/images/berbere_enhanced_transparent.png",
+    features: [
+      "Authentic Ethiopian spice",
+      "Rich flavor",
+      "Perfect for wot",
+    ],
+  },
+  {
+    name: "Buna (Coffee)",
+    weight: "1 kg pack",
+    description:
+      "Premium Ethiopian coffee beans (Buna). Experience the birthplace of coffee with this rich, aromatic blend.",
+    image: "/images/green_coffee_beans_enhanced_transparent.png",
+    features: [
+      "Premium Ethiopian coffee",
+      "Rich aroma",
+      "Traditional buna",
+    ],
+  },
+  {
+    name: "Shiro",
+    weight: "1 kg pack",
+    description:
+      "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
+    image: "/images/shiro_enhanced_transparent.png",
+    features: [
+      "Traditional shiro powder",
+      "Easy to prepare",
+      "Delicious flavor",
+    ],
+  },
 ];
 
 export default function ProductsPage() {

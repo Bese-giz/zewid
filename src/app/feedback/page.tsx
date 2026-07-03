@@ -30,7 +30,7 @@ const testimonials = [
     location: "Finland",
   },
   {
-    quote: "The brown teff has such rich flavor. My guests always ask where I get my flour from!",
+    quote: "The red teff has such rich flavor. My guests always ask where I get my flour from!",
     author: "Tigist B.",
     location: "Finland",
   },

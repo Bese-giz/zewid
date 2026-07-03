@@ -4,11 +4,11 @@ import ProductCard from "@/components/ProductCard";
 export const metadata: Metadata = {
   title: "Products – Ethiopian Teff, Mashila & More",
   description:
-    "Buy premium Ethiopian white teff flour, brown teff flour, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
+    "Buy premium Ethiopian white teff flour, red teff flour, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
   keywords: [
     "buy teff Finland",
     "white teff flour Finland",
-    "brown teff Finland",
+    "red teff Finland",
     "Ethiopian teff Finland",
     "injera flour buy online Finland",
     "mashila sorghum Finland",
@@ -21,24 +21,24 @@ const products = [
     name: "White Teff Flour",
     weight: "5 kg bag",
     description:
-      "Premium Ethiopian white teff flour imported from Ethiopia. Finely milled and perfect for authentic soft injera and Ethiopian cooking.",
-    image: "/images/white-teff.jpg",
+      "Premium Ethiopian white teff flour for baking authentic injera. Finely milled and imported directly from Ethiopia. Known for its delicate flavor and light color.",
+    image: "/images/white_teff_bag_transparent_enhanced.png",
     features: [
       "100% Ethiopian white teff",
-      "Finely milled for soft injera",
+      "Perfect for authentic light injera",
       "Fresh stock in Finland",
       "Fast, reliable delivery all over Finland",
     ],
   },
   {
-    name: "Brown Teff Flour",
+    name: "Red Teff Flour",
     weight: "5 kg bag",
     description:
-      "Rich, nutty Ethiopian brown teff flour for dark injera. Full-bodied flavor with excellent nutritional value.",
-    image: "/images/brown-teff.jpg",
+      "Rich, nutty Ethiopian red teff flour for dark injera. Full-bodied flavor with excellent nutritional value.",
+    image: "/images/red_teff_flour_enhanced_transparent.png",
     features: [
-      "100% Ethiopian brown teff",
-      "Rich nutty flavor",
+      "100% Ethiopian red teff",
+      "High in iron and fiber",
       "High in iron & calcium",
       "Perfect for dark injera",
     ],
@@ -47,9 +47,10 @@ const products = [
     name: "Mashila (Sorghum)",
     weight: "5 kg bag",
     description:
-      "Ethiopian mashila (sorghum) flour. Essential for bread and porridge recipes.",
-    image: "/images/mashila.jpg",
+      "High-quality whole grain mashila (sorghum). Traditionally mixed with teff for injera or used for making hearty porridge (genfo).",
+    image: "/images/mashila.png",
     features: [
+      "Premium quality sorghum",
       "Authentic Ethiopian mashila",
       "Versatile cooking",
       "Direct from Ethiopia",

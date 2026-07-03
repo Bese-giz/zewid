@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import FloatingCart from "@/components/FloatingCart";
+import { CartProvider } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -18,32 +20,29 @@ export const metadata: Metadata = {
     default: "ZEWID | ዘውድ – Premium Ethiopian Teff & Products in Finland",
     template: "%s | ZEWID ዘውድ",
   },
+  metadataBase: new URL("https://zewid.fi"),
   description:
-    "Buy premium Ethiopian white teff, brown teff, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
+    "Premium Ethiopian teff flour, mashila, and traditional products in Finland. We deliver 100% authentic Ethiopian ingredients with fast, reliable delivery all over Finland. Order on WhatsApp.",
   keywords: [
     "Ethiopian teff Finland",
-    "buy teff flour Finland",
-    "white teff Finland",
-    "brown teff Finland",
-    "injera flour Finland",
+    "buy injera flour Helsinki",
     "Ethiopian products Finland",
-    "Ethiopian grocery Finland",
-    "teff delivery Finland",
+    "white teff Finland",
+    "red teff Finland",
     "mashila sorghum Finland",
-    "ZEWID",
-    "ዘውድ",
+    "Ethiopian food delivery Finland",
   ],
   openGraph: {
     title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
     description:
-      "High-quality white teff, brown teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.",
-    url: "https://www.zewid.com",
+      "Buy premium Ethiopian white teff, red teff, and mashila. Fast delivery all over Finland.",
+    url: "https://zewid.fi",
+    siteName: "ZEWID | ዘውድ",
     locale: "en_FI",
     type: "website",
-    siteName: "ZEWID | ዘውድ",
     images: [
       {
-        url: "https://www.zewid.com/opengraph-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
@@ -53,27 +52,30 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-  },
-  alternates: {
-    languages: {
-      en: "/",
-      am: "/",
+    googleBot: {
+      index: true,
+      follow: true,
     },
   },
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${syne.variable} min-h-screen flex flex-col text-gray-900 antialiased`}>
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-white antialiased text-gray-900`}>
+        <CartProvider>
+          <Header />
+          <main className="min-h-screen pt-16 md:pt-20">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppFloat />
+          <FloatingCart />
+        </CartProvider>
       </body>
     </html>
   );

@@ -7,24 +7,24 @@ const featuredProducts = [
     name: "White Teff Flour",
     weight: "5 kg",
     description:
-      "Premium Ethiopian white teff flour imported from Ethiopia. Finely milled and perfect for authentic soft injera and Ethiopian cooking.",
-    image: "/images/white-teff.jpg",
+      "Premium Ethiopian white teff flour for baking authentic injera. Finely milled and imported directly from Ethiopia.",
+    image: "/images/white_teff_bag_transparent_enhanced.png",
     features: [
-      "100% Ethiopian teff",
-      "Fresh stock in Finland",
+      "100% Ethiopian white teff",
+      "Perfect for authentic injera",
       "Fast, reliable delivery all over Finland",
       "Ideal for injera",
     ],
   },
   {
-    name: "Brown Teff Flour",
+    name: "Red Teff Flour",
     weight: "5 kg",
     description:
-      "Rich, nutty brown teff flour for traditional Ethiopian injera. Full-bodied flavor with excellent nutritional value.",
-    image: "/images/brown-teff.jpg",
+      "Rich, nutty red teff flour for traditional Ethiopian injera. Full-bodied flavor with excellent nutritional value.",
+    image: "/images/red_teff_flour_enhanced_transparent.png",
     features: [
-      "100% Ethiopian brown teff",
-      "Rich nutty flavor",
+      "100% Ethiopian red teff",
+      "High in iron and fiber",
       "High in iron & calcium",
       "Perfect for dark injera",
     ],
@@ -33,10 +33,10 @@ const featuredProducts = [
     name: "Mashila (Sorghum)",
     weight: "5 kg",
     description:
-      "Ethiopian mashila (sorghum) flour. Essential ingredient for various Ethiopian bread and porridge recipes.",
-    image: "/images/mashila.jpg",
+      "High-quality whole grain mashila (sorghum). Perfect for mixing with teff to make traditional Ethiopian injera or porridge.",
+    image: "/images/mashila.png",
     features: [
-      "Authentic Ethiopian mashila",
+      "Premium quality sorghum",
       "Versatile cooking grain",
       "Fresh import",
     ],
@@ -101,7 +101,7 @@ export default function HomePage() {
             <span className="text-green-400">Teff & Grains</span>
           </h1>
           <p className="text-[13px] md:text-lg text-white mb-6 md:mb-8 max-w-xl mx-auto leading-relaxed px-2 [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
-            High-quality white teff, brown teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.
+            High-quality white teff, red teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.
           </p>
           <div className="mx-auto flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
             <a

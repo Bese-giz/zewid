@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,12 +8,6 @@ import FloatingCart from "@/components/FloatingCart";
 import { CartProvider } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
-
-const syne = Syne({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-syne",
-});
 
 export const metadata: Metadata = {
   title: {

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect, useRef } from "react";
 
 export interface CartItem {
   name: string;
@@ -25,11 +25,10 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const hasLoaded = useRef(false);
 
   // Load from localStorage on mount
   useEffect(() => {
-    setIsMounted(true);
     const saved = localStorage.getItem("zewid_cart");
     if (saved) {
       try {
@@ -38,14 +37,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
         console.error("Failed to parse cart", e);
       }
     }
+    hasLoaded.current = true;
   }, []);
 
   // Save to localStorage when items change
   useEffect(() => {
-    if (isMounted) {
+    if (hasLoaded.current) {
       localStorage.setItem("zewid_cart", JSON.stringify(items));
     }
-  }, [items, isMounted]);
+  }, [items]);
 
   const addToCart = (item: CartItem) => {
     setItems((prev) => {

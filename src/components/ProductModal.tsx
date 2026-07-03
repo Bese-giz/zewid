@@ -20,12 +20,11 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
 
-  // Reset quantity when modal opens
-  useEffect(() => {
-    if (isOpen) {
-      setQuantity(1);
-    }
-  }, [isOpen]);
+  // Reset quantity after closing the modal smoothly
+  const handleClose = () => {
+    onClose();
+    setTimeout(() => setQuantity(1), 300);
+  };
 
   if (!isOpen) return null;
 
@@ -36,14 +35,14 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
       image: product.image,
       quantity,
     });
-    onClose();
+    handleClose();
   };
 
   return (
     <>
       <div 
         className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1001] transition-opacity flex items-center justify-center p-4"
-        onClick={onClose}
+        onClick={handleClose}
       >
         <div 
           className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden relative flex flex-col md:flex-row transform transition-all"
@@ -51,7 +50,7 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
         >
           {/* Close Button */}
           <button 
-            onClick={onClose}
+            onClick={handleClose}
             className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors shadow-sm"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

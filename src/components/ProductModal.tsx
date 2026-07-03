@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface ProductModalProps {
   isOpen: boolean;

@@ -41,11 +41,11 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
   return (
     <>
       <div 
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[1001] transition-opacity flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1001] transition-opacity flex items-center justify-center p-4 pb-8 sm:p-6"
         onClick={handleClose}
       >
         <div 
-          className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden relative flex flex-col md:flex-row transform transition-all"
+          className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-4xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto relative flex flex-col md:flex-row transform transition-all"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -59,9 +59,9 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
           </button>
 
           {/* Left: Image Area */}
-          <div className="w-full md:w-1/2 bg-gray-50 relative aspect-square md:aspect-auto flex items-center justify-center p-8">
+          <div className="w-full md:w-1/2 bg-gray-50 relative h-56 sm:h-72 md:h-auto md:min-h-[500px] flex items-center justify-center p-4 sm:p-6 md:p-8 shrink-0">
             {/* Soft background glow based on image contents (simulated) */}
-            <div className="absolute inset-0 opacity-20 bg-gradient-to-tr from-green-300 via-transparent to-red-300 blur-3xl"></div>
+            <div className="absolute inset-0 opacity-20 bg-gradient-to-tr from-green-300 via-transparent to-red-300 blur-3xl pointer-events-none"></div>
             
             <div className="relative w-full h-full max-h-[400px]">
               <Image
@@ -74,7 +74,7 @@ export default function ProductModal({ isOpen, onClose, product }: ProductModalP
           </div>
 
           {/* Right: Content Area */}
-          <div className="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center">
+          <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-10 flex flex-col justify-center">
             <span className="text-sm font-bold text-green-600 uppercase tracking-wider mb-2">
               {product.weight}
             </span>

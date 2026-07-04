@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FloatingCart from "@/components/FloatingCart";
+import Toast from "@/components/Toast";
 import { CartProvider } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -75,6 +76,7 @@ export default function RootLayout({
           <Footer />
           <WhatsAppFloat />
           <FloatingCart />
+          <Toast />
         </CartProvider>
       </body>
     </html>

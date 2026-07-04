@@ -2,6 +2,7 @@
 
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function FloatingCart() {
   const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
@@ -39,11 +40,23 @@ export default function FloatingCart() {
 
         <div className="flex-1 overflow-y-auto p-5">
           {items.length === 0 ? (
-            <div className="h-full flex flex-col items-center justify-center text-gray-500 space-y-4">
-              <svg className="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-              </svg>
-              <p>Your cart is empty</p>
+            <div className="h-full flex flex-col items-center justify-center text-gray-500 space-y-6">
+              <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-2">
+                <svg className="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Your cart is empty</h3>
+                <p className="text-sm text-gray-500 max-w-[200px] mx-auto">Looks like you haven&apos;t added any products to your cart yet.</p>
+              </div>
+              <Link 
+                href="/products" 
+                onClick={() => setIsCartOpen(false)}
+                className="mt-4 bg-green-50 text-green-700 hover:bg-green-100 hover:text-green-800 px-6 py-3 rounded-full font-bold text-sm transition-colors"
+              >
+                Explore Products
+              </Link>
             </div>
           ) : (
             <ul className="space-y-6">

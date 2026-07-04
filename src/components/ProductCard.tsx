@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { useCart } from "@/context/CartContext";
-import ProductModal from "./ProductModal";
+import Link from "next/link";
 
 interface ProductCardProps {
+  slug?: string;
   name: string;
   description: string;
   weight: string;
@@ -15,15 +15,14 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
+  slug = "",
   name,
   description,
   weight,
   image,
-  features,
   showDetails = true,
 }: ProductCardProps) {
   const { addToCart } = useCart();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Derive a soft glow color based on the product name for the hover effect
   const getGlowColor = () => {
@@ -35,14 +34,15 @@ export default function ProductCard({
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation(); // Prevent opening modal when clicking add to cart
     addToCart({ name, weight, image, quantity: 1 });
   };
 
   return (
     <>
-      <div 
-        onClick={() => setIsModalOpen(true)}
+      <Link 
+        href={`/products/${slug}`}
         className={`group product-card overflow-hidden rounded-[1rem] border border-slate-100 bg-white shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col h-full transform hover:-translate-y-1 ${getGlowColor()}`}
       >
         <div className="relative aspect-[7/6] overflow-hidden bg-white md:aspect-square p-6">
@@ -83,6 +83,7 @@ export default function ProductCard({
             </button>
             <button
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 window.open(`https://wa.me/358417059015?text=${encodeURIComponent(`Hi ZEWID! I'd like to ask about ${name}.`)}`, "_blank");
               }}
@@ -95,13 +96,7 @@ export default function ProductCard({
             </button>
           </div>
         </div>
-      </div>
-
-      <ProductModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        product={{ name, description, weight, image, features }} 
-      />
+      </Link>
     </>
   );
 }

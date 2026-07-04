@@ -1,81 +1,8 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
-const featuredProducts = [
-  {
-    name: "White Teff Flour",
-    weight: "5 kg",
-    description:
-      "Premium Ethiopian white teff flour for baking authentic injera. Finely milled and imported directly from Ethiopia.",
-    image: "/images/white_teff_bag_transparent_enhanced.png",
-    features: [
-      "100% Ethiopian white teff",
-      "Perfect for authentic injera",
-      "Fast, reliable delivery all over Finland",
-      "Ideal for injera",
-    ],
-  },
-  {
-    name: "Red Teff Flour",
-    weight: "5 kg",
-    description:
-      "Rich, nutty red teff flour for traditional Ethiopian injera. Full-bodied flavor with excellent nutritional value.",
-    image: "/images/red_teff_flour_enhanced_transparent.png",
-    features: [
-      "100% Ethiopian red teff",
-      "High in iron and fiber",
-      "High in iron & calcium",
-      "Perfect for dark injera",
-    ],
-  },
-  {
-    name: "Mashila (Sorghum)",
-    weight: "5 kg",
-    description:
-      "High-quality whole grain mashila (sorghum). Perfect for mixing with teff to make traditional Ethiopian injera or porridge.",
-    image: "/images/mashila.png",
-    features: [
-      "Premium quality sorghum",
-      "Versatile cooking grain",
-      "Fresh import",
-    ],
-  },
-  {
-    name: "Berbere",
-    weight: "1 kg pack",
-    description:
-      "Authentic Ethiopian Berbere spice blend. Rich, flavorful, and perfect for wot (stews).",
-    image: "/images/berbere_enhanced_transparent.png",
-    features: [
-      "Authentic Ethiopian spice",
-      "Rich flavor",
-      "Perfect for wot",
-    ],
-  },
-  {
-    name: "Buna (Coffee)",
-    weight: "1 kg pack",
-    description:
-      "Premium Ethiopian coffee beans (Buna). Experience the birthplace of coffee with this rich, aromatic blend.",
-    image: "/images/green_coffee_beans_enhanced_transparent.png",
-    features: [
-      "Premium Ethiopian coffee",
-      "Rich aroma",
-      "Traditional buna",
-    ],
-  },
-  {
-    name: "Shiro",
-    weight: "1 kg pack",
-    description:
-      "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    image: "/images/shiro_enhanced_transparent.png",
-    features: [
-      "Traditional shiro powder",
-      "Easy to prepare",
-      "Delicious flavor",
-    ],
-  },
-];
+import { products } from "@/data/products";
+
+const featuredProducts = products;
 
 export default function HomePage() {
   return (

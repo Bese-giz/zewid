@@ -17,6 +17,8 @@ interface CartContextType {
   clearCart: () => void;
   isCartOpen: boolean;
   setIsCartOpen: (isOpen: boolean) => void;
+  toastMessage: string | null;
+  setToastMessage: (message: string | null) => void;
   generateWhatsAppLink: () => string;
 }
 
@@ -25,6 +27,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const hasLoaded = useRef(false);
 
   // Load from localStorage on mount
@@ -58,7 +61,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, item];
     });
-    setIsCartOpen(true);
+    setToastMessage(`${item.name} added to cart`);
   };
 
   const removeFromCart = (name: string) => {
@@ -102,6 +105,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         clearCart,
         isCartOpen,
         setIsCartOpen,
+        toastMessage,
+        setToastMessage,
         generateWhatsAppLink,
       }}
     >

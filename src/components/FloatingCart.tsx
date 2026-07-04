@@ -6,26 +6,10 @@ import Image from "next/image";
 export default function FloatingCart() {
   const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
 
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-
-  if (totalItems === 0 && !isCartOpen) return null;
+  if (!isCartOpen) return null;
 
   return (
     <>
-      {/* Floating Button */}
-      <button
-        onClick={() => setIsCartOpen(true)}
-        className="fixed bottom-4 left-4 md:bottom-6 md:left-6 z-[1000] w-14 h-14 md:w-16 md:h-16 bg-gray-900 text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:scale-105 transition-transform"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-        </svg>
-        {totalItems > 0 && (
-          <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-green-500 text-white text-[10px] md:text-xs font-bold w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center border-2 border-gray-900">
-            {totalItems}
-          </span>
-        )}
-      </button>
 
       {/* Cart Drawer Overlay */}
       {isCartOpen && (

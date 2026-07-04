@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -12,6 +13,9 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { items, setIsCartOpen } = useCart();
+  
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/70 bg-[#fdfbf6]/88 text-gray-900 shadow-[0_12px_28px_rgba(15,23,42,0.05)] backdrop-blur-xl">
@@ -40,30 +44,62 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(22,163,74,0.22)] transition-colors hover:bg-green-700"
-            >
-              Order on WhatsApp
-            </a>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-slate-700 hover:text-green-700 transition-colors group"
+                aria-label="Open cart"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                {totalItems > 0 && (
+                  <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-green-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                    {totalItems}
+                  </span>
+                )}
+              </button>
+              <a
+                href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(22,163,74,0.22)] transition-colors hover:bg-green-700"
+              >
+                Order on WhatsApp
+              </a>
+            </div>
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden rounded-full p-2 text-slate-700 transition-colors hover:bg-white/70"
-            aria-label="Toggle menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          {/* Mobile Actions */}
+          <div className="md:hidden flex items-center gap-3">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-slate-700 transition-colors hover:bg-white/70 rounded-full"
+              aria-label="Open cart"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+              {totalItems > 0 && (
+                <span className="absolute top-0 right-0 bg-green-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                  {totalItems}
+                </span>
               )}
-            </svg>
-          </button>
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="rounded-full p-2 text-slate-700 transition-colors hover:bg-white/70"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
       {/* Mobile Navigation */}

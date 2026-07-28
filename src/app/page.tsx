@@ -1,6 +1,13 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const featuredProducts = products;
 

@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Learn about ZEWID | ዘውድ – Finland's trusted Ethiopian products brand. We provide premium teff flour, mashila, and authentic Ethiopian ingredients with fast, reliable delivery all over Finland.",
+  alternates: {
+    canonical: '/about',
+  },
 };
 
 export default function AboutPage() {

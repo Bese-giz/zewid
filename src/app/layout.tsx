@@ -65,8 +65,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ZEWID | ዘውድ",
+    "image": "https://www.zewid.com/opengraph-image.png",
+    "description": "Premium Ethiopian white teff flour (Magna), red teff, and mashila. Fast delivery all over Helsinki and Finland.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Helsinki",
+      "addressCountry": "FI"
+    },
+    "url": "https://www.zewid.com",
+    "telephone": "+358417059015",
+    "priceRange": "$$"
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${inter.className} bg-white antialiased text-gray-900`}>
         <CartProvider>
           <Header />

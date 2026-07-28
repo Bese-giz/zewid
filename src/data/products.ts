@@ -10,15 +10,15 @@ export interface Product {
 export const products: Product[] = [
   {
     slug: "white-teff-flour",
-    name: "White Teff Flour",
+    name: "White Teff Flour (Magna)",
     weight: "5 kg bag",
     description:
-      "Premium Ethiopian white teff flour for baking authentic injera. Finely milled and imported directly from Ethiopia. Known for its delicate flavor and light color.",
+      "Premium Ethiopian white teff flour (Magna Teff) for baking authentic injera. Finely milled and imported directly from Ethiopia. Known for its delicate flavor, light color, and premium quality.",
     image: "/images/white_teff_bag_transparent_enhanced.png",
     features: [
-      "100% Ethiopian white teff",
+      "100% Ethiopian white magna teff",
       "Perfect for authentic light injera",
-      "Fresh stock in Finland",
+      "Fresh stock available in Helsinki",
       "Fast, reliable delivery all over Finland",
     ],
   },

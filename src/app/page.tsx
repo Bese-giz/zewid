@@ -29,11 +29,11 @@ export default function HomePage() {
             <span className="text-white/95 text-[11px] md:text-sm font-semibold uppercase tracking-wider">🇪🇹 Authentic Ethiopian Products 🇫🇮</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-4 md:mb-6 leading-[1.1] tracking-tight drop-shadow-xl opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '100ms' }}>
-            Premium Ethiopian<br />
-            <span className="text-amber-400">Teff & Grains</span>
+            Ethio Teff Finland: Premium<br />
+            <span className="text-amber-400">Magna Teff & Groceries</span>
           </h1>
           <p className="text-[15px] md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '200ms' }}>
-            High-quality white teff, red teff, mashila and traditional Ethiopian ingredients with fast, reliable delivery all over Finland.
+            High-quality white teff (Magna), red teff, mashila and traditional Ethiopian ingredients. Fast, reliable delivery all over Helsinki and Finland.
           </p>
           <div className="mx-auto flex flex-col gap-4 sm:flex-row sm:justify-center w-full max-w-xs sm:max-w-none opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '300ms' }}>
             <a

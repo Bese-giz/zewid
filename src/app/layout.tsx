@@ -7,6 +7,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FloatingCart from "@/components/FloatingCart";
 import Toast from "@/components/Toast";
 import { CartProvider } from "@/context/CartContext";
+import { site } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     default: "ZEWID | ዘውድ – Premium Ethiopian Teff & Products in Finland",
     template: "%s | ZEWID ዘውድ",
   },
-  metadataBase: new URL("https://www.zewid.com"),
+  metadataBase: new URL(site.url),
   description:
     "Premium Ethiopian teff flour, mashila, and traditional products in Finland. We deliver 100% authentic Ethiopian ingredients with fast, reliable delivery all over Finland. Order on WhatsApp.",
   keywords: [
@@ -31,15 +32,15 @@ export const metadata: Metadata = {
     title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
     description:
       "Buy premium Ethiopian white teff, red teff, and mashila. Fast delivery all over Finland.",
-    url: "https://www.zewid.com",
-    siteName: "ZEWID | ዘውድ",
+    url: site.url,
+    siteName: site.name,
     locale: "en_FI",
     type: "website",
     images: [
       {
         url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
+        width: 1536,
+        height: 1024,
         alt: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
       },
     ],
@@ -69,15 +70,15 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "ZEWID | ዘውድ",
-    "image": "https://www.zewid.com/opengraph-image.png",
+    "image": `${site.url}/opengraph-image.png`,
     "description": "Premium Ethiopian white teff flour (Magna), red teff, and mashila. Fast delivery all over Helsinki and Finland.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Helsinki",
       "addressCountry": "FI"
     },
-    "url": "https://www.zewid.com",
-    "telephone": "+358417059015",
+    "url": site.url,
+    "telephone": `+${site.phone}`,
     "priceRange": "$$"
   };
 
@@ -92,7 +93,8 @@ export default function RootLayout({
       <body className={`${inter.className} bg-white antialiased text-gray-900`}>
         <CartProvider>
           <Header />
-          <main className="min-h-screen flex flex-col">
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1006] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:font-semibold focus:text-green-800">Skip to content</a>
+          <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col">
             {children}
           </main>
           <Footer />

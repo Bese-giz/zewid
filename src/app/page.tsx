@@ -1,13 +1,16 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
-import type { Metadata } from "next";
+import Image from "next/image";
+import { pageMetadata } from "@/lib/metadata";
+import { site, whatsappLink } from "@/lib/site";
+import OrderInformation from "@/components/OrderInformation";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: '/',
-  },
-};
+export const metadata = pageMetadata({
+  title: "Premium Ethiopian Teff & Products in Finland",
+  description: "Shop Ethiopian white teff, red teff, coffee, berbere, and shiro at ZEWID. Delivery all over Finland in 1–2 days. Confirm prices and order on WhatsApp.",
+  path: "/",
+});
 
 const featuredProducts = products;
 
@@ -16,12 +19,13 @@ export default function HomePage() {
     <>
       {/* Hero Section */}
       <section className="relative flex min-h-[75vh] items-center justify-center md:min-h-[90vh] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center animate-[pulse_10s_ease-in-out_infinite] scale-105 transform origin-center"
-          style={{
-            backgroundImage:
-              "url('/images/hero-injera.jpg')",
-          }}
+        <Image
+          src="/images/hero-injera.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-6 w-full">
@@ -37,7 +41,7 @@ export default function HomePage() {
           </p>
           <div className="mx-auto flex flex-col gap-4 sm:flex-row sm:justify-center w-full max-w-xs sm:max-w-none opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '300ms' }}>
             <a
-              href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+              href={whatsappLink("Hi ZEWID! I would like to order")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full rounded-2xl bg-green-600 px-6 py-4 text-[16px] font-bold text-white shadow-lg transition-all hover:bg-green-500 hover:shadow-green-500/30 hover:-translate-y-1 sm:w-auto md:px-10 md:py-4 md:text-lg flex items-center justify-center gap-2"
@@ -102,7 +106,7 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Choose Your Products",
-                desc: "Pick the teff, mashila, or combo pack you want from our collection.",
+                desc: "Choose the available teff, grains, spices, and coffee you want from our collection.",
               },
               {
                 step: "02",
@@ -138,7 +142,7 @@ export default function HomePage() {
 
           <div className="mt-8 text-center md:mt-10">
             <a
-              href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+              href={whatsappLink("Hi ZEWID! I would like to order")}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full max-w-xs items-center justify-center rounded-full bg-green-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-green-500/20 transition-colors hover:bg-green-600 sm:w-auto md:text-base"
@@ -194,7 +198,7 @@ export default function HomePage() {
         </div>
       </section>
 
-
+      <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8"><OrderInformation /></section>
 
       {/* Delivery Info Section */}
       <section className="py-10 px-4 sm:px-6 lg:px-8 md:py-20">
@@ -218,7 +222,7 @@ export default function HomePage() {
                 </p>
                 <div className="mt-6 flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap">
                   <a
-                    href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+                    href={whatsappLink("Hi ZEWID! I would like to order")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex w-full items-center justify-center rounded-full bg-green-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-600 sm:w-auto"
@@ -236,8 +240,8 @@ export default function HomePage() {
               <div className="grid gap-3 md:gap-4">
                 {[
                   {
-                    title: "Next-Day Dispatch",
-                    desc: "Fast preparation and quick handoff for smooth delivery.",
+                    title: `Delivery in ${site.deliveryTime}`,
+                    desc: "Nationwide delivery for your confirmed order.",
                   },
                   {
                     title: "Coverage All Over Finland",
@@ -273,7 +277,7 @@ export default function HomePage() {
             fast, reliable delivery all over Finland.
           </p>
           <a
-            href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+            href={whatsappLink("Hi ZEWID! I would like to order")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-green-500 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-green-500/25 transition-all hover:bg-green-600 hover:shadow-green-500/40 sm:w-auto md:gap-3 md:px-10 md:py-5 md:text-xl"

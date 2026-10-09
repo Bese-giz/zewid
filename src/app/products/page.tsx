@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
+import { whatsappLink } from "@/lib/site";
+import OrderInformation from "@/components/OrderInformation";
+import { pageMetadata } from "@/lib/metadata";
 import ProductCard from "@/components/ProductCard";
+import { products } from "@/data/products";
 
-export const metadata: Metadata = {
-  title: "Products – Ethiopian Teff, Mashila & More",
-  description:
-    "Buy premium Ethiopian white teff flour, red teff flour, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
+export const metadata = {
+  ...pageMetadata({
+    title: "Products – Ethiopian Teff, Mashila & More",
+    description:
+      "Buy premium Ethiopian white teff flour, red teff flour, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
+    path: "/products",
+  }),
   keywords: [
     "buy teff Finland",
     "white teff flour Finland",
@@ -15,8 +21,6 @@ export const metadata: Metadata = {
     "Ethiopian grocery Finland",
   ],
 };
-
-import { products } from "@/data/products";
 
 export default function ProductsPage() {
   return (
@@ -42,6 +46,8 @@ export default function ProductsPage() {
           ))}
         </div>
       </section>
+
+      <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"><OrderInformation /></section>
 
       {/* How to Order */}
       <section className="py-16 px-4 bg-gray-50">
@@ -79,7 +85,7 @@ export default function ProductsPage() {
             </div>
           </div>
           <a
-            href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+            href={whatsappLink("Hi ZEWID! I would like to order")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"

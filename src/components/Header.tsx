@@ -1,5 +1,6 @@
 "use client";
 
+import { whatsappLink } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -13,7 +14,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, setIsCartOpen } = useCart();
+  const { items, isCartOpen, setIsCartOpen } = useCart();
   
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -48,7 +49,10 @@ export default function Header() {
               <button
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 text-slate-700 hover:text-green-700 transition-colors group"
-                aria-label="Open cart"
+                aria-label={`Open cart, ${totalItems} ${totalItems === 1 ? "item" : "items"}`}
+                aria-haspopup="dialog"
+                aria-controls="cart-dialog"
+                aria-expanded={isCartOpen}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -60,7 +64,7 @@ export default function Header() {
                 )}
               </button>
               <a
-                href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+                href={whatsappLink("Hi ZEWID! I would like to order")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full bg-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(22,163,74,0.22)] transition-colors hover:bg-green-700"
@@ -75,7 +79,10 @@ export default function Header() {
             <button
               onClick={() => setIsCartOpen(true)}
               className="relative p-2 text-slate-700 transition-colors hover:bg-white/70 rounded-full"
-              aria-label="Open cart"
+              aria-label={`Open cart, ${totalItems} ${totalItems === 1 ? "item" : "items"}`}
+              aria-haspopup="dialog"
+              aria-controls="cart-dialog"
+              aria-expanded={isCartOpen}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -89,7 +96,9 @@ export default function Header() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="rounded-full p-2 text-slate-700 transition-colors hover:bg-white/70"
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {isOpen ? (
@@ -104,7 +113,7 @@ export default function Header() {
 
       {/* Mobile Navigation */}
         {isOpen && (
-          <nav className="md:hidden border-t border-amber-100/80 bg-[#fffdf8]/95 px-4 pb-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
+          <nav id="mobile-navigation" className="md:hidden border-t border-amber-100/80 bg-[#fffdf8]/95 px-4 pb-4 shadow-[0_18px_40px_rgba(15,23,42,0.06)]">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -116,7 +125,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+              href={whatsappLink("Hi ZEWID! I would like to order")}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 block rounded-full bg-green-600 px-5 py-3 text-center font-semibold text-white shadow-[0_10px_24px_rgba(22,163,74,0.2)] transition-colors hover:bg-green-700"

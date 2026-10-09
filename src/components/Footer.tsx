@@ -1,3 +1,4 @@
+import { whatsappLink } from "@/lib/site";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -34,6 +35,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/about" className="transition-colors hover:text-green-700">About Us</Link>
+              </li>
+              <li>
+                <Link href="/feedback" className="transition-colors hover:text-green-700">Customer Feedback</Link>
+              </li>
+              <li>
                 <Link href="/contact" className="transition-colors hover:text-green-700">
                   Contact
                 </Link>
@@ -46,7 +53,7 @@ export default function Footer() {
             <h4 className="mb-4 font-semibold text-gray-900">Connect With Us</h4>
             <div className="space-y-3 text-sm">
               <a
-                href="https://wa.me/358417059015"
+                href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-green-600 transition-colors"

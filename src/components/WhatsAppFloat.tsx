@@ -1,7 +1,9 @@
+import { whatsappLink } from "@/lib/site";
+
 export default function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+      href={whatsappLink("Hi ZEWID! I would like to order")}
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"

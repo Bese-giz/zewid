@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+import { whatsappLink } from "@/lib/site";
+import OrderInformation from "@/components/OrderInformation";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact Us",
   description:
     "Contact ZEWID | ዘውድ for Ethiopian teff and product orders in Finland. Reach us on WhatsApp, Facebook, or TikTok.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -43,7 +46,7 @@ export default function ContactPage() {
                   The fastest way to reach us. Order products, ask questions, or get delivery updates anywhere in Finland.
                 </p>
                 <a
-                  href="https://wa.me/358417059015?text=Hi%20ZEWID!"
+                  href={whatsappLink("Hi ZEWID!")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold transition-colors text-sm"
@@ -64,7 +67,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="font-bold text-gray-900">TikTok</h3>
-                <p className="text-sm text-gray-400">@zewid</p>
+                <p className="text-sm text-gray-400">@zewid.teff</p>
               </div>
             </div>
             <p className="text-gray-500 text-sm mb-4">
@@ -106,6 +109,8 @@ export default function ContactPage() {
             </a>
           </div>
         </div>
+
+        <div className="mt-8"><OrderInformation /></div>
 
         {/* Business Hours */}
         <div className="mt-12 bg-gray-50 rounded-2xl p-8 border border-gray-100 text-center">

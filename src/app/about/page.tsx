@@ -1,14 +1,13 @@
-import type { Metadata } from "next";
+import { whatsappLink } from "@/lib/site";
+import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About Us",
   description:
     "Learn about ZEWID | ዘውድ – Finland's trusted Ethiopian products brand. We provide premium teff flour, mashila, and authentic Ethiopian ingredients with fast, reliable delivery all over Finland.",
-  alternates: {
-    canonical: '/about',
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -107,7 +106,7 @@ export default function AboutPage() {
             Order directly through WhatsApp for fast, reliable delivery all over Finland.
           </p>
           <a
-            href="https://wa.me/358417059015?text=Hi%20ZEWID!%20I%20would%20like%20to%20order"
+            href={whatsappLink("Hi ZEWID! I would like to order")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold transition-colors"

@@ -5,11 +5,14 @@ export interface Product {
   description: string;
   image: string;
   features: string[];
+  availability: "in-stock" | "out-of-stock";
+  priceEur?: number;
 }
 
 export const products: Product[] = [
   {
     slug: "white-teff-flour",
+    availability: "in-stock",
     name: "White Teff Flour (Magna)",
     weight: "5 kg bag",
     description:
@@ -24,6 +27,7 @@ export const products: Product[] = [
   },
   {
     slug: "red-teff-flour",
+    availability: "in-stock",
     name: "Red Teff Flour",
     weight: "5 kg bag",
     description:
@@ -32,12 +36,12 @@ export const products: Product[] = [
     features: [
       "100% Ethiopian red teff",
       "High in iron and fiber",
-      "High in iron & calcium",
       "Perfect for dark injera",
     ],
   },
   {
     slug: "mashila-sorghum",
+    availability: "out-of-stock",
     name: "Mashila (Sorghum)",
     weight: "5 kg bag",
     description:
@@ -52,6 +56,7 @@ export const products: Product[] = [
   },
   {
     slug: "berbere",
+    availability: "in-stock",
     name: "Berbere",
     weight: "1 kg pack",
     description:
@@ -65,6 +70,7 @@ export const products: Product[] = [
   },
   {
     slug: "buna-coffee",
+    availability: "in-stock",
     name: "Buna (Coffee)",
     weight: "1 kg pack",
     description:
@@ -78,6 +84,7 @@ export const products: Product[] = [
   },
   {
     slug: "shiro",
+    availability: "in-stock",
     name: "Shiro",
     weight: "1 kg pack",
     description:

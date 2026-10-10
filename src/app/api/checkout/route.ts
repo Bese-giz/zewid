@@ -34,6 +34,8 @@ export async function POST(request: NextRequest) {
       zewid_store: "zewid", zewid_mode: mode, zewid_browser: hashToken(token), zewid_items: JSON.stringify(items),
       zewid_total_cents: String(pricing.totalCents),
       zewid_payment_status: "awaiting_payment", zewid_prices_include_vat: "true",
+      // Fulfillment is separate from payment: only process succeeded payments.
+      fulfillment_status: "pending",
       ...pickupMetadata,
     };
     const fingerprint = createHash("sha256").update(JSON.stringify({ items, pickup: pickup?.selection ?? null })).update(hashToken(token)).digest("hex");
@@ -49,7 +51,8 @@ export async function POST(request: NextRequest) {
       ...(pickup ? { custom_text: { submit: { message: `Collect your order from PostNord pickup point: ${pickup.point.name}, ${pickup.point.street}, ${pickup.point.postalCode} ${pickup.point.city}.` } } } : {}),
       client_reference_id: reference,
       metadata,
-      payment_intent_data: { metadata: { zewid_store: "zewid", zewid_order: reference, zewid_items: JSON.stringify(items), ...pickupMetadata }, description: `ZEWID order ${reference}` },
+      // Stripe copies these initial values to the Charge. Never reset a merchant's later status edits.
+      payment_intent_data: { metadata: { zewid_store: "zewid", zewid_order: reference, zewid_items: JSON.stringify(items), fulfillment_status: "pending", ...pickupMetadata }, description: `ZEWID order ${reference}` },
       success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/checkout/cancel`,
     }, { idempotencyKey: `zewid_checkout_${mode}_${body.requestId}_${fingerprint}` });

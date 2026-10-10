@@ -46,9 +46,10 @@ export const products: Product[] = [
   },
   {
     slug: "mashila-sorghum",
-    priceEur: 15,
+    // Temporary checkout test: restore €15 and out-of-stock after testing.
+    priceEur: 1,
     weightKg: 5,
-    availability: "out-of-stock",
+    availability: "in-stock",
     name: "Mashila (Sorghum)",
     weight: "5 kg bag",
     description:

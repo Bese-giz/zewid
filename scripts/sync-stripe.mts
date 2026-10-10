@@ -142,7 +142,7 @@ async function main() {
       rate.fixed_amount?.amount === deliveryAmount && rate.fixed_amount.currency === "eur");
     cursor = rates.has_more ? rates.data.at(-1)?.id : undefined;
   } while (!shippingRate && cursor);
-  if (shippingRate?.tax_behavior === "exclusive") throw new Error("Delivery rate is tax-exclusive; import stopped to protect the advertised €7 total.");
+  if (shippingRate?.tax_behavior === "exclusive") throw new Error("Delivery rate is tax-exclusive; import stopped to protect the advertised delivery total.");
   if (shippingRate && shippingRate.tax_behavior !== "inclusive") {
     shippingRate = await request<ShippingRate>(`/shipping_rates/${shippingRate.id}`, "POST", { tax_behavior: "inclusive" });
   }

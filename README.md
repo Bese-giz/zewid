@@ -28,7 +28,7 @@ Deploy to a host that supports the Next.js server and image optimizer. All catal
 
 ## Product catalog and stock
 
-Edit `src/data/products.ts` to update products. Each product has a stable slug, name, pack size, description, image, features, and `availability` (`in-stock` or `out-of-stock`). Currently all products are available except Mashila (sorghum).
+Edit `src/data/products.ts` to update products. Each product has a stable slug, name, pack size, description, image, features, and `availability` (`in-stock` or `out-of-stock`). A temporary checkout test currently makes Mashila orderable at €1 and delivery €1 across all website orders, giving a €2 total for one Mashila pack. After the merchant completes testing, restore Mashila to €15 and `out-of-stock`, restore `site.deliveryFeeEur` to €7, import the restored catalog into Stripe, and redeploy. All other product prices remain at their confirmed values.
 
 The catalog includes these selling prices per bag/pack:
 
@@ -36,7 +36,7 @@ The catalog includes these selling prices per bag/pack:
 | --- | --- | --- |
 | White teff (Magna) | 5 kg | €25 |
 | Red teff | 5 kg | €25 |
-| Mashila (currently unavailable) | 5 kg | €15 |
+| Mashila (temporarily enabled for testing) | 5 kg | €1 |
 | Buna coffee | 1 kg | €18 |
 | Berbere | 1 kg | €30 |
 | Shiro | 1 kg | €30 |
@@ -47,7 +47,7 @@ Unavailable products remain visible for enquiries but cannot be added to the car
 
 ## Delivery and ordering
 
-`src/lib/site.ts` contains the site URL, WhatsApp number, delivery coverage, and delivery time. Delivery is currently 1–2 days throughout Finland. Delivery costs €7 per non-empty order, with no free-delivery threshold. The fee is configured as `deliveryFeeEur` in the same file.
+`src/lib/site.ts` contains the site URL, WhatsApp number, delivery coverage, and delivery time. Delivery is currently 1–2 days throughout Finland. Delivery temporarily costs €1 per non-empty order for the merchant's checkout test, with no free-delivery threshold; the usual fee is €7. The fee is configured as `deliveryFeeEur` in the same file.
 
 Customers add available products from the homepage, catalog, or product detail page. Product detail pages include quantity selection. The cart displays unit prices, line totals, delivery, and the final total. Its “Send Order on WhatsApp” action opens a draft containing those amounts along with every cart item, pack size, and quantity. Product detail pages preview the selected quantity. Opening WhatsApp does not submit or confirm an order, and the cart is not cleared automatically.
 
@@ -69,11 +69,11 @@ With the key configured, the cart requires a five-digit Finnish postcode and a P
 
 To find a paid order's pickup point, open the successful payment in the Stripe Dashboard and find its **Metadata** section. `zewid_pickup_name` is the selected location; `zewid_pickup_street`, `zewid_pickup_postcode`, and `zewid_pickup_city` give its visiting address. Use `zewid_pickup_id` and `zewid_pickup_country` when booking with PostNord. These fields are saved when checkout is created; only fulfill orders whose payment has succeeded. The app does not email this information to the merchant or book the shipment automatically.
 
-The delivery charge remains the merchant's fixed €7; this lookup does not quote the contract shipping price. Shipment booking, labels, tracking messages, and fulfillment remain merchant tasks. Use the selected point's **ID and country** when booking with PostNord; its public visiting address is for customer directions and should not be copied as the recipient's home address or assumed to be the carrier's label/EDI delivery address. See [PostNord's integration guide](https://guide.developer.postnord.com/) for Service Points v5 and booking details. Verify real Finnish pickup-point results and an unpaid checkout before enabling this flow in production.
+The delivery charge uses the merchant's fixed fee in `site.deliveryFeeEur` (€1 during the temporary checkout test, normally €7); this lookup does not quote the contract shipping price. Shipment booking, labels, tracking messages, and fulfillment remain merchant tasks. Use the selected point's **ID and country** when booking with PostNord; its public visiting address is for customer directions and should not be copied as the recipient's home address or assumed to be the carrier's label/EDI delivery address. See [PostNord's integration guide](https://guide.developer.postnord.com/) for Service Points v5 and booking details. Verify real Finnish pickup-point results and an unpaid checkout before enabling this flow in production.
 
 ## Automated Stripe sandbox catalog import
 
-The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products with one price per pack and a €7 Finland shipping rate. Mashila is imported as unavailable. No subscriptions or live charges are created.
+The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products with one price per pack and a Finland shipping rate matching `site.deliveryFeeEur`. Product availability matches the current catalog, including temporary Mashila test settings. No subscriptions or live charges are created.
 
 Preview the import without credentials or Stripe requests:
 

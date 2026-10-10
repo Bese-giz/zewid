@@ -95,6 +95,11 @@ export function publicOrder(session: Stripe.Checkout.Session) {
     subtotalCents: session.amount_subtotal ?? 0,
     deliveryCents: session.total_details?.amount_shipping ?? 0,
     totalCents: session.amount_total ?? 0,
+    pickupPoint: session.metadata?.zewid_delivery_method === "postnord_pickup" ? {
+      id: session.metadata.zewid_pickup_id, name: session.metadata.zewid_pickup_name,
+      street: session.metadata.zewid_pickup_street, postalCode: session.metadata.zewid_pickup_postcode,
+      city: session.metadata.zewid_pickup_city,
+    } : null,
     items: purchasedItems(session),
     lines: (session.line_items?.data ?? []).map((line) => ({ description: line.description, quantity: line.quantity ?? 0, totalCents: line.amount_total })),
   };

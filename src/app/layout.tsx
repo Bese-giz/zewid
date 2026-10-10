@@ -9,6 +9,7 @@ import Toast from "@/components/Toast";
 import { CartProvider } from "@/context/CartContext";
 import { site } from "@/lib/site";
 import { checkoutMode } from "@/lib/stripe";
+import { postnordPickupEnabled } from "@/lib/postnord";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -100,7 +101,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <WhatsAppFloat />
-          <FloatingCart checkoutMode={checkoutMode()} />
+          <FloatingCart checkoutMode={checkoutMode()} pickupEnabled={postnordPickupEnabled()} />
           <Toast />
         </CartProvider>
       </body>

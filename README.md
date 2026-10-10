@@ -59,6 +59,14 @@ The merchant confirmed VAT registration and VAT-inclusive selling prices. Produc
 
 Orders, contact/delivery details, and payment status remain in Stripe. The reference and purchased items are attached to the Checkout Session and PaymentIntent metadata, so the merchant can review paid orders in the Stripe Dashboard. A signed webhook and the authenticated return page verify Stripe's actual paid status and amount before marking a payment verified. No shipment is triggered automatically. There is no separate order database, inventory-counting service, or local admin portal. Payment receipt emails must be enabled in Stripe's customer email settings; this app does not send custom order emails.
 
+### PostNord pickup-point selection
+
+Configure a production **Service Points v5** API key from [PostNord Developer](https://developer.postnord.com) as `POSTNORD_API_KEY` in `.env.local`, `.env.live.local`, and Vercel **Production**. Mark the Vercel value Secret/Sensitive and deploy after adding it. The key stays on the server. Without a configured key, checkout retains its existing address-based delivery flow.
+
+With the key configured, the cart requires a five-digit Finnish postcode and a PostNord pickup-point selection before opening Stripe. The server queries the official nearest-by-address API for eligible Finnish pickup points, returns public visiting addresses, and rechecks the chosen ID against the postcode results before creating checkout. Changing the postcode clears the selection. The customer sees the selected point in Stripe and on the return page. The carrier, country, pickup-point ID, name, and visiting address are saved in Checkout Session and PaymentIntent metadata.
+
+The delivery charge remains the merchant's fixed €7; this lookup does not quote the contract shipping price. Shipment booking, labels, tracking messages, and fulfillment remain merchant tasks. Use the selected point's **ID and country** when booking with PostNord; its public visiting address is for customer directions and should not be copied as the recipient's home address or assumed to be the carrier's label/EDI delivery address. See [PostNord's integration guide](https://guide.developer.postnord.com/) for Service Points v5 and booking details. Verify real Finnish pickup-point results and an unpaid checkout before enabling this flow in production.
+
 ## Automated Stripe sandbox catalog import
 
 The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products with one price per pack and a €7 Finland shipping rate. Mashila is imported as unavailable. No subscriptions or live charges are created.

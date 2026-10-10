@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { formatEuro } from "@/lib/pricing";
+import { postnordPickupEnabled } from "@/lib/postnord";
 
 export default function OrderInformation() {
   return (
@@ -14,7 +15,7 @@ export default function OrderInformation() {
       </div>
       <div>
         <dt className="font-semibold text-gray-900">Delivery charge</dt>
-        <dd className="mt-1 text-gray-600">{formatEuro(site.deliveryFeeEur * 100)} per order, anywhere in Finland.</dd>
+        <dd className="mt-1 text-gray-600">{formatEuro(site.deliveryFeeEur * 100)} per order{postnordPickupEnabled() ? ", to your selected PostNord pickup point." : ", anywhere in Finland."}</dd>
       </div>
     </dl>
   );

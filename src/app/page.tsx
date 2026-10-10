@@ -172,7 +172,7 @@ export default function HomePage() {
               {
                 icon: "🚚",
                 title: "Fast Delivery",
-                desc: "Fast, reliable delivery all over Finland, straight to your door.",
+                desc: "Fast, reliable delivery all over Finland.",
               },
               {
                 icon: "💬",

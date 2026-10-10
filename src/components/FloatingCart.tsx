@@ -8,7 +8,7 @@ import { formatEuro } from "@/lib/pricing";
 import StripeCheckoutButton from "./StripeCheckoutButton";
 import type { StripeMode } from "@/lib/stripe-mode";
 
-export default function FloatingCart({ checkoutMode = null }: { checkoutMode?: StripeMode | null }) {
+export default function FloatingCart({ checkoutMode = null, pickupEnabled = false }: { checkoutMode?: StripeMode | null; pickupEnabled?: boolean }) {
   const { items, pricing, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -139,7 +139,7 @@ export default function FloatingCart({ checkoutMode = null }: { checkoutMode?: S
       </div>
 
       {items.length > 0 && (
-        <div className="p-5 border-t border-gray-100 bg-gray-50">
+        <div className="max-h-[65dvh] shrink-0 overflow-y-auto p-5 border-t border-gray-100 bg-gray-50">
           <div aria-live="polite" aria-atomic="true" className="mb-4 text-sm">
             <dl className="space-y-2">
               <div className="flex justify-between gap-4"><dt>Products</dt><dd>{formatEuro(pricing.subtotalCents)}</dd></div>
@@ -148,7 +148,7 @@ export default function FloatingCart({ checkoutMode = null }: { checkoutMode?: S
             </dl>
             <p className="mt-2 text-xs text-gray-600">Prices include VAT.</p>
           </div>
-          {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} />}
+          {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickupEnabled={pickupEnabled} />}
           <a
             href={generateWhatsAppLink()}
             target="_blank"

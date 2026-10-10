@@ -67,6 +67,13 @@ export default function CheckoutConfirmation({ initialOrder }: { initialOrder: P
           <div className="flex justify-between gap-4 font-bold"><dt>Total</dt><dd>{formatEuro(order.totalCents)}</dd></div>
         </dl>
         <p className="mt-2 text-xs text-gray-600">Prices include VAT.</p>
+        {order.pickupPoint && (
+          <div className="mt-4 rounded-xl bg-green-50 p-4 text-sm text-green-900">
+            <p className="font-semibold">PostNord pickup point</p>
+            <p>{order.pickupPoint.name}</p>
+            <p>{order.pickupPoint.street}, {order.pickupPoint.postalCode} {order.pickupPoint.city}</p>
+          </div>
+        )}
         <p className="mt-4 text-sm text-gray-600">{order.sandbox ? "Delivery for live orders" : "Delivery"}: {site.deliveryTime}, {site.deliveryArea.toLowerCase()}.</p>
       </div>
       {!paid && <button type="button" onClick={refresh} disabled={busy} className="mt-6 rounded-full bg-gray-900 px-6 py-3 font-semibold text-white disabled:opacity-50">{busy ? "Checking payment…" : "Refresh payment status"}</button>}

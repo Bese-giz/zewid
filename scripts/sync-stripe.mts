@@ -39,7 +39,7 @@ async function main() {
         weight: product.weight, image: new URL(product.image, site.url).href,
         active: product.availability === "in-stock", prices: stripePrices(product), currency: "eur",
       })),
-      delivery: { amountCents: site.deliveryFeeEur * 100, currency: "eur", time: site.deliveryTime },
+      delivery: { amountCents: Math.round(site.deliveryFeeEur * 100), currency: "eur", time: site.deliveryTime },
     }, null, 2));
     return;
   }
@@ -130,7 +130,7 @@ async function main() {
     console.log(`Synced ${product.name} (${product.availability}).`);
   }
 
-  const deliveryAmount = site.deliveryFeeEur * 100;
+  const deliveryAmount = Math.round(site.deliveryFeeEur * 100);
   const shippingKey = `zewid_finland_${deliveryAmount}_eur`;
   let shippingRate: ShippingRate | undefined;
   let cursor: string | undefined;

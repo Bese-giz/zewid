@@ -37,7 +37,6 @@ export default function ProductOrderActions({ product }: { product: Product }) {
       {available && selectionQuantity > 0 && preview && (
         <div className="text-sm text-gray-700" aria-live="polite" aria-atomic="true">
           <p>{formatEuro(preview.unitPriceCents)} per {product.weight} · {formatEuro(preview.unitPriceCents * selectionQuantity)} for this selection</p>
-          {preview.unitPriceCents < preview.regularUnitPriceCents && <p className="mt-1 font-semibold text-green-800">Your combined teff order qualifies for the bulk price.</p>}
         </div>
       )}
       <button type="button" disabled={!available || selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)}

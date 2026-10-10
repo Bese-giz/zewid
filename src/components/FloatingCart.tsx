@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatEuro } from "@/lib/pricing";
 import StripeCheckoutButton from "./StripeCheckoutButton";
-import { teffPricing } from "@/data/products";
 import type { StripeMode } from "@/lib/stripe-mode";
 
 export default function FloatingCart({ checkoutMode = null }: { checkoutMode?: StripeMode | null }) {
@@ -142,13 +141,6 @@ export default function FloatingCart({ checkoutMode = null }: { checkoutMode?: S
       {items.length > 0 && (
         <div className="p-5 border-t border-gray-100 bg-gray-50">
           <div aria-live="polite" aria-atomic="true" className="mb-4 text-sm">
-            {pricing.teffWeightKg > 0 && (
-              <p className="mb-3 rounded-lg bg-green-50 p-3 text-green-800">
-                {pricing.bulkDiscountApplied
-                  ? `Bulk teff price applied: ${formatEuro(teffPricing.bulkPriceEur * 100)} per bag. You save ${formatEuro(pricing.savingsCents)}.`
-                  : `Add ${(teffPricing.minimumKg - pricing.teffWeightKg) / 5} more 5 kg teff bag${teffPricing.minimumKg - pricing.teffWeightKg > 5 ? "s" : ""} to pay ${formatEuro(teffPricing.bulkPriceEur * 100)} per bag. White and red teff count together.`}
-              </p>
-            )}
             <dl className="space-y-2">
               <div className="flex justify-between gap-4"><dt>Products</dt><dd>{formatEuro(pricing.subtotalCents)}</dd></div>
               <div className="flex justify-between gap-4"><dt>Delivery</dt><dd>{formatEuro(pricing.deliveryCents)}</dd></div>

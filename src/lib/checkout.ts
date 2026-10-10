@@ -30,7 +30,7 @@ export async function checkoutRates(items: CheckoutItem[]) {
   const requested = pricing.lines.map((line) => ({
     line,
     productId: `zewid_${line.product.slug.replaceAll("-", "_")}`,
-    lookup: `zewid_${line.product.slug.replaceAll("-", "_")}_${line.unitPriceCents < line.regularUnitPriceCents ? "bulk" : "standard"}_${line.unitPriceCents}_eur`,
+    lookup: `zewid_${line.product.slug.replaceAll("-", "_")}_standard_${line.unitPriceCents}_eur`,
   }));
   const prices = await stripe.prices.list({ lookup_keys: requested.map((entry) => entry.lookup), active: true, limit: 100 });
   const lineItems = requested.map(({ line, lookup, productId }) => {

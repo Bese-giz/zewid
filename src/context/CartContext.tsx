@@ -147,8 +147,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const generateWhatsAppLink = () => {
     const lines = pricing.lines.map((line, index) =>
       `${index + 1}. ${line.product.name} (${line.product.weight}) x ${line.quantity} at ${formatEuro(line.unitPriceCents)} each = ${formatEuro(line.lineTotalCents)}`);
-    const discount = pricing.savingsCents ? `\nTeff bulk saving: ${formatEuro(pricing.savingsCents)}` : "";
-    return whatsappLink(`Hi ZEWID! I would like to order:\n\n${lines.join("\n")}\n\nProducts: ${formatEuro(pricing.subtotalCents)}${discount}\nDelivery: ${formatEuro(pricing.deliveryCents)}\nTotal: ${formatEuro(pricing.totalCents)}\n\nPlease confirm my order and delivery details. Thanks!`);
+    return whatsappLink(`Hi ZEWID! I would like to order:\n\n${lines.join("\n")}\n\nProducts: ${formatEuro(pricing.subtotalCents)}\nDelivery: ${formatEuro(pricing.deliveryCents)}\nTotal: ${formatEuro(pricing.totalCents)}\n\nPlease confirm my order and delivery details. Thanks!`);
   };
 
   return (

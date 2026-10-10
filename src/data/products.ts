@@ -8,20 +8,13 @@ export interface Product {
   availability: "in-stock" | "out-of-stock";
   priceEur: number;
   weightKg: number;
-  pricingGroup?: "teff";
 }
-
-export const teffPricing = {
-  minimumKg: 15,
-  bulkPriceEur: 23,
-};
 
 export const products: Product[] = [
   {
     slug: "white-teff-flour",
     priceEur: 25,
     weightKg: 5,
-    pricingGroup: "teff",
     availability: "in-stock",
     name: "White Teff Flour (Magna)",
     weight: "5 kg bag",
@@ -39,7 +32,6 @@ export const products: Product[] = [
     slug: "red-teff-flour",
     priceEur: 25,
     weightKg: 5,
-    pricingGroup: "teff",
     availability: "in-stock",
     name: "Red Teff Flour",
     weight: "5 kg bag",

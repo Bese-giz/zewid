@@ -34,14 +34,14 @@ The catalog includes these selling prices per bag/pack:
 
 | Product | Pack size | Price |
 | --- | --- | --- |
-| White teff (Magna) | 5 kg | €25; €23 with at least 15 kg of combined white/red teff |
-| Red teff | 5 kg | €25; €23 with at least 15 kg of combined white/red teff |
+| White teff (Magna) | 5 kg | €25 |
+| Red teff | 5 kg | €25 |
 | Mashila (currently unavailable) | 5 kg | €15 |
 | Buna coffee | 1 kg | €18 |
 | Berbere | 1 kg | €30 |
 | Shiro | 1 kg | €30 |
 
-`priceEur` is the regular price per pack, `weightKg` is the pack's numeric weight, and `pricingGroup: "teff"` opts a product into the shared discount. `teffPricing` holds the 15 kg threshold and €23 discounted price. `src/lib/pricing.ts` calculates rates and totals in integer cents from catalog data, never from stored or customer-supplied prices. All teff bags receive the discounted price once the combined order reaches 15 kg; unrelated products do not count toward that threshold.
+`priceEur` is the price per pack and `weightKg` is the pack's numeric weight. `src/lib/pricing.ts` calculates totals in integer cents from catalog data, never from stored or customer-supplied prices. White and red teff cost €25 per bag at every quantity; website orders do not receive a bulk discount.
 
 Unavailable products remain visible for enquiries but cannot be added to the cart. Rebuild/redeploy after changing the catalog or stock status.
 
@@ -49,9 +49,9 @@ Unavailable products remain visible for enquiries but cannot be added to the car
 
 `src/lib/site.ts` contains the site URL, WhatsApp number, delivery coverage, and delivery time. Delivery is currently 1–2 days throughout Finland. Delivery costs €7 per non-empty order, with no free-delivery threshold. The fee is configured as `deliveryFeeEur` in the same file.
 
-Customers add available products from the homepage, catalog, or product detail page. Product detail pages include quantity selection. The cart displays unit prices, line totals, teff savings, delivery, and the final total. Its “Send Order on WhatsApp” action opens a draft containing those amounts along with every cart item, pack size, and quantity. Product detail pages preview the selected quantity at the rate that applies with the existing cart. Opening WhatsApp does not submit or confirm an order, and the cart is not cleared automatically.
+Customers add available products from the homepage, catalog, or product detail page. Product detail pages include quantity selection. The cart displays unit prices, line totals, delivery, and the final total. Its “Send Order on WhatsApp” action opens a draft containing those amounts along with every cart item, pack size, and quantity. Product detail pages preview the selected quantity. Opening WhatsApp does not submit or confirm an order, and the cart is not cleared automatically.
 
-Stripe hosted checkout supports **sandbox and live mode** alongside WhatsApp ordering. Sandbox is the default. Checkout collects the customer's email, phone number, and Finnish shipping address. Amounts are checked on the server against the catalog and the imported Stripe price lookup keys, including the combined-teff rule and fixed delivery rate. Customer-supplied prices are ignored and invalid/unavailable items are rejected.
+Stripe hosted checkout supports **sandbox and live mode** alongside WhatsApp ordering. Sandbox is the default. Checkout collects the customer's email, phone number, and Finnish shipping address. Amounts are checked on the server against the catalog and the imported Stripe price lookup keys, including the fixed delivery rate. Customer-supplied prices are ignored and invalid/unavailable items are rejected.
 
 The cart's checkout button is available when the configured mode and key match. Live mode also requires an HTTPS origin and webhook signing secret, and is blocked on Vercel Preview/Development deployments. The Stripe payment methods offered depend on the account's activated methods and customer eligibility; this integration limits the choices to cards (including supported Apple Pay/Google Pay wallets) and MobilePay. Klarna is not offered by the website checkout. Finish Stripe account activation and enable eligible methods in the Dashboard when they become available.
 
@@ -61,7 +61,7 @@ Orders, contact/delivery details, and payment status remain in Stripe. The refer
 
 ## Automated Stripe sandbox catalog import
 
-The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products, regular prices, separate €23 bulk prices for both teff products, and a €7 Finland shipping rate. Mashila is imported as unavailable. No subscriptions or live charges are created.
+The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products with one price per pack and a €7 Finland shipping rate. Mashila is imported as unavailable. No subscriptions or live charges are created.
 
 Preview the import without credentials or Stripe requests:
 
@@ -77,7 +77,7 @@ npm run stripe:sync -- --apply
 
 The default importer refuses live keys. A live import requires a separate environment file, matching live mode/key, and the explicit `--live --apply` options described below. Existing managed products and matching price lookup keys are reused on subsequent runs. Updated amounts receive new prices, and the standard default price is updated. VAT-inclusive tax behavior is set on prices and delivery. An existing tax-exclusive rate stops the import rather than changing its tax treatment. IDs are written to `.stripe/catalog.sandbox.json` or `.stripe/catalog.live.json`, both ignored by Git. Product images use their publicly accessible URLs on the configured domain; deploy the corresponding assets before using checkout.
 
-Stripe prices for white and red teff are separate. The checkout backend calculates their combined weight and selects the **bulk price for both types** once the total reaches 15 kg. Native per-product price tiers alone do not implement that combined rule. Importing the catalog does not activate live payments. Hosted Checkout and payment verification are connected in sandbox mode; order shipment remains a merchant task. Tax configuration should match the business's actual VAT treatment before accepting live payments.
+Stripe prices for white and red teff are separate. Checkout always selects the standard €25 price; previously imported bulk prices are not used for new website orders. Existing checkouts retain their original amounts. Importing the catalog does not activate live payments; order shipment remains a merchant task. Tax configuration should match the business's actual VAT treatment before accepting live payments.
 
 ## Running the sandbox checkout locally
 

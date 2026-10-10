@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { products, teffPricing, type Product } from "../src/data/products.ts";
+import { products, type Product } from "../src/data/products.ts";
 import { site } from "../src/lib/site.ts";
 import { keyMatchesStripeMode, readStripeMode } from "../src/lib/stripe-mode.ts";
 
@@ -21,7 +21,6 @@ class StripeRequestError extends Error {
 function stripePrices(product: Product) {
   return [
     { tier: "standard", amount: Math.round(product.priceEur * 100) },
-    ...(product.pricingGroup === "teff" ? [{ tier: "bulk", amount: teffPricing.bulkPriceEur * 100 }] : []),
   ];
 }
 
@@ -40,7 +39,6 @@ async function main() {
         weight: product.weight, image: new URL(product.image, site.url).href,
         active: product.availability === "in-stock", prices: stripePrices(product), currency: "eur",
       })),
-      teffDiscount: { minimumCombinedKg: teffPricing.minimumKg, pricePerBagCents: teffPricing.bulkPriceEur * 100 },
       delivery: { amountCents: site.deliveryFeeEur * 100, currency: "eur", time: site.deliveryTime },
     }, null, 2));
     return;
@@ -95,9 +93,9 @@ async function main() {
       "metadata[zewid_slug]": product.slug,
       "metadata[weight_kg]": product.weightKg,
       "metadata[pack_size]": product.weight,
-      "metadata[pricing_group]": product.pricingGroup ?? "",
+      "metadata[pricing_group]": "",
       "metadata[prices_include_vat]": "true",
-      "metadata[bulk_minimum_combined_kg]": product.pricingGroup === "teff" ? teffPricing.minimumKg : "",
+      "metadata[bulk_minimum_combined_kg]": "",
     };
     const synced = await request<StripeProduct>(existing ? `/products/${id}` : "/products", "POST", {
       ...fields, ...(!existing ? { id } : {}),
@@ -157,7 +155,7 @@ async function main() {
   await mkdir(".stripe", { recursive: true });
   await writeFile(`.stripe/catalog.${mode}.json`, JSON.stringify({ mode, products: manifest, shippingRateId: shippingRate.id }, null, 2) + "\n");
   console.log(`${mode === "live" ? "Live" : "Sandbox"} import complete. Stripe IDs saved to .stripe/catalog.${mode}.json.`);
-  console.log("Checkout must select the bulk price for BOTH teff products when their combined weight is at least 15 kg; the import alone does not enable website payments.");
+  console.log("Checkout uses the standard price at every quantity; the import alone does not enable website payments.");
 }
 
 main().catch((error: unknown) => {

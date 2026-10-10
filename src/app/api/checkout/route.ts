@@ -24,8 +24,8 @@ export async function POST(request: NextRequest) {
     const reference = `ZEWID-${body.requestId.replaceAll("-", "").slice(0, 12).toUpperCase()}`;
     const metadata = {
       zewid_store: "zewid", zewid_mode: mode, zewid_browser: hashToken(token), zewid_items: JSON.stringify(items),
-      zewid_total_cents: String(pricing.totalCents), zewid_teff_kg: String(pricing.teffWeightKg),
-      zewid_bulk_discount: String(pricing.bulkDiscountApplied), zewid_payment_status: "awaiting_payment", zewid_prices_include_vat: "true",
+      zewid_total_cents: String(pricing.totalCents),
+      zewid_payment_status: "awaiting_payment", zewid_prices_include_vat: "true",
     };
     const fingerprint = createHash("sha256").update(JSON.stringify(items)).update(hashToken(token)).digest("hex");
     const session = await getStripe().checkout.sessions.create({

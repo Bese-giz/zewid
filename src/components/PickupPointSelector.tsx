@@ -3,9 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import type { PickupPoint, PickupSelection } from "@/lib/postnord";
 
-export default function PickupPointSelector({ value, onChange }: { value: PickupSelection | null; onChange: (selection: PickupSelection | null) => void }) {
-  const [postalCode, setPostalCode] = useState("");
-  const [points, setPoints] = useState<PickupPoint[]>([]);
+export interface SelectedPickupPoint { selection: PickupSelection; point: PickupPoint }
+
+export default function PickupPointSelector({ value, onChange }: { value: SelectedPickupPoint | null; onChange: (selection: SelectedPickupPoint | null) => void }) {
+  const [postalCode, setPostalCode] = useState(value?.selection.postalCode ?? "");
+  const [points, setPoints] = useState<PickupPoint[]>(value ? [value.point] : []);
   const [searched, setSearched] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -67,9 +69,9 @@ export default function PickupPointSelector({ value, onChange }: { value: Pickup
         <fieldset className="mt-3 space-y-2">
           <legend className="mb-2 text-sm font-medium text-gray-700">Nearby pickup points</legend>
           {points.map((point) => (
-            <label key={point.id} className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm ${value?.servicePointId === point.id ? "border-green-700 bg-green-50" : "border-gray-200"}`}>
-              <input type="radio" name="postnord-pickup" checked={value?.servicePointId === point.id}
-                onChange={() => onChange({ postalCode: postalCode.trim(), servicePointId: point.id })} className="mt-1 accent-green-700" />
+            <label key={point.id} className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm ${value?.selection.servicePointId === point.id ? "border-green-700 bg-green-50" : "border-gray-200"}`}>
+              <input type="radio" name="postnord-pickup" checked={value?.selection.servicePointId === point.id}
+                onChange={() => onChange({ selection: { postalCode: postalCode.trim(), servicePointId: point.id }, point })} className="mt-1 accent-green-700" />
               <span><span className="block font-semibold text-gray-900">{point.name}</span><span className="block text-gray-600">{point.street}, {point.postalCode} {point.city}</span></span>
             </label>
           ))}

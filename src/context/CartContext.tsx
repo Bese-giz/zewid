@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode, useEffect, useCallback,
 import { getProductBySlug, products } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import { MAX_CART_QUANTITY, calculateCart, formatEuro } from "@/lib/pricing";
+import type { PickupPoint } from "@/lib/postnord";
 
 export { MAX_CART_QUANTITY } from "@/lib/pricing";
 const STORAGE_KEY = "zewid_cart";
@@ -28,7 +29,7 @@ interface CartContextType {
   setIsCartOpen: (isOpen: boolean) => void;
   toastMessage: string | null;
   setToastMessage: (message: string | null) => void;
-  generateWhatsAppLink: () => string;
+  generateWhatsAppLink: (pickupPoint?: PickupPoint) => string;
 }
 
 // Rebuild persisted items from the catalog rather than trusting stored names or images.
@@ -144,10 +145,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
     catch { /* The cart remains usable if storage is unavailable. */ }
   }, [cart.loaded]);
 
-  const generateWhatsAppLink = () => {
+  const generateWhatsAppLink = (pickupPoint?: PickupPoint) => {
     const lines = pricing.lines.map((line, index) =>
       `${index + 1}. ${line.product.name} (${line.product.weight}) x ${line.quantity} at ${formatEuro(line.unitPriceCents)} each = ${formatEuro(line.lineTotalCents)}`);
-    return whatsappLink(`Hi ZEWID! I would like to order:\n\n${lines.join("\n")}\n\nProducts: ${formatEuro(pricing.subtotalCents)}\nDelivery: ${formatEuro(pricing.deliveryCents)}\nTotal: ${formatEuro(pricing.totalCents)}\n\nPlease confirm my order and delivery details. Thanks!`);
+    const pickupDetails = pickupPoint
+      ? `\n\nPostNord pickup point: ${pickupPoint.name}\nAddress: ${pickupPoint.street}, ${pickupPoint.postalCode} ${pickupPoint.city}\nPickup point ID: ${pickupPoint.id}\nCountry: ${pickupPoint.countryCode}`
+      : "";
+    return whatsappLink(`Hi ZEWID! I would like to order:\n\n${lines.join("\n")}\n\nProducts: ${formatEuro(pricing.subtotalCents)}\nDelivery: ${formatEuro(pricing.deliveryCents)}\nTotal: ${formatEuro(pricing.totalCents)}${pickupDetails}\n\nPlease confirm my order and delivery details. Thanks!`);
   };
 
   return (

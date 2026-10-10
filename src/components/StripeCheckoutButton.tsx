@@ -4,13 +4,11 @@ import { useRef, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { formatEuro } from "@/lib/pricing";
 import type { PickupSelection } from "@/lib/postnord";
-import PickupPointSelector from "./PickupPointSelector";
 
-export default function StripeCheckoutButton({ sandbox, pickupEnabled = false }: { sandbox: boolean; pickupEnabled?: boolean }) {
+export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, pickup = null }: { sandbox: boolean; pickupEnabled?: boolean; pickup?: PickupSelection | null }) {
   const { items, pricing } = useCart();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [pickup, setPickup] = useState<PickupSelection | null>(null);
   const attempt = useRef<{ cart: string; id: string } | null>(null);
 
   async function checkout() {
@@ -38,7 +36,6 @@ export default function StripeCheckoutButton({ sandbox, pickupEnabled = false }:
 
   return (
     <div className="mb-3">
-      {pickupEnabled && <PickupPointSelector value={pickup} onChange={setPickup} />}
       <button type="button" onClick={checkout} disabled={busy || !items.length || (pickupEnabled && !pickup)}
         className="w-full rounded-xl bg-gray-900 px-4 py-3 font-bold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60">
         {busy ? "Opening checkout…" : `Checkout · ${formatEuro(pricing.totalCents)}`}

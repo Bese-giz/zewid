@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MAX_CART_QUANTITY, useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { formatEuro } from "@/lib/pricing";
 import StripeCheckoutButton from "./StripeCheckoutButton";
+import PickupPointSelector, { type SelectedPickupPoint } from "./PickupPointSelector";
 import type { StripeMode } from "@/lib/stripe-mode";
 
 export default function FloatingCart({ checkoutMode = null, pickupEnabled = false }: { checkoutMode?: StripeMode | null; pickupEnabled?: boolean }) {
   const { items, pricing, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
+  const [pickup, setPickup] = useState<SelectedPickupPoint | null>(null);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -148,9 +150,10 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
             </dl>
             <p className="mt-2 text-xs text-gray-600">Prices include VAT.</p>
           </div>
-          {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickupEnabled={pickupEnabled} />}
+          {pickupEnabled && <PickupPointSelector value={pickup} onChange={setPickup} />}
+          {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickupEnabled={pickupEnabled} pickup={pickup?.selection ?? null} />}
           <a
-            href={generateWhatsAppLink()}
+            href={generateWhatsAppLink(pickupEnabled ? pickup?.point : undefined)}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all hover:-translate-y-0.5"

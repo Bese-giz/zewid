@@ -37,7 +37,7 @@ export default function ProductCard({ showDetails = true, ...product }: ProductC
             className="w-full rounded-full bg-gray-100 px-3 py-2.5 text-xs font-bold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500 md:text-sm">
             {available ? "Add to Cart" : "Unavailable"}
           </button>
-          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${name}${available ? ", including its price" : " and when it will be available again"}.`)}
+          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${name}${available ? ", delivery and ordering" : " and when it will be available again"}.`)}
             target="_blank" rel="noopener noreferrer"
             className="w-full rounded-full bg-green-50 px-3 py-2.5 text-center text-xs font-bold text-green-800 transition-colors hover:bg-green-700 hover:text-white md:text-sm">
             Ask on WhatsApp

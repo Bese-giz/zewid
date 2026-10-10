@@ -8,7 +8,7 @@ import OrderInformation from "@/components/OrderInformation";
 
 export const metadata = pageMetadata({
   title: "Premium Ethiopian Teff & Products in Finland",
-  description: "Shop Ethiopian white teff, red teff, coffee, berbere, and shiro at ZEWID. Delivery all over Finland in 1–2 days. Confirm prices and order on WhatsApp.",
+  description: "Shop Ethiopian white teff, red teff, coffee, berbere, and shiro at ZEWID. Delivery all over Finland in 1–2 days. Teff from €23 per 5 kg bag on orders of 15 kg or more. €7 delivery. Order on WhatsApp.",
   path: "/",
 });
 

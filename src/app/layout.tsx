@@ -8,6 +8,7 @@ import FloatingCart from "@/components/FloatingCart";
 import Toast from "@/components/Toast";
 import { CartProvider } from "@/context/CartContext";
 import { site } from "@/lib/site";
+import { checkoutMode } from "@/lib/stripe";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -99,7 +100,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <WhatsAppFloat />
-          <FloatingCart />
+          <FloatingCart checkoutMode={checkoutMode()} />
           <Toast />
         </CartProvider>
       </body>

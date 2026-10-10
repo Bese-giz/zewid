@@ -6,12 +6,22 @@ export interface Product {
   image: string;
   features: string[];
   availability: "in-stock" | "out-of-stock";
-  priceEur?: number;
+  priceEur: number;
+  weightKg: number;
+  pricingGroup?: "teff";
 }
+
+export const teffPricing = {
+  minimumKg: 15,
+  bulkPriceEur: 23,
+};
 
 export const products: Product[] = [
   {
     slug: "white-teff-flour",
+    priceEur: 25,
+    weightKg: 5,
+    pricingGroup: "teff",
     availability: "in-stock",
     name: "White Teff Flour (Magna)",
     weight: "5 kg bag",
@@ -27,6 +37,9 @@ export const products: Product[] = [
   },
   {
     slug: "red-teff-flour",
+    priceEur: 25,
+    weightKg: 5,
+    pricingGroup: "teff",
     availability: "in-stock",
     name: "Red Teff Flour",
     weight: "5 kg bag",
@@ -41,6 +54,8 @@ export const products: Product[] = [
   },
   {
     slug: "mashila-sorghum",
+    priceEur: 15,
+    weightKg: 5,
     availability: "out-of-stock",
     name: "Mashila (Sorghum)",
     weight: "5 kg bag",
@@ -56,6 +71,8 @@ export const products: Product[] = [
   },
   {
     slug: "berbere",
+    priceEur: 30,
+    weightKg: 1,
     availability: "in-stock",
     name: "Berbere",
     weight: "1 kg pack",
@@ -70,6 +87,8 @@ export const products: Product[] = [
   },
   {
     slug: "buna-coffee",
+    priceEur: 18,
+    weightKg: 1,
     availability: "in-stock",
     name: "Buna (Coffee)",
     weight: "1 kg pack",
@@ -84,6 +103,8 @@ export const products: Product[] = [
   },
   {
     slug: "shiro",
+    priceEur: 30,
+    weightKg: 1,
     availability: "in-stock",
     name: "Shiro",
     weight: "1 kg pack",

@@ -4,6 +4,7 @@ export const site = {
   phone: "358417059015",
   deliveryTime: "1–2 days",
   deliveryArea: "All over Finland",
+  deliveryFeeEur: 7,
 };
 
 export function whatsappLink(message?: string): string {

@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { formatEuro } from "@/lib/pricing";
 
 export default function OrderInformation() {
   return (
@@ -12,8 +13,8 @@ export default function OrderInformation() {
         <dd className="mt-1 text-gray-600">{site.deliveryTime}</dd>
       </div>
       <div>
-        <dt className="font-semibold text-gray-900">Prices & delivery charges</dt>
-        <dd className="mt-1 text-gray-600">Confirmed on WhatsApp before you confirm your order.</dd>
+        <dt className="font-semibold text-gray-900">Delivery charge</dt>
+        <dd className="mt-1 text-gray-600">{formatEuro(site.deliveryFeeEur * 100)} per order, anywhere in Finland.</dd>
       </div>
     </dl>
   );

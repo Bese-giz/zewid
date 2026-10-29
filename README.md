@@ -24,6 +24,8 @@ npm run start
 
 The GitHub Actions workflow runs dependency installation, linting, type checking, and a production build on pushes and pull requests. It does not run tests. No automated tests are included.
 
+`npm run typecheck` generates Next.js image and route type declarations with `next typegen` before running TypeScript. This also works on a clean checkout without a previous build. Generated `next-env.d.ts` and `.next/` files remain ignored by Git.
+
 Deploy to a host that supports the Next.js server and image optimizer. Product detail pages are prerendered; the catalog reads search and category query parameters on the server. `next/font/google` downloads Inter and DM Serif Display at build time; the build environment needs access to Google Fonts. Fonts are served locally to visitors after the build.
 
 ## Market landing page

@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-status-tag {
-  --status-border: #e8dcc4;
+  --status-border: #d9e3ed;
   position: relative;
   display: flex;
   min-height: 40px;
@@ -139,10 +139,10 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   padding: 8px 12px;
   border: 1px solid var(--status-border);
-  border-left: 3px solid #c4a069;
+  border-left: 3px solid #8aa4bc;
   border-radius: 9px;
-  background: linear-gradient(105deg, #faf3e6, #fffdf8);
-  color: #795b2f;
+  background: linear-gradient(105deg, #eef3f8, #fafcfe);
+  color: #405c78;
   font-size: 12px;
   font-weight: 600;
   line-height: 1.3;

@@ -28,9 +28,9 @@ Deploy to a host that supports the Next.js server and image optimizer. Product d
 
 ## Market landing page
 
-The homepage uses the supplied `public/images/landing.png` background, a ZEWID Market wordmark, warm cream and forest-green styling, and a compact hero on desktop and mobile. Explore the market appears immediately beneath the hero. The earlier ordering steps, quality promises, pricing/delivery information and WhatsApp order sections follow the product feed. `src/app/market.css` contains these styles. The announcement bar rotates between three messages every six seconds, with a pause control, hover/focus pausing and reduced-motion support.
+The homepage uses the supplied `public/images/landing.png` background, a ZEWID Market wordmark, warm cream and forest-green styling, and a compact hero on desktop and mobile. Explore the market appears immediately beneath the hero. The earlier ordering steps, quality promises, pricing/delivery information and WhatsApp order sections follow the product feed. `src/app/market.css` contains these styles. The announcement bar opens with an Amharic welcome and rotates between four messages every six seconds, with hover pausing and reduced-motion support. It has no play/pause button; each message is marked with its language.
 
-The header search submits to `/products?q=...`. Header and footer navigation link to `/products?category=...`, with four groups: Food & spices (`food`), Coffee & ceremony (`coffee`), Kitchen & home (`kitchen`) and Culture & learning (`culture`). Both query parameters can be combined. Catalog prices, availability, cart calculations and payment identifiers are independent of these display categories.
+The header contains the wordmark, cart and category navigation; there is no header search bar. Search remains available in the product catalog, which also accepts `/products?q=...`. Header and footer navigation link to `/products?category=...`, with four groups: Food & spices (`food`), Coffee & ceremony (`coffee`), Kitchen & home (`kitchen`) and Culture & learning (`culture`). Both query parameters can be combined. Catalog prices, availability, cart calculations and payment identifiers are independent of these display categories.
 
 ## Product catalog and stock
 

@@ -7,7 +7,6 @@ import { useCart } from "@/context/CartContext";
 import AnnouncementBar from "./AnnouncementBar";
 import BrandMark from "./BrandMark";
 import MarketIcon from "./MarketIcon";
-import MarketSearch from "./MarketSearch";
 
 const shopLinks = [{ href: "/products", label: "Shop all" }, ...productCategories.map(category => ({ href: `/products?category=${category.id}`, label: category.name }))];
 
@@ -29,7 +28,6 @@ export default function Header() {
       <header className="market-header">
         <div className="market-container market-header__main">
           <Link href="/" aria-label="ZEWID Market home" className="market-header__brand" onClick={() => setIsOpen(false)}><BrandMark /></Link>
-          <div className="market-header__search"><MarketSearch /></div>
           <div className="market-header__actions">
             <abbr title="English" className="market-header__language">EN</abbr>
             <button type="button" className="market-icon-button market-header__cart" onClick={() => { setIsOpen(false); setIsCartOpen(true); }}
@@ -53,7 +51,6 @@ export default function Header() {
           <div>{shopLinks.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
           <div><Link href="/about">Our story</Link><Link href="/contact">Contact</Link></div>
         </nav>
-        <div className="market-container market-mobile-search"><MarketSearch /></div>
       </div>
     </>
   );

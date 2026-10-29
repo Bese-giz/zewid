@@ -1,6 +1,6 @@
 # ZEWID storefront
 
-ZEWID sells Ethiopian ingredients in Finland through a product catalog and WhatsApp ordering. This is a Next.js App Router project using React, TypeScript, and Tailwind CSS.
+ZEWID sells Ethiopian food, coffee and spices in Finland, with a growing collection of coffee ceremony accessories, serving sets and cultural products. This is a Next.js App Router project using React, TypeScript, and Tailwind CSS.
 
 ## Local development
 
@@ -28,22 +28,28 @@ Deploy to a host that supports the Next.js server and image optimizer. All catal
 
 ## Product catalog and stock
 
-Edit `src/data/products.ts` to update products. Each product has a stable slug, name, pack size, description, image, features, and `availability` (`in-stock` or `out-of-stock`). Mashila costs €15 per 5 kg bag and is currently out of stock. The temporary €1 checkout test has ended.
+Edit `src/data/products.ts` to update products. Each product has a stable slug, category, title, short and full descriptions, pack/piece/set label (`weight`), image gallery, features, specifications, and `availability` (`in-stock`, `out-of-stock`, or `coming-soon`). The catalog contains 28 listings: the six existing products and 22 new coming-soon items. Mashila and Sidamo coffee use the revised supplied copy while retaining their existing slugs, prices and stock status. The four existing products absent from the supplied document are retained.
 
-The catalog includes these selling prices per bag/pack:
+Source copy and the image mapping are preserved under `docs/catalog/`. `launch-details.md` lists the prices, stock and product details awaiting confirmation. The nine additional items numbered 25–33 in the source are kept in `additional-products.draft.json`, outside the public catalog and sitemap. They have no assigned photographs or confirmed order status. The duplicate 40 cm box image and alternate Ketema WebP file are not used in product galleries.
+
+The catalog supports search, category filters and an available-to-order filter. Product detail pages show all mapped gallery images and confirmed specifications; unverified technical fields remain in the source document for review. Frankincense has no published pack weight because the supplied information conflicts.
+
+Existing confirmed selling prices per bag/pack:
 
 | Product | Pack size | Price |
 | --- | --- | --- |
 | White teff (Magna) | 5 kg | €25 |
 | Red teff | 5 kg | €25 |
-| Mashila (out of stock) | 5 kg | €15 |
-| Buna coffee | 1 kg | €18 |
+| Ethiopian sorghum flour / Mashila (out of stock) | 5 kg | €15 |
+| Ethiopian Sidamo Arabica green coffee | 1 kg | €18 |
 | Berbere | 1 kg | €30 |
 | Shiro | 1 kg | €30 |
 
-`priceEur` is the price per pack and `weightKg` is the pack's numeric weight. `src/lib/pricing.ts` calculates totals in integer cents from catalog data, never from stored or customer-supplied prices. White and red teff cost €25 per bag at every quantity; website orders do not receive a bulk discount.
+`priceEur` is the retail price per pack, piece or set; `null` means the price is unconfirmed. `weightKg` is the confirmed net weight, or `null` for goods without a confirmed weight. New items display **Coming soon** and **Price on request**. They can be enquired about on WhatsApp but cannot enter the cart or checkout. A shared `isProductPurchasable` guard requires in-stock status and a positive confirmed price across cart restoration, add-to-cart, totals, server checkout and Stripe catalog activation. Never use zero as a placeholder price.
 
-Unavailable products remain visible for enquiries but cannot be added to the cart. Rebuild/redeploy after changing the catalog or stock status.
+`src/lib/pricing.ts` calculates totals in integer cents from catalog data, never from stored or customer-supplied prices. White and red teff cost €25 per bag at every quantity; website orders do not receive a bulk discount.
+
+Unavailable products remain visible for enquiries but cannot be added to the cart. To enable a new item, confirm the retail price, stock, contents and product details against the received goods; set its price and availability, sync the appropriate Stripe catalog, and rebuild/redeploy. Existing slugs remain stable for cart and paid-order compatibility. Mashila remains out of stock at €15. The temporary €1 checkout test has ended.
 
 ## Delivery and ordering
 
@@ -73,7 +79,7 @@ The delivery charge uses the merchant's fixed fee in `site.deliveryFeeEur` (€8
 
 ## Automated Stripe sandbox catalog import
 
-The importer reads the same product catalog used by the website, including descriptions, pack sizes, image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It creates six sandbox products with one price per pack and a Finland shipping rate matching `site.deliveryFeeEur`. Product availability matches the current catalog. No subscriptions or live charges are created.
+The importer reads the same product catalog used by the website, including descriptions, retail units, primary image URLs, availability, and pricing. Node.js 22.13+ is required for its environment-file and TypeScript support. It synchronizes catalog products and a Finland shipping rate matching `site.deliveryFeeEur`. Coming-soon products remain inactive, and no price is created when the price is unconfirmed; this never creates a free price. Known out-of-stock products can retain their confirmed inactive price. No subscriptions or live charges are created.
 
 Preview the import without credentials or Stripe requests:
 
@@ -161,7 +167,7 @@ The compatible Next.js update and PostCSS override resolve the reported producti
 
 ## Cart persistence and accessibility
 
-The cart is stored under `zewid_cart` in browser local storage. Stored items are validated and rebuilt from the current catalog. Legacy entries identified by product name are migrated to stable slugs. Invalid, unknown, and unavailable entries are discarded; duplicate products are merged. Each product quantity is an integer between 1 and 999. Storage failures fall back to an in-memory cart.
+The cart is stored under `zewid_cart` in browser local storage. Stored items are validated and rebuilt from the current catalog. Legacy entries identified by product name are migrated to stable slugs; `legacyNames` preserves the former coffee and Mashila titles during that migration. Invalid, unknown, unavailable and unpriced entries are discarded; duplicate products are merged. Each product quantity is an integer between 1 and 999. Storage failures fall back to an in-memory cart.
 
 The cart uses a native modal dialog for keyboard focus containment and Escape dismissal, restores focus to its opener, and locks background scrolling. Product links are separate from cart buttons. Quantity controls have product-specific accessible names, and the site includes a skip link, visible keyboard focus, and reduced-motion support.
 

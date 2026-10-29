@@ -1,14 +1,14 @@
 import { whatsappLink } from "@/lib/site";
 import OrderInformation from "@/components/OrderInformation";
 import { pageMetadata } from "@/lib/metadata";
-import ProductCard from "@/components/ProductCard";
+import ProductCatalog from "@/components/ProductCatalog";
 import { products } from "@/data/products";
 
 export const metadata = {
   ...pageMetadata({
-    title: "Products – Ethiopian Teff, Mashila & More",
+    title: "Products – Ethiopian Food, Coffee & Home Essentials",
     description:
-      "Buy premium Ethiopian white teff flour, red teff flour, mashila (sorghum) and traditional Ethiopian ingredients in Finland. Fast, reliable delivery all over Finland. Order on WhatsApp.",
+      "Shop Ethiopian teff, coffee and spices, and discover upcoming injera makers, coffee ceremony accessories and serving sets in Finland.",
     path: "/products",
   }),
   keywords: [
@@ -33,18 +33,15 @@ export default function ProductsPage() {
             Our Products
           </h1>
           <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto">
-            Premium Ethiopian teff flour, mashila, and traditional ingredients imported directly from Ethiopia.
+            Ethiopian food, coffee and spices, alongside injera makers, serving sets and cultural favourites.
           </p>
         </div>
       </section>
 
       {/* Products Grid */}
       <section className="py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8">
-          {products.map((product) => (
-            <ProductCard key={product.name} {...product} showDetails={false} />
-          ))}
-        </div>
+        <p className="mb-6 text-sm leading-relaxed text-gray-600">Our collection is growing. Products marked Coming soon are not available to order yet. Ask us on WhatsApp for prices and availability.</p>
+        <ProductCatalog products={products} />
       </section>
 
       <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"><OrderInformation /></section>

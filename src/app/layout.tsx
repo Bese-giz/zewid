@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(site.url),
   description:
-    "Premium Ethiopian teff flour, mashila, and traditional products in Finland. We deliver 100% authentic Ethiopian ingredients with fast, reliable delivery all over Finland. Order on WhatsApp.",
+    "Ethiopian teff, coffee and spices in Finland, with upcoming injera makers, coffee ceremony accessories, serving sets and cultural products. Shop online or ask on WhatsApp.",
   keywords: [
     "Ethiopian teff Finland",
     "buy injera flour Helsinki",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
     description:
-      "Buy premium Ethiopian white teff, red teff, and mashila. Fast delivery all over Finland.",
+      "Ethiopian food, coffee and spices, with a growing collection of coffee ceremony and home essentials in Finland.",
     url: site.url,
     siteName: site.name,
     locale: "en_FI",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
-    description: "Buy premium Ethiopian white teff, red teff, and mashila. Fast delivery all over Finland.",
+    description: "Ethiopian food, coffee and spices, with a growing collection of coffee ceremony and home essentials in Finland.",
     images: ["/opengraph-image.png"],
   },
   robots: {
@@ -73,7 +73,7 @@ export default function RootLayout({
     "@type": "LocalBusiness",
     "name": "ZEWID | ዘውድ",
     "image": `${site.url}/opengraph-image.png`,
-    "description": "Premium Ethiopian white teff flour (Magna), red teff, and mashila. Fast delivery all over Helsinki and Finland.",
+    "description": "Ethiopian food, coffee and spices, coffee ceremony accessories and home essentials in Finland.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Helsinki",

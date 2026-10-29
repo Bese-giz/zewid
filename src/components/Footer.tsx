@@ -19,9 +19,9 @@ export default function Footer() {
               ZEWID | ዘውድ
             </h3>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Premium Ethiopian products in Finland. High-quality teff flour,
-              mashila, and traditional Ethiopian ingredients delivered to your
-              door.
+              Ethiopian food, coffee and spices in Finland, with a growing
+              collection of coffee ceremony accessories, serving sets and
+              cultural favourites.
             </p>
           </div>
 

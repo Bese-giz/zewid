@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import type { Product } from "@/data/products";
+import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import ProductAvailability from "./ProductAvailability";
 
@@ -13,8 +13,8 @@ interface ProductCardProps extends Product {
 
 export default function ProductCard({ showDetails = true, ...product }: ProductCardProps) {
   const { addToCart } = useCart();
-  const { slug, name, description, weight, image, availability } = product;
-  const available = availability === "in-stock";
+  const { slug, name, shortDescription, weight, image, availability } = product;
+  const available = isProductPurchasable(product);
 
   return (
     <article className="group product-card flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
@@ -30,14 +30,14 @@ export default function ProductCard({ showDetails = true, ...product }: ProductC
         </h3>
         <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-green-700 md:text-xs">{weight}</p>
         <ProductAvailability product={product} />
-        {showDetails && <p className="mb-4 hidden flex-1 text-sm leading-relaxed text-slate-600 md:line-clamp-2">{description}</p>}
+        {showDetails && <p className="mb-4 flex-1 text-xs leading-relaxed text-slate-600 md:line-clamp-3 md:text-sm">{shortDescription}</p>}
         <div className="mt-auto flex flex-col gap-2">
           <button type="button" onClick={() => addToCart(slug)} disabled={!available}
             aria-label={available ? `Add ${name} to cart` : `${name} is currently unavailable`}
             className="w-full rounded-full bg-gray-100 px-3 py-2.5 text-xs font-bold text-gray-900 transition-colors hover:bg-gray-900 hover:text-white disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500 md:text-sm">
-            {available ? "Add to Cart" : "Unavailable"}
+            {available ? "Add to Cart" : availability === "coming-soon" ? "Coming soon" : "Unavailable"}
           </button>
-          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${name}${available ? ", delivery and ordering" : " and when it will be available again"}.`)}
+          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${name}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
             target="_blank" rel="noopener noreferrer"
             className="w-full rounded-full bg-green-50 px-3 py-2.5 text-center text-xs font-bold text-green-800 transition-colors hover:bg-green-700 hover:text-white md:text-sm">
             Ask on WhatsApp

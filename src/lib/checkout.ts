@@ -1,6 +1,6 @@
 import "server-only";
 import type Stripe from "stripe";
-import { getProductBySlug, products } from "@/data/products";
+import { getProductBySlug, isProductPurchasable, products } from "@/data/products";
 import { calculateCart, MAX_CART_QUANTITY } from "./pricing";
 import { getStripe, matchesStripeMode } from "./stripe";
 
@@ -18,7 +18,7 @@ export function validateCheckoutItems(value: unknown): CheckoutItem[] {
       throw new CheckoutInputError("Your cart contains an invalid product or quantity. Please review it.");
     }
     const product = getProductBySlug(item.slug);
-    if (!product || product.availability !== "in-stock") throw new CheckoutInputError("A product in your cart is unavailable. Please review your cart.");
+    if (!product || !isProductPurchasable(product)) throw new CheckoutInputError("A product in your cart is unavailable. Please review your cart.");
     seen.add(item.slug);
     return { slug: item.slug, quantity: item.quantity };
   }).sort((a, b) => a.slug.localeCompare(b.slug));

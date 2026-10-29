@@ -1,12 +1,12 @@
 import { getProductBySlug, products } from "@/data/products";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import ProductOrderActions from "@/components/ProductOrderActions";
 import ProductAvailability from "@/components/ProductAvailability";
 import OrderInformation from "@/components/OrderInformation";
+import ProductGallery from "@/components/ProductGallery";
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -23,7 +23,7 @@ export async function generateMetadata(
 
   return pageMetadata({
     title: product.name,
-    description: product.description,
+    description: product.shortDescription,
     path: `/products/${product.slug}`,
     image: product.image,
   });
@@ -51,18 +51,8 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
 
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
           {/* Image Side */}
-          <div className="w-full md:w-1/2 bg-gray-50/50 p-8 md:p-12 flex items-center justify-center relative">
-            <div className="absolute inset-0 opacity-20 bg-gradient-to-tr from-green-300 via-transparent to-red-300 blur-3xl pointer-events-none"></div>
-            <div className="relative w-full aspect-square max-w-md">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                sizes="(max-width: 767px) 100vw, 448px"
-                className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                priority
-              />
-            </div>
+          <div className="w-full md:w-1/2 bg-gray-50/50 p-6 md:p-10">
+            <ProductGallery key={product.slug} name={product.name} images={product.images} />
           </div>
 
           {/* Details Side */}
@@ -77,14 +67,27 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
               {product.name}
             </h1>
             
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+            <p className="mb-5 text-lg font-medium leading-relaxed text-gray-700">{product.shortDescription}</p>
+            <p className="text-gray-600 leading-relaxed mb-8">
               {product.description}
             </p>
 
             <ProductAvailability product={product} />
 
+            {product.specifications && product.specifications.length > 0 && (
+              <section className="my-6" aria-labelledby="product-specifications">
+                <h2 id="product-specifications" className="mb-3 text-sm font-bold uppercase tracking-wider text-gray-900">Product details</h2>
+                <dl className="divide-y divide-gray-200 rounded-xl bg-gray-50 px-4">
+                  {product.specifications.map(specification => <div key={specification.label} className="py-3 text-sm sm:flex sm:gap-4">
+                    <dt className="font-semibold text-gray-900 sm:w-2/5 sm:shrink-0">{specification.label}</dt>
+                    <dd className="mt-1 text-gray-600 sm:mt-0">{specification.value}</dd>
+                  </div>)}
+                </dl>
+              </section>
+            )}
+
             <div className="mb-10 flex-grow">
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Key Features</h3>
+              <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">Key Features</h2>
               <ul className="space-y-3">
                 {product.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start text-gray-600">

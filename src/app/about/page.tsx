@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "Learn about ZEWID | ዘውድ – Finland's trusted Ethiopian products brand. We provide premium teff flour, mashila, and authentic Ethiopian ingredients with fast, reliable delivery all over Finland.",
+    "Learn about ZEWID | ዘውድ – Ethiopian food, coffee, ceremony accessories and home essentials in Finland.",
   path: "/about",
 });
 
@@ -34,14 +34,15 @@ export default function AboutPage() {
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
               ZEWID | ዘውድ is a Finland-based Ethiopian products brand dedicated
-              to providing high-quality traditional Ethiopian ingredients to
+              to providing Ethiopian food and traditional home essentials to
               customers all over Finland.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               We specialize in premium Ethiopian teff flour, mashila (sorghum),
-              and other authentic Ethiopian food products. Our goal is to make
-              fresh Ethiopian ingredients easily accessible with fast nationwide
-              delivery.
+              and other Ethiopian food products. Our growing collection also
+              includes upcoming injera makers, coffee ceremony accessories,
+              serving sets and cultural products, bringing everyday cooking and
+              traditional gatherings together.
             </p>
             <p className="text-gray-600 leading-relaxed mb-6">
               We proudly serve Ethiopian families, restaurants, and anyone who

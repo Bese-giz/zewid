@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from "react";
-import { getProductBySlug, products } from "@/data/products";
+import { getProductBySlug, isProductPurchasable, products } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import { MAX_CART_QUANTITY, calculateCart, formatEuro } from "@/lib/pricing";
 import type { PickupPoint } from "@/lib/postnord";
@@ -42,8 +42,9 @@ function restoreCart(value: unknown): CartItem[] {
     if (!entry || typeof entry !== "object") continue;
     const product = typeof entry.slug === "string"
       ? getProductBySlug(entry.slug)
-      : products.find((product) => product.name === entry.name);
-    if (!product || product.availability !== "in-stock" ||
+      : products.find((product) => typeof entry.name === "string" &&
+          (product.name === entry.name || product.legacyNames?.includes(entry.name)));
+    if (!product || !isProductPurchasable(product) ||
         !Number.isSafeInteger(entry.quantity) || entry.quantity <= 0 ||
         entry.quantity > MAX_CART_QUANTITY) continue;
 
@@ -94,7 +95,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addToCart = (slug: string, quantity = 1) => {
     const product = getProductBySlug(slug);
-    if (!product || product.availability !== "in-stock" ||
+    if (!product || !isProductPurchasable(product) ||
         !Number.isSafeInteger(quantity) || quantity <= 0 || quantity > MAX_CART_QUANTITY) return;
 
     setCart((previous) => {

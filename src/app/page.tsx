@@ -8,11 +8,12 @@ import OrderInformation from "@/components/OrderInformation";
 
 export const metadata = pageMetadata({
   title: "Premium Ethiopian Teff & Products in Finland",
-  description: `Shop Ethiopian white teff, red teff, coffee, berbere, and shiro at ZEWID. Delivery all over Finland in 1–2 days. Teff €25 per 5 kg bag. €${site.deliveryFeeEur.toFixed(2)} delivery. Order online or on WhatsApp.`,
+  description: `Shop Ethiopian teff, coffee and spices, and discover upcoming injera makers, coffee sets and cultural products. Delivery across Finland in 1–2 days for €${site.deliveryFeeEur.toFixed(2)} per order.`,
   path: "/",
 });
 
-const featuredProducts = products;
+const featuredSlugs = ["white-teff-flour", "red-teff-flour", "buna-coffee", "zemen-injera-maker-40cm", "coffee-set-18-piece", "ceramic-incense-burner"];
+const featuredProducts = featuredSlugs.flatMap(slug => products.find(product => product.slug === slug) ?? []);
 
 export default function HomePage() {
   return (
@@ -37,7 +38,7 @@ export default function HomePage() {
             <span className="text-amber-400">Magna Teff & Groceries</span>
           </h1>
           <p className="text-[15px] md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '200ms' }}>
-            High-quality white teff (Magna), red teff, mashila and traditional Ethiopian ingredients. Fast, reliable delivery all over Helsinki and Finland.
+            Ethiopian food, coffee and spices, with a growing collection of coffee ceremony accessories and home essentials. Delivery all over Finland.
           </p>
           <div className="mx-auto flex flex-col gap-4 sm:flex-row sm:justify-center w-full max-w-xs sm:max-w-none opacity-0 animate-[fade-in-up_0.8s_ease-out_forwards]" style={{ animationDelay: '300ms' }}>
             <a
@@ -67,13 +68,12 @@ export default function HomePage() {
             Premium Products
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Authentic Ethiopian teff and grains, imported directly from Ethiopia
-            and available with fast, reliable delivery all over Finland.
+            From everyday teff and coffee to upcoming injera makers and ceremony accessories. Explore our growing collection.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3 lg:gap-8">
           {featuredProducts.map((product) => (
-            <ProductCard key={product.name} {...product} />
+            <ProductCard key={product.slug} {...product} />
           ))}
         </div>
         <div className="text-center mt-8 md:mt-10">
@@ -106,7 +106,7 @@ export default function HomePage() {
               {
                 step: "01",
                 title: "Choose Your Products",
-                desc: "Choose the available teff, grains, spices, and coffee you want from our collection.",
+                desc: "Browse food, coffee and home essentials, then add available products to your cart.",
               },
               {
                 step: "02",

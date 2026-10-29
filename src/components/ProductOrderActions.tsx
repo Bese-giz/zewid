@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { MAX_CART_QUANTITY, useCart } from "@/context/CartContext";
-import type { Product } from "@/data/products";
+import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import { calculateCart, formatEuro } from "@/lib/pricing";
 
 export default function ProductOrderActions({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const { items, addToCart } = useCart();
-  const available = product.availability === "in-stock";
+  const available = isProductPurchasable(product);
   const existingQuantity = items.find((item) => item.slug === product.slug)?.quantity ?? 0;
   const remainingQuantity = MAX_CART_QUANTITY - existingQuantity;
   const selectionQuantity = Math.min(quantity, remainingQuantity);
@@ -41,14 +41,14 @@ export default function ProductOrderActions({ product }: { product: Product }) {
       )}
       <button type="button" disabled={!available || selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)}
         className="w-full rounded-xl bg-gray-900 px-6 py-4 font-bold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-600">
-        {!available ? "Currently unavailable" : selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to Cart"}
+        {!available ? product.availability === "coming-soon" ? "Coming soon" : "Currently unavailable" : selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to Cart"}
       </button>
-      <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${product.name}${available ? ", delivery and ordering" : " and when it will be available again"}.`)}
+      <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${product.name}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
         target="_blank" rel="noopener noreferrer"
         className="block rounded-xl bg-green-100 px-6 py-3 text-center font-semibold text-green-800 transition-colors hover:bg-green-700 hover:text-white">
         Ask on WhatsApp
       </a>
-      <p className="text-sm leading-relaxed text-gray-600">Add your products to the cart to see your total, including delivery, then send your order on WhatsApp.</p>
+      <p className="text-sm leading-relaxed text-gray-600">{available ? "Add your products to the cart to see your total, including delivery, then pay online or send your order on WhatsApp." : product.availability === "coming-soon" ? "This product is coming soon. Ask us about its price and availability on WhatsApp." : "Ask us on WhatsApp about availability."}</p>
     </div>
   );
 }

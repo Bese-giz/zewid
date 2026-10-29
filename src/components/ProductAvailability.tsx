@@ -5,10 +5,10 @@ export default function ProductAvailability({ product }: { product: Pick<Product
   return (
     <div className="mb-4 space-y-1 text-xs md:text-sm">
       <p className={product.availability === "in-stock" ? "font-semibold text-green-700" : "font-semibold text-amber-800"}>
-        {product.availability === "in-stock" ? "In stock" : "Currently unavailable"}
+        {product.availability === "in-stock" ? "In stock" : product.availability === "coming-soon" ? "Coming soon" : "Currently unavailable"}
       </p>
       <p className="text-gray-600">
-        {formatEuro(Math.round(product.priceEur * 100))} / {product.weight} · incl. VAT
+        {product.priceEur === null ? "Price on request" : `${formatEuro(Math.round(product.priceEur * 100))} / ${product.weight} · incl. VAT`}
       </p>
     </div>
   );

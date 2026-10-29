@@ -1,4 +1,4 @@
-import { getProductBySlug } from "../data/products.ts";
+import { getProductBySlug, isProductPurchasable } from "../data/products.ts";
 import { site } from "./site.ts";
 
 export const MAX_CART_QUANTITY = 999;
@@ -12,11 +12,14 @@ export function calculateCart(items: readonly { slug: string; quantity: number }
   const quantities = new Map<string, number>();
   for (const item of items) {
     const product = getProductBySlug(item.slug);
-    if (!product || product.availability !== "in-stock" ||
+    if (!product || !isProductPurchasable(product) ||
         !Number.isSafeInteger(item.quantity) || item.quantity <= 0 || item.quantity > MAX_CART_QUANTITY) continue;
     quantities.set(item.slug, Math.min(MAX_CART_QUANTITY, (quantities.get(item.slug) ?? 0) + item.quantity));
   }
-  const selected = [...quantities].map(([slug, quantity]) => ({ product: getProductBySlug(slug)!, quantity }));
+  const selected = [...quantities].flatMap(([slug, quantity]) => {
+    const product = getProductBySlug(slug);
+    return product && isProductPurchasable(product) ? [{ product, quantity }] : [];
+  });
   const lines = selected.map(({ product, quantity }) => {
     const unitPriceCents = Math.round(product.priceEur * 100);
     return { product, quantity, unitPriceCents, lineTotalCents: unitPriceCents * quantity };

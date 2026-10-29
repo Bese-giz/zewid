@@ -1,0 +1,265 @@
+{
+  "image_directory": "public/images",
+  "products": [
+    {
+      "catalog_item": 1,
+      "title": "Ethiopian Sorghum Flour (Mashila) – 5 kg",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 2,
+      "title": "Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 3,
+      "title": "Ethiopian Abish (Fenugreek Seeds) – 200 g",
+      "images": [
+        "abish-fenugreek.png"
+      ],
+      "primary_image": "abish-fenugreek.png"
+    },
+    {
+      "catalog_item": 4,
+      "title": "Ethiopian Ga’at Porridge Mix – Barley & Rye, 1 kg",
+      "images": [
+        "gaat-porridge.png"
+      ],
+      "primary_image": "gaat-porridge.png"
+    },
+    {
+      "catalog_item": 5,
+      "title": "Ethiopian Mekelesha Spice Mix – 100 g",
+      "images": [
+        "mekelesha-spice.png"
+      ],
+      "primary_image": "mekelesha-spice.png"
+    },
+    {
+      "catalog_item": 6,
+      "title": "Zemen Electric Injera Maker (Mogogo / Mitad) – 40 cm",
+      "images": [
+        "zemen-injera-40cm-box.png",
+        "injera-maker.png"
+      ],
+      "primary_image": "zemen-injera-40cm-box.png"
+    },
+    {
+      "catalog_item": 7,
+      "title": "Traditional Ethiopian Coffee Roasting Pan – Black",
+      "images": [
+        "coffee-roasting-pan.png"
+      ],
+      "primary_image": "coffee-roasting-pan.png"
+    },
+    {
+      "catalog_item": 8,
+      "title": "Digital Temperature Controller for Mogogo Injera Maker",
+      "images": [
+        "mogogo-controller.png"
+      ],
+      "primary_image": "mogogo-controller.png"
+    },
+    {
+      "catalog_item": 9,
+      "title": "Traditional Ethiopian Berele Glass – Tej Serving Glass",
+      "images": [
+        "berele-glass-group.png",
+        "berele-glass.png"
+      ],
+      "primary_image": "berele-glass-group.png"
+    },
+    {
+      "catalog_item": 10,
+      "title": "Traditional Ethiopian Ceramic Incense Burner",
+      "images": [
+        "incense-burner-figures.png",
+        "incense-burner-geometric.png",
+        "incense-burner-box.png"
+      ],
+      "primary_image": "incense-burner-figures.png"
+    },
+    {
+      "catalog_item": 11,
+      "title": "Ethiopian Floral Coffee Cups – Set of 12, 60 ml",
+      "images": [
+        "floral-coffee-cups-12.png",
+        "floral-coffee-cup.png"
+      ],
+      "primary_image": "floral-coffee-cups-12.png"
+    },
+    {
+      "catalog_item": 12,
+      "title": "Traditional Ethiopian Clay Spice Container",
+      "images": [
+        "clay-spice-container.png",
+        "clay-spice-container-open.png"
+      ],
+      "primary_image": "clay-spice-container.png"
+    },
+    {
+      "catalog_item": 13,
+      "title": "Electric Coffee Hot Plate – 1200 W",
+      "images": [
+        "coffee-hot-plate.png",
+        "coffee-hot-plate-box.png"
+      ],
+      "primary_image": "coffee-hot-plate.png"
+    },
+    {
+      "catalog_item": 14,
+      "title": "Ethiopian Ceramic Food Warmer – 3-Dish Serving Set",
+      "images": [
+        "food-warmer-3-dish.png"
+      ],
+      "primary_image": "food-warmer-3-dish.png"
+    },
+    {
+      "catalog_item": 15,
+      "title": "Ethiopian Coffee Cup, Saucer & Spoon Set – 18 Pieces",
+      "images": [
+        "coffee-set-18-piece.png"
+      ],
+      "primary_image": "coffee-set-18-piece.png"
+    },
+    {
+      "catalog_item": 16,
+      "title": "Ethiopian Ceramic Food Warmer – 2-Dish Serving Set",
+      "images": [
+        "food-warmer-2-dish.png"
+      ],
+      "primary_image": "food-warmer-2-dish.png"
+    },
+    {
+      "catalog_item": 17,
+      "title": "Ethiopian Traditional Coffee Ceremony Set – 23 Pieces",
+      "images": [
+        "coffee-set-23-piece.png",
+        "coffee-set-23-piece-box.png"
+      ],
+      "primary_image": "coffee-set-23-piece.png"
+    },
+    {
+      "catalog_item": 18,
+      "title": "Amharic Alphabet Learning Chart for Kids",
+      "images": [
+        "amharic-alphabet-chart.png"
+      ],
+      "primary_image": "amharic-alphabet-chart.png"
+    },
+    {
+      "catalog_item": 19,
+      "title": "Ethiopian-Style 3-Tier Cake & Snack Stand",
+      "images": [
+        "snack-stand-3-tier.png"
+      ],
+      "primary_image": "snack-stand-3-tier.png"
+    },
+    {
+      "catalog_item": 20,
+      "title": "Ethiopian Frankincense (Etan) – Traditional Incense",
+      "images": [
+        "frankincense.png"
+      ],
+      "primary_image": "frankincense.png"
+    },
+    {
+      "catalog_item": 21,
+      "title": "Traditional Ethiopian Ketema Grass – Coffee Ceremony Decoration",
+      "images": [
+        "ketema-grass.png"
+      ],
+      "primary_image": "ketema-grass.png"
+    },
+    {
+      "catalog_item": 22,
+      "title": "Ethiopian Melamine Injera Serving Tray – Floral Design, 40 cm",
+      "images": [
+        "injera-tray-blue.png",
+        "injera-tray-colors.png"
+      ],
+      "primary_image": "injera-tray-blue.png"
+    },
+    {
+      "catalog_item": 23,
+      "title": "Zemen Electric Injera Maker (Mogogo / Mitad) – 46 cm",
+      "images": [
+        "zemen-injera-46cm-box.png",
+        "injera-maker.png"
+      ],
+      "primary_image": "zemen-injera-46cm-box.png"
+    },
+    {
+      "catalog_item": 24,
+      "title": "Traditional Ethiopian Woven Meshrefet Basket – Medium",
+      "images": [
+        "meshrefet-basket.png"
+      ],
+      "primary_image": "meshrefet-basket.png"
+    },
+    {
+      "catalog_item": 25,
+      "title": "Ethiopian Rekebot Coffee Ceremony Set – Silver",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 26,
+      "title": "Ethiopian Rekebot Coffee Ceremony Set – Gold",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 27,
+      "title": "Ethiopian Wooden Rekebot Coffee Table – White with Rose-Patterned Glass Top",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 28,
+      "title": "Ethiopian Wooden Rekebot Coffee Table – White Traditional Design",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 29,
+      "title": "Small Ethiopian Wooden Rekebot Coffee Table – Black & White",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 30,
+      "title": "Ethiopian Rekebot Coffee Table – White Glass Top with Stove Holder",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 31,
+      "title": "Luwam Curly Hair Extensions – Black, 350 g",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 32,
+      "title": "Zenith Paraffin Hair Oil – 330 ml",
+      "images": [],
+      "primary_image": null
+    },
+    {
+      "catalog_item": 33,
+      "title": "Zenith Hair Tonic Oil – 330 ml",
+      "images": [],
+      "primary_image": null
+    }
+  ],
+  "unassigned_images": [],
+  "duplicates": [
+    {
+      "filename": "zemen-injera-40cm-box-duplicate.png",
+      "duplicate_of": "zemen-injera-40cm-box.png",
+      "include_in_gallery": false
+    }
+  ]
+}

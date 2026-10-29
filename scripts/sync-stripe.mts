@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { products, type Product } from "../src/data/products.ts";
+import { isProductPurchasable, products, type Product } from "../src/data/products.ts";
 import { site } from "../src/lib/site.ts";
 import { keyMatchesStripeMode, readStripeMode } from "../src/lib/stripe-mode.ts";
 
@@ -19,6 +19,7 @@ class StripeRequestError extends Error {
 }
 
 function stripePrices(product: Product) {
+  if (product.priceEur === null || !Number.isFinite(product.priceEur) || product.priceEur <= 0) return [];
   return [
     { tier: "standard", amount: Math.round(product.priceEur * 100) },
   ];
@@ -37,7 +38,7 @@ async function main() {
       products: products.map((product) => ({
         slug: product.slug, name: product.name, description: product.description,
         weight: product.weight, image: new URL(product.image, site.url).href,
-        active: product.availability === "in-stock", prices: stripePrices(product), currency: "eur",
+        active: isProductPurchasable(product), prices: stripePrices(product), currency: "eur",
       })),
       delivery: { amountCents: Math.round(site.deliveryFeeEur * 100), currency: "eur", time: site.deliveryTime },
     }, null, 2));
@@ -89,9 +90,9 @@ async function main() {
       "images[0]": new URL(product.image, site.url).href,
       url: new URL(`/products/${product.slug}`, site.url).href,
       shippable: true,
-      active: product.availability === "in-stock",
+      active: isProductPurchasable(product),
       "metadata[zewid_slug]": product.slug,
-      "metadata[weight_kg]": product.weightKg,
+      "metadata[weight_kg]": product.weightKg ?? "",
       "metadata[pack_size]": product.weight,
       "metadata[pricing_group]": "",
       "metadata[prices_include_vat]": "true",
@@ -108,7 +109,7 @@ async function main() {
       let found = await request<StripeList<StripePrice>>("/prices", "GET", { ...query, active: true });
       if (!found.data.length) found = await request<StripeList<StripePrice>>("/prices", "GET", { ...query, active: false });
       let syncedPrice = found.data[0];
-      const active = product.availability === "in-stock";
+      const active = isProductPurchasable(product);
       if (syncedPrice) {
         if (syncedPrice.product !== synced.id || syncedPrice.unit_amount !== price.amount || syncedPrice.currency !== "eur") {
           throw new Error(`Price lookup key ${lookupKey} has unexpected pricing; import stopped.`);
@@ -125,7 +126,7 @@ async function main() {
       }
       priceIds[price.tier] = syncedPrice.id;
     }
-    if (product.availability === "in-stock") await request(`/products/${id}`, "POST", { default_price: priceIds.standard });
+    if (isProductPurchasable(product)) await request(`/products/${id}`, "POST", { default_price: priceIds.standard });
     manifest[product.slug] = { productId: synced.id, prices: priceIds };
     console.log(`Synced ${product.name} (${product.availability}).`);
   }

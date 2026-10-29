@@ -7,13 +7,9 @@ import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import ProductAvailability from "./ProductAvailability";
 
-interface ProductCardProps extends Product {
-  showDetails?: boolean;
-}
-
-export default function ProductCard({ showDetails = true, ...product }: ProductCardProps) {
+export default function ProductCard(product: Product) {
   const { addToCart } = useCart();
-  const { slug, name, shortDescription, weight, image, availability } = product;
+  const { slug, name, weight, image, availability } = product;
   const available = isProductPurchasable(product);
 
   return (
@@ -24,13 +20,12 @@ export default function ProductCard({ showDetails = true, ...product }: ProductC
           sizes="(max-width: 1023px) 50vw, (max-width: 1280px) 33vw, 400px"
           className="object-contain px-4 pt-4 md:px-6 md:pt-6 drop-shadow-sm transition-transform duration-500 group-hover:scale-105" />
       </Link>
-      <div className={`relative flex flex-1 flex-col ${showDetails ? "p-4 md:p-6" : "p-4 md:p-5"}`}>
+      <div className="relative flex flex-1 flex-col p-4 md:p-5">
         <h3 className="mb-1 text-sm font-bold leading-snug text-gray-900 md:text-lg">
           <Link href={`/products/${slug}`} className="hover:text-green-700">{name}</Link>
         </h3>
         <p className="mb-3 text-[11px] font-bold uppercase tracking-wider text-green-700 md:text-xs">{weight}</p>
         <ProductAvailability product={product} />
-        {showDetails && <p className="mb-4 flex-1 text-xs leading-relaxed text-slate-600 md:line-clamp-3 md:text-sm">{shortDescription}</p>}
         <div className="mt-auto flex flex-col gap-2">
           <button type="button" onClick={() => addToCart(slug)} disabled={!available}
             aria-label={available ? `Add ${name} to cart` : `${name} is currently unavailable`}

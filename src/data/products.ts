@@ -18,6 +18,7 @@ export interface Product {
   category: ProductCategory;
   availability: "in-stock" | "out-of-stock" | "coming-soon";
   priceEur: number | null;
+  compareAtPriceEur?: number;
   weightKg: number | null;
   catalogItem?: number;
   legacyNames?: string[];

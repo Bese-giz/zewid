@@ -52,7 +52,7 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
         <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
           {/* Image Side */}
           <div className="w-full md:w-1/2 bg-gray-50/50 p-6 md:p-10">
-            <ProductGallery key={product.slug} name={product.name} images={product.images} />
+            <ProductGallery key={product.slug} product={product} />
           </div>
 
           {/* Details Side */}

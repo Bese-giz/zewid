@@ -34,6 +34,8 @@ Source copy and the image mapping are preserved under `docs/catalog/`. `launch-d
 
 The catalog supports search, category filters and an available-to-order filter. Product detail pages show all mapped gallery images and confirmed specifications; unverified technical fields remain in the source document for review. Frankincense has no published pack weight because the supplied information conflicts.
 
+Coming-soon and out-of-stock statuses appear as badges over product photographs, including gallery views. Unavailable products show the WhatsApp enquiry link instead of a disabled purchase button. Product cards keep the status available to screen readers without repeating it visibly below the image. To display a discount, set an optional `compareAtPriceEur` above the current selling `priceEur`: an image badge shows the percentage reduction, and the previous price is crossed out. `priceEur` remains the amount used by the cart and Stripe; setting a comparison price alone never changes the amount charged. No comparison prices or discounts are currently configured.
+
 Existing confirmed selling prices per bag/pack:
 
 | Product | Pack size | Price |

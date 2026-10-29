@@ -39,10 +39,10 @@ export default function ProductOrderActions({ product }: { product: Product }) {
           <p>{formatEuro(preview.unitPriceCents)} per {product.weight} · {formatEuro(preview.unitPriceCents * selectionQuantity)} for this selection</p>
         </div>
       )}
-      <button type="button" disabled={!available || selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)}
+      {available && <button type="button" disabled={selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)}
         className="w-full rounded-xl bg-gray-900 px-6 py-4 font-bold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-600">
-        {!available ? product.availability === "coming-soon" ? "Coming soon" : "Currently unavailable" : selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to Cart"}
-      </button>
+        {selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to Cart"}
+      </button>}
       <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${product.name}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
         target="_blank" rel="noopener noreferrer"
         className="block rounded-xl bg-green-100 px-6 py-3 text-center font-semibold text-green-800 transition-colors hover:bg-green-700 hover:text-white">

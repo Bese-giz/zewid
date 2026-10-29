@@ -2,14 +2,18 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import type { Product } from "@/data/products";
+import ProductBadges from "./ProductBadges";
 
-export default function ProductGallery({ name, images }: { name: string; images: string[] }) {
+export default function ProductGallery({ product }: { product: Product }) {
+  const { name, images } = product;
   const [selected, setSelected] = useState(0);
   return (
     <figure className="w-full">
       <div className="relative mx-auto aspect-square w-full max-w-lg">
         <Image src={images[selected]} alt={`${name} — image ${selected + 1}`} fill priority
           sizes="(max-width: 767px) 100vw, 512px" className="object-contain drop-shadow-xl" />
+        <ProductBadges product={product} />
       </div>
       {images.length > 1 && (
         <div className="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label={`Images of ${name}`}>

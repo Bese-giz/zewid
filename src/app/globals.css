@@ -164,6 +164,9 @@ h1, h2, h3, h4, h5, h6 {
 .product-status-tag__icon { display: flex; flex-shrink: 0; opacity: 0.8; }
 .product-status-tag__mark { margin-left: auto; padding-right: 2px; font-size: 17px; opacity: 0.6; }
 
+.product-status-tag--compact { min-height: 34px; gap: 6px; padding: 6px 9px; font-size: 11px; }
+.product-status-tag--compact .product-status-tag__mark { font-size: 15px; }
+
 .product-status-tag--unavailable {
   --status-border: #dfe3df;
   border-left-color: #8b9b90;

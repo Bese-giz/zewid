@@ -40,7 +40,7 @@ export default function ProductsPage() {
 
       {/* Products Grid */}
       <section className="py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <p className="mb-6 text-sm leading-relaxed text-gray-600">Our collection is growing. Products marked Coming soon are not available to order yet. Ask us on WhatsApp for prices and availability.</p>
+        <p className="mb-4 text-xs leading-relaxed text-gray-600">Ask us on WhatsApp about prices and availability for coming-soon products.</p>
         <ProductCatalog products={products} />
       </section>
 

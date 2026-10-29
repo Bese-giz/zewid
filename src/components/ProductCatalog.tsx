@@ -16,24 +16,32 @@ export default function ProductCatalog({ products }: { products: Product[] }) {
   const clear = () => { setCategory("all"); setSearch(""); setAvailableOnly(false); };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-4 rounded-2xl border border-green-100 bg-green-50/50 p-4 md:p-6">
-        <label htmlFor="product-search" className="block text-sm font-semibold text-gray-900">Find a product</label>
-        <input id="product-search" type="search" value={search} onChange={event => setSearch(event.target.value)}
-          placeholder="Search teff, coffee sets, injera makers…" className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 md:max-w-xl" />
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter products by category">
-          {([{ id: "all", name: "All products" }, ...productCategories] as const).map(option => (
-            <button key={option.id} type="button" onClick={() => setCategory(option.id)} aria-pressed={category === option.id}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${category === option.id ? "border-green-700 bg-green-700 text-white" : "border-gray-200 bg-white text-gray-700 hover:border-green-700"}`}>
-              {option.name} <span className={category === option.id ? "text-green-100" : "text-gray-500"}>({products.filter(product => option.id === "all" || product.category === option.id).length})</span>
-            </button>
-          ))}
+    <div className="space-y-4">
+      <div className="rounded-xl border border-[#e5e9e2] bg-[#fafbf8] p-3 md:p-4">
+        <div className="grid gap-2 md:grid-cols-[minmax(0,1fr)_minmax(14rem,20rem)]">
+          <div className="relative">
+            <label htmlFor="product-search" className="sr-only">Search products</label>
+            <svg className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 4 4" /></svg>
+            <input id="product-search" type="search" value={search} onChange={event => setSearch(event.target.value)}
+              placeholder="Search products…" className="min-h-11 w-full rounded-lg border border-[#dfe4dc] bg-white py-2.5 pl-9 pr-3 text-sm text-gray-900" />
+          </div>
+          <div className="relative">
+            <label htmlFor="product-category" className="sr-only">Product category</label>
+            <select id="product-category" value={category} onChange={event => setCategory(event.target.value as ProductCategory | "all")}
+              className="min-h-11 w-full appearance-none rounded-lg border border-[#dfe4dc] bg-white py-2.5 pl-3 pr-9 text-sm text-gray-800">
+              <option value="all">All categories ({products.length})</option>
+              {productCategories.map(option => <option key={option.id} value={option.id}>{option.name} ({products.filter(product => product.category === option.id).length})</option>)}
+            </select>
+            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-500" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+          </div>
         </div>
-        <label className="flex w-fit items-center gap-2 text-sm text-gray-700">
-          <input type="checkbox" checked={availableOnly} onChange={event => setAvailableOnly(event.target.checked)} className="h-4 w-4 accent-green-700" />Available to order
-        </label>
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+          <label className="flex w-fit items-center gap-2 text-xs text-gray-700">
+            <input type="checkbox" checked={availableOnly} onChange={event => setAvailableOnly(event.target.checked)} className="h-4 w-4 accent-green-700" />Available to order
+          </label>
+          <p role="status" className="text-xs text-slate-500">{filtered.length} of {products.length} products</p>
+        </div>
       </div>
-      <p role="status" className="text-sm text-gray-600">Showing {filtered.length} of {products.length} products</p>
       {filtered.length ? (
         <div className="grid grid-cols-2 gap-3 md:gap-8 lg:grid-cols-3">
           {filtered.map(product => <ProductCard key={product.slug} {...product} />)}

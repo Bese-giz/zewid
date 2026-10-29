@@ -1,18 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, useState, type PointerEvent } from "react";
 import type { Product } from "@/data/products";
-import ProductBadges from "./ProductBadges";
 
-export default function ProductImageCarousel({ product, variant }: { product: Product; variant: "card" | "detail" }) {
+export default function ProductImageCarousel({ product }: { product: Product }) {
   const images = product.images.length ? product.images : [product.image];
   const [selected, setSelected] = useState(0);
   const rail = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; scroll: number; moved: boolean } | null>(null);
-  const suppressClickUntil = useRef(0);
-  const detail = variant === "detail";
   const multiple = images.length > 1;
 
   function goTo(index: number) {
@@ -22,7 +18,6 @@ export default function ProductImageCarousel({ product, variant }: { product: Pr
   }
 
   function startDrag(event: PointerEvent<HTMLDivElement>) {
-    suppressClickUntil.current = 0;
     if (!multiple || event.pointerType !== "mouse" || event.button !== 0) return;
     drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft, moved: false };
   }
@@ -48,7 +43,6 @@ export default function ProductImageCarousel({ product, variant }: { product: Pr
     drag.current = null;
     if (!active?.moved) return;
     const element = event.currentTarget;
-    suppressClickUntil.current = performance.now() + 350;
     element.style.scrollSnapType = "";
     element.style.scrollBehavior = "";
     if (element.hasPointerCapture(event.pointerId)) element.releasePointerCapture(event.pointerId);
@@ -61,7 +55,7 @@ export default function ProductImageCarousel({ product, variant }: { product: Pr
 
   return (
     <div className="min-w-0 w-full" role="group" aria-roledescription={multiple ? "carousel" : undefined} aria-label={`${product.name} photos`}>
-      <div className={`relative overflow-hidden ${detail ? "mx-auto max-w-lg rounded-xl" : ""}`}>
+      <div className="relative mx-auto max-w-lg overflow-hidden rounded-xl">
         <div ref={rail} className={`product-photo-rail ${multiple ? "cursor-grab active:cursor-grabbing" : ""}`} tabIndex={multiple ? 0 : undefined}
           onScroll={event => {
             const element = event.currentTarget;
@@ -76,15 +70,10 @@ export default function ProductImageCarousel({ product, variant }: { product: Pr
           }}>
           {images.map((image, index) => {
             const photo = <Image src={image} alt={`${product.name}${multiple ? ` — image ${index + 1}` : ""}`} fill draggable={false}
-              priority={detail && index === 0} sizes={detail ? "(max-width: 767px) 100vw, 512px" : "(max-width: 1023px) 50vw, (max-width: 1280px) 33vw, 400px"}
-              className={detail ? "select-none object-contain drop-shadow-xl" : "select-none object-contain px-4 pt-4 md:px-6 md:pt-6 drop-shadow-sm"} />;
-            const frame = `product-photo-slide ${detail ? "aspect-square" : "aspect-[7/6] md:aspect-square"}`;
-            return detail ? <div key={image} className={frame} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`} aria-hidden={index !== selected}>{photo}</div>
-              : <Link key={image} href={`/products/${product.slug}`} className={frame} aria-label={`View ${product.name}`} aria-hidden={index !== selected} tabIndex={index === selected ? 0 : -1} draggable={false}
-                onClick={event => { if (performance.now() < suppressClickUntil.current) event.preventDefault(); }}>{photo}</Link>;
+              priority={index === 0} sizes="(max-width: 767px) 100vw, 512px" className="select-none object-contain drop-shadow-xl" />;
+            return <div key={image} className="product-photo-slide aspect-square" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`} aria-hidden={index !== selected}>{photo}</div>;
           })}
         </div>
-        <ProductBadges product={product} />
         {multiple && <>
           <button type="button" onClick={() => goTo(selected - 1)} disabled={selected === 0} aria-label={`Previous photo of ${product.name}`}
             className="product-photo-arrow left-2 md:left-3">
@@ -104,7 +93,7 @@ export default function ProductImageCarousel({ product, variant }: { product: Pr
           <span className="sr-only" role="status">Photo {selected + 1} of {images.length}</span>
         </>}
       </div>
-      {detail && multiple && <div className="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label={`Choose a photo of ${product.name}`}>
+      {multiple && <div className="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label={`Choose a photo of ${product.name}`}>
         {images.map((image, index) => <button key={image} type="button" onClick={() => goTo(index)} aria-label={`View image ${index + 1} of ${images.length} of ${product.name}`} aria-pressed={selected === index}
           className={`relative h-20 w-20 overflow-hidden rounded-xl border-2 bg-white ${selected === index ? "border-green-700" : "border-gray-200 hover:border-green-500"}`}>
           <Image src={image} alt="" fill sizes="80px" className="object-contain p-2" />

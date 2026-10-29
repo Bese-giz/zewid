@@ -7,6 +7,7 @@ import ProductOrderActions from "@/components/ProductOrderActions";
 import ProductAvailability from "@/components/ProductAvailability";
 import OrderInformation from "@/components/OrderInformation";
 import ProductGallery from "@/components/ProductGallery";
+import ProductStatusTag from "@/components/ProductStatusTag";
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -66,6 +67,8 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
             <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
               {product.name}
             </h1>
+
+            {product.availability !== "in-stock" && <div className="mb-6 max-w-xs"><ProductStatusTag availability={product.availability} /></div>}
             
             <p className="mb-5 text-lg font-medium leading-relaxed text-gray-700">{product.shortDescription}</p>
             <p className="text-gray-600 leading-relaxed mb-8">

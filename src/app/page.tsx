@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProductCard from "@/components/ProductCard";
+import HomeProductFeed from "@/components/HomeProductFeed";
 import { products } from "@/data/products";
 import Image from "next/image";
 import { pageMetadata } from "@/lib/metadata";
@@ -11,9 +11,6 @@ export const metadata = pageMetadata({
   description: `Shop Ethiopian teff, coffee and spices, and discover upcoming injera makers, coffee sets and cultural products. Delivery across Finland in 1–2 days for €${site.deliveryFeeEur.toFixed(2)} per order.`,
   path: "/",
 });
-
-const featuredSlugs = ["white-teff-flour", "red-teff-flour", "buna-coffee", "zemen-injera-maker-40cm", "coffee-set-18-piece", "ceramic-incense-burner"];
-const featuredProducts = featuredSlugs.flatMap(slug => products.find(product => product.slug === slug) ?? []);
 
 export default function HomePage() {
   return (
@@ -51,39 +48,27 @@ export default function HomePage() {
               Order Now
             </a>
             <Link
-              href="/products"
+              href="#collection"
               className="w-full rounded-2xl border-2 border-white/60 bg-black/20 backdrop-blur-sm px-6 py-4 text-[16px] font-bold text-white transition-all hover:border-white hover:bg-white hover:text-gray-900 sm:w-auto md:px-10 md:py-4 md:text-lg flex items-center justify-center"
             >
-              View Products
+              Explore products
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Featured Products Section */}
-      <section className="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 md:py-20">
+      {/* Complete collection, progressively revealed while scrolling. */}
+      <section id="collection" aria-labelledby="collection-title" className="scroll-mt-24 max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 md:py-20">
         <div className="text-center mb-8 md:mb-10">
           <p className="text-green-600 font-semibold text-sm uppercase tracking-wide mb-2">Our Selection</p>
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
-            Premium Products
+          <h2 id="collection-title" className="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
+            Our collection
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            From everyday teff and coffee to upcoming injera makers and ceremony accessories. Explore our growing collection.
+            Pantry favourites, coffee rituals and pieces for your home. Keep scrolling to explore them all.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3 lg:gap-8">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.slug} {...product} />
-          ))}
-        </div>
-        <div className="text-center mt-8 md:mt-10">
-          <Link
-            href="/products"
-            className="inline-flex w-full max-w-xs items-center justify-center rounded-full bg-gray-900 px-8 py-3.5 font-semibold text-white transition-colors hover:bg-gray-800 sm:w-auto"
-          >
-            View All Products
-          </Link>
-        </div>
+        <HomeProductFeed products={products} />
       </section>
 
       {/* How To Order */}

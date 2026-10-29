@@ -1,9 +1,10 @@
 import Image from "next/image";
+import marketLogo from "../../public/images/zewid-logo.png";
 
 export default function BrandMark() {
   return (
     <span className="market-brand">
-      <Image src="/images/zewid-logo.png" alt="ZEWID Market" width={1774} height={887} sizes="(max-width: 1023px) 127px, 152px" />
+      <Image src={marketLogo} alt="ZEWID Market" sizes="(max-width: 1023px) 108px, 128px" />
     </span>
   );
 }

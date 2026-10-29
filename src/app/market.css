@@ -9,8 +9,8 @@
 .market-header { position: sticky; top: 0; z-index: 50; background: #faf9f3; border-bottom: 1px solid #e7e4da; }
 .market-header__main { display: flex; min-height: 112px; align-items: center; gap: 48px; }
 .market-header__brand { flex-shrink: 0; }
-/* Account for the supplied PNG's transparent margins when sizing the visible mark. */
-.market-brand { display: inline-block; width: 152px; vertical-align: middle; }
+/* Preserve the smaller visible mark with the updated, closely cropped artwork. */
+.market-brand { display: inline-block; width: 128px; vertical-align: middle; }
 .market-brand img { display: block; width: 100%; height: auto; }
 .market-header__actions { display: flex; align-items: center; gap: 24px; margin-left: auto; }
 .market-header__language { color: #3d4d43; font-size: 12px; font-weight: 600; text-decoration: none; }
@@ -28,10 +28,11 @@
 .market-hero__image { object-fit: cover; object-position: center; }
 .market-hero__shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(252 244 230 / 0.18), transparent 65%); }
 .market-hero__content { position: relative; z-index: 1; }
-.market-hero__copy { width: 55%; max-width: 650px; padding-block: 72px; }
+.market-hero__copy { width: 55%; max-width: 650px; padding-block: 48px; }
 .market-hero h1 { margin-top: 12px; font-size: clamp(44px, 4.3vw, 62px); line-height: 0.98; }
 .market-hero h1 span { display: block; }
 .market-hero .market-eyebrow { font-size: 12px; }
+.market-hero__amharic { margin-top: 14px; color: #244b38; font-family: system-ui, sans-serif; font-size: clamp(20px, 1.6vw, 23px); font-weight: 500; line-height: 1.65; }
 .market-hero__description { max-width: 480px; margin-top: 16px; color: #405246; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.5; }
 .market-hero__buttons { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 22px; }
 .market-button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 12px; border: 1px solid transparent; border-radius: 7px; padding: 13px 22px; font-size: 15px; font-weight: 600; line-height: 1.4; transition: background-color 0.2s, border-color 0.2s; }
@@ -50,7 +51,7 @@
 
 .market-footer { background: #1d4034; color: #f7f4e9; padding-top: 60px; }
 .market-footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 42px; padding-bottom: 50px; }
-.market-footer .market-brand { width: 127px; border-radius: 6px; background: #faf9f3; }
+.market-footer .market-brand { width: 108px; border-radius: 6px; background: #faf9f3; }
 .market-footer__intro > p { max-width: 260px; margin-top: 22px; color: #d0d8cb; font-size: 13px; line-height: 1.8; }
 .market-footer h3 { margin-bottom: 20px; font-size: 13px; font-weight: 600; }
 .market-footer ul { display: flex; flex-direction: column; gap: 13px; color: #d1d9cf; font-size: 12px; line-height: 1.5; }
@@ -67,7 +68,7 @@
 @media (max-width: 1023px) {
   .market-container { width: calc(100% - 48px); }
   .market-header__main { min-height: 80px; gap: 20px; }
-  .market-brand { width: 110px; }
+  .market-brand { width: 94px; }
   .market-header__language, .market-navigation-band { display: none; }
   .market-header__actions { gap: 10px; }
   .market-header__menu { display: flex; }
@@ -92,9 +93,10 @@
   .market-hero { min-height: 0; align-items: flex-start; }
   .market-hero__image { top: auto !important; bottom: 0 !important; height: 206px !important; object-fit: cover; object-position: right bottom; }
   .market-hero__shade { background: linear-gradient(180deg, #f4e8d6 0%, #f4e8d6 57%, rgb(244 232 214 / 0.92) 66%, rgb(244 232 214 / 0) 100%); }
-  .market-hero__copy { width: 100%; max-width: 470px; padding-block: 25px 115px; }
+  .market-hero__copy { width: 100%; max-width: 470px; padding-block: 25px 85px; }
   .market-hero .market-eyebrow { font-size: 11px; letter-spacing: 0.1em; }
   .market-hero h1 { margin-top: 12px; font-size: 30px; line-height: 1.01; }
+  .market-hero__amharic { margin-top: 12px; font-size: 17px; }
   .market-hero__description { max-width: 360px; margin-top: 12px; font-size: 15px; line-height: 1.5; }
   .market-hero__buttons { max-width: 390px; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .market-hero__buttons .market-button { flex: 1 1 160px; min-width: max-content; min-height: 46px; gap: 6px; padding: 10px 9px; font-size: 14px; }
@@ -117,5 +119,5 @@
 }
 
 @media (max-width: 374px) {
-  .market-hero__copy { padding-bottom: 60px; }
+  .market-hero__copy { padding-bottom: 30px; }
 }

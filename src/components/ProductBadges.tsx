@@ -3,12 +3,27 @@ import { getProductDiscount } from "@/lib/product-display";
 
 export default function ProductBadges({ product }: { product: Pick<Product, "availability" | "priceEur" | "compareAtPriceEur"> }) {
   const discount = getProductDiscount(product);
-  const badgeClass = "rounded-full px-3 py-1.5 text-[10px] font-bold leading-tight shadow-sm ring-1 ring-inset md:text-xs";
+  const comingSoon = product.availability === "coming-soon";
+  const unavailable = comingSoon || product.availability === "out-of-stock";
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute left-3 top-3 z-10 flex flex-col items-start gap-2 md:left-4 md:top-4">
-      {product.availability === "coming-soon" && <span className={`${badgeClass} bg-amber-100 text-amber-950 ring-amber-300`}>Coming soon</span>}
-      {product.availability === "out-of-stock" && <span className={`${badgeClass} bg-slate-900 text-white ring-slate-700`}>Out of stock</span>}
-      {discount && <span className={`${badgeClass} bg-green-700 text-white ring-green-800`}>{discount.label}</span>}
+    <div aria-hidden="true" className="product-image-badges">
+      {unavailable && <div className="product-ribbon-corner">
+        <div className={`product-ribbon ${comingSoon ? "product-ribbon--soon" : "product-ribbon--unavailable"}`}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            {comingSoon ? <><circle cx="12" cy="12" r="8" /><path d="M12 7.5V12l3 2" /></> : <><rect x="4" y="6" width="16" height="14" rx="2" /><path d="M9 6V4h6v2M4 10h16m-7 5h-2" /></>}
+          </svg>
+          <span>{comingSoon ? "Coming soon" : "Out of stock"}</span>
+        </div>
+      </div>}
+      {discount && <div className="product-sale-tag" aria-label={discount.label}>
+        <div className="product-sale-tag__face">
+          <span className="product-sale-tag__eyelet" />
+          {discount.percentOff > 0 ? <>
+            <span className="product-sale-tag__amount">{discount.percentOff}<small>%</small></span>
+            <span className="product-sale-tag__caption">off</span>
+          </> : <span className="product-sale-tag__caption">Sale</span>}
+        </div>
+      </div>}
     </div>
   );
 }

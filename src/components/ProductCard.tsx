@@ -1,27 +1,20 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import ProductAvailability from "./ProductAvailability";
-import ProductBadges from "./ProductBadges";
+import ProductImageCarousel from "./ProductImageCarousel";
 
 export default function ProductCard(product: Product) {
   const { addToCart } = useCart();
-  const { slug, name, weight, image } = product;
+  const { slug, name, weight } = product;
   const available = isProductPurchasable(product);
 
   return (
     <article className="group product-card flex h-full flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-      <Link href={`/products/${slug}`} aria-label={`View ${name}`} className="relative block aspect-[7/6] overflow-hidden bg-white md:aspect-square">
-        <div className="absolute inset-0 rounded-full bg-gray-50 opacity-50 scale-0 transition-transform duration-700 group-hover:scale-150" />
-        <Image src={image} alt={name} fill
-          sizes="(max-width: 1023px) 50vw, (max-width: 1280px) 33vw, 400px"
-          className="object-contain px-4 pt-4 md:px-6 md:pt-6 drop-shadow-sm transition-transform duration-500 group-hover:scale-105" />
-        <ProductBadges product={product} />
-      </Link>
+      <ProductImageCarousel product={product} variant="card" />
       <div className="relative flex flex-1 flex-col p-4 md:p-5">
         <h3 className="mb-1 text-sm font-bold leading-snug text-gray-900 md:text-lg">
           <Link href={`/products/${slug}`} className="hover:text-green-700">{name}</Link>

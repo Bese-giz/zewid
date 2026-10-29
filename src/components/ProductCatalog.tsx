@@ -4,9 +4,9 @@ import { useState } from "react";
 import { isProductPurchasable, productCategories, type Product, type ProductCategory } from "@/data/products";
 import ProductCard from "./ProductCard";
 
-export default function ProductCatalog({ products }: { products: Product[] }) {
-  const [category, setCategory] = useState<ProductCategory | "all">("all");
-  const [search, setSearch] = useState("");
+export default function ProductCatalog({ products, initialCategory = "all", initialSearch = "" }: { products: Product[]; initialCategory?: ProductCategory | "all"; initialSearch?: string }) {
+  const [category, setCategory] = useState<ProductCategory | "all">(initialCategory);
+  const [search, setSearch] = useState(initialSearch);
   const [availableOnly, setAvailableOnly] = useState(false);
   const query = search.trim().toLocaleLowerCase();
   const filtered = products.filter(product =>

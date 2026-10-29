@@ -5,7 +5,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  image = "/opengraph-image.png",
+  image = "/images/landing.png",
 }: {
   title: string;
   description: string;
@@ -16,11 +16,11 @@ export function pageMetadata({
   const images = [{
     url: image,
     alt: title,
-    ...(image === "/opengraph-image.png" ? { width: 1536, height: 1024 } : {}),
+    ...(image === "/images/landing.png" ? { width: 1852, height: 849 } : {}),
   }];
 
   return {
-    title,
+    title: { absolute: shareTitle },
     description,
     alternates: { canonical: path },
     openGraph: {

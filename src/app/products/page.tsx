@@ -2,7 +2,7 @@ import { whatsappLink } from "@/lib/site";
 import OrderInformation from "@/components/OrderInformation";
 import { pageMetadata } from "@/lib/metadata";
 import ProductCatalog from "@/components/ProductCatalog";
-import { products } from "@/data/products";
+import { productCategories, products, type ProductCategory } from "@/data/products";
 
 export const metadata = {
   ...pageMetadata({
@@ -22,7 +22,10 @@ export const metadata = {
   ],
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ q?: string | string[]; category?: string | string[] }> }) {
+  const params = await searchParams;
+  const search = typeof params.q === "string" ? params.q.trim().slice(0, 120) : "";
+  const category: ProductCategory | "all" = productCategories.some(item => item.id === params.category) ? params.category as ProductCategory : "all";
   return (
     <>
       {/* Hero */}
@@ -41,7 +44,7 @@ export default function ProductsPage() {
       {/* Products Grid */}
       <section className="py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <p className="mb-4 text-xs leading-relaxed text-gray-600">Ask us on WhatsApp about prices and availability for coming-soon products.</p>
-        <ProductCatalog products={products} />
+        <ProductCatalog key={`${category}:${search}`} products={products} initialCategory={category} initialSearch={search} />
       </section>
 
       <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"><OrderInformation /></section>

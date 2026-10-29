@@ -24,7 +24,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
       <section className="mx-auto w-full max-w-2xl px-4 py-16">
         <h1 className="mb-4 text-3xl font-bold text-gray-900">Payment status unavailable</h1>
         <p className="mb-6 text-gray-600">We could not verify this checkout. If you just paid, refresh this page or contact us with your Stripe receipt. Your cart has been kept.</p>
-        <Link href="/contact" className="rounded-full bg-green-700 px-6 py-3 font-semibold text-white">Contact ZEWID</Link>
+        <Link href="/contact" className="rounded-full bg-green-700 px-6 py-3 font-semibold text-white">Contact ZEWID Market</Link>
       </section>
   );
 }

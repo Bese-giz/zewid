@@ -5,7 +5,7 @@ import Image from "next/image";
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "Learn about ZEWID | ዘውድ – Ethiopian food, coffee, ceremony accessories and home essentials in Finland.",
+    "Meet ZEWID Market – Ethiopian food, coffee, ceremony accessories and home essentials in Finland.",
   path: "/about",
 });
 
@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-green-600 font-semibold text-sm uppercase tracking-wide mb-3">Our Story</p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            About ZEWID | ዘውድ
+            Our story: ZEWID Market
           </h1>
           <p className="text-gray-500 text-lg">
             Your trusted source for premium Ethiopian products in Finland
@@ -33,7 +33,7 @@ export default function AboutPage() {
               Who We Are
             </h2>
             <p className="text-gray-600 leading-relaxed mb-4">
-              ZEWID | ዘውድ is a Finland-based Ethiopian products brand dedicated
+              ZEWID Market is a Finland-based Ethiopian market dedicated
               to providing Ethiopian food and traditional home essentials to
               customers all over Finland.
             </p>

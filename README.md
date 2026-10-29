@@ -1,6 +1,6 @@
-# ZEWID storefront
+# ZEWID Market storefront
 
-ZEWID sells Ethiopian food, coffee and spices in Finland, with a growing collection of coffee ceremony accessories, serving sets and cultural products. This is a Next.js App Router project using React, TypeScript, and Tailwind CSS.
+ZEWID Market sells Ethiopian food, coffee and home essentials in Finland, with a growing collection of coffee ceremony accessories, serving sets and cultural products. This is a Next.js App Router project using React, TypeScript, and Tailwind CSS.
 
 ## Local development
 
@@ -24,7 +24,13 @@ npm run start
 
 The GitHub Actions workflow runs dependency installation, linting, type checking, and a production build on pushes and pull requests. It does not run tests. No automated tests are included.
 
-Deploy to a host that supports the Next.js server and image optimizer. All catalog pages are prerendered. `next/font/google` downloads Inter at build time; the build environment needs access to Google Fonts. Fonts are served locally to visitors after the build.
+Deploy to a host that supports the Next.js server and image optimizer. Product detail pages are prerendered; the catalog reads search and category query parameters on the server. `next/font/google` downloads Inter and DM Serif Display at build time; the build environment needs access to Google Fonts. Fonts are served locally to visitors after the build.
+
+## Market landing page
+
+The homepage uses the supplied `public/images/landing.png` background, a ZEWID Market wordmark, warm cream and forest-green styling, and responsive desktop/mobile layouts. `src/app/market.css` contains these styles. The announcement bar rotates between three messages every six seconds, with a pause control, hover/focus pausing and reduced-motion support.
+
+The header search submits to `/products?q=...`. Navigation and homepage collection tiles link to `/products?category=...`, with four groups: Food & spices (`food`), Coffee & ceremony (`coffee`), Kitchen & home (`kitchen`) and Culture & learning (`culture`). Both query parameters can be combined. Catalog prices, availability, cart calculations and payment identifiers are independent of these display categories.
 
 ## Product catalog and stock
 

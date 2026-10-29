@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./market.css";
 
 @theme {
   --color-beige-50: #fefcf9;
@@ -35,7 +36,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: #ffffff;
+  background: #fffefa;
 }
 
 body {
@@ -43,7 +44,7 @@ body {
   color: #1f2937;
   position: relative;
   overflow-x: hidden;
-  background: #ffffff;
+  background: #fffefa;
 }
 
 body::before {

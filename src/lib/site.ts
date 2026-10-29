@@ -1,5 +1,5 @@
 export const site = {
-  name: "ZEWID | ዘውድ",
+  name: "ZEWID Market",
   url: "https://www.zewid.com",
   phone: "358417059015",
   deliveryTime: "1–2 days",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,26 +12,31 @@ import { checkoutMode } from "@/lib/stripe";
 import { postnordPickupEnabled } from "@/lib/postnord";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
+const marketSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"], display: "swap", variable: "--font-market-serif" });
 
 export const metadata: Metadata = {
   title: {
-    default: "ZEWID | ዘውድ – Premium Ethiopian Teff & Products in Finland",
-    template: "%s | ZEWID ዘውድ",
+    default: "ZEWID Market – Ethiopian Food, Coffee & Home in Finland",
+    template: "%s | ZEWID Market",
   },
   metadataBase: new URL(site.url),
   description:
-    "Ethiopian teff, coffee and spices in Finland, with upcoming injera makers, coffee ceremony accessories, serving sets and cultural products. Shop online or ask on WhatsApp.",
+    "Your Ethiopian market, closer to home. Food, coffee and home essentials, thoughtfully brought together for life in Finland.",
   keywords: [
     "Ethiopian teff Finland",
     "buy injera flour Helsinki",
     "Ethiopian products Finland",
+    "ZEWID Market",
+    "Ethiopian market Finland",
+    "Ethiopian coffee Finland",
+    "Ethiopian home essentials Finland",
     "white teff Finland",
     "red teff Finland",
     "mashila sorghum Finland",
     "Ethiopian food delivery Finland",
   ],
   openGraph: {
-    title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
+    title: "ZEWID Market – Your Ethiopian Market in Finland",
     description:
       "Ethiopian food, coffee and spices, with a growing collection of coffee ceremony and home essentials in Finland.",
     url: site.url,
@@ -40,18 +45,18 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png",
-        width: 1536,
-        height: 1024,
-        alt: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
+        url: "/images/landing.png",
+        width: 1852,
+        height: 849,
+        alt: "ZEWID Market – Ethiopian food, coffee and home essentials",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZEWID | ዘውድ – Premium Ethiopian Products in Finland",
+    title: "ZEWID Market – Your Ethiopian Market in Finland",
     description: "Ethiopian food, coffee and spices, with a growing collection of coffee ceremony and home essentials in Finland.",
-    images: ["/opengraph-image.png"],
+    images: ["/images/landing.png"],
   },
   robots: {
     index: true,
@@ -71,8 +76,8 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "ZEWID | ዘውድ",
-    "image": `${site.url}/opengraph-image.png`,
+    "name": site.name,
+    "image": `${site.url}/images/landing.png`,
     "description": "Ethiopian food, coffee and spices, coffee ceremony accessories and home essentials in Finland.",
     "address": {
       "@type": "PostalAddress",
@@ -92,7 +97,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.className} bg-white antialiased text-gray-900`}>
+      <body className={`${inter.className} ${marketSerif.variable} antialiased text-gray-900`}>
         <CartProvider>
           <Header />
           <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1006] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:font-semibold focus:text-green-800">Skip to content</a>

@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact ZEWID | ዘውድ for Ethiopian teff and product orders in Finland. Reach us on WhatsApp, Facebook, or TikTok.",
+    "Contact ZEWID Market for Ethiopian food, coffee and home essentials in Finland. Reach us on WhatsApp, Facebook, or TikTok.",
   path: "/contact",
 });
 

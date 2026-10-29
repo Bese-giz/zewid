@@ -28,9 +28,9 @@ Deploy to a host that supports the Next.js server and image optimizer. Product d
 
 ## Market landing page
 
-The homepage uses the supplied `public/images/landing.png` background, a ZEWID Market wordmark, warm cream and forest-green styling, and responsive desktop/mobile layouts. `src/app/market.css` contains these styles. The announcement bar rotates between three messages every six seconds, with a pause control, hover/focus pausing and reduced-motion support.
+The homepage uses the supplied `public/images/landing.png` background, a ZEWID Market wordmark, warm cream and forest-green styling, and a compact hero on desktop and mobile. Explore the market appears immediately beneath the hero. The earlier ordering steps, quality promises, pricing/delivery information and WhatsApp order sections follow the product feed. `src/app/market.css` contains these styles. The announcement bar rotates between three messages every six seconds, with a pause control, hover/focus pausing and reduced-motion support.
 
-The header search submits to `/products?q=...`. Navigation and homepage collection tiles link to `/products?category=...`, with four groups: Food & spices (`food`), Coffee & ceremony (`coffee`), Kitchen & home (`kitchen`) and Culture & learning (`culture`). Both query parameters can be combined. Catalog prices, availability, cart calculations and payment identifiers are independent of these display categories.
+The header search submits to `/products?q=...`. Header and footer navigation link to `/products?category=...`, with four groups: Food & spices (`food`), Coffee & ceremony (`coffee`), Kitchen & home (`kitchen`) and Culture & learning (`culture`). Both query parameters can be combined. Catalog prices, availability, cart calculations and payment identifiers are independent of these display categories.
 
 ## Product catalog and stock
 

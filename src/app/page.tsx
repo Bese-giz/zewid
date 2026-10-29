@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import HomeProductFeed from "@/components/HomeProductFeed";
+import OrderInformation from "@/components/OrderInformation";
 import MarketIcon from "@/components/MarketIcon";
-import { products, productCategories } from "@/data/products";
+import { products } from "@/data/products";
 import { pageMetadata } from "@/lib/metadata";
 import { site, whatsappLink } from "@/lib/site";
 
@@ -11,13 +12,6 @@ export const metadata = pageMetadata({
   description: `Food, coffee and home essentials, thoughtfully brought together for life in Finland. Explore ZEWID Market. Nationwide delivery for €${site.deliveryFeeEur.toFixed(2)} per order.`,
   path: "/",
 });
-
-const categoryImages = {
-  food: "/images/berbere_enhanced_transparent.png",
-  coffee: "/images/coffee-set-18-piece.png",
-  kitchen: "/images/food-warmer-3-dish.png",
-  culture: "/images/meshrefet-basket.png",
-};
 
 export default function HomePage() {
   return (
@@ -38,29 +32,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="market-trust" aria-label="The ZEWID Market promise">
-        <div className="market-container market-trust__grid">
-          <div><MarketIcon name="truck" size={34} /><span>Delivery across Finland</span></div>
-          <div><MarketIcon name="leaf" size={34} /><span>Food, coffee &amp; home</span></div>
-          <a href={whatsappLink()} target="_blank" rel="noopener noreferrer"><MarketIcon name="whatsapp" size={32} /><span>Personal WhatsApp support</span></a>
-        </div>
-      </section>
-
-      <section className="market-container market-section" aria-labelledby="market-categories-title">
-        <div className="market-section-heading">
-          <p className="market-eyebrow">Familiar favourites. New discoveries.</p>
-          <h2 id="market-categories-title" className="market-title">A market for life’s familiar moments.</h2>
-          <p>From everyday cooking to the joy of gathering together.</p>
-        </div>
-        <div className="market-category-grid">
-          {productCategories.map(category => <Link key={category.id} href={`/products?category=${category.id}`} className="market-category-card">
-            <div className="market-category-card__image"><Image src={categoryImages[category.id]} alt="" fill sizes="(max-width: 767px) 50vw, 300px" className="object-contain p-4 transition-transform duration-300 group-hover:scale-105" /></div>
-            <div className="market-category-card__label"><h3>{category.name}</h3><MarketIcon name="arrow" size={19} /></div>
-            <span>{products.filter(product => product.category === category.id).length} products to explore</span>
-          </Link>)}
-        </div>
-      </section>
-
       <section id="collection" aria-labelledby="collection-title" className="market-container market-section market-collection">
         <div className="market-section-heading market-section-heading--collection">
           <div><p className="market-eyebrow">Thoughtfully brought together</p><h2 id="collection-title" className="market-title">Explore the market.</h2><p>Everyday essentials and coming-soon finds. More to discover as you scroll.</p></div>
@@ -69,16 +40,208 @@ export default function HomePage() {
         <HomeProductFeed products={products} />
       </section>
 
-      <section className="market-story" aria-labelledby="market-story-title">
-        <div className="market-container market-story__grid">
-          <div className="market-story__image"><Image src="/images/coffee-set-23-piece.png" alt="Traditional Ethiopian coffee ceremony serving set" fill sizes="(max-width: 767px) 100vw, 550px" className="object-contain p-8 md:p-12" /></div>
-          <div className="market-story__copy"><p className="market-eyebrow">A little closer to home</p><h2 id="market-story-title" className="market-title">Tradition, with a place in everyday life.</h2><p>From a bag of teff for the week to the little details of a coffee ceremony, we bring familiar essentials together in one place.</p><p>ZEWID Market is growing beyond the pantry, with food, coffee and pieces for your home. Browse at your own pace, or talk to us on WhatsApp.</p><Link href="/about" className="market-text-link">Our story <MarketIcon name="arrow" size={18} /></Link></div>
+      {/* How To Order */}
+      <section className="bg-[linear-gradient(180deg,rgba(252,250,246,0.55)_0%,rgba(240,247,241,0.9)_100%)] py-10 px-4 sm:px-6 lg:px-8 md:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
+            <p className="text-green-600 font-semibold text-xs md:text-sm uppercase tracking-[0.24em] mb-3">
+              Simple Ordering
+            </p>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+              Ordering Should Feel Easy
+            </h2>
+            <p className="mt-4 text-sm md:text-lg leading-relaxed text-slate-500">
+              Choose your products, send us a message, and we&apos;ll take care of the rest with fast, reliable delivery all over Finland.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:gap-6 lg:grid-cols-3">
+            {[
+              {
+                step: "01",
+                title: "Choose Your Products",
+                desc: "Browse food, coffee and home essentials, then add available products to your cart.",
+              },
+              {
+                step: "02",
+                title: "Send Us A Message",
+                desc: "Place your order on WhatsApp and confirm your quantity and delivery details.",
+              },
+              {
+                step: "03",
+                title: "Receive Your Delivery",
+                desc: "We prepare your order and arrange fast, reliable delivery all over Finland.",
+              },
+            ].map((item) => (
+              <div
+                key={item.step}
+                className="group rounded-[1.5rem] border border-white/90 bg-[linear-gradient(180deg,#ffffff_0%,#fcfaf6_100%)] p-5 shadow-[0_16px_36px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_24px_48px_rgba(34,197,94,0.12)] md:p-6"
+              >
+                <div className="mb-4 h-1.5 w-16 rounded-full bg-green-500/80" />
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-green-700">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-500 text-[10px] text-white transition-transform duration-300 group-hover:scale-110 group-hover:bg-green-600">
+                    {item.step}
+                  </span>
+                  Step {item.step}
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-green-700">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm md:text-base leading-relaxed text-slate-500">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center md:mt-10">
+            <a
+              href={whatsappLink("Hi ZEWID! I would like to order")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full max-w-xs items-center justify-center rounded-full bg-green-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-green-500/20 transition-colors hover:bg-green-600 sm:w-auto md:text-base"
+            >
+              Start Your Order
+            </a>
+          </div>
         </div>
       </section>
 
-      <section className="market-container market-help" aria-labelledby="market-help-title">
-        <div><p className="market-eyebrow">A real conversation, whenever you need it</p><h2 id="market-help-title" className="market-title">Not sure where to start?</h2><p>Ask about a product, a coming-soon item or your delivery. We’re happy to help.</p></div>
-        <a href={whatsappLink("Hi ZEWID Market! I have a question.")} target="_blank" rel="noopener noreferrer" className="market-button market-button--primary"><MarketIcon name="whatsapp" />Let’s talk on WhatsApp</a>
+      {/* What Sets Us Apart */}
+      <section className="bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 md:py-20">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-6 md:mb-10">
+            <p className="text-green-600 font-semibold text-xs md:text-sm uppercase tracking-wide mb-2">Our Promise</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
+              What Sets Us Apart
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-4">
+            {[
+              {
+                icon: "🌾",
+                title: "Premium Quality",
+                desc: "100% authentic Ethiopian teff, directly imported from Ethiopia.",
+              },
+              {
+                icon: "🚚",
+                title: "Fast Delivery",
+                desc: "Fast, reliable delivery all over Finland.",
+              },
+              {
+                icon: "💬",
+                title: "Easy Ordering",
+                desc: "Order through WhatsApp. Quick, personal, convenient.",
+              },
+              {
+                icon: "⭐",
+                title: "Trusted Brand",
+                desc: "Serving Ethiopian families and restaurants all over Finland.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="group rounded-xl border border-white/80 bg-[linear-gradient(180deg,#ffffff_0%,#fcfaf6_100%)] p-4 text-center shadow-[0_14px_32px_rgba(15,23,42,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(15,23,42,0.1)] md:rounded-2xl md:p-8"
+              >
+                <div className="mb-2 text-3xl md:mb-4 md:text-4xl transition-transform duration-300 group-hover:scale-110">{item.icon}</div>
+                <h3 className="mb-1 text-sm font-bold text-gray-900 md:mb-2 md:text-lg group-hover:text-green-700 transition-colors">{item.title}</h3>
+                <p className="text-xs leading-relaxed text-gray-500 md:text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8"><OrderInformation /></section>
+
+      {/* Delivery Info Section */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 md:py-20">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative overflow-hidden rounded-[2rem] border border-green-100 bg-[radial-gradient(circle_at_top_left,_rgba(34,197,94,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(250,204,21,0.12),transparent_28%),linear-gradient(180deg,#f8fcf8_0%,#eef7f1_100%)] px-5 py-6 text-slate-900 shadow-[0_24px_60px_rgba(15,23,42,0.08)] md:px-10 md:py-10">
+            <div className="absolute -left-16 top-10 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl" />
+            <div className="absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-yellow-300/10 blur-3xl" />
+            <div className="relative grid items-center gap-6 md:grid-cols-[1.2fr_0.9fr] md:gap-10">
+              <div>
+                <span className="inline-flex rounded-full border border-green-200 bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-green-800 md:text-xs">
+                  Nationwide Delivery
+                </span>
+                <h2 className="mt-4 text-2xl font-bold leading-tight text-slate-900 md:text-5xl">
+                  Reliable Delivery All Over Finland 🇫🇮
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-lg">
+                  Fresh Ethiopian products packed carefully and delivered all over Finland with direct WhatsApp support from order to arrival.
+                </p>
+                <p className="mt-3 text-sm text-green-800 md:text-base">
+                  በመላው ፊንላንድ ፈጣን፣ አስተማማኝ እና ምቹ ዴሊቨሪ
+                </p>
+                <div className="mt-6 flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap">
+                  <a
+                    href={whatsappLink("Hi ZEWID! I would like to order")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-green-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-600 sm:w-auto"
+                  >
+                    Order On WhatsApp
+                  </a>
+                  <Link
+                    href="/products"
+                    className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white/70 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-white sm:w-auto"
+                  >
+                    Browse Products
+                  </Link>
+                </div>
+              </div>
+              <div className="grid gap-3 md:gap-4">
+                {[
+                  {
+                    title: `Delivery in ${site.deliveryTime}`,
+                    desc: "Nationwide delivery for your confirmed order.",
+                  },
+                  {
+                    title: "Coverage All Over Finland",
+                    desc: "Orders arranged for customers all over Finland.",
+                  },
+                  {
+                    title: "Direct Order Updates",
+                    desc: "Speak with us on WhatsApp for confirmation, timing, and support.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="group rounded-2xl border border-green-100 bg-white/85 p-4 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-green-300 hover:shadow-md md:p-5"
+                  >
+                    <h3 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-green-700 md:text-lg">{item.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-500">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WhatsApp CTA */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 md:py-20">
+        <div className="max-w-4xl mx-auto rounded-[2rem] border border-green-100/80 bg-[radial-gradient(circle_at_top,_rgba(34,197,94,0.12),transparent_38%),linear-gradient(180deg,#fbfcf8_0%,#f1f7f0_100%)] px-6 py-10 text-center shadow-[0_24px_60px_rgba(15,23,42,0.06)] md:px-12 md:py-14">
+          <h2 className="text-xl md:text-4xl font-bold text-gray-900 mb-3">
+            Ready to Order?
+          </h2>
+          <p className="text-gray-500 mb-6 text-sm md:text-lg">
+            Send us a message on WhatsApp and we&apos;ll get your order ready for
+            fast, reliable delivery all over Finland.
+          </p>
+          <a
+            href={whatsappLink("Hi ZEWID! I would like to order")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-full bg-green-500 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-green-500/25 transition-all hover:bg-green-600 hover:shadow-green-500/40 sm:w-auto md:gap-3 md:px-10 md:py-5 md:text-xl"
+          >
+            <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Order on WhatsApp
+          </a>
+        </div>
       </section>
     </>
   );

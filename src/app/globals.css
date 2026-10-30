@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./market.css";
+@import "./product-detail.css";
 
 @theme {
   --color-beige-50: #fefcf9;

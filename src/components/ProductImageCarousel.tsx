@@ -83,7 +83,7 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
             className="product-photo-arrow right-2 md:right-3">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m10 6 6 6-6 6" /></svg>
           </button>
-          <div className="absolute bottom-2 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-2 shadow-sm ring-1 ring-black/5 md:bottom-3">
+          <div className="product-photo-pagination absolute bottom-2 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-2 shadow-sm ring-1 ring-black/5 md:bottom-3">
             {images.map((image, index) => <button key={image} type="button" onClick={() => goTo(index)} aria-label={`Show photo ${index + 1} of ${product.name}`} aria-pressed={selected === index}
               className="flex h-5 w-5 items-center justify-center rounded-full">
               <span aria-hidden="true" className={`h-1.5 rounded-full transition-all ${selected === index ? "w-4 bg-green-800" : "w-1.5 bg-gray-300"}`} />
@@ -93,7 +93,7 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
           <span className="sr-only" role="status">Photo {selected + 1} of {images.length}</span>
         </>}
       </div>
-      {multiple && <div className="mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label={`Choose a photo of ${product.name}`}>
+      {multiple && <div className="product-photo-thumbnails mt-6 flex flex-wrap justify-center gap-3" role="group" aria-label={`Choose a photo of ${product.name}`}>
         {images.map((image, index) => <button key={image} type="button" onClick={() => goTo(index)} aria-label={`View image ${index + 1} of ${images.length} of ${product.name}`} aria-pressed={selected === index}
           className={`relative h-20 w-20 overflow-hidden rounded-xl border-2 bg-white ${selected === index ? "border-green-700" : "border-gray-200 hover:border-green-500"}`}>
           <Image src={image} alt="" fill sizes="80px" className="object-contain p-2" />

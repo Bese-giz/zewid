@@ -5,6 +5,7 @@ import { MAX_CART_QUANTITY, useCart } from "@/context/CartContext";
 import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import { calculateCart, formatEuro } from "@/lib/pricing";
+import MarketIcon from "./MarketIcon";
 
 export default function ProductOrderActions({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
@@ -18,37 +19,30 @@ export default function ProductOrderActions({ product }: { product: Product }) {
     { slug: product.slug, quantity: existingQuantity + selectionQuantity },
   ]).lines.find((line) => line.product.slug === product.slug);
 
+  const selectionTotal = preview && selectionQuantity > 0 ? formatEuro(preview.unitPriceCents * selectionQuantity) : null;
+
   return (
-    <div className="space-y-4 rounded-2xl border border-gray-100 bg-gray-50 p-5">
-      {available && remainingQuantity > 0 && (
-        <div className="flex items-center justify-between gap-4">
-          <span id={`quantity-label-${product.slug}`} className="text-sm font-semibold text-gray-900">Quantity ({product.weight})</span>
-          <div role="group" aria-labelledby={`quantity-label-${product.slug}`} className="flex items-center overflow-hidden rounded-xl border border-gray-300 bg-white">
+    <div className="product-order-actions">
+      {available && <div className="product-order-primary">
+        {remainingQuantity > 0 && <div className="product-order-quantity">
+          <span id={`quantity-label-${product.slug}`}>Quantity</span>
+          <div role="group" aria-labelledby={`quantity-label-${product.slug}`}>
             <button type="button" aria-label={`Decrease quantity of ${product.name}`} disabled={selectionQuantity === 1}
-              onClick={() => setQuantity(Math.max(1, selectionQuantity - 1))}
-              className="h-11 w-11 hover:bg-gray-100 disabled:opacity-40">−</button>
-            <output aria-live="polite" className="min-w-10 text-center font-semibold">{selectionQuantity}</output>
+              onClick={() => setQuantity(Math.max(1, selectionQuantity - 1))}>−</button>
+            <output aria-live="polite">{selectionQuantity}</output>
             <button type="button" aria-label={`Increase quantity of ${product.name}`} disabled={selectionQuantity === remainingQuantity}
-              onClick={() => setQuantity(Math.min(remainingQuantity, selectionQuantity + 1))}
-              className="h-11 w-11 hover:bg-gray-100 disabled:opacity-40">+</button>
+              onClick={() => setQuantity(Math.min(remainingQuantity, selectionQuantity + 1))}>+</button>
           </div>
-        </div>
-      )}
-      {available && selectionQuantity > 0 && preview && (
-        <div className="text-sm text-gray-700" aria-live="polite" aria-atomic="true">
-          <p>{formatEuro(preview.unitPriceCents)} per {product.weight} · {formatEuro(preview.unitPriceCents * selectionQuantity)} for this selection</p>
-        </div>
-      )}
-      {available && <button type="button" disabled={selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)}
-        className="w-full rounded-xl bg-gray-900 px-6 py-4 font-bold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-600">
-        {selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to Cart"}
-      </button>}
+        </div>}
+        <button type="button" disabled={selectionQuantity === 0} onClick={() => addToCart(product.slug, selectionQuantity)} className="product-order-add">
+          <span>{selectionQuantity === 0 ? "Maximum quantity in cart" : "Add to cart"}</span>
+          {selectionTotal && <span className="product-order-add__total">{selectionTotal}</span>}
+        </button>
+      </div>}
       <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${product.name}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
-        target="_blank" rel="noopener noreferrer"
-        className="block rounded-xl bg-green-100 px-6 py-3 text-center font-semibold text-green-800 transition-colors hover:bg-green-700 hover:text-white">
-        Ask on WhatsApp
+        target="_blank" rel="noopener noreferrer" className={`product-order-whatsapp${available ? "" : " product-order-whatsapp--primary"}`}>
+        <MarketIcon name="whatsapp" size={19} />Ask on WhatsApp
       </a>
-      <p className="text-sm leading-relaxed text-gray-600">{available ? "Add products to your cart, then pay online or send your order on WhatsApp. See the delivery details below." : product.availability === "coming-soon" ? "This product is coming soon. Ask us about its price and availability on WhatsApp." : "Ask us on WhatsApp about availability."}</p>
     </div>
   );
 }

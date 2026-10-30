@@ -7,6 +7,7 @@ import { PickupInputError, postnordPickupEnabled, validatePickupSelection } from
 import { deliveryPointName } from "@/lib/delivery-display";
 
 export const runtime = "nodejs";
+const allowedPaymentMethods = ["card", "mobilepay", "klarna"] as const;
 
 export async function POST(request: NextRequest) {
   try {
@@ -40,14 +41,14 @@ export async function POST(request: NextRequest) {
       fulfillment_status: "pending",
       ...pickupMetadata,
     };
-    const fingerprint = createHash("sha256").update(JSON.stringify({ items, pickup: pickup?.selection ?? null })).update(hashToken(token)).digest("hex");
+    const fingerprint = createHash("sha256").update(JSON.stringify({ items, pickup: pickup?.selection ?? null, paymentMethods: allowedPaymentMethods })).update(hashToken(token)).digest("hex");
     const session = await getStripe().checkout.sessions.create({
       mode: "payment", ui_mode: "hosted_page", locale: "auto",
       line_items: lineItems,
       shipping_options: [{ shipping_rate: shippingRateId }],
       shipping_address_collection: { allowed_countries: ["FI"] },
       phone_number_collection: { enabled: true },
-      allowed_payment_method_types: ["card", "mobilepay", "klarna"],
+      allowed_payment_method_types: [...allowedPaymentMethods],
       adaptive_pricing: { enabled: false },
       automatic_tax: { enabled: false },
       ...(pickup ? { custom_text: { submit: { message: `Collect your order from your selected delivery point: ${deliveryPointName(pickup.point.name)}, ${pickup.point.street}, ${pickup.point.postalCode} ${pickup.point.city}.` } } } : {}),

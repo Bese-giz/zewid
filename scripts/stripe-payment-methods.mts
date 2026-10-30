@@ -7,8 +7,10 @@ if (!keyMatchesStripeMode(key, mode)) throw new Error("STRIPE_MODE and STRIPE_SE
 const stripe = new Stripe(key!, { timeout: 20_000, maxNetworkRetries: 1 });
 try {
   const configurations = await stripe.paymentMethodConfigurations.list({ limit: 100 });
-  const configuration = configurations.data.find((entry) => entry.active && entry.is_default);
-  if (!configuration) throw new Error("No default payment configuration was found.");
+  // App-managed configurations can also be marked default. Website checkouts
+  // use this account's own default, not a configuration inherited from an app.
+  const configuration = configurations.data.find((entry) => entry.active && entry.is_default && !entry.parent && !entry.application);
+  if (!configuration) throw new Error("No account default payment configuration was found.");
   if (process.argv.includes("--enable")) {
     await stripe.paymentMethodConfigurations.update(configuration.id, {
       ...(configuration.apple_pay?.available ? { apple_pay: { display_preference: { preference: "on" } } } : {}),

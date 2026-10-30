@@ -55,13 +55,15 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
             <ProductGallery key={product.slug} product={product} />
           </div>
 
-          <div className="product-detail-summary">
-            <p className="product-detail-unit">{product.weight}</p>
-            <h1>{product.name}</h1>
-            <div className="product-detail-price-row">
-              <ProductAvailability product={product} showUnit={false} />
-              {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : product.availability !== "in-stock" && <div className="product-detail-status"><ProductStatusTag availability={product.availability} compact /></div>}
+          <div className={`product-detail-summary${product.priceEur === null ? " product-detail-summary--unpriced" : ""}`}>
+            <div className="product-detail-identity">
+              <h1>{product.name}</h1>
+              <div className="product-detail-meta">
+                <p className="product-detail-unit">{product.weight}</p>
+                {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : product.availability !== "in-stock" && <div className="product-detail-status"><ProductStatusTag availability={product.availability} compact /></div>}
+              </div>
             </div>
+            <div className="product-detail-price"><ProductAvailability product={product} showUnit={false} /></div>
           </div>
 
           <div className="product-detail-order">

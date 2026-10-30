@@ -2,17 +2,17 @@
 
 import { useRef, useState } from "react";
 import { useCart } from "@/context/CartContext";
-import { formatEuro } from "@/lib/pricing";
 import type { PickupSelection } from "@/lib/postnord";
 
-export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, pickup = null }: { sandbox: boolean; pickupEnabled?: boolean; pickup?: PickupSelection | null }) {
-  const { items, pricing } = useCart();
+export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, pickup = null, onSelectPickup }: { sandbox: boolean; pickupEnabled?: boolean; pickup?: PickupSelection | null; onSelectPickup?: () => void }) {
+  const { items } = useCart();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const attempt = useRef<{ cart: string; id: string } | null>(null);
 
   async function checkout() {
-    if (busy || !items.length || (pickupEnabled && !pickup)) return;
+    if (busy || !items.length) return;
+    if (pickupEnabled && !pickup) { setError(null); onSelectPickup?.(); return; }
     setBusy(true);
     setError(null);
     const selected = items.map(({ slug, quantity }) => ({ slug, quantity })).sort((a, b) => a.slug.localeCompare(b.slug));
@@ -35,14 +35,14 @@ export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, p
   }
 
   return (
-    <div className="mb-3">
-      <button type="button" onClick={checkout} disabled={busy || !items.length || (pickupEnabled && !pickup)}
-        className="w-full rounded-xl bg-gray-900 px-4 py-3 font-bold text-white transition-colors hover:bg-black disabled:cursor-not-allowed disabled:opacity-60">
-        {busy ? "Opening checkout…" : `Checkout · ${formatEuro(pricing.totalCents)}`}
+    <div className="cart-checkout">
+      <button type="button" onClick={checkout} disabled={busy || !items.length || (pickupEnabled && !pickup && !onSelectPickup)}
+        aria-controls={pickupEnabled && !pickup && onSelectPickup ? "cart-pickup-details" : undefined} className="cart-checkout-button">
+        {busy ? "Opening checkout…" : pickupEnabled && !pickup && onSelectPickup ? "Choose pickup point" : "Continue to payment"}
       </button>
-      {pickupEnabled && !pickup && <p className="mt-2 text-center text-xs text-gray-600">Choose a pickup point to continue.</p>}
-      <p className="mt-2 text-center text-xs text-gray-600">{sandbox ? "Sandbox checkout — no real payment." : "Available payment methods appear at checkout."}</p>
-      {error && <p role="alert" className="mt-2 text-sm text-red-700">{error}</p>}
+      {pickupEnabled && !pickup && !onSelectPickup && <p className="cart-checkout-note">Choose a pickup point to continue.</p>}
+      <p className="cart-checkout-note">{sandbox ? "Sandbox checkout — no real payment." : "Available payment methods appear at checkout."}</p>
+      {error && <p role="alert" className="cart-checkout-error">{error}</p>}
     </div>
   );
 }

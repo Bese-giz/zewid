@@ -5,7 +5,7 @@ import type { PickupPoint, PickupSelection } from "@/lib/postnord";
 
 export interface SelectedPickupPoint { selection: PickupSelection; point: PickupPoint }
 
-export default function PickupPointSelector({ value, onChange }: { value: SelectedPickupPoint | null; onChange: (selection: SelectedPickupPoint | null) => void }) {
+export default function PickupPointSelector({ value, onChange, compact = false }: { value: SelectedPickupPoint | null; onChange: (selection: SelectedPickupPoint | null) => void; compact?: boolean }) {
   const [postalCode, setPostalCode] = useState(value?.selection.postalCode ?? "");
   const [points, setPoints] = useState<PickupPoint[]>(value ? [value.point] : []);
   const [searched, setSearched] = useState(false);
@@ -47,10 +47,9 @@ export default function PickupPointSelector({ value, onChange }: { value: Select
   }
 
   return (
-    <div className="mb-4 rounded-xl border border-gray-200 bg-white p-4">
-      <p className="font-semibold text-gray-900">Choose a PostNord pickup point</p>
-      <p className="mt-1 text-sm text-gray-600">Enter your postcode to find nearby places to collect your order.</p>
-      <form className="mt-3" onSubmit={(event) => { event.preventDefault(); void search(); }}>
+    <div className={compact ? "cart-pickup-search" : "mb-4 rounded-xl border border-gray-200 bg-white p-4"}>
+      {!compact && <><p className="font-semibold text-gray-900">Choose a PostNord pickup point</p><p className="mt-1 text-sm text-gray-600">Enter your postcode to find nearby places to collect your order.</p></>}
+      <form className={compact ? "" : "mt-3"} onSubmit={(event) => { event.preventDefault(); void search(); }}>
         <label htmlFor="pickup-postcode" className="block text-sm font-medium text-gray-700">Finnish postcode</label>
         <div className="mt-1 flex gap-2">
           <input id="pickup-postcode" value={postalCode} onChange={(event) => changePostcode(event.target.value)}

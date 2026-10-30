@@ -10,6 +10,7 @@ import PickupPointSelector, { type SelectedPickupPoint } from "./PickupPointSele
 import type { StripeMode } from "@/lib/stripe-mode";
 import { getProductCardName } from "@/lib/product-display";
 import MarketIcon from "./MarketIcon";
+import { deliveryPointName } from "@/lib/delivery-display";
 
 export default function FloatingCart({ checkoutMode = null, pickupEnabled = false }: { checkoutMode?: StripeMode | null; pickupEnabled?: boolean }) {
   const { items, pricing, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
@@ -19,14 +20,6 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
   const contentRef = useRef<HTMLDivElement>(null);
   const pickupDetailsRef = useRef<HTMLDetailsElement>(null);
   const itemCount = items.reduce((total, item) => total + item.quantity, 0);
-
-  function choosePickup() {
-    const details = pickupDetailsRef.current;
-    if (!details) return;
-    details.open = true;
-    details.querySelector<HTMLInputElement>("#pickup-postcode")?.focus({ preventScroll: true });
-    details.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-  }
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -65,7 +58,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
         <div><h2 id="cart-title">Your cart</h2><p>{itemCount} {itemCount === 1 ? "item" : "items"}</p></div>
         <button type="button" aria-label="Close cart" autoFocus onClick={() => setIsCartOpen(false)} className="cart-close"><MarketIcon name="close" size={23} /></button>
       </div>
-      <p id="cart-description" className="sr-only">Review your items, choose delivery and continue to payment or send your order on WhatsApp.</p>
+      <p id="cart-description" className="sr-only">Review your items and continue to payment or send your order on WhatsApp. Choosing a delivery point is optional.</p>
 
       <div ref={contentRef} className="cart-content" role="region" aria-label="Cart items and delivery" tabIndex={0}>
         {items.length === 0 ? <div className="cart-empty">
@@ -108,7 +101,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
 
           {pickupEnabled && <details ref={pickupDetailsRef} id="cart-pickup-details" className="cart-pickup-details">
             <summary>
-              <span><span className="cart-pickup-title">PostNord pickup point</span><span className="cart-pickup-status">{pickup ? pickup.point.name : "Choose a location for checkout"}</span></span>
+              <span><span className="cart-pickup-title">Delivery point (optional)</span><span className="cart-pickup-status">{pickup ? deliveryPointName(pickup.point.name) : "You can enter your delivery address at payment instead."}</span></span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
             </summary>
             <PickupPointSelector value={pickup} onChange={setPickup} compact />
@@ -118,7 +111,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
 
       {items.length > 0 && <div className="cart-footer">
         <div className="cart-total" aria-live="polite" aria-atomic="true"><span>Total<small>VAT included</small></span><strong>{formatEuro(pricing.totalCents)}</strong></div>
-        {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickupEnabled={pickupEnabled} pickup={pickup?.selection ?? null} onSelectPickup={choosePickup} />}
+        {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickup={pickupEnabled ? pickup?.selection ?? null : null} />}
         <a href={generateWhatsAppLink(pickupEnabled ? pickup?.point : undefined)} target="_blank" rel="noopener noreferrer" className={`cart-whatsapp${checkoutMode ? "" : " cart-whatsapp--primary"}`}><MarketIcon name="whatsapp" size={19} />Send order on WhatsApp</a>
       </div>}
     </dialog>

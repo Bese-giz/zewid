@@ -4,6 +4,7 @@ import { CheckoutInputError, checkoutRates, validateCheckoutItems } from "@/lib/
 import { CHECKOUT_COOKIE, browserToken, checkoutBaseUrl, checkoutMode, getStripe, hashToken, matchesStripeMode } from "@/lib/stripe";
 import { BodyTooLargeError, readLimitedBody } from "@/lib/request-body";
 import { PickupInputError, postnordPickupEnabled, validatePickupSelection } from "@/lib/postnord";
+import { deliveryPointName } from "@/lib/delivery-display";
 
 export const runtime = "nodejs";
 
@@ -20,8 +21,9 @@ export async function POST(request: NextRequest) {
     if (!body || typeof body !== "object" || typeof body.requestId !== "string" ||
         !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId)) throw new CheckoutInputError("Invalid checkout request. Please try again.");
     const items = validateCheckoutItems(body.items);
-    const pickup = postnordPickupEnabled() ? await validatePickupSelection(body.pickup) : null;
-    if (!pickup && body.pickup) throw new PickupInputError("Pickup selection is temporarily unavailable. Please refresh the page.");
+    const hasPickup = body.pickup !== undefined && body.pickup !== null;
+    if (hasPickup && !postnordPickupEnabled()) throw new PickupInputError("Delivery-point selection is temporarily unavailable. Clear the selection to continue with the address entered at payment.");
+    const pickup = hasPickup ? await validatePickupSelection(body.pickup) : null;
     const { lineItems, shippingRateId, pricing } = await checkoutRates(items);
     const token = browserToken(request.cookies.get(CHECKOUT_COOKIE)?.value);
     const reference = `ZEWID-${body.requestId.replaceAll("-", "").slice(0, 12).toUpperCase()}`;
@@ -29,7 +31,7 @@ export async function POST(request: NextRequest) {
       zewid_delivery_method: "postnord_pickup", zewid_pickup_id: pickup.point.id, zewid_pickup_country: pickup.point.countryCode,
       zewid_pickup_name: pickup.point.name, zewid_pickup_street: pickup.point.street,
       zewid_pickup_postcode: pickup.point.postalCode, zewid_pickup_city: pickup.point.city,
-    } : {};
+    } : { zewid_delivery_method: "checkout_address" };
     const metadata = {
       zewid_store: "zewid", zewid_mode: mode, zewid_browser: hashToken(token), zewid_items: JSON.stringify(items),
       zewid_total_cents: String(pricing.totalCents),
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
       allowed_payment_method_types: ["card", "mobilepay"],
       adaptive_pricing: { enabled: false },
       automatic_tax: { enabled: false },
-      ...(pickup ? { custom_text: { submit: { message: `Collect your order from PostNord pickup point: ${pickup.point.name}, ${pickup.point.street}, ${pickup.point.postalCode} ${pickup.point.city}.` } } } : {}),
+      ...(pickup ? { custom_text: { submit: { message: `Collect your order from your selected delivery point: ${deliveryPointName(pickup.point.name)}, ${pickup.point.street}, ${pickup.point.postalCode} ${pickup.point.city}.` } } } : {}),
       client_reference_id: reference,
       metadata,
       // Stripe copies these initial values to the Charge. Never reset a merchant's later status edits.

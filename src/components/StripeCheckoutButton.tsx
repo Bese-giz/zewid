@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useCart } from "@/context/CartContext";
 import type { PickupSelection } from "@/lib/postnord";
 
-export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, pickup = null, onSelectPickup }: { sandbox: boolean; pickupEnabled?: boolean; pickup?: PickupSelection | null; onSelectPickup?: () => void }) {
+export default function StripeCheckoutButton({ sandbox, pickup = null }: { sandbox: boolean; pickup?: PickupSelection | null }) {
   const { items } = useCart();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -12,16 +12,15 @@ export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, p
 
   async function checkout() {
     if (busy || !items.length) return;
-    if (pickupEnabled && !pickup) { setError(null); onSelectPickup?.(); return; }
     setBusy(true);
     setError(null);
     const selected = items.map(({ slug, quantity }) => ({ slug, quantity })).sort((a, b) => a.slug.localeCompare(b.slug));
-    const fingerprint = JSON.stringify({ items: selected, pickup: pickupEnabled ? pickup : null });
+    const fingerprint = JSON.stringify({ items: selected, pickup });
     if (attempt.current?.cart !== fingerprint) attempt.current = { cart: fingerprint, id: crypto.randomUUID() };
     try {
       const response = await fetch("/api/checkout", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: selected, requestId: attempt.current!.id, ...(pickupEnabled ? { pickup } : {}) }),
+        body: JSON.stringify({ items: selected, requestId: attempt.current!.id, ...(pickup ? { pickup } : {}) }),
       });
       const result: { url?: string; error?: string } = await response.json();
       if (!response.ok || !result.url) throw new Error(result.error || "Checkout is unavailable. Please try again.");
@@ -36,11 +35,9 @@ export default function StripeCheckoutButton({ sandbox, pickupEnabled = false, p
 
   return (
     <div className="cart-checkout">
-      <button type="button" onClick={checkout} disabled={busy || !items.length || (pickupEnabled && !pickup && !onSelectPickup)}
-        aria-controls={pickupEnabled && !pickup && onSelectPickup ? "cart-pickup-details" : undefined} className="cart-checkout-button">
-        {busy ? "Opening checkout…" : pickupEnabled && !pickup && onSelectPickup ? "Choose pickup point" : "Continue to payment"}
+      <button type="button" onClick={checkout} disabled={busy || !items.length} className="cart-checkout-button">
+        {busy ? "Opening checkout…" : "Continue to payment"}
       </button>
-      {pickupEnabled && !pickup && !onSelectPickup && <p className="cart-checkout-note">Choose a pickup point to continue.</p>}
       <p className="cart-checkout-note">{sandbox ? "Sandbox checkout — no real payment." : "Available payment methods appear at checkout."}</p>
       {error && <p role="alert" className="cart-checkout-error">{error}</p>}
     </div>

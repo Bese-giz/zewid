@@ -6,6 +6,7 @@ import type { PublicOrder } from "@/lib/checkout";
 import { useCart } from "@/context/CartContext";
 import { formatEuro } from "@/lib/pricing";
 import { site, whatsappLink } from "@/lib/site";
+import { deliveryPointName } from "@/lib/delivery-display";
 
 export default function CheckoutConfirmation({ initialOrder }: { initialOrder: PublicOrder }) {
   const [order, setOrder] = useState(initialOrder);
@@ -69,8 +70,8 @@ export default function CheckoutConfirmation({ initialOrder }: { initialOrder: P
         <p className="mt-2 text-xs text-gray-600">Prices include VAT.</p>
         {order.pickupPoint && (
           <div className="mt-4 rounded-xl bg-green-50 p-4 text-sm text-green-900">
-            <p className="font-semibold">PostNord pickup point</p>
-            <p>{order.pickupPoint.name}</p>
+            <p className="font-semibold">Delivery point</p>
+            <p>{deliveryPointName(order.pickupPoint.name)}</p>
             <p>{order.pickupPoint.street}, {order.pickupPoint.postalCode} {order.pickupPoint.city}</p>
           </div>
         )}

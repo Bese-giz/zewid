@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { PickupPoint, PickupSelection } from "@/lib/postnord";
+import { deliveryPointName } from "@/lib/delivery-display";
 
 export interface SelectedPickupPoint { selection: PickupSelection; point: PickupPoint }
 
@@ -39,16 +40,17 @@ export default function PickupPointSelector({ value, onChange, compact = false }
     try {
       const response = await fetch(`/api/delivery/pickup-points?postal_code=${encodeURIComponent(code)}`, { signal: active.signal });
       const result: { points?: PickupPoint[]; error?: string } = await response.json();
-      if (!response.ok || !result.points) throw new Error(result.error || "Pickup points could not be found. Please try again.");
+      if (!response.ok || !result.points) throw new Error(result.error || "Delivery points could not be found. Try again or continue to payment without selecting one.");
       if (!active.signal.aborted) { setPoints(result.points); setSearched(true); }
     } catch (failure) {
-      if (!active.signal.aborted) setError(failure instanceof Error ? failure.message : "Pickup points could not be found.");
+      if (!active.signal.aborted) setError(failure instanceof Error ? failure.message : "Delivery points could not be found. You can continue to payment without selecting one.");
     } finally { if (!active.signal.aborted) setBusy(false); }
   }
 
   return (
     <div className={compact ? "cart-pickup-search" : "mb-4 rounded-xl border border-gray-200 bg-white p-4"}>
-      {!compact && <><p className="font-semibold text-gray-900">Choose a PostNord pickup point</p><p className="mt-1 text-sm text-gray-600">Enter your postcode to find nearby places to collect your order.</p></>}
+      {!compact && <><p className="font-semibold text-gray-900">Delivery point (optional)</p><p className="mt-1 text-sm text-gray-600">Choose a nearby collection location, or enter your delivery address at payment instead.</p></>}
+      {value && <button type="button" onClick={() => onChange(null)} className="mb-3 min-h-10 text-sm font-medium text-green-800 underline underline-offset-4">Use address entered at payment instead</button>}
       <form className={compact ? "" : "mt-3"} onSubmit={(event) => { event.preventDefault(); void search(); }}>
         <label htmlFor="pickup-postcode" className="block text-sm font-medium text-gray-700">Finnish postcode</label>
         <div className="mt-1 flex gap-2">
@@ -61,17 +63,17 @@ export default function PickupPointSelector({ value, onChange, compact = false }
         </div>
       </form>
       <div aria-live="polite">
-        {searched && points.length === 0 && <p className="mt-3 text-sm text-gray-600">No pickup points were found. Check the postcode or contact us for delivery options.</p>}
+        {searched && points.length === 0 && <p className="mt-3 text-sm text-gray-600">No delivery points were found. Check the postcode, or continue to payment and enter your delivery address there.</p>}
         {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       </div>
       {points.length > 0 && (
         <fieldset className="mt-3 space-y-2">
-          <legend className="mb-2 text-sm font-medium text-gray-700">Nearby pickup points</legend>
+          <legend className="mb-2 text-sm font-medium text-gray-700">Nearby delivery points</legend>
           {points.map((point) => (
             <label key={point.id} className={`flex cursor-pointer items-start gap-3 rounded-lg border p-3 text-sm ${value?.selection.servicePointId === point.id ? "border-green-700 bg-green-50" : "border-gray-200"}`}>
-              <input type="radio" name="postnord-pickup" checked={value?.selection.servicePointId === point.id}
+              <input type="radio" name="delivery-point" checked={value?.selection.servicePointId === point.id}
                 onChange={() => onChange({ selection: { postalCode: postalCode.trim(), servicePointId: point.id }, point })} className="mt-1 accent-green-700" />
-              <span><span className="block font-semibold text-gray-900">{point.name}</span><span className="block text-gray-600">{point.street}, {point.postalCode} {point.city}</span></span>
+              <span><span className="block font-semibold text-gray-900">{deliveryPointName(point.name)}</span><span className="block text-gray-600">{point.street}, {point.postalCode} {point.city}</span></span>
             </label>
           ))}
         </fieldset>

@@ -65,10 +65,10 @@ export async function validatePickupSelection(value: unknown): Promise<{ selecti
   const selected = record(value);
   const postalCode = validatePostalCode(selected?.postalCode);
   const id = text(selected?.servicePointId, 64);
-  if (!id || !/^[a-zA-Z0-9_-]+$/.test(id)) throw new PickupInputError("Choose a PostNord pickup point before continuing.");
+  if (!id || !/^[a-zA-Z0-9_-]+$/.test(id)) throw new PickupInputError("Select a valid delivery point, or clear the selection to use your checkout address.");
   // Recheck eligibility and use the carrier's address, never customer-supplied names or addresses.
   const points = await findPickupPoints(postalCode);
   const point = points.find((entry) => entry.id === id);
-  if (!point) throw new PickupInputError("That pickup point is no longer available. Search again and choose another point.");
+  if (!point) throw new PickupInputError("That delivery point is no longer available. Choose another point, or clear the selection to use your checkout address.");
   return { selection: { postalCode, servicePointId: id }, point };
 }

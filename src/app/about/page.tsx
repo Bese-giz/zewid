@@ -36,7 +36,7 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed mb-4">
               ZEWID Market is a Finland-based Ethiopian market dedicated
               to providing Ethiopian food and traditional home essentials to
-              customers in Finland and beyond. For delivery outside Finland, contact us on WhatsApp.
+              customers who enjoy Ethiopian cooking and traditions.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               We specialize in premium Ethiopian teff flour, mashila (sorghum),
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <ul className="space-y-3">
                 {[
                   "Premium quality products imported from Ethiopia",
-                  "Delivery across Finland, with other destinations arranged on WhatsApp",
+                  "Carefully packed orders and personal delivery support",
                   "Website checkout and personal WhatsApp support",
                   "Affordable prices for families",
                   "Supporting the Ethiopian community in Finland",
@@ -105,7 +105,7 @@ export default function AboutPage() {
             Want to try our products?
           </h2>
           <p className="text-gray-500 mb-6">
-            Order and pay on our website for Finland delivery, or contact us on WhatsApp to arrange your order and delivery outside Finland.
+            Browse our collection, order on the website or get in touch with us on WhatsApp.
           </p>
           <Link href="/products" className="market-button market-button--primary mb-3 sm:mb-0 sm:mr-3">Shop online</Link>
           <a

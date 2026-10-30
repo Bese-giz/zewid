@@ -6,11 +6,11 @@ import HowToOrder from "@/components/HowToOrder";
 import MarketIcon from "@/components/MarketIcon";
 import { products } from "@/data/products";
 import { pageMetadata } from "@/lib/metadata";
-import { internationalDeliveryLink, site, whatsappLink } from "@/lib/site";
+import { whatsappLink } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Your Ethiopian Market in Finland",
-  description: `Shop Ethiopian food, coffee and home essentials. Order and pay online for Finland delivery at €${site.deliveryFeeEur.toFixed(2)} per order, or contact us on WhatsApp for delivery outside Finland.`,
+  description: "Shop Ethiopian food, coffee and home essentials. Browse ZEWID Market and order online or contact us on WhatsApp.",
   path: "/",
 });
 
@@ -35,9 +35,8 @@ export default function HomePage() {
       </section>
 
       <section id="collection" aria-labelledby="collection-title" className="market-container market-section market-collection">
-        <div className="market-section-heading market-section-heading--collection">
+        <div className="market-section-heading">
           <div><p className="market-eyebrow">Thoughtfully brought together</p><h2 id="collection-title" className="market-title">Explore the market.</h2><p>Shop available products online and discover what’s coming soon.</p></div>
-          <div className="space-y-2"><p className="market-delivery-note"><MarketIcon name="truck" size={18} />€{site.deliveryFeeEur.toFixed(2)} delivery in Finland</p><a href={internationalDeliveryLink()} target="_blank" rel="noopener noreferrer" className="inline-block text-sm font-medium text-green-800 underline underline-offset-4">Outside Finland? Contact us on WhatsApp</a></div>
         </div>
         <HomeProductFeed products={products} />
       </section>
@@ -73,7 +72,7 @@ export default function HomePage() {
               {
                 icon: "🌍",
                 title: "Delivery Options",
-                desc: "Delivery across Finland. For other countries, contact us on WhatsApp for a quote.",
+                desc: "Carefully packed orders, with delivery details confirmed before dispatch.",
               },
             ].map((item) => (
               <div
@@ -89,72 +88,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pt-10 sm:px-6 lg:px-8"><OrderInformation /></section>
-
-      {/* Delivery Info Section */}
-      <section className="py-10 px-4 sm:px-6 lg:px-8 md:py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative overflow-hidden rounded-[2rem] border border-green-100 bg-[radial-gradient(circle_at_top_left,_rgba(34,197,94,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(250,204,21,0.12),transparent_28%),linear-gradient(180deg,#f8fcf8_0%,#eef7f1_100%)] px-5 py-6 text-slate-900 shadow-[0_24px_60px_rgba(15,23,42,0.08)] md:px-10 md:py-10">
-            <div className="absolute -left-16 top-10 h-40 w-40 rounded-full bg-emerald-400/10 blur-3xl" />
-            <div className="absolute -right-10 bottom-0 h-56 w-56 rounded-full bg-yellow-300/10 blur-3xl" />
-            <div className="relative grid items-center gap-6 md:grid-cols-[1.2fr_0.9fr] md:gap-10">
-              <div>
-                <span className="inline-flex rounded-full border border-green-200 bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-green-800 md:text-xs">
-                  Finland &amp; Beyond
-                </span>
-                <h2 className="mt-4 text-2xl font-bold leading-tight text-slate-900 md:text-5xl">
-                  Delivery in Finland and beyond
-                </h2>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-lg">
-                  Order online for Finland delivery. For delivery to another country, contact us on WhatsApp to confirm shipping costs and timing before ordering.
-                </p>
-                <p lang="am" className="mt-3 text-sm text-green-800 md:text-base">
-                  ከፊንላንድ ውጭ ለማዘዝ በዋትስአፕ ያግኙን።
-                </p>
-                <div className="mt-6 flex max-w-xs flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap">
-                  <a
-                    href={internationalDeliveryLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center rounded-full bg-green-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-600 sm:w-auto"
-                  >
-                    Ask about international delivery
-                  </a>
-                  <Link
-                    href="/products"
-                    className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white/70 px-5 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-white sm:w-auto"
-                  >
-                    Shop online in Finland
-                  </Link>
-                </div>
-              </div>
-              <div className="grid gap-3 md:gap-4">
-                {[
-                  {
-                    title: `Finland: ${site.deliveryTime}`,
-                    desc: `€${site.deliveryFeeEur.toFixed(2)} delivery per order within Finland.`,
-                  },
-                  {
-                    title: "Outside Finland",
-                    desc: "Send us your country and postcode on WhatsApp for shipping costs and an estimated delivery time.",
-                  },
-                  {
-                    title: "Payment & Support",
-                    desc: "Pay online for Finland orders, or arrange your order and payment with us on WhatsApp.",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="group rounded-2xl border border-green-100 bg-white/85 p-4 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:border-green-300 hover:shadow-md md:p-5"
-                  >
-                    <h3 className="text-base font-semibold text-slate-900 transition-colors group-hover:text-green-700 md:text-lg">{item.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-500">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="delivery-details" aria-labelledby="delivery-details-title" className="market-container py-10 md:py-16">
+        <h2 id="delivery-details-title" className="market-title mb-6 text-3xl md:text-4xl">Delivery details</h2>
+        <OrderInformation />
       </section>
 
       {/* WhatsApp CTA */}
@@ -164,7 +100,7 @@ export default function HomePage() {
             A question before you order?
           </h2>
           <p className="text-gray-500 mb-6 text-sm md:text-lg">
-            Ask about a product, payment or delivery outside Finland. We’ll help you arrange the details.
+            Ask about a product, payment or your order. We’ll help you arrange the details.
           </p>
           <a
             href={whatsappLink("Hi ZEWID Market! I have a question about ordering, payment or delivery.")}

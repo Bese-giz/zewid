@@ -46,8 +46,6 @@
 .market-section-heading h2 { margin-top: 8px; font-size: clamp(30px, 3vw, 43px); line-height: 1.15; }
 .market-section-heading > p:last-child, .market-section-heading > div > p:last-child { margin-top: 12px; color: #687369; font-size: 14px; line-height: 1.6; }
 .market-collection { scroll-margin-top: 130px; padding-top: 36px; }
-.market-section-heading--collection { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
-.market-delivery-note { display: flex; align-items: center; gap: 8px; padding-bottom: 4px; color: #647661; font-size: 12px; white-space: nowrap; }
 
 .market-footer { background: #1d4034; color: #f7f4e9; padding-top: 60px; }
 .market-footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 42px; padding-bottom: 50px; }
@@ -107,8 +105,6 @@
   .market-section-heading h2 { font-size: 31px; }
   .market-section-heading > p:last-child, .market-section-heading > div > p:last-child { font-size: 14px; }
   .market-eyebrow { font-size: 11px; letter-spacing: 0.13em; }
-  .market-section-heading--collection { display: block; }
-  .market-delivery-note { margin-top: 18px; font-size: 13px; }
   .market-footer { padding-top: 38px; }
   .market-footer__grid { grid-template-columns: 1fr 1fr; gap: 30px 24px; padding-bottom: 34px; }
   .market-footer__intro { grid-column: 1 / -1; }

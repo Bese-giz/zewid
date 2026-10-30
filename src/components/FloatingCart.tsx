@@ -5,7 +5,6 @@ import { MAX_CART_QUANTITY, useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { formatEuro } from "@/lib/pricing";
-import { internationalDeliveryLink } from "@/lib/site";
 import StripeCheckoutButton from "./StripeCheckoutButton";
 import PickupPointSelector, { type SelectedPickupPoint } from "./PickupPointSelector";
 import type { StripeMode } from "@/lib/stripe-mode";
@@ -150,7 +149,6 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
               <div className="flex justify-between gap-4 border-t border-gray-200 pt-2 text-lg font-bold"><dt>Total</dt><dd>{formatEuro(pricing.totalCents)}</dd></div>
             </dl>
             <p className="mt-2 text-xs text-gray-600">Prices include VAT. Online checkout is for delivery in Finland.</p>
-            <p className="mt-2 text-xs leading-relaxed text-gray-600">Outside Finland? <a href={internationalDeliveryLink()} target="_blank" rel="noopener noreferrer" className="font-semibold text-green-800 underline underline-offset-2">Contact us on WhatsApp for a shipping quote.</a></p>
           </div>
           {pickupEnabled && <PickupPointSelector value={pickup} onChange={setPickup} />}
           {checkoutMode && <StripeCheckoutButton sandbox={checkoutMode === "sandbox"} pickupEnabled={pickupEnabled} pickup={pickup?.selection ?? null} />}

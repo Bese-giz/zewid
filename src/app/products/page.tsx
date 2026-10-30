@@ -8,7 +8,7 @@ export const metadata = {
   ...pageMetadata({
     title: "Products – Ethiopian Food, Coffee & Home Essentials",
     description:
-      "Shop Ethiopian food, coffee and home essentials. Pay online for Finland delivery, or contact us on WhatsApp for delivery outside Finland.",
+      "Shop Ethiopian food, coffee and home essentials. Browse the collection, pay online or arrange your order on WhatsApp.",
     path: "/products",
   }),
   keywords: [

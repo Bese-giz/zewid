@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { site } from "@/lib/site";
 
 const messages = [
   { text: "እንኳን ወደ ዘውድ ማርኬት በሰላም መጣችሁ! 🇪🇹 🛍️", lang: "am" },
-  { text: "Outside Finland? Contact us on WhatsApp for delivery.", lang: "en" },
-  { text: `Finland delivery · €${site.deliveryFeeEur.toFixed(2)} per order · ${site.deliveryTime}`, lang: "en" },
+  { text: "Ethiopian essentials for everyday life.", lang: "en" },
+  { text: "Rooted in tradition. Made for everyday.", lang: "en" },
   { text: "Food, coffee & home. Personal support on WhatsApp.", lang: "en" },
 ];
 

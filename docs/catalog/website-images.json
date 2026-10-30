@@ -153,9 +153,10 @@
       "catalog_item": 19,
       "title": "Ethiopian-Style 3-Tier Cake & Snack Stand",
       "images": [
+        "snack-stand-3-tier-2.png",
         "snack-stand-3-tier.png"
       ],
-      "primary_image": "snack-stand-3-tier.png"
+      "primary_image": "snack-stand-3-tier-2.png"
     },
     {
       "catalog_item": 20,

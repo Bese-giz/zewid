@@ -1,4 +1,4 @@
-import { whatsappLink } from "@/lib/site";
+import HowToOrder from "@/components/HowToOrder";
 import OrderInformation from "@/components/OrderInformation";
 import { pageMetadata } from "@/lib/metadata";
 import ProductCatalog from "@/components/ProductCatalog";
@@ -8,7 +8,7 @@ export const metadata = {
   ...pageMetadata({
     title: "Products – Ethiopian Food, Coffee & Home Essentials",
     description:
-      "Shop Ethiopian teff, coffee and spices, and discover upcoming injera makers, coffee ceremony accessories and serving sets in Finland.",
+      "Shop Ethiopian food, coffee and home essentials. Pay online for Finland delivery, or contact us on WhatsApp for delivery outside Finland.",
     path: "/products",
   }),
   keywords: [
@@ -42,58 +42,14 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       </section>
 
       {/* Products Grid */}
-      <section className="py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="catalog" className="scroll-mt-32 py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <p className="mb-4 text-xs leading-relaxed text-gray-600">Ask us on WhatsApp about prices and availability for coming-soon products.</p>
         <ProductCatalog key={`${category}:${search}`} products={products} initialCategory={category} initialSearch={search} />
       </section>
 
       <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"><OrderInformation /></section>
 
-      {/* How to Order */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            How to Order
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 font-bold">1</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Choose Products</h3>
-              <p className="text-sm text-gray-500">
-                Pick what you need from our selection
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 font-bold">2</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Message Us</h3>
-              <p className="text-sm text-gray-500">
-                Send your order via WhatsApp
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-green-600 font-bold">3</span>
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Fast Delivery</h3>
-              <p className="text-sm text-gray-500">
-                Receive fast, reliable delivery all over Finland
-              </p>
-            </div>
-          </div>
-          <a
-            href={whatsappLink("Hi ZEWID! I would like to order")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-colors"
-          >
-            Order on WhatsApp
-          </a>
-        </div>
-      </section>
+      <HowToOrder shopHref="#catalog" />
     </>
   );
 }

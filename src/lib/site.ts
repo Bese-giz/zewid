@@ -10,3 +10,7 @@ export const site = {
 export function whatsappLink(message?: string): string {
   return `https://wa.me/${site.phone}${message ? `?text=${encodeURIComponent(message)}` : ""}`;
 }
+
+export function internationalDeliveryLink(): string {
+  return whatsappLink("Hi ZEWID Market! I would like delivery outside Finland. My country and postcode are: ");
+}

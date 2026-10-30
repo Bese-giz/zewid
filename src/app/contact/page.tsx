@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact ZEWID Market for Ethiopian food, coffee and home essentials in Finland. Reach us on WhatsApp, Facebook, or TikTok.",
+    "Contact ZEWID Market about orders, payment and delivery in Finland or abroad. Reach us on WhatsApp, Facebook, or TikTok.",
   path: "/contact",
 });
 
@@ -43,7 +43,7 @@ export default function ContactPage() {
                   WhatsApp Business
                 </h2>
                 <p className="text-gray-500 mb-4">
-                  The fastest way to reach us. Order products, ask questions, or get delivery updates anywhere in Finland.
+                  Order products, arrange payment or ask about your delivery. For delivery outside Finland, send us your country and postcode for shipping costs and timing.
                 </p>
                 <a
                   href={whatsappLink("Hi ZEWID!")}

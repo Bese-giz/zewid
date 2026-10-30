@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="market-footer">
       <div className="market-container">
         <div className="market-footer__grid">
-          <div className="market-footer__intro"><Link href="/" aria-label="ZEWID Market home"><BrandMark /></Link><p>Your Ethiopian market, closer to home. Food, coffee and familiar essentials for life in Finland.</p></div>
+          <div className="market-footer__intro"><Link href="/" aria-label="ZEWID Market home"><BrandMark /></Link><p>Your Ethiopian market, closer to home. Based in Finland, with food, coffee and home essentials delivered beyond.</p></div>
           <div><h3>Shop the market</h3><ul><li><Link href="/products">Shop all products</Link></li>{productCategories.map(category => <li key={category.id}><Link href={`/products?category=${category.id}`}>{category.name}</Link></li>)}</ul></div>
           <div><h3>Here for you</h3><ul><li><Link href="/about">Our story</Link></li><li><Link href="/contact">Contact us</Link></li><li><Link href="/feedback">Share your feedback</Link></li><li><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">Delivery &amp; order questions</a></li></ul></div>
           <div><h3>Let’s stay connected</h3><ul><li><a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="market-footer__whatsapp"><MarketIcon name="whatsapp" size={18} />WhatsApp</a></li><li><a href="https://www.tiktok.com/@zewid.teff?_r=1&_t=ZN-96XftlHurpu" target="_blank" rel="noopener noreferrer">TikTok</a></li><li><a href="https://www.facebook.com/share/18fkuFhBQe/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Facebook</a></li></ul></div>

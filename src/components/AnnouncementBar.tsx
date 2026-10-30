@@ -5,8 +5,8 @@ import { site } from "@/lib/site";
 
 const messages = [
   { text: "እንኳን ወደ ዘውድ ማርኬት በሰላም መጣችሁ! 🇪🇹 🛍️", lang: "am" },
-  { text: "Ethiopian essentials. Delivered across Finland.", lang: "en" },
-  { text: `Nationwide delivery · €${site.deliveryFeeEur.toFixed(2)} per order · ${site.deliveryTime}`, lang: "en" },
+  { text: "Outside Finland? Contact us on WhatsApp for delivery.", lang: "en" },
+  { text: `Finland delivery · €${site.deliveryFeeEur.toFixed(2)} per order · ${site.deliveryTime}`, lang: "en" },
   { text: "Food, coffee & home. Personal support on WhatsApp.", lang: "en" },
 ];
 

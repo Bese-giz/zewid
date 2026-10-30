@@ -1,6 +1,7 @@
 import { whatsappLink } from "@/lib/site";
 import { pageMetadata } from "@/lib/metadata";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = pageMetadata({
   title: "About Us",
@@ -20,7 +21,7 @@ export default function AboutPage() {
             Our story: ZEWID Market
           </h1>
           <p className="text-gray-500 text-lg">
-            Your trusted source for premium Ethiopian products in Finland
+            Ethiopian food, coffee and home essentials, from Finland to your home
           </p>
         </div>
       </section>
@@ -35,7 +36,7 @@ export default function AboutPage() {
             <p className="text-gray-600 leading-relaxed mb-4">
               ZEWID Market is a Finland-based Ethiopian market dedicated
               to providing Ethiopian food and traditional home essentials to
-              customers all over Finland.
+              customers in Finland and beyond. For delivery outside Finland, contact us on WhatsApp.
             </p>
             <p className="text-gray-600 leading-relaxed mb-4">
               We specialize in premium Ethiopian teff flour, mashila (sorghum),
@@ -78,8 +79,8 @@ export default function AboutPage() {
               <ul className="space-y-3">
                 {[
                   "Premium quality products imported from Ethiopia",
-                  "Fast, reliable delivery all over Finland",
-                  "Personal service through WhatsApp",
+                  "Delivery across Finland, with other destinations arranged on WhatsApp",
+                  "Website checkout and personal WhatsApp support",
                   "Affordable prices for families",
                   "Supporting the Ethiopian community in Finland",
                 ].map((value) => (
@@ -104,10 +105,11 @@ export default function AboutPage() {
             Want to try our products?
           </h2>
           <p className="text-gray-500 mb-6">
-            Order directly through WhatsApp for fast, reliable delivery all over Finland.
+            Order and pay on our website for Finland delivery, or contact us on WhatsApp to arrange your order and delivery outside Finland.
           </p>
+          <Link href="/products" className="market-button market-button--primary mb-3 sm:mb-0 sm:mr-3">Shop online</Link>
           <a
-            href={whatsappLink("Hi ZEWID! I would like to order")}
+            href={whatsappLink("Hi ZEWID Market! I would like to arrange an order and delivery.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-bold transition-colors"

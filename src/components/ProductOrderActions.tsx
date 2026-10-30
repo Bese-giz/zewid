@@ -48,7 +48,7 @@ export default function ProductOrderActions({ product }: { product: Product }) {
         className="block rounded-xl bg-green-100 px-6 py-3 text-center font-semibold text-green-800 transition-colors hover:bg-green-700 hover:text-white">
         Ask on WhatsApp
       </a>
-      <p className="text-sm leading-relaxed text-gray-600">{available ? "Add your products to the cart to see your total, including delivery, then pay online or send your order on WhatsApp." : product.availability === "coming-soon" ? "This product is coming soon. Ask us about its price and availability on WhatsApp." : "Ask us on WhatsApp about availability."}</p>
+      <p className="text-sm leading-relaxed text-gray-600">{available ? "Add products to your cart for Finland delivery, then pay online or send your order on WhatsApp. For delivery outside Finland, ask us on WhatsApp for shipping costs and timing." : product.availability === "coming-soon" ? "This product is coming soon. Ask us about its price and availability on WhatsApp." : "Ask us on WhatsApp about availability."}</p>
     </div>
   );
 }

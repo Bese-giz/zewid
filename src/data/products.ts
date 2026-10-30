@@ -809,8 +809,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": null,
     "availability": "coming-soon",
-    "image": "/images/snack-stand-3-tier.png",
+    "image": "/images/snack-stand-3-tier-2.png",
     "images": [
+      "/images/snack-stand-3-tier-2.png",
       "/images/snack-stand-3-tier.png"
     ],
     "features": [

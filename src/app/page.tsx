@@ -3,6 +3,7 @@ import Image from "next/image";
 import HomeProductFeed from "@/components/HomeProductFeed";
 import OrderInformation from "@/components/OrderInformation";
 import HowToOrder from "@/components/HowToOrder";
+import PaymentMethods from "@/components/PaymentMethods";
 import MarketIcon from "@/components/MarketIcon";
 import { products } from "@/data/products";
 import { pageMetadata } from "@/lib/metadata";
@@ -42,6 +43,7 @@ export default function HomePage() {
       </section>
 
       <HowToOrder shopHref="#collection" />
+      <PaymentMethods />
 
       {/* What Sets Us Apart */}
       <section className="bg-slate-50 py-10 px-4 sm:px-6 lg:px-8 md:py-20">

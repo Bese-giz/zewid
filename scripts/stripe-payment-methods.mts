@@ -27,6 +27,7 @@ try {
     applePay: { available: current.apple_pay?.available ?? false, display: current.apple_pay?.display_preference.value ?? "unknown" },
     googlePay: { available: current.google_pay?.available ?? false, display: current.google_pay?.display_preference.value ?? "unknown" },
     mobilePay: { available: current.mobilepay?.available ?? false, display: current.mobilepay?.display_preference.value ?? "unknown" },
+    klarna: { available: current.klarna?.available ?? false, display: current.klarna?.display_preference.value ?? "unknown" },
   }, null, 2));
 } catch {
   console.error("Payment settings could not be checked. Review Payment methods in the matching Stripe Dashboard environment.");

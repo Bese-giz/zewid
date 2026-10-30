@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       shipping_options: [{ shipping_rate: shippingRateId }],
       shipping_address_collection: { allowed_countries: ["FI"] },
       phone_number_collection: { enabled: true },
-      allowed_payment_method_types: ["card", "mobilepay"],
+      allowed_payment_method_types: ["card", "mobilepay", "klarna"],
       adaptive_pricing: { enabled: false },
       automatic_tax: { enabled: false },
       ...(pickup ? { custom_text: { submit: { message: `Collect your order from your selected delivery point: ${deliveryPointName(pickup.point.name)}, ${pickup.point.street}, ${pickup.point.postalCode} ${pickup.point.city}.` } } } : {}),

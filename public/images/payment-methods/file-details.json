@@ -1,0 +1,62 @@
+[
+  {
+    "name": "cards",
+    "label": "Cards",
+    "svg": "cards.svg",
+    "png": "cards.png",
+    "pngWidth": 101,
+    "pngHeight": 64,
+    "svgBytes": 759,
+    "pngBytes": 925
+  },
+  {
+    "name": "visa",
+    "label": "Visa",
+    "svg": "visa.svg",
+    "png": "visa.png",
+    "pngWidth": 101,
+    "pngHeight": 64,
+    "svgBytes": 3189,
+    "pngBytes": 2175
+  },
+  {
+    "name": "mastercard",
+    "label": "Mastercard",
+    "svg": "mastercard.svg",
+    "png": "mastercard.png",
+    "pngWidth": 101,
+    "pngHeight": 64,
+    "svgBytes": 1553,
+    "pngBytes": 1813
+  },
+  {
+    "name": "apple-pay",
+    "label": "Apple Pay",
+    "svg": "apple-pay.svg",
+    "png": "apple-pay.png",
+    "pngWidth": 100,
+    "pngHeight": 64,
+    "svgBytes": 6352,
+    "pngBytes": 2030
+  },
+  {
+    "name": "google-pay",
+    "label": "Google Pay",
+    "svg": "google-pay.svg",
+    "png": "google-pay.png",
+    "pngWidth": 94,
+    "pngHeight": 64,
+    "svgBytes": 3238,
+    "pngBytes": 2177
+  },
+  {
+    "name": "klarna",
+    "label": "Klarna",
+    "svg": "klarna.svg",
+    "png": "klarna.png",
+    "pngWidth": 152,
+    "pngHeight": 64,
+    "svgBytes": 2719,
+    "pngBytes": 2710
+  }
+]

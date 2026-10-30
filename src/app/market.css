@@ -51,7 +51,10 @@
 .market-payments__copy h2 { color: #244b38; font-size: 22px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.3; }
 .market-payments__copy p { margin-top: 6px; color: #66715f; font-size: 13px; line-height: 1.6; }
 .market-payments__methods { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
-.market-payments__badge { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 8px; padding: 9px 16px; border: 1px solid #e2e5db; border-radius: 7px; background: #fff; color: #1f2924; font-size: 14px; font-weight: 600; white-space: nowrap; }
+.market-payments__badge { display: inline-flex; min-width: 108px; min-height: 78px; flex-direction: column; align-items: center; justify-content: center; gap: 7px; padding: 10px 12px; border: 1px solid #e2e5db; border-radius: 7px; background: #fff; color: #1f2924; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.market-payments__icon { display: block; width: auto; height: 28px; max-width: 100%; object-fit: contain; }
+.market-payments__card-icons { display: flex; min-height: 28px; align-items: center; justify-content: center; gap: 4px; }
+.market-payments__card-icons img { display: block; width: auto; height: 20px; object-fit: contain; }
 .market-payments__badge--klarna { border-color: #f5c9d5; background: #fce6ed; color: #24171d; }
 .market-payments__note { margin-top: 9px; color: #677460; font-size: 12px; line-height: 1.5; }
 
@@ -95,7 +98,7 @@
   .market-payments { justify-content: center; gap: 18px; padding-block: 26px; text-align: center; }
   .market-payments > div:last-child { width: 100%; max-width: 380px; }
   .market-payments__methods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .market-payments__badge { padding-inline: 13px; font-size: 13px; }
+  .market-payments__badge { min-width: 0; padding-inline: 10px; }
   .market-container { width: calc(100% - 36px); }
   .market-announcement { min-height: 50px; padding: 7px 14px; }
   .market-announcement__message { font-size: 12px; }

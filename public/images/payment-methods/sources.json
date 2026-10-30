@@ -1,0 +1,26 @@
+{
+  "apple-pay": {
+    "page": "https://developer.apple.com/apple-pay/marketing/",
+    "download": "https://developer.apple.com/apple-pay/marketing/Apple-Pay-Mark.zip"
+  },
+  "google-pay": {
+    "page": "https://developers.google.com/pay/api/web/guides/brand-guidelines",
+    "download": "https://developers.google.com/static/pay/api/download-assets/Google-Pay-Acceptance.zip"
+  },
+  "klarna": {
+    "page": "https://docs.klarna.com/acquirer/klarna/web-payments/additional-resources/checkout-styling/",
+    "download": "https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg"
+  },
+  "cards": {
+    "page": "https://github.com/activemerchant/payment_icons",
+    "download": "https://raw.githubusercontent.com/activemerchant/payment_icons/master/app/assets/images/payment_icons/generic.svg"
+  },
+  "visa": {
+    "page": "https://github.com/activemerchant/payment_icons",
+    "download": "https://raw.githubusercontent.com/activemerchant/payment_icons/master/app/assets/images/payment_icons/visa.svg"
+  },
+  "mastercard": {
+    "page": "https://github.com/activemerchant/payment_icons",
+    "download": "https://raw.githubusercontent.com/activemerchant/payment_icons/master/app/assets/images/payment_icons/master.svg"
+  }
+}

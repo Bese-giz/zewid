@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PaymentMethods() {
   return (
     <section aria-labelledby="payment-methods-title" className="market-container market-payments">
@@ -8,12 +10,25 @@ export default function PaymentMethods() {
       <div>
         <ul className="market-payments__methods" aria-label="Payment methods">
           <li className="market-payments__badge">
-            <svg width="23" height="18" viewBox="0 0 24 18" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><rect x="1" y="1" width="22" height="16" rx="3" /><path d="M1 6h22M5 12h4" /></svg>
-            Cards
+            <span className="market-payments__card-icons">
+              <Image src="/images/payment-methods/cards.svg" alt="" width={38} height={24} />
+              <Image src="/images/payment-methods/visa.svg" alt="Visa" width={38} height={24} />
+              <Image src="/images/payment-methods/mastercard.svg" alt="Mastercard" width={38} height={24} />
+            </span>
+            <span>Cards</span>
           </li>
-          <li className="market-payments__badge">Apple Pay</li>
-          <li className="market-payments__badge">Google Pay</li>
-          <li className="market-payments__badge market-payments__badge--klarna">Klarna</li>
+          <li className="market-payments__badge">
+            <Image src="/images/payment-methods/apple-pay.svg" alt="" width={100} height={64} className="market-payments__icon" />
+            <span>Apple Pay</span>
+          </li>
+          <li className="market-payments__badge">
+            <Image src="/images/payment-methods/google-pay.svg" alt="" width={94} height={64} className="market-payments__icon" />
+            <span>Google Pay</span>
+          </li>
+          <li className="market-payments__badge market-payments__badge--klarna">
+            <Image src="/images/payment-methods/klarna.svg" alt="" width={152} height={64} className="market-payments__icon" />
+            <span>Klarna</span>
+          </li>
         </ul>
         <p className="market-payments__note">Payment options depend on your device and eligibility.</p>
       </div>

@@ -6,6 +6,7 @@ import { whatsappLink } from "@/lib/site";
 import { MAX_CART_QUANTITY, calculateCart, formatEuro } from "@/lib/pricing";
 import type { PickupPoint } from "@/lib/postnord";
 import { deliveryPointName } from "@/lib/delivery-display";
+import { getProductDisplayName } from "@/lib/product-display";
 
 export { MAX_CART_QUANTITY } from "@/lib/pricing";
 const STORAGE_KEY = "zewid_cart";
@@ -149,7 +150,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const generateWhatsAppLink = (pickupPoint?: PickupPoint) => {
     const lines = pricing.lines.map((line, index) =>
-      `${index + 1}. ${line.product.name} (${line.product.weight}) x ${line.quantity} at ${formatEuro(line.unitPriceCents)} each = ${formatEuro(line.lineTotalCents)}`);
+      `${index + 1}. ${getProductDisplayName(line.product)} (${line.product.weight}) x ${line.quantity} at ${formatEuro(line.unitPriceCents)} each = ${formatEuro(line.lineTotalCents)}`);
     const pickupDetails = pickupPoint
       ? `\n\nDelivery point: ${deliveryPointName(pickupPoint.name)}\nAddress: ${pickupPoint.street}, ${pickupPoint.postalCode} ${pickupPoint.city}\nDelivery point ID: ${pickupPoint.id}\nCountry: ${pickupPoint.countryCode}`
       : "";

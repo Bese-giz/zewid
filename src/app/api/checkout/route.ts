@@ -5,9 +5,9 @@ import { CHECKOUT_COOKIE, browserToken, checkoutBaseUrl, checkoutMode, getStripe
 import { BodyTooLargeError, readLimitedBody } from "@/lib/request-body";
 import { PickupInputError, postnordPickupEnabled, validatePickupSelection } from "@/lib/postnord";
 import { deliveryPointName } from "@/lib/delivery-display";
+import { checkoutPaymentMethods } from "@/lib/checkout-payment-policy";
 
 export const runtime = "nodejs";
-const allowedPaymentMethods = ["card", "mobilepay", "klarna"] as const;
 
 export async function POST(request: NextRequest) {
   try {
@@ -26,6 +26,9 @@ export async function POST(request: NextRequest) {
     if (hasPickup && !postnordPickupEnabled()) throw new PickupInputError("Delivery-point selection is temporarily unavailable. Clear the selection to continue with the address entered at payment.");
     const pickup = hasPickup ? await validatePickupSelection(body.pickup) : null;
     const { lineItems, shippingRateId, pricing } = await checkoutRates(items);
+    // Hosted checkout only accepts Finnish shipping addresses. Apply the
+    // merchant's amount rule here so it also covers express Klarna buttons.
+    const allowedPaymentMethods = checkoutPaymentMethods(pricing.totalCents, "FI");
     const token = browserToken(request.cookies.get(CHECKOUT_COOKIE)?.value);
     const reference = `ZEWID-${body.requestId.replaceAll("-", "").slice(0, 12).toUpperCase()}`;
     const pickupMetadata: Record<string, string> = pickup ? {

@@ -2,6 +2,7 @@
   {
     "catalogItem": 25,
     "name": "Ethiopian Rekebot Coffee Ceremony Set – Silver",
+    "amharicName": "የብር ከለር የቡና ረከቦት ስብስብ",
     "shortDescription": "Silver-coloured traditional coffee ceremony furniture set with coordinated accessories.",
     "description": "Create a coordinated Ethiopian coffee ceremony setting with this decorative silver-coloured Rekebot set. The matching pieces provide space for presenting a coffee pot and ceremonial accessories during family events and cultural celebrations.",
     "specifications": [
@@ -33,6 +34,7 @@
   {
     "catalogItem": 26,
     "name": "Ethiopian Rekebot Coffee Ceremony Set – Gold",
+    "amharicName": "የወርቅ ከለር የቡና ረከቦት ስብስብ",
     "shortDescription": "Gold-coloured coffee ceremony set with matching traditional-style accessories.",
     "description": "Bring a warm decorative look to Ethiopian coffee serving with this gold-coloured Rekebot set. The matching accessories create an attractive centrepiece for weddings, celebrations and home coffee ceremonies.",
     "specifications": [
@@ -64,6 +66,7 @@
   {
     "catalogItem": 27,
     "name": "Ethiopian Wooden Rekebot Coffee Table – White with Rose-Patterned Glass Top",
+    "amharicName": "ነጭ የእንጨት የቡና ረከቦት (በሮዝ አበባ ንድፍ የተጌጠ)",
     "shortDescription": "White cabinet-style coffee ceremony table with rose-patterned glass top and matching stove holder.",
     "description": "This white Rekebot combines traditional coffee ceremony use with a floral glass-top design. Arrange cups and coffee accessories on the tabletop and use the coordinated pieces to create a decorative serving area.",
     "specifications": [
@@ -99,6 +102,7 @@
   {
     "catalogItem": 28,
     "name": "Ethiopian Wooden Rekebot Coffee Table – White Traditional Design",
+    "amharicName": "ነጭ የእንጨት ረከቦት",
     "shortDescription": "Decorative white Rekebot with colourful geometric borders and cabinet-style structure.",
     "description": "Make a welcoming traditional coffee display with this white Rekebot table. Colourful patterned edges add Ethiopian-inspired detail, while its cabinet-style form offers a tidy surface for arranging ceremony accessories.",
     "specifications": [
@@ -130,6 +134,7 @@
   {
     "catalogItem": 29,
     "name": "Small Ethiopian Wooden Rekebot Coffee Table – Black & White",
+    "amharicName": "ጥቁርና ነጭ አነስተኛ የእንጨት ረከቦት",
     "shortDescription": "Compact black-and-white Rekebot coffee table with a two-door cabinet.",
     "description": "This compact black-and-white Rekebot is a simple option for smaller coffee ceremony areas. The two-door front and contrasting finish suit homes looking for a less ornate traditional serving table.",
     "specifications": [
@@ -161,6 +166,7 @@
   {
     "catalogItem": 30,
     "name": "Ethiopian Rekebot Coffee Table – White Glass Top with Stove Holder",
+    "amharicName": "የማንደጃ መያዣና ያሸበረቀ ገጽ ያለው ነጭ ረከቦት",
     "shortDescription": "White decorative Rekebot with colourful glass top and coordinated stove holder.",
     "description": "Arrange the essentials of an Ethiopian coffee ceremony on this white Rekebot table. Its colourful glass-top border and matching stove holder create a coordinated display for a home coffee corner or celebration.",
     "specifications": [
@@ -200,6 +206,7 @@
   {
     "catalogItem": 31,
     "name": "Luwam Curly Hair Extensions – Black, 350 g",
+    "amharicName": "ሉዋም ጥቁር ጠምባዛ የጸጉር ማራዘሚያ",
     "shortDescription": "Black curly hair extensions for fuller-looking hairstyles and textured styling.",
     "description": "Luwam curly extensions offer a dark, textured appearance for creating fuller-looking hairstyles. Check the fibre type, installation method and care instructions on the actual packaging before choosing a styling technique.",
     "specifications": [
@@ -235,6 +242,7 @@
   {
     "catalogItem": 32,
     "name": "Zenith Paraffin Hair Oil – 330 ml",
+    "amharicName": "ዜኒት የፓራፊን ጸጉር ዘይት",
     "shortDescription": "Bottled paraffin hair oil for use in a regular grooming routine.",
     "description": "Zenith Paraffin Hair Oil is supplied in a 330 ml bottle for hair grooming and maintenance. Follow the directions and precautions on the manufacturer’s label.",
     "specifications": [
@@ -270,6 +278,7 @@
   {
     "catalogItem": 33,
     "name": "Zenith Hair Tonic Oil – 330 ml",
+    "amharicName": "ዜኒት የጸጉር ቶኒክ ዘይት",
     "shortDescription": "Hair tonic oil for everyday grooming and styling.",
     "description": "Zenith Hair Tonic Oil comes in a convenient 330 ml bottle and can be included in a regular grooming routine. Always follow the directions and precautions provided with the product.",
     "specifications": [

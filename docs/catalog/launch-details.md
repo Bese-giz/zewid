@@ -1,6 +1,6 @@
 # Catalog launch details
 
-The 24 confirmed-list items are prepared alongside the four retained products. New listings are coming soon, with no retail price or confirmed stock. Items 25–33 remain in `additional-products.draft.json`, outside the public catalog.
+The 24 confirmed-list items are prepared alongside the four retained products. New listings are coming soon, with no retail price or confirmed stock. Items 25–33 remain in `additional-products.draft.json`, outside the public catalog. The supplied Amharic names are attached to all 33 mapped entries, including the nine drafts; English-only parenthetical transliterations are omitted from Amharic labels.
 
 ## New listings to price and confirm
 

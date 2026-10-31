@@ -9,6 +9,8 @@ import OrderInformation from "@/components/OrderInformation";
 import ProductGallery from "@/components/ProductGallery";
 import ProductStatusTag from "@/components/ProductStatusTag";
 import ProductDetailSection from "@/components/ProductDetailSection";
+import ProductName from "@/components/ProductName";
+import { getProductDisplayName } from "@/lib/product-display";
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -24,7 +26,7 @@ export async function generateMetadata(
   if (!product) return {};
 
   return pageMetadata({
-    title: product.name,
+    title: getProductDisplayName(product),
     description: product.shortDescription,
     path: `/products/${product.slug}`,
     image: product.image,
@@ -57,7 +59,7 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
 
           <div className={`product-detail-summary${product.priceEur === null ? " product-detail-summary--unpriced" : ""}`}>
             <div className="product-detail-identity">
-              <h1>{product.name}</h1>
+              <h1><ProductName product={product} /></h1>
               <div className="product-detail-meta">
                 <p className="product-detail-unit">{product.weight}</p>
                 {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : product.availability !== "in-stock" && <div className="product-detail-status"><ProductStatusTag availability={product.availability} compact /></div>}

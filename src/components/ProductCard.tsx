@@ -7,7 +7,8 @@ import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import ProductAvailability from "./ProductAvailability";
 import ProductStatusTag from "./ProductStatusTag";
-import { getProductCardName } from "@/lib/product-display";
+import { getProductDisplayName } from "@/lib/product-display";
+import ProductName from "./ProductName";
 
 export default function ProductCard(product: Product) {
   const { addToCart } = useCart();
@@ -22,7 +23,7 @@ export default function ProductCard(product: Product) {
       </Link>
       <div className="relative flex flex-1 flex-col p-3 md:p-4">
         <h3 className="text-sm font-semibold leading-snug tracking-[-0.015em] text-slate-900 md:text-base">
-          <Link href={`/products/${slug}`} aria-label={name} className="hover:text-green-800">{getProductCardName(product)}</Link>
+          <Link href={`/products/${slug}`} aria-label={getProductDisplayName(product)} className="hover:text-green-800"><ProductName product={product} compact /></Link>
         </h3>
         <p className="mt-1 text-[11px] leading-relaxed text-slate-500 md:text-xs">{weight}</p>
         <div className="mb-2 mt-2"><ProductAvailability product={product} compact /></div>
@@ -32,7 +33,7 @@ export default function ProductCard(product: Product) {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Add to cart
           </button>}
           {!available && <ProductStatusTag availability={product.availability} compact />}
-          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${name}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
+          <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${getProductDisplayName(product)}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
             target="_blank" rel="noopener noreferrer"
             className="flex min-h-7 w-full items-center justify-center py-1 text-[11px] font-medium text-green-800 underline-offset-4 hover:underline md:text-xs">
             Ask on WhatsApp

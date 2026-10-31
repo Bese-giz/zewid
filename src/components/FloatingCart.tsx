@@ -8,7 +8,8 @@ import { formatEuro } from "@/lib/pricing";
 import StripeCheckoutButton from "./StripeCheckoutButton";
 import PickupPointSelector, { type SelectedPickupPoint } from "./PickupPointSelector";
 import type { StripeMode } from "@/lib/stripe-mode";
-import { getProductCardName } from "@/lib/product-display";
+import { getProductDisplayName } from "@/lib/product-display";
+import ProductName from "./ProductName";
 import MarketIcon from "./MarketIcon";
 import { deliveryPointName } from "@/lib/delivery-display";
 
@@ -73,7 +74,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
                 <div className="cart-item-image"><Image src={item.image} alt="" fill sizes="64px" className="object-contain p-1" /></div>
                 <div className="cart-item-content">
                   <div className="cart-item-heading">
-                    <Link href={`/products/${item.slug}`} onClick={() => setIsCartOpen(false)} aria-label={item.name}>{getProductCardName(item)}</Link>
+                    <Link href={`/products/${item.slug}`} onClick={() => setIsCartOpen(false)} aria-label={getProductDisplayName(item)}><ProductName product={item} compact /></Link>
                     <span>{formatEuro(line.lineTotalCents)}</span>
                   </div>
                   <p className="cart-item-unit">{item.weight} · {formatEuro(line.unitPriceCents)} each</p>

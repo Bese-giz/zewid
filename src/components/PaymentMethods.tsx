@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { KLARNA_MINIMUM_TOTAL_CENTS } from "@/lib/checkout-payment-policy";
+import { formatEuro } from "@/lib/pricing";
 
 export default function PaymentMethods() {
   return (
@@ -30,7 +32,7 @@ export default function PaymentMethods() {
             <span>Klarna</span>
           </li>
         </ul>
-        <p className="market-payments__note">Payment options depend on your device and eligibility.</p>
+        <p className="market-payments__note">Wallet options depend on your device. Klarna: Finnish orders over {formatEuro(KLARNA_MINIMUM_TOTAL_CENTS)}, subject to eligibility.</p>
       </div>
     </section>
   );

@@ -36,6 +36,10 @@ export function getProductCardName(product: Pick<Product, "slug" | "name">): str
   return cardNames[product.slug] ?? product.name;
 }
 
+export function getProductDisplayName(product: Pick<Product, "name" | "amharicName">): string {
+  return product.amharicName ? `${product.name} · ${product.amharicName}` : product.name;
+}
+
 export function getProductDiscount(product: Pick<Product, "priceEur" | "compareAtPriceEur">) {
   if (product.priceEur == null || product.compareAtPriceEur == null) return null;
   const priceCents = Math.round(product.priceEur * 100);

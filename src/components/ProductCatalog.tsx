@@ -12,7 +12,7 @@ export default function ProductCatalog({ products, initialCategory = "all", init
   const filtered = products.filter(product =>
     (category === "all" || product.category === category) &&
     (!availableOnly || isProductPurchasable(product)) &&
-    (!query || [product.name, product.shortDescription, product.slug.replaceAll("-", " "), ...product.features].join(" ").toLocaleLowerCase().includes(query)));
+    (!query || [product.name, product.amharicName ?? "", product.shortDescription, product.slug.replaceAll("-", " "), ...product.features].join(" ").toLocaleLowerCase().includes(query)));
   const clear = () => { setCategory("all"); setSearch(""); setAvailableOnly(false); };
 
   return (

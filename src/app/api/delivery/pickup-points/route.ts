@@ -11,6 +11,6 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     if (error instanceof PickupInputError) return NextResponse.json({ error: error.message }, { status: 400 });
     console.error("PostNord pickup search could not be completed.");
-    return NextResponse.json({ error: "Delivery points are temporarily unavailable. You can continue to payment and enter your delivery address there." }, { status: 503, headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json({ error: "Delivery points are temporarily unavailable. You can continue and enter your delivery address in the next step." }, { status: 503, headers: { "Cache-Control": "no-store" } });
   }
 }

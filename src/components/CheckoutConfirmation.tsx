@@ -68,6 +68,17 @@ export default function CheckoutConfirmation({ initialOrder }: { initialOrder: P
           <div className="flex justify-between gap-4 font-bold"><dt>Total</dt><dd>{formatEuro(order.totalCents)}</dd></div>
         </dl>
         <p className="mt-2 text-xs text-gray-600">Prices include VAT.</p>
+        {order.deliveryDetails && <div className="mt-4 rounded-xl border border-gray-200 p-4 text-sm text-gray-700">
+          <p className="mb-2 font-semibold text-gray-900">{order.pickupPoint ? "Recipient details" : "Delivery details"}</p>
+          <address className="break-words not-italic leading-relaxed">
+            <p>{order.deliveryDetails.name}</p>
+            <p>{order.deliveryDetails.line1}</p>
+            {order.deliveryDetails.line2 && <p>{order.deliveryDetails.line2}</p>}
+            <p>{order.deliveryDetails.postalCode} {order.deliveryDetails.city}, Finland</p>
+            <p className="mt-2">{order.deliveryDetails.phone}</p>
+            <p>{order.deliveryDetails.email}</p>
+          </address>
+        </div>}
         {order.pickupPoint && (
           <div className="mt-4 rounded-xl bg-green-50 p-4 text-sm text-green-900">
             <p className="font-semibold">Delivery point</p>

@@ -5,7 +5,7 @@ import MarketIcon from "./MarketIcon";
 export default function HowToOrder({ shopHref = "/products" }: { shopHref?: string }) {
   const steps = [
     { title: "Choose your products", description: "Browse the collection and add available products to your cart. Ask us on WhatsApp about coming-soon items." },
-    { title: "Place your order", description: "Review your cart and delivery details, then pay on our website. You can also send your cart on WhatsApp to arrange your order and payment." },
+    { title: "Place your order", description: "Review your cart, enter your contact and delivery details, then choose a payment method. You can also send your cart on WhatsApp to arrange your order and payment." },
     { title: "We prepare your delivery", description: "After payment is confirmed, we carefully pack your products and arrange delivery." },
   ];
 

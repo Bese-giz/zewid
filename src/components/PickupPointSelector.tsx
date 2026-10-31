@@ -49,8 +49,8 @@ export default function PickupPointSelector({ value, onChange, compact = false }
 
   return (
     <div className={compact ? "cart-pickup-search" : "mb-4 rounded-xl border border-gray-200 bg-white p-4"}>
-      {!compact && <><p className="font-semibold text-gray-900">Delivery point (optional)</p><p className="mt-1 text-sm text-gray-600">Choose a nearby collection location, or enter your delivery address at payment instead.</p></>}
-      {value && <button type="button" onClick={() => onChange(null)} className="mb-3 min-h-10 text-sm font-medium text-green-800 underline underline-offset-4">Use address entered at payment instead</button>}
+      {!compact && <><p className="font-semibold text-gray-900">Delivery point (optional)</p><p className="mt-1 text-sm text-gray-600">Choose a nearby collection location, or use the delivery address you enter next.</p></>}
+      {value && <button type="button" onClick={() => onChange(null)} className="mb-3 min-h-10 text-sm font-medium text-green-800 underline underline-offset-4">Use my delivery address instead</button>}
       <form className={compact ? "" : "mt-3"} onSubmit={(event) => { event.preventDefault(); void search(); }}>
         <label htmlFor="pickup-postcode" className="block text-sm font-medium text-gray-700">Finnish postcode</label>
         <div className="mt-1 flex gap-2">
@@ -63,7 +63,7 @@ export default function PickupPointSelector({ value, onChange, compact = false }
         </div>
       </form>
       <div aria-live="polite">
-        {searched && points.length === 0 && <p className="mt-3 text-sm text-gray-600">No delivery points were found. Check the postcode, or continue to payment and enter your delivery address there.</p>}
+        {searched && points.length === 0 && <p className="mt-3 text-sm text-gray-600">No delivery points were found. Check the postcode, or continue and enter your delivery address in the next step.</p>}
         {error && <p role="alert" className="mt-3 text-sm text-red-700">{error}</p>}
       </div>
       {points.length > 0 && (

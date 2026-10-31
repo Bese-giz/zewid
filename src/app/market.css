@@ -1,8 +1,8 @@
 .market-container { width: min(100% - 80px, 1280px); margin-inline: auto; }
 .market-title { font-family: var(--font-market-serif), Georgia, serif; color: #1d4034; font-weight: 400; letter-spacing: -0.035em; }
 .market-eyebrow { color: #ad783e; font-size: 11px; font-weight: 600; letter-spacing: 0.17em; line-height: 1.6; text-transform: uppercase; }
-.product-name-amharic { display: block; margin-top: 6px; color: #425b46; font-family: system-ui, sans-serif; font-size: 0.7em; font-weight: 500; letter-spacing: normal; line-height: 1.55; }
-.product-name-amharic--compact { display: -webkit-box; overflow: hidden; margin-top: 4px; font-size: 0.95em; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.product-name-amharic { display: block; margin-top: 6px; color: #425b46; font-family: system-ui, sans-serif; font-size: 0.65em; font-weight: 500; letter-spacing: normal; line-height: 1.55; }
+.product-name-amharic--compact { display: -webkit-box; overflow: hidden; margin-top: 4px; font-size: max(12px, 0.85em); -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 
 .market-announcement { position: relative; display: flex; min-height: 35px; align-items: center; justify-content: center; padding: 7px 20px; background: #1f4436; color: #faf7ec; text-align: center; }
 .market-announcement__message { font-size: 13px; font-weight: 500; line-height: 1.5; animation: market-message-in 0.45s ease-out; }

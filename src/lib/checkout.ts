@@ -3,6 +3,7 @@ import type Stripe from "stripe";
 import { getProductBySlug, isProductPurchasable, products } from "@/data/products";
 import { calculateCart, MAX_CART_QUANTITY } from "./pricing";
 import { getStripe, matchesStripeMode } from "./stripe";
+import { deliveryFromMetadata, validateCheckoutDelivery, type CheckoutDelivery } from "./checkout-delivery";
 
 export interface CheckoutItem { slug: string; quantity: number }
 
@@ -82,6 +83,24 @@ export async function recordPayment(session: Stripe.Checkout.Session) {
   await stripe.checkout.sessions.update(session.id, { metadata: { zewid_payment_status: "paid" } }, { idempotencyKey: `zewid_paid_${session.id}` });
 }
 
+function orderDelivery(session: Stripe.Checkout.Session): CheckoutDelivery | null {
+  const saved = deliveryFromMetadata(session.metadata);
+  const intent = typeof session.payment_intent === "object" ? session.payment_intent : null;
+  const shipping = session.collected_information?.shipping_details ?? intent?.shipping;
+  if (!shipping?.address) return saved;
+  try {
+    // Prefer the final shipping address confirmed at payment; retain the
+    // website's recipient contact details and its address as a fallback.
+    return validateCheckoutDelivery({
+      name: shipping.name || saved?.name || session.customer_details?.name,
+      email: saved?.email || session.customer_details?.email,
+      phone: saved?.phone || session.customer_details?.phone || intent?.shipping?.phone,
+      line1: shipping.address.line1, line2: shipping.address.line2,
+      postalCode: shipping.address.postal_code, city: shipping.address.city, country: shipping.address.country,
+    });
+  } catch { return saved; }
+}
+
 export function publicOrder(session: Stripe.Checkout.Session) {
   const expected = Number(session.metadata?.zewid_total_cents);
   const paid = session.status === "complete" && session.payment_status === "paid" && session.currency === "eur" &&
@@ -95,6 +114,7 @@ export function publicOrder(session: Stripe.Checkout.Session) {
     subtotalCents: session.amount_subtotal ?? 0,
     deliveryCents: session.total_details?.amount_shipping ?? 0,
     totalCents: session.amount_total ?? 0,
+    deliveryDetails: orderDelivery(session),
     pickupPoint: session.metadata?.zewid_delivery_method === "postnord_pickup" ? {
       id: session.metadata.zewid_pickup_id, name: session.metadata.zewid_pickup_name,
       street: session.metadata.zewid_pickup_street, postalCode: session.metadata.zewid_pickup_postcode,

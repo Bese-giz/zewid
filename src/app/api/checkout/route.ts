@@ -6,6 +6,7 @@ import { BodyTooLargeError, readLimitedBody } from "@/lib/request-body";
 import { PickupInputError, postnordPickupEnabled, validatePickupSelection } from "@/lib/postnord";
 import { deliveryPointName } from "@/lib/delivery-display";
 import { checkoutPaymentMethods } from "@/lib/checkout-payment-policy";
+import { DeliveryInputError, checkoutDeliveryMetadata, validateCheckoutDelivery } from "@/lib/checkout-delivery";
 
 export const runtime = "nodejs";
 
@@ -16,19 +17,21 @@ export async function POST(request: NextRequest) {
     if (!mode) throw new Error("Checkout is not configured.");
     if (request.headers.get("origin") !== origin) return NextResponse.json({ error: "Please start checkout from the ZEWID website." }, { status: 403 });
     if (!request.headers.get("content-type")?.startsWith("application/json")) return NextResponse.json({ error: "Invalid checkout request." }, { status: 415 });
-    const raw = await readLimitedBody(request, 4096);
-    let body: { items?: unknown; requestId?: unknown; pickup?: unknown };
+    const raw = await readLimitedBody(request, 8192);
+    let body: { items?: unknown; requestId?: unknown; pickup?: unknown; delivery?: unknown };
     try { body = JSON.parse(raw); } catch { throw new CheckoutInputError("Invalid checkout request."); }
     if (!body || typeof body !== "object" || typeof body.requestId !== "string" ||
         !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId)) throw new CheckoutInputError("Invalid checkout request. Please try again.");
     const items = validateCheckoutItems(body.items);
+    const delivery = validateCheckoutDelivery(body.delivery);
     const hasPickup = body.pickup !== undefined && body.pickup !== null;
-    if (hasPickup && !postnordPickupEnabled()) throw new PickupInputError("Delivery-point selection is temporarily unavailable. Clear the selection to continue with the address entered at payment.");
+    if (hasPickup && !postnordPickupEnabled()) throw new PickupInputError("Delivery-point selection is temporarily unavailable. Clear the selection to continue with your delivery address.");
     const pickup = hasPickup ? await validatePickupSelection(body.pickup) : null;
     const { lineItems, shippingRateId, pricing } = await checkoutRates(items);
     // Hosted checkout only accepts Finnish shipping addresses. Apply the
     // merchant's amount rule here so it also covers express Klarna buttons.
-    const allowedPaymentMethods = checkoutPaymentMethods(pricing.totalCents, "FI");
+    const allowedPaymentMethods = checkoutPaymentMethods(pricing.totalCents, delivery.country);
+    const deliveryMetadata = checkoutDeliveryMetadata(delivery);
     const token = browserToken(request.cookies.get(CHECKOUT_COOKIE)?.value);
     const reference = `ZEWID-${body.requestId.replaceAll("-", "").slice(0, 12).toUpperCase()}`;
     const pickupMetadata: Record<string, string> = pickup ? {
@@ -42,11 +45,13 @@ export async function POST(request: NextRequest) {
       zewid_payment_status: "awaiting_payment", zewid_prices_include_vat: "true",
       // Fulfillment is separate from payment: only process succeeded payments.
       fulfillment_status: "pending",
+      ...deliveryMetadata,
       ...pickupMetadata,
     };
-    const fingerprint = createHash("sha256").update(JSON.stringify({ items, pickup: pickup?.selection ?? null, paymentMethods: allowedPaymentMethods })).update(hashToken(token)).digest("hex");
+    const fingerprint = createHash("sha256").update(JSON.stringify({ items, pickup: pickup?.selection ?? null, delivery, paymentMethods: allowedPaymentMethods })).update(hashToken(token)).digest("hex");
     const session = await getStripe().checkout.sessions.create({
       mode: "payment", ui_mode: "hosted_page", locale: "auto",
+      customer_email: delivery.email,
       line_items: lineItems,
       shipping_options: [{ shipping_rate: shippingRateId }],
       shipping_address_collection: { allowed_countries: ["FI"] },
@@ -58,7 +63,10 @@ export async function POST(request: NextRequest) {
       client_reference_id: reference,
       metadata,
       // Stripe copies these initial values to the Charge. Never reset a merchant's later status edits.
-      payment_intent_data: { metadata: { zewid_store: "zewid", zewid_order: reference, zewid_items: JSON.stringify(items), fulfillment_status: "pending", ...pickupMetadata }, description: `ZEWID order ${reference}` },
+      payment_intent_data: {
+        metadata: { zewid_store: "zewid", zewid_order: reference, zewid_items: JSON.stringify(items), fulfillment_status: "pending", ...deliveryMetadata, ...pickupMetadata },
+        description: `ZEWID order ${reference}`,
+      },
       success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/checkout/cancel`,
     }, { idempotencyKey: `zewid_checkout_${mode}_${body.requestId}_${fingerprint}` });
@@ -67,6 +75,7 @@ export async function POST(request: NextRequest) {
     response.cookies.set(CHECKOUT_COOKIE, token, { httpOnly: true, sameSite: "lax", secure: origin.startsWith("https:"), path: "/", maxAge: 14 * 24 * 60 * 60 });
     return response;
   } catch (error) {
+    if (error instanceof DeliveryInputError) return NextResponse.json({ error: error.message, ...(error.field ? { field: error.field } : {}) }, { status: 400 });
     if (error instanceof BodyTooLargeError) return NextResponse.json({ error: "Checkout request is too large." }, { status: 413 });
     if (error instanceof CheckoutInputError || error instanceof PickupInputError) return NextResponse.json({ error: error.message }, { status: 400 });
     console.error("Checkout could not be created.");

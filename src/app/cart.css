@@ -58,6 +58,23 @@
 .cart-empty > svg { color: #a6b29b; }
 .cart-empty h3 { color: #354d3a; font-size: 18px; font-weight: 500; }
 .cart-empty p { margin-top: 8px; color: #6a775f; font-size: 14px; }
+.cart-back { display: block; min-height: 30px; margin-bottom: 3px; color: #506c53; font-size: 12px; }
+.cart-back:hover { text-decoration: underline; text-underline-offset: 3px; }
+.cart-delivery-step { display: flex; flex: 1; min-height: 0; flex-direction: column; }
+.cart-delivery-intro { margin-block: 18px; color: #5c6b56; font-size: 13px; line-height: 1.6; }
+.cart-delivery-fields { display: grid; min-width: 0; gap: 14px; margin: 0 0 22px; padding: 0; border: 0; }
+.cart-delivery-fields > legend { margin-bottom: 12px; color: #2e4d37; font-size: 14px; font-weight: 600; }
+.cart-delivery-field { display: block; min-width: 0; color: #425b46; font-size: 13px; }
+.cart-delivery-field > span { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; margin-bottom: 6px; }
+.cart-delivery-field small { color: #727d6c; font-size: 11px; }
+.cart-delivery-field input { display: block; width: 100%; min-width: 0; min-height: 46px; padding: 10px 12px; border: 1px solid #d8dfd2; border-radius: 8px; background: #fff; color: #253d30; font-size: 16px; line-height: 1.4; }
+.cart-delivery-field input:focus-visible { outline: 2px solid #43734e; outline-offset: 2px; }
+.cart-delivery-field input:disabled { background: #f0f3ec; color: #6c7965; }
+.cart-delivery-locality { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 12px; }
+.cart-delivery-country { color: #63745c; font-size: 13px; }
+.cart-delivery-country strong { color: #38533c; font-weight: 500; }
+.cart-delivery-pickup, .cart-delivery-privacy { color: #64735c; font-size: 12px; line-height: 1.6; }
+.cart-delivery-privacy { margin-bottom: 4px; }
 
 @media (max-width: 359px) {
   .cart-header, .cart-content, .cart-footer { padding-inline: 14px; }

@@ -82,5 +82,47 @@
     "transparentBackground": true,
     "catalogAction": "new-product-draft",
     "sha256": "edb191a1925a42e020b0526dd9f2cad6415f02f18457cdf3d97a41b4017b32be"
+  },
+  {
+    "slug": "shiro",
+    "fileName": "shiro-pouch.png",
+    "name": "Shiro",
+    "amharicName": "ሽሮ",
+    "netWeight": "1 kg",
+    "netWeightG": 1000,
+    "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
+    "description": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
+    "primaryImage": "/images/packaging/shiro-pouch.png",
+    "images": [
+      "/images/packaging/shiro-pouch.png"
+    ],
+    "alt": "Zewid Market Shiro 1 kg in an opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "update-existing",
+    "sha256": "670ed6151313f1f35e8f8e6134ba13ca8eae09b94474c988bd9b361102b67114"
+  },
+  {
+    "slug": "mekelesha-spice",
+    "fileName": "mekelesha-spice-pouch.png",
+    "name": "Ethiopian Mekelesha Spice Mix – 100 g",
+    "amharicName": "መከለሻ",
+    "netWeight": "100 g",
+    "netWeightG": 100,
+    "shortDescription": "Aromatic Ethiopian finishing spice blend for stews and savoury dishes.",
+    "description": "Mekelesha is commonly added near the end of cooking to give Ethiopian stews and sauces their finishing aroma. Use it in dishes such as doro wat and other richly seasoned recipes, adjusting the amount to taste.",
+    "primaryImage": "/images/packaging/mekelesha-spice-pouch.png",
+    "images": [
+      "/images/packaging/mekelesha-spice-pouch.png"
+    ],
+    "alt": "Zewid Market Mekelesha 100 g in a small opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "update-existing",
+    "sha256": "f44d6777bd9e96fc672b7b679c042426201d7e5819454d3e6c9b956c593e105f"
   }
 ]

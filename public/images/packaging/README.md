@@ -1,17 +1,11 @@
 # Zewid Market — gold pouch website images
 
-Four original PNG assets copied from the approved gold packaging set, with transparent backgrounds, white labels and www.zewid.com on the labels. The images were copied without resizing, recompression or image edits.
+Six PNG product mockups with transparent backgrounds, opaque champagne-gold pouches, white labels and www.zewid.com.
 
-Use `image-map.json` for filename/product/description/weight/alt-text mappings and public image paths. `image-map.md` is the readable equivalent.
+Use `image-map.json` for filenames, names, descriptions, weights, public image paths and alt text. `image-map.md` is the readable map.
 
-Target website directory: `public/images/packaging/`.
+Target: `public/images/packaging/`. Product catalog files were not changed by this asset-copy task.
 
-Files:
-- `berbere-pouch.png` — Berbere, 1 kg
-- `mitmita-pouch.png` — Mitmita, 500 g
-- `bula-pouch.png` — Bula, 1 kg
-- `korerima-pouch.png` — Korerima, 250 g
+Shiro uses the established 1 kg format. Mekelesha is a smaller 100 g pouch, deliberately smaller within its image canvas. Retain this framing when showing package sizes together.
 
-The website catalog uses these photos and descriptions in `src/data/products.ts`. Berbere updates the existing listing, keeping its €30 price and stock status. Mitmita, Bula and Korerima are published as on-request products with WhatsApp-only ordering because prices and stock were not supplied. The image-map draft markers describe the original asset handoff, not the current website publication status.
-
-The original packaging files remain in Downloads/zewid/packaging-gold. Label masters, ingredients, source records and verification notes are available there. These product images are generated mockups of the proposed packaging.
+Original label masters, prompts and source records are saved under Downloads/zewid/packaging-gold. Actual pouch and sticker dimensions need supplier confirmation.

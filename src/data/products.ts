@@ -316,8 +316,10 @@ export const products: Product[] = [
     "weightKg": 0.1,
     "priceEur": null,
     "availability": "coming-soon",
-    "image": "/images/mekelesha-spice.png",
+    "image": "/images/packaging/mekelesha-spice-pouch.png",
+    "imageAlt": "Zewid Market Mekelesha 100 g in a small opaque champagne-gold pouch with a white label",
     "images": [
+      "/images/packaging/mekelesha-spice-pouch.png",
       "/images/mekelesha-spice.png"
     ],
     "features": [

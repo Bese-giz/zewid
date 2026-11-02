@@ -15,12 +15,8 @@ export class DeliveryInputError extends Error {
   constructor(message: string, public field?: DeliveryField) { super(message); }
 }
 
-export function emptyCheckoutDelivery(): CheckoutDelivery {
-  return { name: "", email: "", phone: "", line1: "", line2: "", postalCode: "", city: "", country: "FI" };
-}
-
 export function validateCheckoutDelivery(value: unknown): CheckoutDelivery {
-  if (!value || typeof value !== "object" || Array.isArray(value)) throw new DeliveryInputError("Please return to your cart and enter your delivery details before payment.");
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new DeliveryInputError("Invalid delivery details.");
   const input = value as Record<string, unknown>;
   function field(key: DeliveryField, label: string, max: number, optional = false): string {
     const raw = input[key];
@@ -44,20 +40,7 @@ export function validateCheckoutDelivery(value: unknown): CheckoutDelivery {
   return { name, email, phone, line1, line2, postalCode, city, country: "FI" };
 }
 
-export function checkoutDeliveryMetadata(delivery: CheckoutDelivery): Record<string, string> {
-  return {
-    zewid_delivery_source: "website",
-    zewid_delivery_name: delivery.name,
-    zewid_delivery_email: delivery.email,
-    zewid_delivery_phone: delivery.phone,
-    zewid_delivery_line1: delivery.line1,
-    zewid_delivery_line2: delivery.line2,
-    zewid_delivery_postcode: delivery.postalCode,
-    zewid_delivery_city: delivery.city,
-    zewid_delivery_country: delivery.country,
-  };
-}
-
+// Older orders captured the address on the website; retain their fallback.
 export function deliveryFromMetadata(metadata?: Record<string, string> | null): CheckoutDelivery | null {
   if (metadata?.zewid_delivery_source !== "website") return null;
   try {

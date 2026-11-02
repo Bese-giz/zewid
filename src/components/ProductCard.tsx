@@ -9,7 +9,6 @@ import ProductAvailability from "./ProductAvailability";
 import ProductStatusTag from "./ProductStatusTag";
 import { getProductDisplayName, getProductEnquiryMessage } from "@/lib/product-display";
 import ProductName from "./ProductName";
-import MarketIcon from "./MarketIcon";
 
 export default function ProductCard(product: Product) {
   const { addToCart } = useCart();
@@ -37,8 +36,7 @@ export default function ProductCard(product: Product) {
           {!available && !requestOnly && <ProductStatusTag availability={product.availability} compact />}
           <a href={whatsappLink(getProductEnquiryMessage(product, available))}
             target="_blank" rel="noopener noreferrer"
-            className={requestOnly ? "flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#173f31] px-2 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#245b46] md:text-sm" : "flex min-h-7 w-full items-center justify-center py-1 text-[11px] font-medium text-green-800 underline-offset-4 hover:underline md:text-xs"}>
-            {requestOnly && <MarketIcon name="whatsapp" size={17} />}
+            className="flex min-h-7 w-full items-center justify-center py-1 text-[11px] font-medium text-green-800 underline-offset-4 hover:underline md:text-xs">
             Ask on WhatsApp
           </a>
         </div>

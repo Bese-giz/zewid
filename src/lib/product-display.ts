@@ -51,7 +51,7 @@ export function getProductDisplayName(product: Pick<Product, "name" | "amharicNa
 
 export function getProductEnquiryMessage(product: Pick<Product, "name" | "amharicName" | "availability">, purchasable: boolean): string {
   if (product.availability === "on-request") {
-    return `Hi ZEWID Market! I'd like to discuss ordering ${getProductDisplayName(product)}. Please confirm the price, supplier availability and estimated delivery.`;
+    return `Hi ZEWID Market! I'd like to order ${getProductDisplayName(product)}.`;
   }
   return `Hi ZEWID! I'd like to ask about ${getProductDisplayName(product)}${purchasable ? ", delivery and ordering" : ", its price and when it will be available"}.`;
 }

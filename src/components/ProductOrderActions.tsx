@@ -44,7 +44,6 @@ export default function ProductOrderActions({ product }: { product: Product }) {
         target="_blank" rel="noopener noreferrer" className={`product-order-whatsapp${available ? "" : " product-order-whatsapp--primary"}`}>
         <MarketIcon name="whatsapp" size={19} />Ask on WhatsApp
       </a>
-      {product.availability === "on-request" && <p className="mt-3 text-xs leading-relaxed text-slate-600">We confirm supplier availability, the final price and estimated delivery with you before you order.</p>}
     </div>
   );
 }

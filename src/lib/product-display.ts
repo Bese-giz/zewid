@@ -30,6 +30,15 @@ const cardNames: Record<string, string> = {
   "ketema-grass": "Ketema Ceremony Grass",
   "floral-injera-tray-40cm": "Floral Injera Tray",
   "meshrefet-basket": "Woven Meshrefet Basket",
+  "rekebot-silver": "Silver Rekebot Set",
+  "rekebot-gold": "Gold Rekebot Set",
+  "rekebot-rose": "Rose Glass-Top Rekebot",
+  "rekebot-white": "White Traditional Rekebot",
+  "rekebot-small": "Small Black & White Rekebot",
+  "rekebot-led": "Glass-Top Rekebot & Stove Holder",
+  "luwam-extensions": "Alviia Luwam Curly Extensions",
+  "zenith-paraffin": "Zenith Paraffin Hair Oil",
+  "zenith-tonic": "Zenith Hair Tonic Oil",
 };
 
 export function getProductCardName(product: Pick<Product, "slug" | "name">): string {
@@ -38,6 +47,13 @@ export function getProductCardName(product: Pick<Product, "slug" | "name">): str
 
 export function getProductDisplayName(product: Pick<Product, "name" | "amharicName">): string {
   return product.amharicName ? `${product.name} · ${product.amharicName}` : product.name;
+}
+
+export function getProductEnquiryMessage(product: Pick<Product, "name" | "amharicName" | "availability">, purchasable: boolean): string {
+  if (product.availability === "on-request") {
+    return `Hi ZEWID Market! I'd like to discuss ordering ${getProductDisplayName(product)}. Please confirm the price, supplier availability and estimated delivery.`;
+  }
+  return `Hi ZEWID! I'd like to ask about ${getProductDisplayName(product)}${purchasable ? ", delivery and ordering" : ", its price and when it will be available"}.`;
 }
 
 export function getProductDiscount(product: Pick<Product, "priceEur" | "compareAtPriceEur">) {

@@ -37,7 +37,7 @@ export default function ProductCatalog({ products, initialCategory = "all", init
         </div>
         <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
           <label className="flex w-fit items-center gap-2 text-xs text-gray-700">
-            <input type="checkbox" checked={availableOnly} onChange={event => setAvailableOnly(event.target.checked)} className="h-4 w-4 accent-green-700" />Available to order
+            <input type="checkbox" checked={availableOnly} onChange={event => setAvailableOnly(event.target.checked)} className="h-4 w-4 accent-green-700" />Available for online checkout
           </label>
           <p role="status" className="text-xs text-slate-500">{filtered.length} of {products.length} products</p>
         </div>

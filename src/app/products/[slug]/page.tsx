@@ -86,8 +86,10 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
             </ProductDetailSection>}
 
             <ProductDetailSection title="Delivery & payment">
-              <OrderInformation />
-              <p className="mt-4">Pay through the website checkout from your cart, or contact us on WhatsApp to arrange your order and payment.</p>
+              {product.availability === "on-request" ? <p>This item is available on request and is not stocked locally. Contact us on WhatsApp to discuss your requirements. We confirm supplier availability, the final price, delivery cost and estimated timing before arranging your order and payment.</p> : <>
+                <OrderInformation />
+                <p className="mt-4">Pay through the website checkout from your cart, or contact us on WhatsApp to arrange your order and payment.</p>
+              </>}
             </ProductDetailSection>
           </section>
         </div>

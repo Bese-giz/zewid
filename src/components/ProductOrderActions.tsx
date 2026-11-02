@@ -6,7 +6,7 @@ import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import { calculateCart, formatEuro } from "@/lib/pricing";
 import MarketIcon from "./MarketIcon";
-import { getProductDisplayName } from "@/lib/product-display";
+import { getProductEnquiryMessage } from "@/lib/product-display";
 
 export default function ProductOrderActions({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
@@ -40,10 +40,11 @@ export default function ProductOrderActions({ product }: { product: Product }) {
           {selectionTotal && <span className="product-order-add__total">{selectionTotal}</span>}
         </button>
       </div>}
-      <a href={whatsappLink(`Hi ZEWID! I'd like to ask about ${getProductDisplayName(product)}${available ? ", delivery and ordering" : ", its price and when it will be available"}.`)}
+      <a href={whatsappLink(getProductEnquiryMessage(product, available))}
         target="_blank" rel="noopener noreferrer" className={`product-order-whatsapp${available ? "" : " product-order-whatsapp--primary"}`}>
         <MarketIcon name="whatsapp" size={19} />Ask on WhatsApp
       </a>
+      {product.availability === "on-request" && <p className="mt-3 text-xs leading-relaxed text-slate-600">We confirm supplier availability, the final price and estimated delivery with you before you order.</p>}
     </div>
   );
 }

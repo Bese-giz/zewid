@@ -3,6 +3,7 @@ export const productCategories = [
   { id: "coffee", name: "Coffee & ceremony" },
   { id: "kitchen", name: "Kitchen & home" },
   { id: "culture", name: "Culture & learning" },
+  { id: "beauty", name: "Hair & beauty" },
 ] as const;
 
 export type ProductCategory = typeof productCategories[number]["id"];
@@ -18,7 +19,7 @@ export interface Product {
   images: string[];
   features: string[];
   category: ProductCategory;
-  availability: "in-stock" | "out-of-stock" | "coming-soon";
+  availability: "in-stock" | "out-of-stock" | "coming-soon" | "on-request";
   priceEur: number | null;
   compareAtPriceEur?: number;
   weightKg: number | null;
@@ -1052,6 +1053,363 @@ export const products: Product[] = [
       {
         "label": "Appearance",
         "value": "Natural woven centre with multicoloured border"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-silver",
+    "catalogItem": 25,
+    "name": "Ethiopian Rekebot Coffee Ceremony Set – Silver",
+    "amharicName": "የብር ከለር የቡና ረከቦት ስብስብ",
+    "shortDescription": "Silver-coloured traditional coffee ceremony furniture set with coordinated accessories.",
+    "description": "Create a coordinated Ethiopian coffee ceremony setting with this decorative silver-coloured Rekebot set. The matching pieces provide space for presenting a coffee pot and ceremonial accessories during family events and cultural celebrations.",
+    "category": "coffee",
+    "weight": "Ceremony set",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-silver.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-silver.jpg"
+    ],
+    "features": [
+      "Coordinated ceremonial arrangement",
+      "Silver decorative finish",
+      "Suitable for traditional coffee presentation"
+    ],
+    "specifications": [
+      {
+        "label": "Colour",
+        "value": "Silver"
+      },
+      {
+        "label": "Style",
+        "value": "Decorative metallic-finish Rekebot"
+      },
+      {
+        "label": "Supplier-listed components",
+        "value": "Table, incense burner, coffee-pot holder, sugar pot with spoon and stove holder"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-gold",
+    "catalogItem": 26,
+    "name": "Ethiopian Rekebot Coffee Ceremony Set – Gold",
+    "amharicName": "የወርቅ ከለር የቡና ረከቦት ስብስብ",
+    "shortDescription": "Gold-coloured coffee ceremony set with matching traditional-style accessories.",
+    "description": "Bring a warm decorative look to Ethiopian coffee serving with this gold-coloured Rekebot set. The matching accessories create an attractive centrepiece for weddings, celebrations and home coffee ceremonies.",
+    "category": "coffee",
+    "weight": "Ceremony set",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-gold.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-gold.jpg"
+    ],
+    "features": [
+      "Gold decorative finish",
+      "Coordinated accessories",
+      "Suitable for special occasions"
+    ],
+    "specifications": [
+      {
+        "label": "Colour",
+        "value": "Gold"
+      },
+      {
+        "label": "Style",
+        "value": "Ornate metallic-finish Rekebot"
+      },
+      {
+        "label": "Supplier-listed components",
+        "value": "Table, incense burner, coffee-pot holder, sugar pot with spoon and stove holder"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-rose",
+    "catalogItem": 27,
+    "name": "Ethiopian Wooden Rekebot Coffee Table – White with Rose-Patterned Glass Top",
+    "amharicName": "ነጭ የእንጨት የቡና ረከቦት (በሮዝ አበባ ንድፍ የተጌጠ)",
+    "shortDescription": "White cabinet-style coffee ceremony table with rose-patterned glass top and matching stove holder.",
+    "description": "This white Rekebot combines traditional coffee ceremony use with a floral glass-top design. Arrange cups and coffee accessories on the tabletop and use the coordinated pieces to create a decorative serving area.",
+    "category": "coffee",
+    "weight": "Coffee table & holder",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-rose.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-rose.jpg"
+    ],
+    "features": [
+      "Rose-patterned glass top",
+      "White cabinet-style design",
+      "Matching stove holder listed"
+    ],
+    "specifications": [
+      {
+        "label": "Finish",
+        "value": "White"
+      },
+      {
+        "label": "Structure",
+        "value": "Wood-based cabinet-style table"
+      },
+      {
+        "label": "Top",
+        "value": "Decorative glass with rose pattern"
+      },
+      {
+        "label": "Matching stove holder",
+        "value": "Listed by supplier"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-white",
+    "catalogItem": 28,
+    "name": "Ethiopian Wooden Rekebot Coffee Table Set – White Traditional Design",
+    "amharicName": "ነጭ የእንጨት ረከቦት",
+    "shortDescription": "White cabinet-style Rekebot with colourful geometric trim; a matching stove holder is listed by the supplier.",
+    "description": "Make a welcoming traditional coffee display with this white Rekebot table. Colourful patterned edges add Ethiopian-inspired detail, while its cabinet-style form offers a tidy surface for arranging ceremony accessories.",
+    "category": "coffee",
+    "weight": "Coffee table set",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-white.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-white.jpg"
+    ],
+    "features": [
+      "White decorative finish",
+      "Geometric patterning",
+      "Coffee ceremony presentation surface"
+    ],
+    "specifications": [
+      {
+        "label": "Colour",
+        "value": "White"
+      },
+      {
+        "label": "Design",
+        "value": "Multicoloured geometric borders"
+      },
+      {
+        "label": "Structure",
+        "value": "Cabinet-style table"
+      },
+      {
+        "label": "Matching stove holder",
+        "value": "Listed by supplier; exact contents confirmed when requested"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-small",
+    "catalogItem": 29,
+    "name": "Small Ethiopian Wooden Rekebot Coffee Table – Black & White",
+    "amharicName": "ጥቁርና ነጭ አነስተኛ የእንጨት ረከቦት",
+    "shortDescription": "Compact black-and-white Rekebot coffee table with a two-door cabinet.",
+    "description": "This compact black-and-white Rekebot is a simple option for smaller coffee ceremony areas. The two-door front and contrasting finish suit homes looking for a less ornate traditional serving table.",
+    "category": "coffee",
+    "weight": "Small coffee table",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-small.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-small.jpg"
+    ],
+    "features": [
+      "Compact form",
+      "Two-door cabinet",
+      "Black-and-white design"
+    ],
+    "specifications": [
+      {
+        "label": "Colour",
+        "value": "Black and white"
+      },
+      {
+        "label": "Structure",
+        "value": "Two-door cabinet"
+      },
+      {
+        "label": "Details",
+        "value": "Gold-coloured handles"
+      }
+    ]
+  },
+  {
+    "slug": "rekebot-led",
+    "catalogItem": 30,
+    "name": "Ethiopian Rekebot Coffee Table – White Glass Top with Stove Holder",
+    "amharicName": "የማንደጃ መያዣና ያሸበረቀ ገጽ ያለው ነጭ ረከቦት",
+    "shortDescription": "White decorative Rekebot with colourful glass top and coordinated stove holder.",
+    "description": "Arrange the essentials of an Ethiopian coffee ceremony on this white Rekebot table. Its colourful glass-top border and matching stove holder create a coordinated display for a home coffee corner or celebration.",
+    "category": "coffee",
+    "weight": "Coffee table & holder",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/rekebot-led.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-led.jpg",
+      "/images/on-request-products/rekebot-led-2.jpg"
+    ],
+    "features": [
+      "Decorative glass top",
+      "Colourful geometric trim",
+      "Matching stove holder listed"
+    ],
+    "specifications": [
+      {
+        "label": "Colour",
+        "value": "White"
+      },
+      {
+        "label": "Top",
+        "value": "Decorated glass"
+      },
+      {
+        "label": "Pattern",
+        "value": "Multicoloured geometric border"
+      },
+      {
+        "label": "Structure",
+        "value": "Cabinet-style table"
+      },
+      {
+        "label": "Stove holder",
+        "value": "Listed by supplier"
+      }
+    ]
+  },
+  {
+    "slug": "luwam-extensions",
+    "catalogItem": 31,
+    "name": "Alviia Luwam Curly Hair Extensions – Black, 350 g",
+    "amharicName": "ሉዋም ጥቁር ጠምባዛ የጸጉር ማራዘሚያ",
+    "shortDescription": "Black curly hair extensions in a supplier-listed 350 g pack for textured hairstyles.",
+    "description": "Add a curly, textured finish to your hairstyle with Alviia Luwam hair extensions. The pictured style is black and supplied in a listed 350 g pack. Ask us to confirm the available colour, fibre type and installation method when requesting this item.",
+    "category": "beauty",
+    "weight": "350 g pack",
+    "weightKg": 0.35,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/luwam-extensions.jpg",
+    "images": [
+      "/images/on-request-products/luwam-extensions.jpg",
+      "/images/on-request-products/luwam-extensions-2.jpg"
+    ],
+    "features": [
+      "Curly texture",
+      "Black colour",
+      "Suitable for a variety of styles"
+    ],
+    "specifications": [
+      {
+        "label": "Brand / range",
+        "value": "Alviia / Luwam"
+      },
+      {
+        "label": "Colour",
+        "value": "Black"
+      },
+      {
+        "label": "Texture",
+        "value": "Curly"
+      },
+      {
+        "label": "Listed package weight",
+        "value": "350 g"
+      }
+    ]
+  },
+  {
+    "slug": "zenith-paraffin",
+    "catalogItem": 32,
+    "name": "Zenith Paraffin Hair Oil – 330 ml",
+    "amharicName": "ዜኒት የፓራፊን ጸጉር ዘይት",
+    "shortDescription": "Bottled paraffin hair oil for use in a regular grooming routine.",
+    "description": "Zenith Paraffin Hair Oil is supplied in a 330 ml bottle for hair grooming and maintenance. Follow the directions and precautions on the manufacturer’s label.",
+    "category": "beauty",
+    "weight": "330 ml bottle",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/zenith-paraffin.jpg",
+    "images": [
+      "/images/on-request-products/zenith-paraffin.jpg",
+      "/images/on-request-products/zenith-paraffin-2.jpg",
+      "/images/on-request-products/zenith-paraffin-3.jpg",
+      "/images/on-request-products/zenith-paraffin-4.jpg"
+    ],
+    "features": [
+      "330 ml bottle",
+      "Hair-grooming oil",
+      "Use according to package instructions"
+    ],
+    "specifications": [
+      {
+        "label": "Brand",
+        "value": "Zenith"
+      },
+      {
+        "label": "Product",
+        "value": "Paraffin Hair Oil"
+      },
+      {
+        "label": "Volume",
+        "value": "330 ml"
+      },
+      {
+        "label": "Packaging",
+        "value": "Bottle"
+      }
+    ]
+  },
+  {
+    "slug": "zenith-tonic",
+    "catalogItem": 33,
+    "name": "Zenith Hair Tonic Oil – 330 ml",
+    "amharicName": "ዜኒት የጸጉር ቶኒክ ዘይት",
+    "shortDescription": "Hair tonic oil for everyday grooming and styling.",
+    "description": "Zenith Hair Tonic Oil comes in a convenient 330 ml bottle and can be included in a regular grooming routine. Always follow the directions and precautions provided with the product.",
+    "category": "beauty",
+    "weight": "330 ml bottle",
+    "weightKg": null,
+    "priceEur": null,
+    "availability": "on-request",
+    "image": "/images/on-request-products/zenith-tonic.jpg",
+    "images": [
+      "/images/on-request-products/zenith-tonic.jpg"
+    ],
+    "features": [
+      "330 ml bottle",
+      "Hair-care tonic",
+      "Designed for regular grooming"
+    ],
+    "specifications": [
+      {
+        "label": "Brand",
+        "value": "Zenith"
+      },
+      {
+        "label": "Product",
+        "value": "Hair Tonic Oil"
+      },
+      {
+        "label": "Volume",
+        "value": "330 ml"
+      },
+      {
+        "label": "Packaging",
+        "value": "Bottle"
       }
     ]
   }

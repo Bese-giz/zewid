@@ -37,7 +37,7 @@ export default function HomePage() {
 
       <section id="collection" aria-labelledby="collection-title" className="market-container market-section market-collection">
         <div className="market-section-heading">
-          <div><p className="market-eyebrow">Thoughtfully brought together</p><h2 id="collection-title" className="market-title">Explore the market.</h2><p>Shop available products online and discover what’s coming soon.</p></div>
+          <div><p className="market-eyebrow">Thoughtfully brought together</p><h2 id="collection-title" className="market-title">Explore the market.</h2><p>Shop available products online, request special items on WhatsApp and discover what’s coming soon.</p></div>
         </div>
         <HomeProductFeed products={products} />
       </section>

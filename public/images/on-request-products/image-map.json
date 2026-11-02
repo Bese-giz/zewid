@@ -1,0 +1,142 @@
+[
+  {
+    "id": "rekebot-silver",
+    "catalogItem": 25,
+    "name": "Ethiopian Rekebot Coffee Ceremony Set – Silver",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-silver.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-silver.jpg"
+    ],
+    "alt": "Ethiopian Rekebot Coffee Ceremony Set – Silver"
+  },
+  {
+    "id": "rekebot-gold",
+    "catalogItem": 26,
+    "name": "Ethiopian Rekebot Coffee Ceremony Set – Gold",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-gold.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-gold.jpg"
+    ],
+    "alt": "Ethiopian Rekebot Coffee Ceremony Set – Gold"
+  },
+  {
+    "id": "rekebot-rose",
+    "catalogItem": 27,
+    "name": "Ethiopian Wooden Rekebot Coffee Table – White with Rose-Patterned Glass Top",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-rose.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-rose.jpg"
+    ],
+    "alt": "Ethiopian Wooden Rekebot Coffee Table – White with Rose-Patterned Glass Top"
+  },
+  {
+    "id": "rekebot-white",
+    "catalogItem": 28,
+    "name": "Ethiopian Wooden Rekebot Coffee Table Set – White Traditional Design",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-white.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-white.jpg"
+    ],
+    "alt": "Ethiopian Wooden Rekebot Coffee Table Set – White Traditional Design"
+  },
+  {
+    "id": "rekebot-small",
+    "catalogItem": 29,
+    "name": "Small Ethiopian Wooden Rekebot Coffee Table – Black & White",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-small.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-small.jpg"
+    ],
+    "alt": "Small Ethiopian Wooden Rekebot Coffee Table – Black & White"
+  },
+  {
+    "id": "rekebot-led",
+    "catalogItem": 30,
+    "name": "Ethiopian Rekebot Coffee Table – White Glass Top with Stove Holder",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/rekebot-led.jpg",
+    "images": [
+      "/images/on-request-products/rekebot-led.jpg",
+      "/images/on-request-products/rekebot-led-2.jpg"
+    ],
+    "alt": "Ethiopian Rekebot Coffee Table – White Glass Top with Stove Holder"
+  },
+  {
+    "id": "luwam-extensions",
+    "catalogItem": 31,
+    "name": "Alviia Luwam Curly Hair Extensions – Black, 350 g",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/luwam-extensions.jpg",
+    "images": [
+      "/images/on-request-products/luwam-extensions.jpg",
+      "/images/on-request-products/luwam-extensions-2.jpg"
+    ],
+    "alt": "Alviia Luwam Curly Hair Extensions – Black, 350 g"
+  },
+  {
+    "id": "zenith-paraffin",
+    "catalogItem": 32,
+    "name": "Zenith Paraffin Hair Oil – 330 ml",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/zenith-paraffin.jpg",
+    "images": [
+      "/images/on-request-products/zenith-paraffin.jpg",
+      "/images/on-request-products/zenith-paraffin-2.jpg",
+      "/images/on-request-products/zenith-paraffin-3.jpg",
+      "/images/on-request-products/zenith-paraffin-4.jpg"
+    ],
+    "alt": "Zenith Paraffin Hair Oil – 330 ml"
+  },
+  {
+    "id": "zenith-tonic",
+    "catalogItem": 33,
+    "name": "Zenith Hair Tonic Oil – 330 ml",
+    "availability": "on_request",
+    "requestOnly": true,
+    "stockQuantity": 0,
+    "purchasable": false,
+    "priceEur": null,
+    "primaryImage": "/images/on-request-products/zenith-tonic.jpg",
+    "images": [
+      "/images/on-request-products/zenith-tonic.jpg"
+    ],
+    "alt": "Zenith Hair Tonic Oil – 330 ml"
+  }
+]

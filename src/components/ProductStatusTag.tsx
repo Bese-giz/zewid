@@ -2,6 +2,7 @@ import type { Product } from "@/data/products";
 
 export default function ProductStatusTag({ availability, compact = false }: { availability: Product["availability"]; compact?: boolean }) {
   if (availability === "in-stock") return null;
+  if (availability === "on-request") return <span className="text-xs font-medium leading-relaxed text-[#425b46]">Available on request</span>;
   const soon = availability === "coming-soon";
   return (
     <p className={`product-status-tag ${soon ? "product-status-tag--soon" : "product-status-tag--unavailable"}${compact ? " product-status-tag--compact" : ""}`}>

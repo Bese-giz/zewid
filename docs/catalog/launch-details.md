@@ -1,6 +1,10 @@
 # Catalog launch details
 
-The 24 confirmed-list items are prepared alongside the four retained products. New listings are coming soon, with no retail price or confirmed stock. Items 25–33 remain in `additional-products.draft.json`, outside the public catalog. The supplied Amharic names are attached to all 33 mapped entries, including the nine drafts; English-only parenthetical transliterations are omitted from Amharic labels.
+The 24 confirmed-list items are prepared alongside the four retained products. Their unpriced listings remain coming soon. Items 25–33 are now public as available on request, with supplied photos and product details; the public catalog totals 37 products. Their original draft copy and verification notes remain in `additional-products.draft.json` for reference. Supplied Amharic names are attached to all public products; English-only parenthetical transliterations are omitted from Amharic labels.
+
+## Available on request
+
+Items 25–30 are six Rekebot ceremony sets/tables in Coffee & ceremony. Items 31–33 are Alviia Luwam extensions and the two Zenith oils in Hair & beauty. The 14 photos and their gallery order follow `public/images/on-request-products/image-map.json`. These products are not stocked locally and have no confirmed retail price or lead time. Their only order action is WhatsApp, where supplier availability, contents, final price and delivery are agreed before ordering. Online cart and checkout remain disabled for these listings.
 
 ## New listings to price and confirm
 

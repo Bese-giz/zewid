@@ -43,7 +43,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
 
       {/* Products Grid */}
       <section id="catalog" className="scroll-mt-32 py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <p className="mb-4 text-xs leading-relaxed text-gray-600">Ask us on WhatsApp about prices and availability for coming-soon products.</p>
+        <p className="mb-4 text-xs leading-relaxed text-gray-600">Contact us on WhatsApp to discuss on-request items or ask about coming-soon products.</p>
         <ProductCatalog key={`${category}:${search}`} products={products} initialCategory={category} initialSearch={search} />
       </section>
 

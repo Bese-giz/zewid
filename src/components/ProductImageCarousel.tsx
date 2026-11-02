@@ -69,7 +69,7 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
             if (event.key === "Home" || event.key === "End") { event.preventDefault(); event.currentTarget.focus({ preventScroll: true }); goTo(event.key === "Home" ? 0 : images.length - 1); }
           }}>
           {images.map((image, index) => {
-            const photo = <Image src={image} alt={`${product.name}${multiple ? ` — image ${index + 1}` : ""}`} fill draggable={false}
+            const photo = <Image src={image} alt={`${product.imageAlt ?? product.name}${multiple ? ` — image ${index + 1}` : ""}`} fill draggable={false}
               priority={index === 0} sizes="(max-width: 767px) 100vw, 512px" className="select-none object-contain drop-shadow-xl" />;
             return <div key={image} className="product-photo-slide aspect-square" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`} aria-hidden={index !== selected}>{photo}</div>;
           })}

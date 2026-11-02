@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "berbere",
+    "fileName": "berbere-pouch.png",
+    "name": "Berbere – Ethiopian Spice Blend",
+    "amharicName": "በርበሬ",
+    "netWeight": "1 kg",
+    "netWeightG": 1000,
+    "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
+    "description": "Bring depth and aromatic spice to everyday cooking with Berbere. This finely ground blend can be stirred into wot, sauces, marinades and vegetable dishes. Add gradually and adjust the amount to suit your recipe.",
+    "primaryImage": "/images/packaging/berbere-pouch.png",
+    "images": [
+      "/images/packaging/berbere-pouch.png"
+    ],
+    "alt": "Zewid Market Berbere 1 kg in an opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "update-existing",
+    "sha256": "66042399ddb970e9211071f2f856abf3ed73df0bce98326baba3519881da03dd"
+  },
+  {
+    "slug": "mitmita",
+    "fileName": "mitmita-pouch.png",
+    "name": "Mitmita – Ethiopian Chilli Spice Blend",
+    "amharicName": "ሚጥሚጣ",
+    "netWeight": "500 g",
+    "netWeightG": 500,
+    "shortDescription": "A fiery Ethiopian chilli blend for sprinkling over cooked dishes or stirring into sauces.",
+    "description": "Mitmita is an Ethiopian chilli seasoning with a bold, aromatic flavour. Use a small pinch as a finishing condiment on cooked meat, vegetables or cheese, or add it to sauces when you want extra heat. Start with a little and season to taste.",
+    "primaryImage": "/images/packaging/mitmita-pouch.png",
+    "images": [
+      "/images/packaging/mitmita-pouch.png"
+    ],
+    "alt": "Zewid Market Mitmita 500 g in an opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "new-product-draft",
+    "sha256": "b26f7e850f02f20e0f78d9a28ae579d7c9ab4f59c7de619c193ab7af7326315c"
+  },
+  {
+    "slug": "bula",
+    "fileName": "bula-pouch.png",
+    "name": "Bula – Ethiopian Enset Starch",
+    "amharicName": "ቡላ",
+    "netWeight": "1 kg",
+    "netWeightG": 1000,
+    "shortDescription": "Fine white starch from the Ethiopian enset plant for cooked porridge and thickening.",
+    "description": "Bula is the fine white starch extracted from enset, also known as false banana. It is used in Ethiopian cooking to prepare a smooth cooked porridge and can also be used to thicken soups. Mix with a little cool water before adding to hot liquid and cook while stirring.",
+    "primaryImage": "/images/packaging/bula-pouch.png",
+    "images": [
+      "/images/packaging/bula-pouch.png"
+    ],
+    "alt": "Zewid Market Bula 1 kg in an opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "new-product-draft",
+    "sha256": "54ffe601cbfebb6734e1671645d091474bdfe24d964aaf2ecb942769670ee566"
+  },
+  {
+    "slug": "korerima",
+    "fileName": "korerima-pouch.png",
+    "name": "Korerima – Ethiopian Cardamom Powder",
+    "amharicName": "ኮረሪማ",
+    "netWeight": "250 g",
+    "netWeightG": 250,
+    "shortDescription": "Aromatic ground Ethiopian cardamom seeds for spice blends, stews and spiced butter.",
+    "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
+    "primaryImage": "/images/packaging/korerima-pouch.png",
+    "images": [
+      "/images/packaging/korerima-pouch.png"
+    ],
+    "alt": "Zewid Market Korerima 250 g in an opaque champagne-gold pouch with a white label",
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "new-product-draft",
+    "sha256": "edb191a1925a42e020b0526dd9f2cad6415f02f18457cdf3d97a41b4017b32be"
+  }
+]

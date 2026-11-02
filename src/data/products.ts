@@ -16,6 +16,7 @@ export interface Product {
   weight: string;
   description: string;
   image: string;
+  imageAlt?: string;
   images: string[];
   features: string[];
   category: ProductCategory;
@@ -78,20 +79,38 @@ export const products: Product[] = [
     "priceEur": 30,
     "weightKg": 1,
     "availability": "in-stock",
-    "name": "Berbere",
+    "name": "Berbere – Ethiopian Spice Blend",
     "amharicName": "በርበሬ",
-    "weight": "1 kg pack",
-    "description": "Authentic Ethiopian Berbere spice blend. Rich, flavorful, and perfect for wot (stews).",
-    "image": "/images/berbere_enhanced_transparent.png",
+    "weight": "1 kg pouch",
+    "description": "Bring depth and aromatic spice to everyday cooking with Berbere. This finely ground blend can be stirred into wot, sauces, marinades and vegetable dishes. Add gradually and adjust the amount to suit your recipe.",
+    "image": "/images/packaging/berbere-pouch.png",
     "features": [
-      "Authentic Ethiopian spice",
-      "Rich flavor",
-      "Perfect for wot"
+      "Ethiopian spice blend",
+      "For wot, sauces and marinades",
+      "1 kg pouch"
     ],
     "category": "food",
-    "shortDescription": "Authentic Ethiopian Berbere spice blend. Rich, flavorful, and perfect for wot (stews).",
+    "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
     "images": [
-      "/images/berbere_enhanced_transparent.png"
+      "/images/packaging/berbere-pouch.png"
+    ],
+    "imageAlt": "Zewid Market Berbere 1 kg in an opaque champagne-gold pouch with a white label",
+    "specifications": [
+      {
+        "label": "Product",
+        "value": "Ethiopian Spice Blend"
+      },
+      {
+        "label": "Net weight",
+        "value": "1 kg"
+      },
+      {
+        "label": "Packaging",
+        "value": "Pouch"
+      }
+    ],
+    "legacyNames": [
+      "Berbere"
     ]
   },
   {
@@ -1412,6 +1431,114 @@ export const products: Product[] = [
         "value": "Bottle"
       }
     ]
+  },
+  {
+    "slug": "mitmita",
+    "name": "Mitmita – Ethiopian Chilli Spice Blend",
+    "amharicName": "ሚጥሚጣ",
+    "shortDescription": "A fiery Ethiopian chilli blend for sprinkling over cooked dishes or stirring into sauces.",
+    "description": "Mitmita is an Ethiopian chilli seasoning with a bold, aromatic flavour. Use a small pinch as a finishing condiment on cooked meat, vegetables or cheese, or add it to sauces when you want extra heat. Start with a little and season to taste.",
+    "weight": "500 g pouch",
+    "weightKg": 0.5,
+    "image": "/images/packaging/mitmita-pouch.png",
+    "imageAlt": "Zewid Market Mitmita 500 g in an opaque champagne-gold pouch with a white label",
+    "images": [
+      "/images/packaging/mitmita-pouch.png"
+    ],
+    "features": [
+      "Bold Ethiopian chilli seasoning",
+      "For finishing dishes and adding heat to sauces",
+      "500 g pouch"
+    ],
+    "specifications": [
+      {
+        "label": "Product",
+        "value": "Ethiopian Chilli Spice Blend"
+      },
+      {
+        "label": "Net weight",
+        "value": "500 g"
+      },
+      {
+        "label": "Packaging",
+        "value": "Pouch"
+      }
+    ],
+    "category": "food",
+    "availability": "on-request",
+    "priceEur": null
+  },
+  {
+    "slug": "bula",
+    "name": "Bula – Ethiopian Enset Starch",
+    "amharicName": "ቡላ",
+    "shortDescription": "Fine white starch from the Ethiopian enset plant for cooked porridge and thickening.",
+    "description": "Bula is the fine white starch extracted from enset, also known as false banana. It is used in Ethiopian cooking to prepare a smooth cooked porridge and can also be used to thicken soups. Mix with a little cool water before adding to hot liquid and cook while stirring.",
+    "weight": "1 kg pouch",
+    "weightKg": 1,
+    "image": "/images/packaging/bula-pouch.png",
+    "imageAlt": "Zewid Market Bula 1 kg in an opaque champagne-gold pouch with a white label",
+    "images": [
+      "/images/packaging/bula-pouch.png"
+    ],
+    "features": [
+      "Fine enset starch",
+      "For cooked porridge and thickening soups",
+      "1 kg pouch"
+    ],
+    "specifications": [
+      {
+        "label": "Product",
+        "value": "Ethiopian Enset Starch"
+      },
+      {
+        "label": "Net weight",
+        "value": "1 kg"
+      },
+      {
+        "label": "Packaging",
+        "value": "Pouch"
+      }
+    ],
+    "category": "food",
+    "availability": "on-request",
+    "priceEur": null
+  },
+  {
+    "slug": "korerima",
+    "name": "Korerima – Ethiopian Cardamom Powder",
+    "amharicName": "ኮረሪማ",
+    "shortDescription": "Aromatic ground Ethiopian cardamom seeds for spice blends, stews and spiced butter.",
+    "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
+    "weight": "250 g pouch",
+    "weightKg": 0.25,
+    "image": "/images/packaging/korerima-pouch.png",
+    "imageAlt": "Zewid Market Korerima 250 g in an opaque champagne-gold pouch with a white label",
+    "images": [
+      "/images/packaging/korerima-pouch.png"
+    ],
+    "features": [
+      "Ground Ethiopian cardamom seeds",
+      "For spice blends, stews and spiced butter",
+      "250 g pouch"
+    ],
+    "specifications": [
+      {
+        "label": "Product",
+        "value": "Ethiopian Cardamom Powder"
+      },
+      {
+        "label": "Net weight",
+        "value": "250 g"
+      },
+      {
+        "label": "Packaging",
+        "value": "Pouch"
+      }
+    ],
+    "category": "food",
+    "availability": "on-request",
+    "priceEur": null
   }
 ];
 

@@ -1,6 +1,10 @@
 # Catalog launch details
 
-The 24 confirmed-list items are prepared alongside the four retained products. Their unpriced listings remain coming soon. Items 25–33 are now public as available on request, with supplied photos and product details; the public catalog totals 37 products. Their original draft copy and verification notes remain in `additional-products.draft.json` for reference. Supplied Amharic names are attached to all public products; English-only parenthetical transliterations are omitted from Amharic labels.
+The 24 confirmed-list items are prepared alongside the four retained products. Their unpriced listings remain coming soon. Items 25–33 are now public as available on request, with supplied photos and product details. Mitmita, Bula and Korerima extend the public catalog to 40 products. Original draft copy and verification notes remain in `additional-products.draft.json` for reference. Supplied Amharic names are attached to all public products; English-only parenthetical transliterations are omitted from Amharic labels.
+
+## Gold-pouch products
+
+`public/images/packaging/image-map.json` supplies the new photos, names, descriptions, Amharic labels and weights. Berbere updates the existing `berbere` listing without changing its €30 price or stock. Mitmita (500 g), Bula (1 kg) and Korerima (250 g) are public Food & spices listings with WhatsApp-only ordering. Their prices and stock were not supplied; confirm these before enabling cart purchases. Their image-map draft markers describe the original asset handoff; website publication and ordering status are controlled by `src/data/products.ts`.
 
 ## Available on request
 

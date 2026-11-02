@@ -6,6 +6,7 @@ import HowToOrder from "@/components/HowToOrder";
 import PaymentMethods from "@/components/PaymentMethods";
 import MarketIcon from "@/components/MarketIcon";
 import { products } from "@/data/products";
+import { getProductsInDisplayOrder } from "@/lib/product-display";
 import { pageMetadata } from "@/lib/metadata";
 import { whatsappLink } from "@/lib/site";
 
@@ -39,7 +40,7 @@ export default function HomePage() {
         <div className="market-section-heading">
           <div><p className="market-eyebrow">Thoughtfully brought together</p><h2 id="collection-title" className="market-title">Explore the market.</h2><p>Shop available products online, request special items on WhatsApp and discover what’s coming soon.</p></div>
         </div>
-        <HomeProductFeed products={products} />
+        <HomeProductFeed products={getProductsInDisplayOrder(products)} />
       </section>
 
       <HowToOrder shopHref="#collection" />

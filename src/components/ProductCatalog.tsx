@@ -43,7 +43,7 @@ export default function ProductCatalog({ products, initialCategory = "all", init
         </div>
       </div>
       {filtered.length ? (
-        <div className="grid grid-cols-2 gap-3 md:gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map(product => <ProductCard key={product.slug} {...product} />)}
         </div>
       ) : (

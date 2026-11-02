@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import type { Product } from "@/data/products";
 import ProductCard from "./ProductCard";
 
-const BATCH_SIZE = 6;
+// Full rows at two-, three- and four-column breakpoints.
+const BATCH_SIZE = 12;
 
 export default function HomeProductFeed({ products }: { products: Product[] }) {
   const [visible, setVisible] = useState(BATCH_SIZE);
@@ -27,7 +28,7 @@ export default function HomeProductFeed({ products }: { products: Product[] }) {
 
   return (
     <div data-product-feed className="space-y-7">
-      <div id="home-product-grid" className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
+      <div id="home-product-grid" className="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
         {products.slice(0, count).map(product => <ProductCard key={product.slug} {...product} />)}
       </div>
       <div ref={sentinel} className="flex min-h-16 flex-col items-center justify-center gap-3 text-center">

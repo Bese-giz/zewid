@@ -3,6 +3,7 @@ import OrderInformation from "@/components/OrderInformation";
 import { pageMetadata } from "@/lib/metadata";
 import ProductCatalog from "@/components/ProductCatalog";
 import { productCategories, products, type ProductCategory } from "@/data/products";
+import { getProductsInDisplayOrder } from "@/lib/product-display";
 
 export const metadata = {
   ...pageMetadata({
@@ -44,7 +45,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       {/* Products Grid */}
       <section id="catalog" className="scroll-mt-32 py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <p className="mb-4 text-xs leading-relaxed text-gray-600">Contact us on WhatsApp to discuss on-request items or ask about coming-soon products.</p>
-        <ProductCatalog key={`${category}:${search}`} products={products} initialCategory={category} initialSearch={search} />
+        <ProductCatalog key={`${category}:${search}`} products={getProductsInDisplayOrder(products)} initialCategory={category} initialSearch={search} />
       </section>
 
       <section aria-label="Prices and delivery" className="mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8"><OrderInformation /></section>

@@ -1,5 +1,17 @@
 import type { Product } from "../data/products.ts";
 
+const shelfOrder = [
+  "white-teff-flour", "red-teff-flour", "berbere", "mitmita",
+  "shiro", "mashila-sorghum", "bula", "gaat-porridge",
+  "korerima", "abish-fenugreek", "mekelesha-spice",
+];
+const shelfRank = new Map(shelfOrder.map((slug, index) => [slug, index]));
+
+export function getProductsInDisplayOrder(products: readonly Product[]): Product[] {
+  return [...products].sort((a, b) =>
+    (shelfRank.get(a.slug) ?? shelfOrder.length) - (shelfRank.get(b.slug) ?? shelfOrder.length));
+}
+
 // Short shelf labels; the supplied full titles stay on detail pages and orders.
 const cardNames: Record<string, string> = {
   "white-teff-flour": "White Teff Flour",

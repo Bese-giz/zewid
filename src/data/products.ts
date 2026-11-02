@@ -92,7 +92,8 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
     "images": [
-      "/images/packaging/berbere-pouch.png"
+      "/images/packaging/berbere-pouch.png",
+      "/images/berbere_enhanced_transparent.png"
     ],
     "imageAlt": "Zewid Market Berbere 1 kg in an opaque champagne-gold pouch with a white label",
     "specifications": [
@@ -122,7 +123,8 @@ export const products: Product[] = [
     "amharicName": "ሽሮ",
     "weight": "1 kg pack",
     "description": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    "image": "/images/shiro_enhanced_transparent.png",
+    "image": "/images/packaging/shiro-pouch.png",
+    "imageAlt": "Zewid Market Shiro 1 kg in an opaque champagne-gold pouch with a white label",
     "features": [
       "Traditional shiro powder",
       "Easy to prepare",
@@ -131,6 +133,7 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
     "images": [
+      "/images/packaging/shiro-pouch.png",
       "/images/shiro_enhanced_transparent.png"
     ]
   },

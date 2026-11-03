@@ -83,7 +83,7 @@ export const products: Product[] = [
     "amharicName": "በርበሬ",
     "weight": "1 kg pouch",
     "description": "Bring depth and aromatic spice to everyday cooking with Berbere. This finely ground blend can be stirred into wot, sauces, marinades and vegetable dishes. Add gradually and adjust the amount to suit your recipe.",
-    "image": "/images/packaging/berbere-pouch.png",
+    "image": "/images/packaging/berbere-pouch.png?v=bc39c379f211",
     "features": [
       "Ethiopian spice blend",
       "For wot, sauces and marinades",
@@ -92,10 +92,10 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
     "images": [
-      "/images/packaging/berbere-pouch.png",
+      "/images/packaging/berbere-pouch.png?v=bc39c379f211",
       "/images/berbere_enhanced_transparent.png"
     ],
-    "imageAlt": "Zewid Market Berbere 1 kg in an opaque champagne-gold pouch with a white label",
+    "imageAlt": "Zewid Market Berbere 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
     "specifications": [
       {
         "label": "Product",
@@ -123,8 +123,8 @@ export const products: Product[] = [
     "amharicName": "ሽሮ",
     "weight": "1 kg pack",
     "description": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    "image": "/images/packaging/shiro-pouch.png",
-    "imageAlt": "Zewid Market Shiro 1 kg in an opaque champagne-gold pouch with a white label",
+    "image": "/images/packaging/shiro-pouch.png?v=fa37bc794aae",
+    "imageAlt": "Zewid Market Shiro 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
     "features": [
       "Traditional shiro powder",
       "Easy to prepare",
@@ -133,7 +133,7 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
     "images": [
-      "/images/packaging/shiro-pouch.png",
+      "/images/packaging/shiro-pouch.png?v=fa37bc794aae",
       "/images/shiro_enhanced_transparent.png"
     ]
   },
@@ -184,7 +184,8 @@ export const products: Product[] = [
     "legacyNames": ["Buna (Coffee)"],
     "weight": "1 kg pack",
     "description": "These green Sidamo coffee beans are intended for customers who enjoy roasting coffee themselves. Roast the beans to your preferred level, then grind and brew them. They are particularly suitable for the Ethiopian coffee ceremony, where coffee is traditionally roasted fresh before serving.",
-    "image": "/images/green_coffee_beans_enhanced_transparent.png",
+    "image": "/images/packaging/buna-coffee-pouch.png?v=8ec025b3ded5",
+    "imageAlt": "Zewid Market Sidamo unroasted Arabica coffee beans 1 kg in an opaque gold pouch with a bilingual label and website QR code",
     "features": [
       "Washed Ethiopian Arabica beans",
       "Unroasted for home roasting",
@@ -195,7 +196,7 @@ export const products: Product[] = [
     "shortDescription": "Washed Grade 1 Ethiopian Sidamo Arabica beans, unroasted for fresh home roasting.",
     "category": "coffee",
     "images": [
-      "/images/green_coffee_beans_enhanced_transparent.png"
+      "/images/packaging/buna-coffee-pouch.png?v=8ec025b3ded5"
     ],
     "specifications": [
       {
@@ -316,10 +317,10 @@ export const products: Product[] = [
     "weightKg": 0.1,
     "priceEur": null,
     "availability": "coming-soon",
-    "image": "/images/packaging/mekelesha-spice-pouch.png",
-    "imageAlt": "Zewid Market Mekelesha 100 g in a small opaque champagne-gold pouch with a white label",
+    "image": "/images/packaging/mekelesha-spice-pouch.png?v=46dd05341c6b",
+    "imageAlt": "Zewid Market Ethiopian Mekelesha Spice Mix 100 g in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
-      "/images/packaging/mekelesha-spice-pouch.png",
+      "/images/packaging/mekelesha-spice-pouch.png?v=46dd05341c6b",
       "/images/mekelesha-spice.png"
     ],
     "features": [
@@ -1445,10 +1446,10 @@ export const products: Product[] = [
     "description": "Mitmita is an Ethiopian chilli seasoning with a bold, aromatic flavour. Use a small pinch as a finishing condiment on cooked meat, vegetables or cheese, or add it to sauces when you want extra heat. Start with a little and season to taste.",
     "weight": "500 g pouch",
     "weightKg": 0.5,
-    "image": "/images/packaging/mitmita-pouch.png",
-    "imageAlt": "Zewid Market Mitmita 500 g in an opaque champagne-gold pouch with a white label",
+    "image": "/images/packaging/mitmita-pouch.png?v=f637c811efaf",
+    "imageAlt": "Zewid Market Mitmita 500 g in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
-      "/images/packaging/mitmita-pouch.png"
+      "/images/packaging/mitmita-pouch.png?v=f637c811efaf"
     ],
     "features": [
       "Bold Ethiopian chilli seasoning",
@@ -1481,10 +1482,10 @@ export const products: Product[] = [
     "description": "Bula is the fine white starch extracted from enset, also known as false banana. It is used in Ethiopian cooking to prepare a smooth cooked porridge and can also be used to thicken soups. Mix with a little cool water before adding to hot liquid and cook while stirring.",
     "weight": "1 kg pouch",
     "weightKg": 1,
-    "image": "/images/packaging/bula-pouch.png",
-    "imageAlt": "Zewid Market Bula 1 kg in an opaque champagne-gold pouch with a white label",
+    "image": "/images/packaging/bula-pouch.png?v=4a84917cee02",
+    "imageAlt": "Zewid Market Bula 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
-      "/images/packaging/bula-pouch.png"
+      "/images/packaging/bula-pouch.png?v=4a84917cee02"
     ],
     "features": [
       "Fine enset starch",
@@ -1517,10 +1518,10 @@ export const products: Product[] = [
     "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
     "weight": "250 g pouch",
     "weightKg": 0.25,
-    "image": "/images/packaging/korerima-pouch.png",
-    "imageAlt": "Zewid Market Korerima 250 g in an opaque champagne-gold pouch with a white label",
+    "image": "/images/packaging/korerima-pouch.png?v=f73223f60af9",
+    "imageAlt": "Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
-      "/images/packaging/korerima-pouch.png"
+      "/images/packaging/korerima-pouch.png?v=f73223f60af9"
     ],
     "features": [
       "Ground Ethiopian cardamom seeds",

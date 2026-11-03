@@ -10,8 +10,10 @@
     {
       "catalog_item": 2,
       "title": "Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg",
-      "images": [],
-      "primary_image": null
+      "images": [
+        "packaging/buna-coffee-pouch.png"
+      ],
+      "primary_image": "packaging/buna-coffee-pouch.png"
     },
     {
       "catalog_item": 3,
@@ -33,9 +35,9 @@
       "catalog_item": 5,
       "title": "Ethiopian Mekelesha Spice Mix – 100 g",
       "images": [
-        "mekelesha-spice.png"
+        "packaging/mekelesha-spice-pouch.png"
       ],
-      "primary_image": "mekelesha-spice.png"
+      "primary_image": "packaging/mekelesha-spice-pouch.png"
     },
     {
       "catalog_item": 6,

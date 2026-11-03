@@ -12,13 +12,21 @@
     "images": [
       "/images/packaging/berbere-pouch.png"
     ],
-    "alt": "Zewid Market Berbere 1 kg in an opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Berbere 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "update-existing",
-    "sha256": "66042399ddb970e9211071f2f856abf3ed73df0bce98326baba3519881da03dd"
+    "sha256": "bc39c379f211f98357d55c26fa2636ab2a4463c5c8c7252fc9e46824650630a5",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Paprika, Garlic, Ginger, Fenugreek, Cardamom, Rue, Basil, Rosemary, Clove, Nutmeg, Salt, Thyme, Cinnamon, Cumin, Long pepper, Black pepper.",
+    "ingredientsFi": "Paprika, valkosipuli, inkivääri, sarviapila, kardemumma, ruuta, basilika, rosmariini, neilikka, muskottipähkinä, suola, timjami, kaneli, juustokumina, pitkäpippuri ja mustapippuri."
   },
   {
     "slug": "mitmita",
@@ -33,13 +41,21 @@
     "images": [
       "/images/packaging/mitmita-pouch.png"
     ],
-    "alt": "Zewid Market Mitmita 500 g in an opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Mitmita 500 g in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "new-product-draft",
-    "sha256": "b26f7e850f02f20e0f78d9a28ae579d7c9ab4f59c7de619c193ab7af7326315c"
+    "sha256": "f637c811efafa76df2e784b427ff558577226ecf468fe36b96c96ced056c9ae3",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Bird’s-eye chilli, cardamom, koseret, salt, nech azmud and rosemary.",
+    "ingredientsFi": "Linnunsilmächili, kardemumma, koseret, suola, nech azmud ja rosmariini."
   },
   {
     "slug": "bula",
@@ -54,13 +70,21 @@
     "images": [
       "/images/packaging/bula-pouch.png"
     ],
-    "alt": "Zewid Market Bula 1 kg in an opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Bula 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "new-product-draft",
-    "sha256": "54ffe601cbfebb6734e1671645d091474bdfe24d964aaf2ecb942769670ee566"
+    "sha256": "4a84917cee025a9ad2334af006a4162bc3fec850280578eba179a22329d7f60d",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Enset plant starch (Bula).",
+    "ingredientsFi": "Enset-kasvin tärkkelys (bula)."
   },
   {
     "slug": "korerima",
@@ -75,13 +99,21 @@
     "images": [
       "/images/packaging/korerima-pouch.png"
     ],
-    "alt": "Zewid Market Korerima 250 g in an opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "new-product-draft",
-    "sha256": "edb191a1925a42e020b0526dd9f2cad6415f02f18457cdf3d97a41b4017b32be"
+    "sha256": "f73223f60af99fb588efc52a2f1e9e53e57286c17325864f21e82b36621d4783",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Ground Ethiopian cardamom seeds (Aframomum corrorima).",
+    "ingredientsFi": "Jauhetut etiopialaisen kardemumman siemenet (Aframomum corrorima)."
   },
   {
     "slug": "shiro",
@@ -96,13 +128,21 @@
     "images": [
       "/images/packaging/shiro-pouch.png"
     ],
-    "alt": "Zewid Market Shiro 1 kg in an opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Shiro 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "update-existing",
-    "sha256": "670ed6151313f1f35e8f8e6134ba13ca8eae09b94474c988bd9b361102b67114"
+    "sha256": "fa37bc794aae403bee87e6da87f7a13695c3d7746120e23f7e37f617b25be8a7",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Chickpea, garlic, onion, basil, rue, ajwain and peppers.",
+    "ingredientsFi": "Kikherne, valkosipuli, sipuli, basilika, ruuta, ajowan ja paprikat."
   },
   {
     "slug": "mekelesha-spice",
@@ -117,12 +157,49 @@
     "images": [
       "/images/packaging/mekelesha-spice-pouch.png"
     ],
-    "alt": "Zewid Market Mekelesha 100 g in a small opaque champagne-gold pouch with a white label",
-    "width": 1254,
-    "height": 1254,
+    "alt": "Zewid Market Ethiopian Mekelesha Spice Mix 100 g in an opaque gold pouch with the new bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
     "format": "png",
     "transparentBackground": true,
     "catalogAction": "update-existing",
-    "sha256": "f44d6777bd9e96fc672b7b679c042426201d7e5819454d3e6c9b956c593e105f"
+    "sha256": "46dd05341c6bdef74afbe1541ee96e59360d350672dd6658bc5beaf4c9e1f47f",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": null,
+    "ingredientsFi": null
+  },
+  {
+    "slug": "buna-coffee",
+    "fileName": "buna-coffee-pouch.png",
+    "name": "Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg",
+    "amharicName": "ቡና",
+    "netWeight": "1 kg",
+    "netWeightG": 1000,
+    "shortDescription": "Washed Grade 1 Ethiopian Sidamo Arabica beans, unroasted for fresh home roasting.",
+    "description": "These green Sidamo coffee beans are intended for customers who enjoy roasting coffee themselves. Roast the beans to your preferred level, then grind and brew them. They are particularly suitable for the Ethiopian coffee ceremony, where coffee is traditionally roasted fresh before serving.",
+    "primaryImage": "/images/packaging/buna-coffee-pouch.png",
+    "images": [
+      "/images/packaging/buna-coffee-pouch.png"
+    ],
+    "alt": "Zewid Market Sidamo unroasted Arabica coffee beans 1 kg in an opaque gold pouch with a bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
+    "format": "png",
+    "transparentBackground": true,
+    "catalogAction": "update-existing",
+    "labelVersion": "2026-11-03-en-fi-qr",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "ingredientsEn": "Unroasted Arabica coffee beans.",
+    "ingredientsFi": "Paahdamattomat arabica-kahvipavut.",
+    "sha256": "8ec025b3ded5af7fcf812e6b37e6433e44bad6d6889c71884a6179fa1f9208c8"
   }
 ]

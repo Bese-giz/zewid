@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# Local retired-image backups; the live catalog never references these folders.
+/public/images/old-packaging-to-remove-*/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

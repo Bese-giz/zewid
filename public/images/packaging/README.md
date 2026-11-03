@@ -1,11 +1,7 @@
-# Zewid Market — gold pouch website images
+# Current packaging images
 
-Six PNG product mockups with transparent backgrounds, opaque champagne-gold pouches, white labels and www.zewid.com.
+Seven products now use the approved bilingual labels with the product description, English/Finnish ingredients where supplied, net weight, website and QR code. Mekelesha ingredients remain omitted at the user's request. PNGs are 2508 x 2508 with transparent backgrounds.
 
-Use `image-map.json` for filenames, names, descriptions, weights, public image paths and alt text. `image-map.md` is the readable map.
+All existing `/images/packaging/*-pouch.png` paths are retained. Name/description, weights, language and hashes are recorded in image-map.json and image-map.md. No use or storage instructions appear on the labels.
 
-Target: `public/images/packaging/`. Product catalog files were not changed by this asset-copy task.
-
-Shiro uses the established 1 kg format. Mekelesha is a smaller 100 g pouch, deliberately smaller within its image canvas. Retain this framing when showing package sizes together.
-
-Original label masters, prompts and source records are saved under Downloads/zewid/packaging-gold. Actual pouch and sticker dimensions need supplier confirmation.
+Replaced images and maps are archived in `../old-packaging-to-remove-2026-11-03/`. That archive can be removed later; the current product galleries do not reference its files.

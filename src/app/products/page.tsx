@@ -30,10 +30,10 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-10 md:py-20 px-4">
+      <section aria-labelledby="products-title" className="bg-gradient-to-b from-gray-50 to-white px-4 pb-5 pt-6 md:pb-6 md:pt-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-green-600 font-semibold text-xs md:text-sm uppercase tracking-wide mb-2">Shop</p>
-          <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-3">
+          <p className="text-green-600 font-semibold text-xs md:text-sm uppercase tracking-wide mb-1">Shop</p>
+          <h1 id="products-title" className="text-2xl md:text-5xl font-bold text-gray-900 mb-2">
             Our Products
           </h1>
           <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto">
@@ -43,7 +43,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       </section>
 
       {/* Products Grid */}
-      <section id="catalog" className="scroll-mt-32 py-6 md:py-16 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="catalog" className="scroll-mt-32 pb-6 pt-3 md:pb-16 md:pt-4 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <p className="mb-4 text-xs leading-relaxed text-gray-600">Contact us on WhatsApp to discuss on-request items or ask about coming-soon products.</p>
         <ProductCatalog key={`${category}:${search}`} products={getProductsInDisplayOrder(products)} initialCategory={category} initialSearch={search} />
       </section>

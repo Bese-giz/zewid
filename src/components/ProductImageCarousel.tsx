@@ -3,13 +3,26 @@
 import Image from "next/image";
 import { useRef, useState, type PointerEvent } from "react";
 import type { Product } from "@/data/products";
+import ProductPhotoViewer from "./ProductPhotoViewer";
 
 export default function ProductImageCarousel({ product }: { product: Product }) {
   const images = product.images.length ? product.images : [product.image];
   const [selected, setSelected] = useState(0);
+  const [expandedPhoto, setExpandedPhoto] = useState<{ index: number; trigger: HTMLButtonElement } | null>(null);
   const rail = useRef<HTMLDivElement>(null);
   const drag = useRef<{ x: number; scroll: number; moved: boolean } | null>(null);
+  const photoPress = useRef<{ x: number; y: number; moved: boolean } | null>(null);
   const multiple = images.length > 1;
+
+  function imageAlt(index: number) {
+    const label = index === 0 ? product.imageAlt ?? product.name : product.name;
+    return `${label}${multiple ? ` — image ${index + 1}` : ""}`;
+  }
+
+  function trackPhotoMovement(event: PointerEvent<HTMLDivElement>) {
+    const press = photoPress.current;
+    if (press && (Math.abs(event.clientX - press.x) > 8 || Math.abs(event.clientY - press.y) > 8)) press.moved = true;
+  }
 
   function goTo(index: number) {
     const target = Math.max(0, Math.min(images.length - 1, index));
@@ -57,6 +70,9 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
     <div className="min-w-0 w-full" role="group" aria-roledescription={multiple ? "carousel" : undefined} aria-label={`${product.name} photos`}>
       <div className="relative mx-auto max-w-lg overflow-hidden rounded-xl">
         <div ref={rail} className={`product-photo-rail ${multiple ? "cursor-grab active:cursor-grabbing" : ""}`} tabIndex={multiple ? 0 : undefined}
+          onPointerDownCapture={event => { photoPress.current = { x: event.clientX, y: event.clientY, moved: false }; }}
+          onPointerMoveCapture={trackPhotoMovement} onPointerUpCapture={trackPhotoMovement}
+          onPointerCancelCapture={() => { if (photoPress.current) photoPress.current.moved = true; }}
           onScroll={event => {
             const element = event.currentTarget;
             if (element.clientWidth) setSelected(Math.max(0, Math.min(images.length - 1, Math.round(element.scrollLeft / element.clientWidth))));
@@ -69,10 +85,16 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
             if (event.key === "Home" || event.key === "End") { event.preventDefault(); event.currentTarget.focus({ preventScroll: true }); goTo(event.key === "Home" ? 0 : images.length - 1); }
           }}>
           {images.map((image, index) => {
-            const imageAlt = index === 0 ? product.imageAlt ?? product.name : product.name;
-            const photo = <Image src={image} alt={`${imageAlt}${multiple ? ` — image ${index + 1}` : ""}`} fill draggable={false}
+            const photo = <Image src={image} alt={imageAlt(index)} fill draggable={false}
               priority={index === 0} sizes="(max-width: 767px) 100vw, 512px" className="select-none object-contain drop-shadow-xl" />;
-            return <div key={image} className="product-photo-slide aspect-square" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`} aria-hidden={index !== selected}>{photo}</div>;
+            return <div key={image} className="product-photo-slide aspect-square" role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${images.length}`} aria-hidden={index !== selected}>
+              <button type="button" className="product-photo-open" aria-label={`Enlarge image ${index + 1} of ${product.name}`} aria-haspopup="dialog"
+                tabIndex={index === selected ? 0 : -1}
+                onClick={event => {
+                  if (event.detail > 0 && photoPress.current?.moved) return;
+                  setExpandedPhoto({ index, trigger: event.currentTarget });
+                }}>{photo}</button>
+            </div>;
           })}
         </div>
         {multiple && <>
@@ -94,6 +116,9 @@ export default function ProductImageCarousel({ product }: { product: Product }) 
           <Image src={image} alt="" fill sizes="80px" className="object-contain p-2" />
         </button>)}
       </div>}
+      {expandedPhoto && <ProductPhotoViewer src={images[expandedPhoto.index]} alt={imageAlt(expandedPhoto.index)} productName={product.name}
+        counter={multiple ? `${expandedPhoto.index + 1}/${images.length}` : undefined}
+        trigger={expandedPhoto.trigger} onClose={() => setExpandedPhoto(null)} />}
     </div>
   );
 }

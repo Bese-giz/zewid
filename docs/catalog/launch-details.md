@@ -42,11 +42,15 @@ White and red teff remain €25 per 5 kg bag at every quantity. Shiro remains �
 
 ## Pack-size selection
 
-Berbere, Korerima, Abish and Bula have 250 g, 500 g and 1 kg options. Coffee has 500 g and 1 kg only. Korerima and Abish no longer offer a 200 g retail option. All sizes represent alternative packs from the same product stock. Static stock counts, stock reservation and separate size inventories are not introduced by this price update.
+Berbere, Korerima, Abish and Bula have 250 g, 500 g and 1 kg options. Coffee has 500 g and 1 kg only. Korerima and Abish no longer offer a 200 g retail option. All sizes represent alternative packs from the same product stock. The shared inventory system below tracks their combined weight rather than separate balances for each pack size.
 
 Product detail pages present selectable size cards with the price of each option. Selecting a size updates the main price, weight, add-to-cart subtotal and WhatsApp enquiry. Cart lines, persisted carts and Stripe orders retain the exact selected pack ID.
 
 Abish and Korerima now use the supplied gold-pouch photos for each size. Selecting 250 g, 500 g or 1 kg also changes the detail photo and enlarged view; the matching photo is retained in the cart and Stripe catalog. Korerima is whole Ethiopian cardamom seeds removed from pods, with the supplied English and Amharic names replacing the former powder description. All accepted selling prices remain unchanged, including the separately confirmed €8.90 coffee option.
+
+## Shared inventory
+
+Opening balances are recorded in `opening-stock.md` and seeded once into the shared storefront/admin database. White and red teff each start at 50 bags. Website checkout reserves available stock before payment; verified payment deducts it once. Cancelled or expired Stripe sessions release their holds after verification. Admin manual orders use the same stock through explicit product and pack selection. Current balances are managed in ZEWID Admin → Stock; redeploying or rerunning setup does not reset them. Sandbox and live balances are separate.
 
 ## Available on request
 

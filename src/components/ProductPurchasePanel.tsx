@@ -8,11 +8,15 @@ import ProductName from "./ProductName";
 import ProductOrderActions from "./ProductOrderActions";
 import ProductStatusTag from "./ProductStatusTag";
 import ProductGallery from "./ProductGallery";
+import { useInventory } from "@/context/InventoryContext";
 
 export default function ProductPurchasePanel({ product }: { product: Product }) {
   const [variantId, setVariantId] = useState(product.defaultVariantId);
-  const selected = getSelectedProduct(product, variantId) ?? product;
-  const available = isProductPurchasable(selected);
+  const stock = useInventory();
+  const base = getSelectedProduct(product, variantId) ?? product;
+  const limit = stock.limit(product.slug, variantId);
+  const selected = isProductPurchasable(base) && stock.ready && limit === 0 ? { ...base, availability: "out-of-stock" as const } : base;
+  const available = isProductPurchasable(selected) && stock.ready;
 
   return <>
     <div className="product-detail-media">
@@ -23,7 +27,7 @@ export default function ProductPurchasePanel({ product }: { product: Product }) 
         <h1><ProductName product={product} /></h1>
         <div className="product-detail-meta">
           <p className="product-detail-unit">{selected.weight}</p>
-          {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : product.availability !== "in-stock" && <div className="product-detail-status"><ProductStatusTag availability={product.availability} compact /></div>}
+          {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : selected.availability !== "in-stock" ? <div className="product-detail-status"><ProductStatusTag availability={selected.availability} compact /></div> : <span className="text-xs text-slate-500">{stock.error ? "Availability temporarily unavailable" : "Checking stock…"}</span>}
         </div>
       </div>
       <div className="product-detail-price" aria-live="polite" aria-atomic="true"><ProductAvailability product={selected} showUnit={false} /></div>
@@ -40,7 +44,7 @@ export default function ProductPurchasePanel({ product }: { product: Product }) 
           </label>)}
         </div>
       </fieldset>}
-      <ProductOrderActions product={selected} variantId={variantId} />
+      <ProductOrderActions product={selected} variantId={variantId} stockLimit={stock.ready ? limit : 0} />
     </div>
   </>;
 }

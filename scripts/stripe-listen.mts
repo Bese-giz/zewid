@@ -8,7 +8,7 @@ const origin = new URL(process.env.CHECKOUT_BASE_URL || "http://localhost:3000")
 if (origin.protocol !== "http:" || !["localhost", "127.0.0.1"].includes(origin.hostname)) throw new Error("This listener is for localhost only. Configure a Stripe webhook endpoint for deployed hosting.");
 await mkdir(".stripe/config", { recursive: true });
 const child = spawn(fileURLToPath(new URL("../node_modules/.bin/stripe", import.meta.url)), [
-  "listen", "--events", "checkout.session.completed,checkout.session.async_payment_succeeded",
+  "listen", "--events", "checkout.session.completed,checkout.session.async_payment_succeeded,checkout.session.expired,checkout.session.async_payment_failed",
   "--forward-to", `${origin.origin}/api/stripe/webhook`,
 ], { env: { ...process.env, STRIPE_API_KEY: key, STRIPE_DEVICE_NAME: "zewid-local-checkout", XDG_CONFIG_HOME: fileURLToPath(new URL("../.stripe/config", import.meta.url)) }, stdio: ["ignore", "pipe", "pipe"] });
 

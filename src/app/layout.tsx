@@ -7,6 +7,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import FloatingCart from "@/components/FloatingCart";
 import Toast from "@/components/Toast";
 import { CartProvider } from "@/context/CartContext";
+import { InventoryProvider } from "@/context/InventoryContext";
 import { site } from "@/lib/site";
 import { checkoutMode } from "@/lib/stripe";
 import { postnordPickupEnabled } from "@/lib/postnord";
@@ -98,7 +99,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} ${marketSerif.variable} antialiased text-gray-900`}>
-        <CartProvider>
+        <InventoryProvider enabled><CartProvider>
           <Header />
           <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1006] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:font-semibold focus:text-green-800">Skip to content</a>
           <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col">
@@ -108,7 +109,7 @@ export default function RootLayout({
           <WhatsAppFloat />
           <FloatingCart checkoutMode={checkoutMode()} pickupEnabled={postnordPickupEnabled()} />
           <Toast />
-        </CartProvider>
+        </CartProvider></InventoryProvider>
       </body>
     </html>
   );

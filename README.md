@@ -92,6 +92,20 @@ Stripe uses one managed product per retail pack so checkout displays the correct
 
 Unavailable products remain visible for enquiries but cannot be added to the cart. To enable a new item, confirm the retail price, stock, contents and product details against the received goods; set its price and availability, sync the appropriate Stripe catalog, and rebuild/redeploy. Existing slugs remain stable for cart and paid-order compatibility. The temporary €1 checkout test has ended.
 
+## Automatic stock control
+
+`POSTGRES_URL` must point to the same PostgreSQL database as ZEWID Admin. Checkout fails closed if inventory is unavailable: missing configuration never falls back to unlimited stock. Run `npm run inventory:setup -- --apply` once before deploying this feature, and rerun after catalog changes to synchronize product/pack metadata. The additive installer preserves existing orders, users and on-hand balances. `src/data/opening-stock.ts` and `docs/catalog/opening-stock.md` record the original purchase quantities confirmed by the merchant on 4 November 2026. Teff starts at 50 white and 50 red bags; each warmer model starts at two complete sets. Food variants share integer-gram balances, including 9,600 g of Abish from 48 supplier packs of 200 g.
+
+Stock is reserved atomically in PostgreSQL before a payable Stripe URL is returned. Reservations expire with the 31-minute Stripe Checkout Session. Existing quantities are checked under the same transaction lock as checkout holds, manual orders and stock adjustments, so simultaneous buyers cannot oversell a last unit. Reservations retain immutable Stripe request data and a stable idempotency key. Browser retry state and the HttpOnly ownership cookie are preserved across retries. Editing a cart and starting another checkout expires its previous open checkout first; already-processing payments retain their stock.
+
+The storefront's signed Stripe webhook commits stock once after verified payment, or releases a hold after verified checkout expiration/async payment failure. Add `checkout.session.expired` and `checkout.session.async_payment_failed` alongside the existing completed/succeeded event types for prompt updates. Public stock refreshes also reconcile due linked reservations against Stripe; processing payments keep their stock. Cancellation from Stripe expires the owned session before returning stock. Unknown/unlinked reservations remain held for review rather than being released while a potentially payable session is unresolved. Stock corrections and restocks are made in Admin → Stock, with a reason; they cannot reduce physical stock below active holds.
+
+The homepage, catalog, product details and cart quantity controls refresh availability from `/api/inventory`; the server remains authoritative even if a customer's page is stale. A sold-out product stays visible for enquiries, with purchases disabled. Live and sandbox balances are isolated. Older paid orders have no inventory reservation and do not retroactively reduce these new opening balances; the merchant confirmed no stock had been sold. Stripe refunds do not automatically restock physical goods: verify the return, then adjust stock in the admin.
+
+Manual/screenshot orders use explicit product/pack selection in ZEWID Admin. Saving a confirmed order allocates stock even when awaiting payment; edits adjust only the difference. Delivery-status edits and repeated webhook deliveries do not deduct twice. Website orders use their checkout reservation. If a reviewed screenshot is later linked to the same verified website payment reference, its manual allocation is replaced by the checkout allocation rather than deducted twice. Deleting an order does not automatically restock it; explicitly return its stock allocation first when appropriate.
+
+Both apps use compatible patched framework releases after the existing Next.js image-optimizer advisory was verified during this implementation. No major Next.js or Prisma migration is included.
+
 ## Delivery and ordering
 
 `src/lib/site.ts` contains the site URL, WhatsApp number, delivery coverage, and delivery time. Delivery within Finland is currently 1–2 days and costs €8.90 per non-empty order, with no free-delivery threshold. Delivery outside Finland is arranged through WhatsApp, with destination, shipping costs, timing and payment agreed before ordering. Online checkout and optional delivery-point selection remain limited to Finland; the flat Finnish fee and timing do not apply internationally. The fee is configured as `deliveryFeeEur` in the same file.
@@ -104,7 +118,7 @@ The cart's checkout button is available when the configured mode and key match. 
 
 The merchant confirmed VAT registration and VAT-inclusive selling prices. Product prices and delivery rates are marked inclusive in Stripe; the website displays that prices include VAT. Checkout does not add VAT to the quoted total. Automatic Stripe Tax is disabled; the merchant handles VAT reporting and any required VAT invoices in their accounting system. This implementation does not produce a VAT invoice or a tax breakdown. Finland's food/ingredient VAT rate is 13.5% from 1 January 2026 ([Finnish Tax Administration](https://www.vero.fi/en/businesses-and-corporations/taxes-and-charges/vat/rates-of-vat/)); this rate is accounting guidance and is not automatically applied by this code. Changing the catalog to include non-food products or offering a different delivery service requires reviewing the applicable VAT treatment.
 
-Orders, contact/delivery details, and payment status remain in Stripe. The reference and purchased items are attached to the Checkout Session and PaymentIntent metadata, so the merchant can review paid orders in the Stripe Dashboard. A signed webhook and the authenticated return page verify Stripe's actual paid status and amount before marking a payment verified. No shipment is triggered automatically. There is no separate order database, inventory-counting service, or local admin portal. Payment receipt emails must be enabled in Stripe's customer email settings; this app does not send custom order emails.
+Orders, contact/delivery details, and payment status remain available in Stripe. The reference and purchased items are attached to the Checkout Session and PaymentIntent metadata, so the merchant can review paid orders in the Stripe Dashboard. A signed webhook and the authenticated return page verify Stripe's actual paid status and amount before marking a payment verified. ZEWID Admin imports paid orders into its shared database and manages stock separately from fulfillment status. No shipment is triggered automatically. Payment receipt emails must be enabled in Stripe's customer email settings; this app does not send custom order emails.
 
 New sessions are tagged `zewid_checkout_flow = stripe_address_v1`. The merchant finds the confirmed recipient address in Stripe's shipping details and email/phone in customer details. The authenticated website confirmation displays those details too. For older orders, website-captured `zewid_delivery_*` metadata remains a fallback; no historical order details are removed. The hosted Stripe page controls express-button placement: this integration does not hide only its top row or disable wallet methods account-wide. Wallets can provide the required saved details instead of asking customers to type into the visible form. Closing the cart aborts its pending browser checkout request.
 
@@ -155,7 +169,7 @@ Run the local webhook listener first:
 npm run stripe:listen
 ```
 
-It uses the sandbox key through the child process environment, forwards only checkout completion/success events to `/api/stripe/webhook`, and saves the signing secret without printing it. Keep it running during local checkout. Then start/restart the website in another terminal so it loads that secret:
+It uses the sandbox key through the child process environment, forwards checkout completion, success, expiration and async-payment-failure events to `/api/stripe/webhook`, and saves the signing secret without printing it. Keep it running during local checkout. Then start/restart the website in another terminal so it loads that secret:
 
 ```sh
 npm run dev
@@ -200,6 +214,7 @@ In the linked Vercel project's **Settings → Environment Variables**, set these
 | `STRIPE_MODE` | `live` |
 | `STRIPE_SECRET_KEY` | Live secret/restricted key; mark **Sensitive** |
 | `STRIPE_WEBHOOK_SECRET` | Live endpoint signing secret; mark **Sensitive** |
+| `POSTGRES_URL` | Same database as ZEWID Admin; mark **Sensitive** |
 | `CHECKOUT_BASE_URL` | `https://www.zewid.com` |
 
 Use sandbox values with a matching origin for Preview deployments. Live mode is blocked when `VERCEL_ENV` is not `production`. Never prefix secrets with `NEXT_PUBLIC_`. Vercel environment changes apply to new deployments, so redeploy after setting them ([Vercel environment documentation](https://vercel.com/docs/environment-variables)).

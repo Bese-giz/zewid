@@ -12,8 +12,10 @@ import { getProductDisplayName } from "@/lib/product-display";
 import ProductName from "./ProductName";
 import MarketIcon from "./MarketIcon";
 import { deliveryPointName } from "@/lib/delivery-display";
+import { useInventory } from "@/context/InventoryContext";
 
 export default function FloatingCart({ checkoutMode = null, pickupEnabled = false }: { checkoutMode?: StripeMode | null; pickupEnabled?: boolean }) {
+  const stock = useInventory();
   const { items, pricing, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, generateWhatsAppLink } = useCart();
   const [pickup, setPickup] = useState<SelectedPickupPoint | null>(null);
 
@@ -82,7 +84,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
                     <div className="cart-item-quantity" role="group" aria-label={`Quantity of ${item.name}`}>
                       <button type="button" aria-label={`Decrease quantity of ${item.name} ${item.weight}`} onClick={() => updateQuantity(item.slug, item.quantity - 1, line.variantId)}>−</button>
                       <output aria-live="polite">{item.quantity}</output>
-                      <button type="button" aria-label={`Increase quantity of ${item.name} ${item.weight}`} disabled={item.quantity >= MAX_CART_QUANTITY} onClick={() => updateQuantity(item.slug, item.quantity + 1, line.variantId)}>+</button>
+                      <button type="button" aria-label={`Increase quantity of ${item.name} ${item.weight}`} disabled={!stock.ready || item.quantity >= Math.min(MAX_CART_QUANTITY, stock.limit(item.slug, line.variantId))} onClick={() => updateQuantity(item.slug, item.quantity + 1, line.variantId)}>+</button>
                     </div>
                     <button type="button" aria-label={`Remove ${item.name} ${item.weight} from cart`} onClick={() => removeFromCart(item.slug, line.variantId)} className="cart-item-remove">Remove</button>
                   </div>

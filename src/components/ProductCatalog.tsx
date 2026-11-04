@@ -3,15 +3,17 @@
 import { useState } from "react";
 import { isProductPurchasable, productCategories, type Product, type ProductCategory } from "@/data/products";
 import ProductCard from "./ProductCard";
+import { useInventory } from "@/context/InventoryContext";
 
 export default function ProductCatalog({ products, initialCategory = "all", initialSearch = "" }: { products: Product[]; initialCategory?: ProductCategory | "all"; initialSearch?: string }) {
+  const stock = useInventory();
   const [category, setCategory] = useState<ProductCategory | "all">(initialCategory);
   const [search, setSearch] = useState(initialSearch);
   const [availableOnly, setAvailableOnly] = useState(false);
   const query = search.trim().toLocaleLowerCase();
   const filtered = products.filter(product =>
     (category === "all" || product.category === category) &&
-    (!availableOnly || isProductPurchasable(product)) &&
+    (!availableOnly || (isProductPurchasable(product) && (!stock.ready || (product.variants?.map(variant => variant.id) ?? [undefined]).some(id => stock.limit(product.slug, id) > 0)))) &&
     (!query || [product.name, product.amharicName ?? "", product.shortDescription, product.slug.replaceAll("-", " "), ...product.features].join(" ").toLocaleLowerCase().includes(query)));
   const clear = () => { setCategory("all"); setSearch(""); setAvailableOnly(false); };
 

@@ -8,12 +8,12 @@ import { cartLineKey, formatEuro } from "@/lib/pricing";
 import MarketIcon from "./MarketIcon";
 import { getProductDisplayName, getProductEnquiryMessage } from "@/lib/product-display";
 
-export default function ProductOrderActions({ product, variantId }: { product: Product; variantId?: string }) {
+export default function ProductOrderActions({ product, variantId, stockLimit = MAX_CART_QUANTITY }: { product: Product; variantId?: string; stockLimit?: number }) {
   const [quantity, setQuantity] = useState(1);
   const { items, addToCart } = useCart();
-  const available = isProductPurchasable(product);
+  const available = isProductPurchasable(product) && stockLimit > 0;
   const existingQuantity = items.find((item) => cartLineKey(item) === cartLineKey({ slug: product.slug, variantId }))?.quantity ?? 0;
-  const remainingQuantity = MAX_CART_QUANTITY - existingQuantity;
+  const remainingQuantity = Math.max(0, Math.min(MAX_CART_QUANTITY, stockLimit) - existingQuantity);
   const selectionQuantity = Math.min(quantity, remainingQuantity);
   const selectionTotal = available && selectionQuantity > 0 ? formatEuro(Math.round(product.priceEur * 100) * selectionQuantity) : null;
   const enquiry = variantId ? `Hi ZEWID! I'd like to ask about ${getProductDisplayName(product)} (${product.weight})${product.priceEur !== null ? ` at ${formatEuro(Math.round(product.priceEur * 100))}` : ""}, delivery and ordering.` : getProductEnquiryMessage(product, available);

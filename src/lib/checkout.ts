@@ -5,6 +5,7 @@ import { calculateCart, cartLineKey, MAX_CART_QUANTITY, type CartSelection } fro
 import { stripeProductId } from "./stripe-catalog";
 import { getStripe, matchesStripeMode } from "./stripe";
 import { deliveryFromMetadata, validateCheckoutDelivery, type CheckoutDelivery } from "./checkout-delivery";
+import { settleInventory } from "./inventory";
 
 export type CheckoutItem = CartSelection;
 const MAX_ORDER_LINES = products.reduce((count, product) => count + (product.variants?.length || 1), 0);
@@ -108,6 +109,7 @@ export async function recordPayment(session: Stripe.Checkout.Session) {
   if (!matchesStripeMode(session.livemode) || session.metadata?.zewid_store !== "zewid" || session.payment_status !== "paid" || session.status !== "complete") return;
   const expected = Number(session.metadata.zewid_total_cents);
   if (!Number.isSafeInteger(expected) || expected <= 0 || session.currency !== "eur" || session.amount_total !== expected) throw new Error("Order payment amount does not match its checkout total.");
+  await settleInventory(session);
   if (session.metadata.zewid_payment_status === "paid") return;
   const stripe = getStripe();
   // Recording a verified payment is idempotent. Shipment is handled by the merchant.

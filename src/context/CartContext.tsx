@@ -7,6 +7,7 @@ import { MAX_CART_QUANTITY, calculateCart, cartLineKey, formatEuro, type CartSel
 import type { PickupPoint } from "@/lib/postnord";
 import { deliveryPointName } from "@/lib/delivery-display";
 import { getProductDisplayName } from "@/lib/product-display";
+import { useInventory } from "./InventoryContext";
 
 export { MAX_CART_QUANTITY } from "@/lib/pricing";
 const STORAGE_KEY = "zewid_cart";
@@ -70,6 +71,7 @@ function restoreCart(value: unknown): CartItem[] {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const stock = useInventory();
   const [cart, setCart] = useState<{ items: CartItem[]; loaded: boolean }>({ items: [], loaded: false });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -108,6 +110,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     const variantId = getProductVariant(catalogProduct!, requestedVariantId)?.id;
     const key = cartLineKey({ slug, variantId });
+    const existingQuantity = items.find(item => cartLineKey(item) === key)?.quantity ?? 0;
+    if (!stock.ready || existingQuantity + quantity > stock.limit(slug, variantId)) {
+      setToastMessage(stock.ready ? "There is not enough stock for this quantity." : "Please wait while we check stock availability.");
+      return;
+    }
     setCart((previous) => {
       const existing = previous.items.find((item) => cartLineKey(item) === key);
       const nextItems = existing
@@ -130,6 +137,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (quantity === 0) {
       removeFromCart(slug, variantId);
       return;
+    }
+    const previousQuantity = items.find(item => cartLineKey(item) === cartLineKey({ slug, variantId }))?.quantity ?? 0;
+    if (quantity > previousQuantity && (!stock.ready || quantity > stock.limit(slug, variantId))) {
+      setToastMessage("There is not enough stock for this quantity."); return;
     }
     setCart((previous) => ({
       ...previous,
@@ -159,6 +170,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }) }));
     try { localStorage.setItem("zewid_completed_checkouts", JSON.stringify([...saved, sessionId].slice(-50))); }
     catch { /* The cart remains usable if storage is unavailable. */ }
+    try { localStorage.removeItem("zewid_checkout_attempt"); } catch { /* Storage is optional. */ }
   }, [cart.loaded]);
 
   const generateWhatsAppLink = (pickupPoint?: PickupPoint) => {

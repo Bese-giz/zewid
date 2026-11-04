@@ -1555,7 +1555,7 @@ export const products: Product[] = [
       }
     ],
     "category": "food",
-    "availability": "on-request",
+    "availability": "out-of-stock",
     "priceEur": null
   },
   {

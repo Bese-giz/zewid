@@ -11,7 +11,7 @@ export default function ProductStatusTag({ availability, compact = false }: { av
           {soon ? <><circle cx="12" cy="12" r="8" /><path d="M12 8v4l2.5 1.5" /></> : <><rect x="4" y="6" width="16" height="14" rx="2" /><path d="M9 6V4h6v2M4 10h16m-7 5h-2" /></>}
         </svg>
       </span>
-      <span>{soon ? "Coming soon" : "Out of stock"}</span>
+      <span>{soon ? "Coming soon" : "Sold out"}</span>
       <span className="product-status-tag__mark" aria-hidden="true">✧</span>
     </p>
   );

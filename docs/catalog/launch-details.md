@@ -1,6 +1,6 @@
 # Catalog launch details
 
-Updated 4 November 2026. All 40 listings remain public, with 30 available to buy and 10 available on request. All supplied Amharic names and image galleries are retained.
+Updated 4 November 2026. All 40 listings remain public, with 30 available to buy, nine available on request and Mitmita sold out. All supplied Amharic names and image galleries are retained.
 
 ## Confirmed retail prices
 
@@ -50,7 +50,7 @@ Abish and Korerima now use the supplied gold-pouch photos for each size. Selecti
 
 ## Available on request
 
-Six Rekebot ceremony sets/tables, Alviia Luwam extensions, the two Zenith oils and Mitmita remain WhatsApp-only because these files contain no confirmed retail prices for them. Their existing photos and descriptions remain published. No zero prices or estimated prices are used.
+Six Rekebot ceremony sets/tables, Alviia Luwam extensions and the two Zenith oils remain WhatsApp-only because these files contain no confirmed retail prices for them. Their existing photos and descriptions remain published. No zero prices or estimated prices are used. Mitmita is marked sold out; enquiries remain available, but cart purchases are disabled.
 
 ## Product details
 

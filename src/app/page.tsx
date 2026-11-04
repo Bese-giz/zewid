@@ -26,7 +26,7 @@ export default function HomePage() {
           <div className="market-hero__copy">
             <p className="market-eyebrow">Rooted in tradition. Made for everyday.</p>
             <h1 id="market-hero-title" className="market-title"><span>Your Ethiopian</span><span>market, closer</span><span>to home.</span></h1>
-            <p lang="am" className="market-hero__amharic">የኢትዮጵያ ጣዕም፣ የቤት ስሜት። <span aria-hidden="true">🇪🇹</span></p>
+            <p lang="am" className="market-hero__amharic">በሀገር ቤት በቤት ውስጥ በጥንቃቄ ተሰርተው የምናመጣቸውን የባህልና ውጤቶች እናቀርባለን።</p>
             <p className="market-hero__description">Food, coffee and home essentials, thoughtfully brought together for everyday life.</p>
             <div className="market-hero__buttons">
               <Link href="#collection" className="market-button market-button--primary">Shop the collection <MarketIcon name="arrow" size={21} /></Link>

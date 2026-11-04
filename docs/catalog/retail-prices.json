@@ -1,0 +1,246 @@
+{
+  "currency": "EUR",
+  "effectiveDate": "2026-11-04",
+  "sources": [
+    "accepted-pack-prices.json",
+    "zewid-stock-costs-and-profit.xlsx, Stock and profit!B18:G41"
+  ],
+  "coffee500g": "User confirmed EUR 8.90 on 4 November 2026",
+  "availability": "User confirmed all newly priced products available to buy",
+  "products": [
+    {
+      "slug": "berbere",
+      "priceEur": 30.0,
+      "weight": "1 kg pack",
+      "defaultVariantId": "berbere-1000g",
+      "variants": [
+        {
+          "id": "berbere-250g",
+          "label": "250 g",
+          "weightKg": 0.25,
+          "priceEur": 9.5
+        },
+        {
+          "id": "berbere-500g",
+          "label": "500 g",
+          "weightKg": 0.5,
+          "priceEur": 17.5
+        },
+        {
+          "id": "berbere-1000g",
+          "label": "1 kg",
+          "weightKg": 1.0,
+          "priceEur": 30.0
+        }
+      ]
+    },
+    {
+      "slug": "mashila-sorghum",
+      "priceEur": 12.9,
+      "weight": "5 kg bag"
+    },
+    {
+      "slug": "buna-coffee",
+      "priceEur": 15.9,
+      "weight": "1 kg pack",
+      "defaultVariantId": "buna-coffee-1000g",
+      "variants": [
+        {
+          "id": "buna-coffee-500g",
+          "label": "500 g",
+          "weightKg": 0.5,
+          "priceEur": 8.9
+        },
+        {
+          "id": "buna-coffee-1000g",
+          "label": "1 kg",
+          "weightKg": 1.0,
+          "priceEur": 15.9
+        }
+      ]
+    },
+    {
+      "slug": "abish-fenugreek",
+      "priceEur": 7.5,
+      "weight": "250 g pack",
+      "defaultVariantId": "abish-250g",
+      "variants": [
+        {
+          "id": "abish-250g",
+          "label": "250 g",
+          "weightKg": 0.25,
+          "priceEur": 7.5
+        },
+        {
+          "id": "abish-500g",
+          "label": "500 g",
+          "weightKg": 0.5,
+          "priceEur": 13.5
+        },
+        {
+          "id": "abish-1000g",
+          "label": "1 kg",
+          "weightKg": 1.0,
+          "priceEur": 25.0
+        }
+      ]
+    },
+    {
+      "slug": "gaat-porridge",
+      "priceEur": 7,
+      "weight": "1 kg pack"
+    },
+    {
+      "slug": "mekelesha-spice",
+      "priceEur": 7,
+      "weight": "100 g packet"
+    },
+    {
+      "slug": "zemen-injera-maker-40cm",
+      "priceEur": 130,
+      "weight": "40 cm"
+    },
+    {
+      "slug": "coffee-roasting-pan",
+      "priceEur": 15,
+      "weight": "1 pan"
+    },
+    {
+      "slug": "mogogo-temperature-controller",
+      "priceEur": 25,
+      "weight": "1 controller"
+    },
+    {
+      "slug": "berele-tej-glass",
+      "priceEur": 7,
+      "weight": "1 glass"
+    },
+    {
+      "slug": "ceramic-incense-burner",
+      "priceEur": 13,
+      "weight": "1 burner"
+    },
+    {
+      "slug": "floral-coffee-cups-12",
+      "priceEur": 20,
+      "weight": "Set of 12 · 60 ml cups"
+    },
+    {
+      "slug": "clay-spice-container",
+      "priceEur": 20,
+      "weight": "1 container"
+    },
+    {
+      "slug": "electric-coffee-hot-plate",
+      "priceEur": 40,
+      "weight": "1 hot plate"
+    },
+    {
+      "slug": "food-warmer-3-dish",
+      "priceEur": 90,
+      "weight": "3-dish set"
+    },
+    {
+      "slug": "coffee-set-18-piece",
+      "priceEur": 27,
+      "weight": "18-piece set"
+    },
+    {
+      "slug": "food-warmer-2-dish",
+      "priceEur": 70,
+      "weight": "2-dish set"
+    },
+    {
+      "slug": "coffee-ceremony-set-23-piece",
+      "priceEur": 50,
+      "weight": "23-piece set"
+    },
+    {
+      "slug": "amharic-alphabet-chart",
+      "priceEur": 22,
+      "weight": "1 chart"
+    },
+    {
+      "slug": "snack-stand-3-tier",
+      "priceEur": 23,
+      "weight": "3 tiers"
+    },
+    {
+      "slug": "ethiopian-frankincense",
+      "priceEur": 7,
+      "weight": "250 g pack"
+    },
+    {
+      "slug": "ketema-grass",
+      "priceEur": 12.5,
+      "weight": "Grass bundle"
+    },
+    {
+      "slug": "floral-injera-tray-40cm",
+      "priceEur": 15,
+      "weight": "40 cm tray"
+    },
+    {
+      "slug": "zemen-injera-maker-46cm",
+      "priceEur": 140,
+      "weight": "46 cm"
+    },
+    {
+      "slug": "meshrefet-basket",
+      "priceEur": 12,
+      "weight": "Medium basket"
+    },
+    {
+      "slug": "bula",
+      "priceEur": 22.0,
+      "weight": "1 kg pack",
+      "defaultVariantId": "bula-1000g",
+      "variants": [
+        {
+          "id": "bula-250g",
+          "label": "250 g",
+          "weightKg": 0.25,
+          "priceEur": 7.5
+        },
+        {
+          "id": "bula-500g",
+          "label": "500 g",
+          "weightKg": 0.5,
+          "priceEur": 12.5
+        },
+        {
+          "id": "bula-1000g",
+          "label": "1 kg",
+          "weightKg": 1.0,
+          "priceEur": 22.0
+        }
+      ]
+    },
+    {
+      "slug": "korerima",
+      "priceEur": 17.5,
+      "weight": "250 g pack",
+      "defaultVariantId": "korerima-250g",
+      "variants": [
+        {
+          "id": "korerima-250g",
+          "label": "250 g",
+          "weightKg": 0.25,
+          "priceEur": 17.5
+        },
+        {
+          "id": "korerima-500g",
+          "label": "500 g",
+          "weightKg": 0.5,
+          "priceEur": 30.0
+        },
+        {
+          "id": "korerima-1000g",
+          "label": "1 kg",
+          "weightKg": 1.0,
+          "priceEur": 55.0
+        }
+      ]
+    }
+  ]
+}

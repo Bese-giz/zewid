@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode, useEffect, useCallback, useRef } from "react";
-import { getProductBySlug, isProductPurchasable, products } from "@/data/products";
+import { getProductBySlug, getProductVariant, getSelectedProduct, isProductPurchasable, products } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
-import { MAX_CART_QUANTITY, calculateCart, formatEuro } from "@/lib/pricing";
+import { MAX_CART_QUANTITY, calculateCart, cartLineKey, formatEuro, type CartSelection } from "@/lib/pricing";
 import type { PickupPoint } from "@/lib/postnord";
 import { deliveryPointName } from "@/lib/delivery-display";
 import { getProductDisplayName } from "@/lib/product-display";
@@ -13,6 +13,7 @@ const STORAGE_KEY = "zewid_cart";
 
 export interface CartItem {
   slug: string;
+  variantId?: string;
   name: string;
   weight: string;
   image: string;
@@ -22,11 +23,11 @@ export interface CartItem {
 interface CartContextType {
   items: CartItem[];
   pricing: ReturnType<typeof calculateCart>;
-  addToCart: (slug: string, quantity?: number) => void;
-  removeFromCart: (slug: string) => void;
-  updateQuantity: (slug: string, quantity: number) => void;
+  addToCart: (slug: string, quantity?: number, variantId?: string) => void;
+  removeFromCart: (slug: string, variantId?: string) => void;
+  updateQuantity: (slug: string, quantity: number, variantId?: string) => void;
   clearCart: () => void;
-  completeCheckout: (sessionId: string, purchased: { slug: string; quantity: number }[]) => void;
+  completeCheckout: (sessionId: string, purchased: CartSelection[]) => void;
   isCartOpen: boolean;
   setIsCartOpen: (isOpen: boolean) => void;
   toastMessage: string | null;
@@ -46,15 +47,19 @@ function restoreCart(value: unknown): CartItem[] {
       ? getProductBySlug(entry.slug)
       : products.find((product) => typeof entry.name === "string" &&
           (product.name === entry.name || product.legacyNames?.includes(entry.name)));
-    if (!product || !isProductPurchasable(product) ||
+    if (!product || (entry.variantId !== undefined && typeof entry.variantId !== "string") ||
         !Number.isSafeInteger(entry.quantity) || entry.quantity <= 0 ||
         entry.quantity > MAX_CART_QUANTITY) continue;
-
-    const quantity = Math.min(MAX_CART_QUANTITY, (restored.get(product.slug)?.quantity ?? 0) + entry.quantity);
-    restored.set(product.slug, {
+    const selected = getSelectedProduct(product, entry.variantId);
+    if (!selected || !isProductPurchasable(selected)) continue;
+    const variantId = getProductVariant(product, entry.variantId)?.id;
+    const key = cartLineKey({ slug: product.slug, variantId });
+    const quantity = Math.min(MAX_CART_QUANTITY, (restored.get(key)?.quantity ?? 0) + entry.quantity);
+    restored.set(key, {
       slug: product.slug,
+      ...(variantId ? { variantId } : {}),
       name: product.name,
-      weight: product.weight,
+      weight: selected.weight,
       image: product.image,
       quantity,
     });
@@ -95,42 +100,46 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [cart]);
 
-  const addToCart = (slug: string, quantity = 1) => {
-    const product = getProductBySlug(slug);
+  const addToCart = (slug: string, quantity = 1, requestedVariantId?: string) => {
+    const catalogProduct = getProductBySlug(slug);
+    const product = catalogProduct && getSelectedProduct(catalogProduct, requestedVariantId);
     if (!product || !isProductPurchasable(product) ||
         !Number.isSafeInteger(quantity) || quantity <= 0 || quantity > MAX_CART_QUANTITY) return;
 
+    const variantId = getProductVariant(catalogProduct!, requestedVariantId)?.id;
+    const key = cartLineKey({ slug, variantId });
     setCart((previous) => {
-      const existing = previous.items.find((item) => item.slug === slug);
+      const existing = previous.items.find((item) => cartLineKey(item) === key);
       const nextItems = existing
-        ? previous.items.map((item) => item.slug === slug
+        ? previous.items.map((item) => cartLineKey(item) === key
             ? { ...item, quantity: Math.min(MAX_CART_QUANTITY, item.quantity + quantity) }
             : item)
-        : [...previous.items, { slug, name: product.name, weight: product.weight, image: product.image, quantity }];
+        : [...previous.items, { slug, ...(variantId ? { variantId } : {}), name: product.name, weight: product.weight, image: product.image, quantity }];
       return { ...previous, items: nextItems };
     });
-    setToastMessage(`${product.name} added to cart`);
+    setToastMessage(`${product.name}${variantId ? ` (${product.weight})` : ""} added to cart`);
   };
 
-  const removeFromCart = (slug: string) => {
-    setCart((previous) => ({ ...previous, items: previous.items.filter((item) => item.slug !== slug) }));
+  const removeFromCart = (slug: string, variantId?: string) => {
+    const key = cartLineKey({ slug, variantId });
+    setCart((previous) => ({ ...previous, items: previous.items.filter((item) => cartLineKey(item) !== key) }));
   };
 
-  const updateQuantity = (slug: string, quantity: number) => {
+  const updateQuantity = (slug: string, quantity: number, variantId?: string) => {
     if (!Number.isSafeInteger(quantity) || quantity < 0 || quantity > MAX_CART_QUANTITY) return;
     if (quantity === 0) {
-      removeFromCart(slug);
+      removeFromCart(slug, variantId);
       return;
     }
     setCart((previous) => ({
       ...previous,
-      items: previous.items.map((item) => item.slug === slug ? { ...item, quantity } : item),
+      items: previous.items.map((item) => cartLineKey(item) === cartLineKey({ slug, variantId }) ? { ...item, quantity } : item),
     }));
   };
 
   const clearCart = () => setCart((previous) => ({ ...previous, items: [] }));
 
-  const completeCheckout = useCallback((sessionId: string, purchased: { slug: string; quantity: number }[]) => {
+  const completeCheckout = useCallback((sessionId: string, purchased: CartSelection[]) => {
     if (!cart.loaded || completedSessions.current.has(sessionId)) return;
     let saved: string[] = [];
     try {
@@ -140,7 +149,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     completedSessions.current.add(sessionId);
     if (saved.includes(sessionId)) return;
     setCart((previous) => ({ ...previous, items: previous.items.flatMap((item) => {
-      const bought = purchased.find((entry) => entry.slug === item.slug)?.quantity ?? 0;
+      const bought = purchased.filter((entry) => {
+        const product = getProductBySlug(entry.slug);
+        const variantId = product ? getProductVariant(product, entry.variantId)?.id : entry.variantId;
+        return cartLineKey({ slug: entry.slug, variantId }) === cartLineKey(item);
+      }).reduce((sum, entry) => sum + entry.quantity, 0);
       const quantity = Math.max(0, item.quantity - bought);
       return quantity > 0 ? [{ ...item, quantity }] : [];
     }) }));

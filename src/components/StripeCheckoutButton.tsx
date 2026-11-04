@@ -18,7 +18,8 @@ export default function StripeCheckoutButton({ sandbox, pickup = null }: { sandb
     submitting.current = true;
     setBusy(true);
     setError(null);
-    const selected = items.map(({ slug, quantity }) => ({ slug, quantity })).sort((a, b) => a.slug.localeCompare(b.slug));
+    const selected = items.map(({ slug, quantity, variantId }) => ({ slug, quantity, ...(variantId ? { variantId } : {}) }))
+      .sort((a, b) => a.slug.localeCompare(b.slug) || (a.variantId ?? "").localeCompare(b.variantId ?? ""));
     const fingerprint = JSON.stringify({ items: selected, pickup });
     if (attempt.current?.cart !== fingerprint) attempt.current = { cart: fingerprint, id: crypto.randomUUID() };
     const active = new AbortController();

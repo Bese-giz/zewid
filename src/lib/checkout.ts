@@ -1,28 +1,49 @@
 import "server-only";
 import type Stripe from "stripe";
-import { getProductBySlug, isProductPurchasable, products } from "@/data/products";
-import { calculateCart, MAX_CART_QUANTITY } from "./pricing";
+import { getProductBySlug, getProductVariant, getSelectedProduct, isProductPurchasable, products } from "@/data/products";
+import { calculateCart, cartLineKey, MAX_CART_QUANTITY, type CartSelection } from "./pricing";
+import { stripeProductId } from "./stripe-catalog";
 import { getStripe, matchesStripeMode } from "./stripe";
 import { deliveryFromMetadata, validateCheckoutDelivery, type CheckoutDelivery } from "./checkout-delivery";
 
-export interface CheckoutItem { slug: string; quantity: number }
+export type CheckoutItem = CartSelection;
+const MAX_ORDER_LINES = products.reduce((count, product) => count + (product.variants?.length || 1), 0);
 
 export class CheckoutInputError extends Error {}
 
 export function validateCheckoutItems(value: unknown): CheckoutItem[] {
-  if (!Array.isArray(value) || value.length === 0 || value.length > products.length) throw new CheckoutInputError("Add at least one available product to your cart.");
+  if (!Array.isArray(value) || value.length === 0 || value.length > MAX_ORDER_LINES) throw new CheckoutInputError("Add at least one available product to your cart.");
   const seen = new Set<string>();
   return value.map((item: unknown) => {
     if (!item || typeof item !== "object" || !("slug" in item) || !("quantity" in item) ||
         typeof item.slug !== "string" || typeof item.quantity !== "number" ||
-        !Number.isSafeInteger(item.quantity) || item.quantity < 1 || item.quantity > MAX_CART_QUANTITY || seen.has(item.slug)) {
+        ("variantId" in item && typeof item.variantId !== "string") ||
+        !Number.isSafeInteger(item.quantity) || item.quantity < 1 || item.quantity > MAX_CART_QUANTITY) {
       throw new CheckoutInputError("Your cart contains an invalid product or quantity. Please review it.");
     }
-    const product = getProductBySlug(item.slug);
+    const catalogProduct = getProductBySlug(item.slug);
+    const requestedVariantId = "variantId" in item ? item.variantId as string : undefined;
+    const product = catalogProduct && getSelectedProduct(catalogProduct, requestedVariantId);
     if (!product || !isProductPurchasable(product)) throw new CheckoutInputError("A product in your cart is unavailable. Please review your cart.");
-    seen.add(item.slug);
-    return { slug: item.slug, quantity: item.quantity };
-  }).sort((a, b) => a.slug.localeCompare(b.slug));
+    const variantId = getProductVariant(catalogProduct!, requestedVariantId)?.id;
+    const selected = { slug: item.slug, quantity: item.quantity, ...(variantId ? { variantId } : {}) };
+    const key = cartLineKey(selected);
+    if (seen.has(key)) throw new CheckoutInputError("Your cart contains a duplicate pack size. Please review it.");
+    seen.add(key);
+    return selected;
+  }).sort((a, b) => cartLineKey(a).localeCompare(cartLineKey(b)));
+}
+
+// Stripe metadata values are limited to 500 characters. Keep each chunk a valid
+// JSON array and retain the original first key for historical integrations.
+export function checkoutItemsMetadata(items: CheckoutItem[]): Record<string, string> {
+  const chunks: CheckoutItem[][] = [[]];
+  for (const item of items) {
+    const last = chunks[chunks.length - 1];
+    if (JSON.stringify([...last, item]).length > 500) chunks.push([item]);
+    else last.push(item);
+  }
+  return Object.fromEntries(chunks.map((chunk, index) => [index ? `zewid_items_${index + 1}` : "zewid_items", JSON.stringify(chunk)]));
 }
 
 export async function checkoutRates(items: CheckoutItem[]) {
@@ -30,12 +51,16 @@ export async function checkoutRates(items: CheckoutItem[]) {
   const pricing = calculateCart(items);
   const requested = pricing.lines.map((line) => ({
     line,
-    productId: `zewid_${line.product.slug.replaceAll("-", "_")}`,
-    lookup: `zewid_${line.product.slug.replaceAll("-", "_")}_standard_${line.unitPriceCents}_eur`,
+    productId: stripeProductId(getProductBySlug(line.product.slug)!, line.variantId),
+    lookup: `${stripeProductId(getProductBySlug(line.product.slug)!, line.variantId)}_standard_${line.unitPriceCents}_eur`,
   }));
-  const prices = await stripe.prices.list({ lookup_keys: requested.map((entry) => entry.lookup), active: true, limit: 100 });
+  const prices: Stripe.Price[] = [];
+  for (let offset = 0; offset < requested.length; offset += 10) {
+    const batch = await stripe.prices.list({ lookup_keys: requested.slice(offset, offset + 10).map(entry => entry.lookup), active: true, limit: 100 });
+    prices.push(...batch.data);
+  }
   const lineItems = requested.map(({ line, lookup, productId }) => {
-    const price = prices.data.find((price) => price.lookup_key === lookup);
+    const price = prices.find((price) => price.lookup_key === lookup);
     if (!price || price.product !== productId || price.currency !== "eur" || price.unit_amount !== line.unitPriceCents || price.type !== "one_time" || price.tax_behavior !== "inclusive") {
       throw new Error("Stripe catalog prices do not match the website. Import the catalog into the configured Stripe environment.");
     }
@@ -58,18 +83,24 @@ export async function retrieveOrder(sessionId: string) {
       !matchesStripeMode(sessionId.startsWith("cs_live_"))) throw new CheckoutInputError("Invalid checkout reference.");
   const session = await getStripe().checkout.sessions.retrieve(sessionId, { expand: ["line_items", "payment_intent"] });
   if (!matchesStripeMode(session.livemode) || session.mode !== "payment" || session.metadata?.zewid_store !== "zewid") throw new CheckoutInputError("This checkout does not belong to ZEWID.");
+  if (session.line_items?.has_more) {
+    session.line_items = await getStripe().checkout.sessions.listLineItems(sessionId, { limit: 100 });
+  }
   return session;
 }
 
 export function purchasedItems(session: Stripe.Checkout.Session): CheckoutItem[] {
-  const raw: unknown = JSON.parse(session.metadata?.zewid_items ?? "[]");
+  const raw: unknown = Object.entries(session.metadata ?? {})
+    .filter(([key]) => /^zewid_items(?:_[2-9]|_[1-9][0-9]+)?$/.test(key))
+    .flatMap(([, value]) => { const chunk: unknown = JSON.parse(value); if (!Array.isArray(chunk)) throw new Error("Invalid order items."); return chunk; });
   // Paid purchases remain valid if a product is later marked out of stock.
-  if (!Array.isArray(raw) || raw.length > products.length) throw new Error("Invalid order items.");
+  if (!Array.isArray(raw) || raw.length > MAX_ORDER_LINES) throw new Error("Invalid order items.");
   return raw.map((item: unknown) => {
     if (!item || typeof item !== "object" || !("slug" in item) || !("quantity" in item) ||
         typeof item.slug !== "string" || !getProductBySlug(item.slug) || typeof item.quantity !== "number" ||
+        ("variantId" in item && (typeof item.variantId !== "string" || !/^[a-z0-9-]{1,100}$/.test(item.variantId))) ||
         !Number.isSafeInteger(item.quantity) || item.quantity < 1 || item.quantity > MAX_CART_QUANTITY) throw new Error("Invalid order item.");
-    return { slug: item.slug, quantity: item.quantity };
+    return { slug: item.slug, quantity: item.quantity, ...("variantId" in item ? { variantId: item.variantId as string } : {}) };
   });
 }
 

@@ -1,52 +1,57 @@
 # Catalog launch details
 
-The 24 confirmed-list items are prepared alongside the four retained products. Their unpriced listings remain coming soon. Items 25–33 are now public as available on request, with supplied photos and product details. Mitmita, Bula and Korerima extend the public catalog to 40 products. Original draft copy and verification notes remain in `additional-products.draft.json` for reference. Supplied Amharic names are attached to all public products; English-only parenthetical transliterations are omitted from Amharic labels.
+Updated 4 November 2026. All 40 listings remain public, with 30 available to buy and 10 available on request. All supplied Amharic names and image galleries are retained.
 
-## Gold-pouch products
+## Confirmed retail prices
 
-`public/images/packaging/image-map.json` supplies the new photos, names, descriptions, Amharic labels and weights. Berbere updates the existing `berbere` listing without changing its €30 price or stock. Mitmita (500 g), Bula (1 kg) and Korerima (250 g) are public Food & spices listings with WhatsApp-only ordering. Their prices and stock were not supplied; confirm these before enabling cart purchases. Their image-map draft markers describe the original asset handoff; website publication and ordering status are controlled by `src/data/products.ts`.
+`retail-prices.json` records the selling-price handoff from `accepted-pack-prices.json` and the `Stock and profit` worksheet in `zewid-stock-costs-and-profit.xlsx`. Only selling prices and retail units are copied into the repository. Invoice purchase costs and projected profits remain in the source workbook.
+
+The user confirmed the 500 g coffee price of €8.90 and confirmed that all newly priced products should become available to buy. Prices include VAT as previously confirmed. The existing Finland delivery charge remains €8.90 per order.
+
+| Product | Retail unit | Price |
+| --- | --- | ---: |
+| Mashila sorghum flour | 5 kg bag | €12.90 |
+| Sidamo green coffee | 500 g / 1 kg | €8.90 / €15.90 |
+| Berbere | 250 g / 500 g / 1 kg | €9.50 / €17.50 / €30 |
+| Korerima | 250 g / 500 g / 1 kg | €17.50 / €30 / €55 |
+| Abish | 250 g / 500 g / 1 kg | €7.50 / €13.50 / €25 |
+| Bula | 250 g / 500 g / 1 kg | €7.50 / €12.50 / €22 |
+| Zemen injera maker, small | 40 cm maker | €130 |
+| Coffee roasting pan | 1 pan | €15 |
+| Mogogo temperature controller | 1 controller | €25 |
+| Berele tej glass | 1 glass | €7 |
+| Ceramic incense burner | 1 burner | €13 |
+| Floral coffee cups | Set of 12 | €20 |
+| Clay spice container | 1 container | €20 |
+| Ga’at porridge mix | 1 kg pack | €7 |
+| Electric coffee hot plate | 1 hot plate | €40 |
+| Mekelesha | 100 g pack | €7 |
+| Ceramic food warmer | 3-dish set | €90 |
+| Coffee cup, saucer and spoon set | 18-piece set | €27 |
+| Ceramic food warmer | 2-dish set | €70 |
+| Coffee ceremony set | 23-piece set | €50 |
+| Amharic alphabet chart | 1 chart | €22 |
+| Cake and snack stand | 3-tier stand | €23 |
+| Frankincense | 250 g pack | €7 |
+| Ketema grass | 1 bundle | €12.50 |
+| Floral injera tray | 40 cm tray | €15 |
+| Zemen injera maker, large | 46 cm maker | €140 |
+| Meshrefet | 1 basket | €12 |
+
+White and red teff remain €25 per 5 kg bag at every quantity. Shiro remains €30 per 1 kg pack. The supplied workbook treats complete sets as single retail units; no per-piece prices are inferred.
+
+## Pack-size selection
+
+Berbere, Korerima, Abish and Bula have 250 g, 500 g and 1 kg options. Coffee has 500 g and 1 kg only. Korerima and Abish no longer offer a 200 g retail option. All sizes represent alternative packs from the same product stock. Static stock counts, stock reservation and separate size inventories are not introduced by this price update.
+
+Product detail pages present selectable size cards with the price of each option. Selecting a size updates the main price, weight, add-to-cart subtotal and WhatsApp enquiry. Cart lines, persisted carts and Stripe orders retain the exact selected pack ID.
 
 ## Available on request
 
-Items 25–30 are six Rekebot ceremony sets/tables in Coffee & ceremony. Items 31–33 are Alviia Luwam extensions and the two Zenith oils in Hair & beauty. The 14 photos and their gallery order follow `public/images/on-request-products/image-map.json`. These products are not stocked locally and have no confirmed retail price or lead time. Their only order action is WhatsApp, where supplier availability, contents, final price and delivery are agreed before ordering. Online cart and checkout remain disabled for these listings.
+Six Rekebot ceremony sets/tables, Alviia Luwam extensions, the two Zenith oils and Mitmita remain WhatsApp-only because these files contain no confirmed retail prices for them. Their existing photos and descriptions remain published. No zero prices or estimated prices are used.
 
-## New listings to price and confirm
+## Product details
 
-| Item | Product | Retail price (VAT inclusive) | Stock |
-| --- | --- | --- | --- |
-| 3 | Ethiopian Abish (Fenugreek Seeds) – 200 g | To confirm | To confirm |
-| 4 | Ethiopian Ga’at Porridge Mix – Barley & Rye, 1 kg | To confirm | To confirm |
-| 5 | Ethiopian Mekelesha Spice Mix – 100 g | To confirm | To confirm |
-| 6 | Zemen Electric Injera Maker (Mogogo / Mitad) – 40 cm | To confirm | To confirm |
-| 7 | Traditional Ethiopian Coffee Roasting Pan – Black | To confirm | To confirm |
-| 8 | Digital Temperature Controller for Mogogo Injera Maker | To confirm | To confirm |
-| 9 | Traditional Ethiopian Berele Glass – Tej Serving Glass | To confirm | To confirm |
-| 10 | Traditional Ethiopian Ceramic Incense Burner | To confirm | To confirm |
-| 11 | Ethiopian Floral Coffee Cups – Set of 12, 60 ml | To confirm | To confirm |
-| 12 | Traditional Ethiopian Clay Spice Container | To confirm | To confirm |
-| 13 | Electric Coffee Hot Plate – 1200 W | To confirm | To confirm |
-| 14 | Ethiopian Ceramic Food Warmer – 3-Dish Serving Set | To confirm | To confirm |
-| 15 | Ethiopian Coffee Cup, Saucer & Spoon Set – 18 Pieces | To confirm | To confirm |
-| 16 | Ethiopian Ceramic Food Warmer – 2-Dish Serving Set | To confirm | To confirm |
-| 17 | Ethiopian Traditional Coffee Ceremony Set – 23 Pieces | To confirm | To confirm |
-| 18 | Amharic Alphabet Learning Chart for Kids | To confirm | To confirm |
-| 19 | Ethiopian-Style 3-Tier Cake & Snack Stand | To confirm | To confirm |
-| 20 | Ethiopian Frankincense (Etan) – Traditional Incense | To confirm | To confirm |
-| 21 | Traditional Ethiopian Ketema Grass – Coffee Ceremony Decoration | To confirm | To confirm |
-| 22 | Ethiopian Melamine Injera Serving Tray – Floral Design, 40 cm | To confirm | To confirm |
-| 23 | Zemen Electric Injera Maker (Mogogo / Mitad) – 46 cm | To confirm | To confirm |
-| 24 | Traditional Ethiopian Woven Meshrefet Basket – Medium | To confirm | To confirm |
+Original descriptions and verification notes remain in `website-orders.md` and `additional-products.draft.json`. The updated workbook confirms frankincense at 250 g. Product images can depict one of the offered package sizes; the selected retail size is shown beside the price and in the order. Electrical specifications, ingredients and allergens continue to use supplied product information without new claims.
 
-## Product details awaiting confirmation
-
-The original publication checklist and unverified fields are retained in `website-orders.md`. Confirm these against received goods before enabling purchases.
-
-- Frankincense: confirm 100 g versus 250 g; no weight is displayed in the listing.
-- Two electric injera makers: confirm controller inclusion, electrical ratings and supplied instructions.
-- Serving sets: confirm contents, materials and care instructions; no active heating function is claimed.
-- Food labels: complete the missing ingredient, allergen and storage details from received goods.
-- The shared bare injera-maker photo appears in both model galleries, as specified by the image mapping; each model uses its size-specific box photo as the primary image.
-
-## Enabling sales
-
-Set a confirmed positive `priceEur` and change `availability` to `in-stock` in `src/data/products.ts`, then sync the appropriate Stripe catalog and deploy. Keep stable existing slugs so cart and order references remain compatible.
+For future price changes, edit `src/data/products.ts`, sync the appropriate Stripe catalog and deploy. Preserve existing product slugs and pack IDs so carts and historical order references remain compatible.

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "node:crypto";
-import { CheckoutInputError, checkoutRates, validateCheckoutItems } from "@/lib/checkout";
+import { CheckoutInputError, checkoutItemsMetadata, checkoutRates, validateCheckoutItems } from "@/lib/checkout";
 import { CHECKOUT_COOKIE, browserToken, checkoutBaseUrl, checkoutMode, getStripe, hashToken, matchesStripeMode } from "@/lib/stripe";
 import { BodyTooLargeError, readLimitedBody } from "@/lib/request-body";
 import { PickupInputError, postnordPickupEnabled, validatePickupSelection } from "@/lib/postnord";
@@ -16,12 +16,13 @@ export async function POST(request: NextRequest) {
     if (!mode) throw new Error("Checkout is not configured.");
     if (request.headers.get("origin") !== origin) return NextResponse.json({ error: "Please start checkout from the ZEWID website." }, { status: 403 });
     if (!request.headers.get("content-type")?.startsWith("application/json")) return NextResponse.json({ error: "Invalid checkout request." }, { status: 415 });
-    const raw = await readLimitedBody(request, 4096);
+    const raw = await readLimitedBody(request, 16384);
     let body: { items?: unknown; requestId?: unknown; pickup?: unknown };
     try { body = JSON.parse(raw); } catch { throw new CheckoutInputError("Invalid checkout request."); }
     if (!body || typeof body !== "object" || typeof body.requestId !== "string" ||
         !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(body.requestId)) throw new CheckoutInputError("Invalid checkout request. Please try again.");
     const items = validateCheckoutItems(body.items);
+    const itemMetadata = checkoutItemsMetadata(items);
     const hasPickup = body.pickup !== undefined && body.pickup !== null;
     if (hasPickup && !postnordPickupEnabled()) throw new PickupInputError("Delivery-point selection is temporarily unavailable. Clear the selection to continue with the address entered at payment.");
     const pickup = hasPickup ? await validatePickupSelection(body.pickup) : null;
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
       zewid_pickup_postcode: pickup.point.postalCode, zewid_pickup_city: pickup.point.city,
     } : { zewid_delivery_method: "checkout_address" };
     const metadata = {
-      zewid_store: "zewid", zewid_mode: mode, zewid_browser: hashToken(token), zewid_items: JSON.stringify(items),
+      zewid_store: "zewid", zewid_mode: mode, zewid_browser: hashToken(token), ...itemMetadata,
       zewid_checkout_flow: "stripe_address_v1",
       zewid_total_cents: String(pricing.totalCents),
       zewid_payment_status: "awaiting_payment", zewid_prices_include_vat: "true",
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
       fulfillment_status: "pending",
       ...pickupMetadata,
     };
-    const fingerprint = createHash("sha256").update(JSON.stringify({ flow: "stripe_address_v1", items, pickup: pickup?.selection ?? null, paymentMethods: allowedPaymentMethods })).update(hashToken(token)).digest("hex");
+    const fingerprint = createHash("sha256").update(JSON.stringify({ flow: "stripe_address_v1", items, totalCents: pricing.totalCents, pickup: pickup?.selection ?? null, paymentMethods: allowedPaymentMethods })).update(hashToken(token)).digest("hex");
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       mode: "payment", ui_mode: "hosted_page", locale: "auto",
@@ -60,7 +61,7 @@ export async function POST(request: NextRequest) {
       client_reference_id: reference,
       metadata,
       // Stripe copies these initial values to the Charge. Never reset a merchant's later status edits.
-      payment_intent_data: { metadata: { zewid_store: "zewid", zewid_order: reference, zewid_items: JSON.stringify(items), fulfillment_status: "pending", ...pickupMetadata }, description: `ZEWID order ${reference}` },
+      payment_intent_data: { metadata: { zewid_store: "zewid", zewid_order: reference, ...itemMetadata, fulfillment_status: "pending", ...pickupMetadata }, description: `ZEWID order ${reference}` },
       success_url: `${origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/checkout/cancel`,
     }, { idempotencyKey: `zewid_checkout_${mode}_${body.requestId}_${fingerprint}` });

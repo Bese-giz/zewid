@@ -1,15 +1,12 @@
-import { getProductBySlug, isProductPurchasable, productCategories, products } from "@/data/products";
+import { getProductBySlug, productCategories, products } from "@/data/products";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
-import ProductOrderActions from "@/components/ProductOrderActions";
-import ProductAvailability from "@/components/ProductAvailability";
+import ProductPurchasePanel from "@/components/ProductPurchasePanel";
 import OrderInformation from "@/components/OrderInformation";
 import ProductGallery from "@/components/ProductGallery";
-import ProductStatusTag from "@/components/ProductStatusTag";
 import ProductDetailSection from "@/components/ProductDetailSection";
-import ProductName from "@/components/ProductName";
 import { getProductDisplayName } from "@/lib/product-display";
 
 export async function generateStaticParams() {
@@ -42,7 +39,6 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
   }
 
   const category = productCategories.find(category => category.id === product.category);
-  const available = isProductPurchasable(product);
 
   return (
     <div className="product-detail-page">
@@ -57,20 +53,7 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
             <ProductGallery key={product.slug} product={product} />
           </div>
 
-          <div className={`product-detail-summary${product.priceEur === null ? " product-detail-summary--unpriced" : ""}`}>
-            <div className="product-detail-identity">
-              <h1><ProductName product={product} /></h1>
-              <div className="product-detail-meta">
-                <p className="product-detail-unit">{product.weight}</p>
-                {available ? <span className="product-detail-in-stock"><span aria-hidden="true" />Available to order</span> : product.availability !== "in-stock" && <div className="product-detail-status"><ProductStatusTag availability={product.availability} compact /></div>}
-              </div>
-            </div>
-            <div className="product-detail-price"><ProductAvailability product={product} showUnit={false} /></div>
-          </div>
-
-          <div className="product-detail-order">
-            <ProductOrderActions key={product.slug} product={product} />
-          </div>
+          <ProductPurchasePanel key={product.slug} product={product} />
 
           <section className="product-detail-information" aria-label="More product information">
             <ProductDetailSection title="About this product">

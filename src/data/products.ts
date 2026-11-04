@@ -8,6 +8,13 @@ export const productCategories = [
 
 export type ProductCategory = typeof productCategories[number]["id"];
 
+export interface ProductVariant {
+  id: string;
+  label: string;
+  weightKg: number;
+  priceEur: number | null;
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -24,6 +31,8 @@ export interface Product {
   priceEur: number | null;
   compareAtPriceEur?: number;
   weightKg: number | null;
+  variants?: ProductVariant[];
+  defaultVariantId?: string;
   catalogItem?: number;
   legacyNames?: string[];
   specifications?: { label: string; value: string }[];
@@ -76,18 +85,18 @@ export const products: Product[] = [
   },
   {
     "slug": "berbere",
-    "priceEur": 30,
-    "weightKg": 1,
+    "priceEur": 30.0,
+    "weightKg": 1.0,
     "availability": "in-stock",
     "name": "Berbere – Ethiopian Spice Blend",
     "amharicName": "በርበሬ",
-    "weight": "1 kg pouch",
+    "weight": "1 kg pack",
     "description": "Bring depth and aromatic spice to everyday cooking with Berbere. This finely ground blend can be stirred into wot, sauces, marinades and vegetable dishes. Add gradually and adjust the amount to suit your recipe.",
     "image": "/images/packaging/berbere-pouch.png?v=bc39c379f211",
     "features": [
       "Ethiopian spice blend",
       "For wot, sauces and marinades",
-      "1 kg pouch"
+      "Choice of pack sizes"
     ],
     "category": "food",
     "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
@@ -103,7 +112,7 @@ export const products: Product[] = [
       },
       {
         "label": "Net weight",
-        "value": "1 kg"
+        "value": "250 g / 500 g / 1 kg"
       },
       {
         "label": "Packaging",
@@ -112,7 +121,28 @@ export const products: Product[] = [
     ],
     "legacyNames": [
       "Berbere"
-    ]
+    ],
+    "variants": [
+      {
+        "id": "berbere-250g",
+        "label": "250 g",
+        "weightKg": 0.25,
+        "priceEur": 9.5
+      },
+      {
+        "id": "berbere-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 17.5
+      },
+      {
+        "id": "berbere-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 30.0
+      }
+    ],
+    "defaultVariantId": "berbere-1000g"
   },
   {
     "slug": "shiro",
@@ -139,12 +169,14 @@ export const products: Product[] = [
   },
   {
     "slug": "mashila-sorghum",
-    "priceEur": 15,
+    "priceEur": 12.9,
     "weightKg": 5,
-    "availability": "out-of-stock",
+    "availability": "in-stock",
     "name": "Ethiopian Sorghum Flour (Mashila) – 5 kg",
     "amharicName": "የማሽላ ዱቄት",
-    "legacyNames": ["Mashila (Sorghum)"],
+    "legacyNames": [
+      "Mashila (Sorghum)"
+    ],
     "weight": "5 kg bag",
     "description": "Mashila is a grain used in Ethiopian and Eritrean cuisine. This finely milled sorghum flour has a mild flavour and works well in porridge, flatbreads and a variety of home-cooked recipes. The 5 kg bag is a practical size for households that cook with sorghum regularly.",
     "image": "/images/mashila.png",
@@ -176,12 +208,15 @@ export const products: Product[] = [
   },
   {
     "slug": "buna-coffee",
-    "priceEur": 18,
-    "weightKg": 1,
+    "priceEur": 15.9,
+    "weightKg": 1.0,
     "availability": "in-stock",
-    "name": "Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg",
+    "name": "Ethiopian Sidamo Arabica Green Coffee Beans",
     "amharicName": "ቡና",
-    "legacyNames": ["Buna (Coffee)"],
+    "legacyNames": [
+      "Buna (Coffee)",
+      "Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg"
+    ],
     "weight": "1 kg pack",
     "description": "These green Sidamo coffee beans are intended for customers who enjoy roasting coffee themselves. Roast the beans to your preferred level, then grind and brew them. They are particularly suitable for the Ethiopian coffee ceremony, where coffee is traditionally roasted fresh before serving.",
     "image": "/images/packaging/buna-coffee-pouch.png?v=8ec025b3ded5",
@@ -217,22 +252,37 @@ export const products: Product[] = [
       },
       {
         "label": "Net weight",
-        "value": "1 kg"
+        "value": "500 g / 1 kg"
       }
-    ]
+    ],
+    "variants": [
+      {
+        "id": "buna-coffee-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 8.9
+      },
+      {
+        "id": "buna-coffee-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 15.9
+      }
+    ],
+    "defaultVariantId": "buna-coffee-1000g"
   },
   {
     "slug": "abish-fenugreek",
     "catalogItem": 3,
-    "name": "Ethiopian Abish (Fenugreek Seeds) – 200 g",
+    "name": "Ethiopian Abish (Fenugreek Seeds)",
     "amharicName": "አብሽ",
     "shortDescription": "Whole fenugreek seeds for Ethiopian spice preparations and traditional cooking.",
     "description": "Abish is used in Ethiopian and Eritrean kitchens for its distinctive aromatic, slightly bitter flavour. The seeds may be ground or used in traditional recipes and spice mixtures. The small container is convenient for keeping the seeds ready for cooking.",
     "category": "food",
-    "weight": "200 g container",
-    "weightKg": 0.2,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "weight": "250 g pack",
+    "weightKg": 0.25,
+    "priceEur": 7.5,
+    "availability": "in-stock",
     "image": "/images/abish-fenugreek.png",
     "images": [
       "/images/abish-fenugreek.png"
@@ -240,7 +290,7 @@ export const products: Product[] = [
     "features": [
       "Whole fenugreek seeds",
       "Suitable for grinding and seasoning",
-      "Convenient 200 g container"
+      "Choice of pack sizes"
     ],
     "specifications": [
       {
@@ -257,12 +307,36 @@ export const products: Product[] = [
       },
       {
         "label": "Net weight",
-        "value": "200 g"
+        "value": "250 g / 500 g / 1 kg"
       },
       {
         "label": "Packaging",
         "value": "Lidded container"
       }
+    ],
+    "variants": [
+      {
+        "id": "abish-250g",
+        "label": "250 g",
+        "weightKg": 0.25,
+        "priceEur": 7.5
+      },
+      {
+        "id": "abish-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 13.5
+      },
+      {
+        "id": "abish-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 25.0
+      }
+    ],
+    "defaultVariantId": "abish-250g",
+    "legacyNames": [
+      "Ethiopian Abish (Fenugreek Seeds) – 200 g"
     ]
   },
   {
@@ -275,8 +349,8 @@ export const products: Product[] = [
     "category": "food",
     "weight": "1 kg pack",
     "weightKg": 1,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 7,
+    "availability": "in-stock",
     "image": "/images/gaat-porridge.png",
     "images": [
       "/images/gaat-porridge.png"
@@ -315,8 +389,8 @@ export const products: Product[] = [
     "category": "food",
     "weight": "100 g packet",
     "weightKg": 0.1,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 7,
+    "availability": "in-stock",
     "image": "/images/packaging/mekelesha-spice-pouch.png?v=46dd05341c6b",
     "imageAlt": "Zewid Market Ethiopian Mekelesha Spice Mix 100 g in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
@@ -361,8 +435,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "40 cm",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 130,
+    "availability": "in-stock",
     "image": "/images/zemen-injera-40cm-box.png",
     "images": [
       "/images/zemen-injera-40cm-box.png",
@@ -403,8 +477,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "1 pan",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 15,
+    "availability": "in-stock",
     "image": "/images/coffee-roasting-pan.png",
     "images": [
       "/images/coffee-roasting-pan.png"
@@ -439,8 +513,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "1 controller",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 25,
+    "availability": "in-stock",
     "image": "/images/mogogo-controller.png",
     "images": [
       "/images/mogogo-controller.png"
@@ -475,8 +549,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "1 glass",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 7,
+    "availability": "in-stock",
     "image": "/images/berele-glass-group.png",
     "images": [
       "/images/berele-glass-group.png",
@@ -512,8 +586,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "1 burner",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 13,
+    "availability": "in-stock",
     "image": "/images/incense-burner-figures.png",
     "images": [
       "/images/incense-burner-figures.png",
@@ -555,8 +629,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "Set of 12 · 60 ml cups",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 20,
+    "availability": "in-stock",
     "image": "/images/floral-coffee-cups-12.png",
     "images": [
       "/images/floral-coffee-cups-12.png",
@@ -592,8 +666,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "1 container",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 20,
+    "availability": "in-stock",
     "image": "/images/clay-spice-container.png",
     "images": [
       "/images/clay-spice-container.png",
@@ -633,8 +707,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "1 hot plate",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 40,
+    "availability": "in-stock",
     "image": "/images/coffee-hot-plate.png",
     "images": [
       "/images/coffee-hot-plate.png",
@@ -675,8 +749,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "3-dish set",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 90,
+    "availability": "in-stock",
     "image": "/images/food-warmer-3-dish.png",
     "images": [
       "/images/food-warmer-3-dish.png"
@@ -712,8 +786,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "18-piece set",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 27,
+    "availability": "in-stock",
     "image": "/images/coffee-set-18-piece.png",
     "images": [
       "/images/coffee-set-18-piece.png"
@@ -748,8 +822,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "2-dish set",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 70,
+    "availability": "in-stock",
     "image": "/images/food-warmer-2-dish.png",
     "images": [
       "/images/food-warmer-2-dish.png"
@@ -784,8 +858,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "23-piece set",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 50,
+    "availability": "in-stock",
     "image": "/images/coffee-set-23-piece.png",
     "images": [
       "/images/coffee-set-23-piece.png",
@@ -821,8 +895,8 @@ export const products: Product[] = [
     "category": "culture",
     "weight": "1 chart",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 22,
+    "availability": "in-stock",
     "image": "/images/amharic-alphabet-chart.png",
     "images": [
       "/images/amharic-alphabet-chart.png"
@@ -857,8 +931,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "3 tiers",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 23,
+    "availability": "in-stock",
     "image": "/images/snack-stand-3-tier-2.png",
     "images": [
       "/images/snack-stand-3-tier-2.png",
@@ -896,10 +970,10 @@ export const products: Product[] = [
     "shortDescription": "Traditional frankincense resin for Ethiopian coffee ceremonies and cultural gatherings.",
     "description": "Frankincense is traditionally burned alongside Ethiopian and Eritrean coffee preparation. Used with an appropriate incense burner, the resin gives off a characteristic aromatic smoke and helps set the atmosphere for a coffee ceremony.",
     "category": "coffee",
-    "weight": "Incense resin",
-    "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "weight": "250 g pack",
+    "weightKg": 0.25,
+    "priceEur": 7,
+    "availability": "in-stock",
     "image": "/images/frankincense.png",
     "images": [
       "/images/frankincense.png"
@@ -935,8 +1009,8 @@ export const products: Product[] = [
     "category": "coffee",
     "weight": "Grass bundle",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 12.5,
+    "availability": "in-stock",
     "image": "/images/ketema-grass.png",
     "images": [
       "/images/ketema-grass.png"
@@ -971,8 +1045,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "40 cm tray",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 15,
+    "availability": "in-stock",
     "image": "/images/injera-tray-blue.png",
     "images": [
       "/images/injera-tray-blue.png",
@@ -1013,8 +1087,8 @@ export const products: Product[] = [
     "category": "kitchen",
     "weight": "46 cm",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 140,
+    "availability": "in-stock",
     "image": "/images/zemen-injera-46cm-box.png",
     "images": [
       "/images/zemen-injera-46cm-box.png",
@@ -1055,8 +1129,8 @@ export const products: Product[] = [
     "category": "culture",
     "weight": "Medium basket",
     "weightKg": null,
-    "priceEur": null,
-    "availability": "coming-soon",
+    "priceEur": 12,
+    "availability": "in-stock",
     "image": "/images/meshrefet-basket.png",
     "images": [
       "/images/meshrefet-basket.png"
@@ -1480,8 +1554,8 @@ export const products: Product[] = [
     "amharicName": "ቡላ",
     "shortDescription": "Fine white starch from the Ethiopian enset plant for cooked porridge and thickening.",
     "description": "Bula is the fine white starch extracted from enset, also known as false banana. It is used in Ethiopian cooking to prepare a smooth cooked porridge and can also be used to thicken soups. Mix with a little cool water before adding to hot liquid and cook while stirring.",
-    "weight": "1 kg pouch",
-    "weightKg": 1,
+    "weight": "1 kg pack",
+    "weightKg": 1.0,
     "image": "/images/packaging/bula-pouch.png?v=4a84917cee02",
     "imageAlt": "Zewid Market Bula 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
@@ -1490,7 +1564,7 @@ export const products: Product[] = [
     "features": [
       "Fine enset starch",
       "For cooked porridge and thickening soups",
-      "1 kg pouch"
+      "Choice of pack sizes"
     ],
     "specifications": [
       {
@@ -1499,7 +1573,7 @@ export const products: Product[] = [
       },
       {
         "label": "Net weight",
-        "value": "1 kg"
+        "value": "250 g / 500 g / 1 kg"
       },
       {
         "label": "Packaging",
@@ -1507,8 +1581,29 @@ export const products: Product[] = [
       }
     ],
     "category": "food",
-    "availability": "on-request",
-    "priceEur": null
+    "availability": "in-stock",
+    "priceEur": 22.0,
+    "variants": [
+      {
+        "id": "bula-250g",
+        "label": "250 g",
+        "weightKg": 0.25,
+        "priceEur": 7.5
+      },
+      {
+        "id": "bula-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 12.5
+      },
+      {
+        "id": "bula-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 22.0
+      }
+    ],
+    "defaultVariantId": "bula-1000g"
   },
   {
     "slug": "korerima",
@@ -1516,7 +1611,7 @@ export const products: Product[] = [
     "amharicName": "ኮረሪማ",
     "shortDescription": "Aromatic ground Ethiopian cardamom seeds for spice blends, stews and spiced butter.",
     "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
-    "weight": "250 g pouch",
+    "weight": "250 g pack",
     "weightKg": 0.25,
     "image": "/images/packaging/korerima-pouch.png?v=f73223f60af9",
     "imageAlt": "Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code",
@@ -1526,7 +1621,7 @@ export const products: Product[] = [
     "features": [
       "Ground Ethiopian cardamom seeds",
       "For spice blends, stews and spiced butter",
-      "250 g pouch"
+      "Choice of pack sizes"
     ],
     "specifications": [
       {
@@ -1535,7 +1630,7 @@ export const products: Product[] = [
       },
       {
         "label": "Net weight",
-        "value": "250 g"
+        "value": "250 g / 500 g / 1 kg"
       },
       {
         "label": "Packaging",
@@ -1543,8 +1638,29 @@ export const products: Product[] = [
       }
     ],
     "category": "food",
-    "availability": "on-request",
-    "priceEur": null
+    "availability": "in-stock",
+    "priceEur": 17.5,
+    "variants": [
+      {
+        "id": "korerima-250g",
+        "label": "250 g",
+        "weightKg": 0.25,
+        "priceEur": 17.5
+      },
+      {
+        "id": "korerima-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 30.0
+      },
+      {
+        "id": "korerima-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 55.0
+      }
+    ],
+    "defaultVariantId": "korerima-250g"
   }
 ];
 
@@ -1555,4 +1671,17 @@ export function getProductBySlug(slug: string): Product | undefined {
 export function isProductPurchasable(product: Product): product is Product & { priceEur: number } {
   return product.availability === "in-stock" && product.priceEur !== null &&
     Number.isFinite(product.priceEur) && product.priceEur > 0;
+}
+
+// Missing IDs migrate older carts to the original/default retail pack. Unknown
+// explicit IDs never fall back to a different pack or a different price.
+export function getProductVariant(product: Product, variantId?: string): ProductVariant | undefined {
+  return product.variants?.find(variant => variant.id === (variantId ?? product.defaultVariantId));
+}
+
+export function getSelectedProduct(product: Product, variantId?: string): Product | undefined {
+  if (!product.variants?.length) return variantId === undefined ? product : undefined;
+  const variant = getProductVariant(product, variantId);
+  return variant ? { ...product, variants: undefined, defaultVariantId: undefined,
+    priceEur: variant.priceEur, weight: `${variant.label} pack`, weightKg: variant.weightKg } : undefined;
 }

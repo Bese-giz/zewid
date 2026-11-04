@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { isProductPurchasable, products, type Product } from "../src/data/products.ts";
+import { isProductPurchasable, type Product } from "../src/data/products.ts";
+import { stripeCatalogEntries } from "../src/lib/stripe-catalog.ts";
 import { site } from "../src/lib/site.ts";
 import { keyMatchesStripeMode, readStripeMode } from "../src/lib/stripe-mode.ts";
 
@@ -35,7 +36,8 @@ async function main() {
       mode: "preview: no Stripe requests or changes",
       target: mode,
       pricesIncludeVat: true,
-      products: products.map((product) => ({
+      products: stripeCatalogEntries().map(({ product, variantId, id }) => ({
+        id, variantId,
         slug: product.slug, name: product.name, description: product.description,
         weight: product.weight, image: new URL(product.image, site.url).href,
         active: isProductPurchasable(product), prices: stripePrices(product), currency: "eur",
@@ -72,8 +74,7 @@ async function main() {
   }
 
   const manifest: Record<string, { productId: string; prices: Record<string, string> }> = {};
-  for (const product of products) {
-    const id = `zewid_${product.slug.replaceAll("-", "_")}`;
+  for (const { product, variantId, id, key: manifestKey } of stripeCatalogEntries()) {
     let existing: StripeProduct | undefined;
     try {
       existing = await request<StripeProduct>(`/products/${id}`);
@@ -92,12 +93,14 @@ async function main() {
       shippable: true,
       active: isProductPurchasable(product),
       "metadata[zewid_slug]": product.slug,
+      "metadata[zewid_variant_id]": variantId ?? "",
       "metadata[weight_kg]": product.weightKg ?? "",
       "metadata[pack_size]": product.weight,
       "metadata[pricing_group]": "",
       "metadata[prices_include_vat]": "true",
       "metadata[bulk_minimum_combined_kg]": "",
     };
+    product.images.slice(0, 8).forEach((image, index) => { fields[`images[${index}]`] = new URL(image, site.url).href; });
     const synced = await request<StripeProduct>(existing ? `/products/${id}` : "/products", "POST", {
       ...fields, ...(!existing ? { id } : {}),
     });
@@ -127,8 +130,8 @@ async function main() {
       priceIds[price.tier] = syncedPrice.id;
     }
     if (isProductPurchasable(product)) await request(`/products/${id}`, "POST", { default_price: priceIds.standard });
-    manifest[product.slug] = { productId: synced.id, prices: priceIds };
-    console.log(`Synced ${product.name} (${product.availability}).`);
+    manifest[manifestKey] = { productId: synced.id, prices: priceIds };
+    console.log(`Synced ${product.name} — ${product.weight} (${product.availability}).`);
   }
 
   const deliveryAmount = Math.round(site.deliveryFeeEur * 100);
@@ -156,7 +159,7 @@ async function main() {
   await mkdir(".stripe", { recursive: true });
   await writeFile(`.stripe/catalog.${mode}.json`, JSON.stringify({ mode, products: manifest, shippingRateId: shippingRate.id }, null, 2) + "\n");
   console.log(`${mode === "live" ? "Live" : "Sandbox"} import complete. Stripe IDs saved to .stripe/catalog.${mode}.json.`);
-  console.log("Checkout uses the standard price at every quantity; the import alone does not enable website payments.");
+  console.log("Checkout uses the confirmed price for each selected pack size; the import alone does not enable website payments.");
 }
 
 main().catch((error: unknown) => {

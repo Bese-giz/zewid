@@ -15,6 +15,8 @@ export default function ProductCard(product: Product) {
   const { slug, name, weight, image } = product;
   const available = isProductPurchasable(product);
   const requestOnly = product.availability === "on-request";
+  const hasSizes = (product.variants?.length ?? 0) > 1;
+  const orderButtonClass = "flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#173f31] px-2 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#245b46] md:text-sm";
 
   return (
     <article className="group product-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#e8e9e2] bg-white">
@@ -26,11 +28,11 @@ export default function ProductCard(product: Product) {
         <h3 className="text-sm font-semibold leading-snug tracking-[-0.015em] text-slate-900 md:text-base">
           <Link href={`/products/${slug}`} aria-label={getProductDisplayName(product)} className="hover:text-green-800"><ProductName product={product} compact /></Link>
         </h3>
-        <p className="mt-1 text-[11px] leading-relaxed text-slate-500 md:text-xs">{weight}</p>
+        <p className="mt-1 text-[11px] leading-relaxed text-slate-500 md:text-xs">{hasSizes ? product.variants!.map(variant => variant.label).join(" / ") : weight}</p>
         <div className="mb-2 mt-2">{requestOnly ? <ProductStatusTag availability={product.availability} compact /> : <ProductAvailability product={product} compact />}</div>
         <div className="mt-auto flex flex-col gap-1 border-t border-[#f0f0e9] pt-2">
-          {available && <button type="button" onClick={() => addToCart(slug)} aria-label={`Add ${name} to cart`}
-            className="flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#173f31] px-2 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#245b46] md:text-sm">
+          {available && hasSizes && <Link href={`/products/${slug}`} aria-label={`Choose a pack size for ${name}`} className={orderButtonClass}>Choose size</Link>}
+          {available && !hasSizes && <button type="button" onClick={() => addToCart(slug)} aria-label={`Add ${name} to cart`} className={orderButtonClass}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Add to cart
           </button>}
           {!available && !requestOnly && <ProductStatusTag availability={product.availability} compact />}

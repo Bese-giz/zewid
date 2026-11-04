@@ -70,7 +70,7 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
           <ul className="cart-items" role="list" aria-label="Products in your cart">
             {pricing.lines.map((line) => {
               const item = { ...line.product, quantity: line.quantity };
-              return <li key={item.slug} className="cart-item">
+              return <li key={line.key} className="cart-item">
                 <div className="cart-item-image"><Image src={item.image} alt="" fill sizes="64px" className="object-contain p-1" /></div>
                 <div className="cart-item-content">
                   <div className="cart-item-heading">
@@ -80,11 +80,11 @@ export default function FloatingCart({ checkoutMode = null, pickupEnabled = fals
                   <p className="cart-item-unit">{item.weight} · {formatEuro(line.unitPriceCents)} each</p>
                   <div className="cart-item-controls">
                     <div className="cart-item-quantity" role="group" aria-label={`Quantity of ${item.name}`}>
-                      <button type="button" aria-label={`Decrease quantity of ${item.name}`} onClick={() => updateQuantity(item.slug, item.quantity - 1)}>−</button>
+                      <button type="button" aria-label={`Decrease quantity of ${item.name} ${item.weight}`} onClick={() => updateQuantity(item.slug, item.quantity - 1, line.variantId)}>−</button>
                       <output aria-live="polite">{item.quantity}</output>
-                      <button type="button" aria-label={`Increase quantity of ${item.name}`} disabled={item.quantity >= MAX_CART_QUANTITY} onClick={() => updateQuantity(item.slug, item.quantity + 1)}>+</button>
+                      <button type="button" aria-label={`Increase quantity of ${item.name} ${item.weight}`} disabled={item.quantity >= MAX_CART_QUANTITY} onClick={() => updateQuantity(item.slug, item.quantity + 1, line.variantId)}>+</button>
                     </div>
-                    <button type="button" aria-label={`Remove ${item.name} from cart`} onClick={() => removeFromCart(item.slug)} className="cart-item-remove">Remove</button>
+                    <button type="button" aria-label={`Remove ${item.name} ${item.weight} from cart`} onClick={() => removeFromCart(item.slug, line.variantId)} className="cart-item-remove">Remove</button>
                   </div>
                 </div>
               </li>;

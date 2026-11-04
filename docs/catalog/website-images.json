@@ -17,11 +17,11 @@
     },
     {
       "catalog_item": 3,
-      "title": "Ethiopian Abish (Fenugreek Seeds) – 200 g",
+      "title": "Abish – Fenugreek Seeds",
       "images": [
-        "abish-fenugreek.png"
+        "packaging/abish-fenugreek-pouch.png"
       ],
-      "primary_image": "abish-fenugreek.png"
+      "primary_image": "packaging/abish-fenugreek-pouch.png"
     },
     {
       "catalog_item": 4,
@@ -264,5 +264,6 @@
       "duplicate_of": "zemen-injera-40cm-box.png",
       "include_in_gallery": false
     }
-  ]
+  ],
+  "current_packaging_image_map": "/images/packaging/image-map.json"
 }

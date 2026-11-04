@@ -60,7 +60,7 @@ function restoreCart(value: unknown): CartItem[] {
       ...(variantId ? { variantId } : {}),
       name: product.name,
       weight: selected.weight,
-      image: product.image,
+      image: selected.image,
       quantity,
     });
   }

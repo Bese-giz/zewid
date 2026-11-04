@@ -1,7 +1,5 @@
 # Current packaging images
 
-Seven products now use the approved bilingual labels with the product description, English/Finnish ingredients where supplied, net weight, website and QR code. Mekelesha ingredients remain omitted at the user's request. PNGs are 2508 x 2508 with transparent backgrounds.
+Eight products use the matching bilingual label design. Abish and Korerima include 250 g, 500 g and 1 kg image files. Korerima is whole seeds removed from pods, not powder. The image map contains product names, descriptions, ingredients and size-specific filenames.
 
-All existing `/images/packaging/*-pouch.png` paths are retained. Name/description, weights, language and hashes are recorded in image-map.json and image-map.md. No use or storage instructions appear on the labels.
-
-Replaced images and maps are archived in `../old-packaging-to-remove-2026-11-03/`. That archive can be removed later; the current product galleries do not reference its files.
+Pouch PNGs are 2508 x 2508 pixels with transparent backgrounds. Labels are also supplied as high-resolution PNG and editable SVG under labels/. Website QR codes point to https://www.zewid.com and have been read back from the final images.

@@ -1,16 +1,17 @@
-# Zewid Market - new label packaging image map
+# Zewid Market — current packaging images
 
-Seven transparent PNGs with English/Finnish labels, net weights, website and verified QR codes.
+Eight products have English/Finnish labels, website QR codes and transparent PNG pouches. Abish and Korerima include 250 g, 500 g and 1 kg images.
 
-| Filename | Product | Weight | Website path |
+| Product | Default image | Sizes | Website path |
 | --- | --- | --- | --- |
-| `berbere-pouch.png` | Berbere – Ethiopian Spice Blend | 1 kg | `/images/packaging/berbere-pouch.png` |
-| `mitmita-pouch.png` | Mitmita – Ethiopian Chilli Spice Blend | 500 g | `/images/packaging/mitmita-pouch.png` |
-| `bula-pouch.png` | Bula – Ethiopian Enset Starch | 1 kg | `/images/packaging/bula-pouch.png` |
-| `korerima-pouch.png` | Korerima – Ethiopian Cardamom Powder | 250 g | `/images/packaging/korerima-pouch.png` |
-| `shiro-pouch.png` | Shiro | 1 kg | `/images/packaging/shiro-pouch.png` |
-| `mekelesha-spice-pouch.png` | Ethiopian Mekelesha Spice Mix – 100 g | 100 g | `/images/packaging/mekelesha-spice-pouch.png` |
-| `buna-coffee-pouch.png` | Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg | 1 kg | `/images/packaging/buna-coffee-pouch.png` |
+| Berbere – Ethiopian Spice Blend | `berbere-pouch.png` | 1 kg | `/images/packaging/berbere-pouch.png` |
+| Mitmita – Ethiopian Chilli Spice Blend | `mitmita-pouch.png` | 500 g | `/images/packaging/mitmita-pouch.png` |
+| Bula – Ethiopian Enset Starch | `bula-pouch.png` | 1 kg | `/images/packaging/bula-pouch.png` |
+| Korerima – Ethiopian Cardamom Seeds | `korerima-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/korerima-pouch.png` |
+| Shiro | `shiro-pouch.png` | 1 kg | `/images/packaging/shiro-pouch.png` |
+| Ethiopian Mekelesha Spice Mix – 100 g | `mekelesha-spice-pouch.png` | 100 g | `/images/packaging/mekelesha-spice-pouch.png` |
+| Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg | `buna-coffee-pouch.png` | 1 kg | `/images/packaging/buna-coffee-pouch.png` |
+| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-pouch.png` |
 
 ## Berbere – Ethiopian Spice Blend
 
@@ -30,11 +31,11 @@ Bula is the fine white starch extracted from enset, also known as false banana. 
 
 Alt: Zewid Market Bula 1 kg in an opaque gold pouch with the new bilingual label and website QR code
 
-## Korerima – Ethiopian Cardamom Powder
+## Korerima – Ethiopian Cardamom Seeds
 
-Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.
+Whole Korerima seeds removed from their pods (የተፈለፈለ ፍሬ), supplied as seeds rather than powder. Available in 250 g, 500 g and 1 kg opaque resealable gold pouches.
 
-Alt: Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code
+Alt: Zewid Market Korerima – Ethiopian Cardamom Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code
 
 ## Shiro
 
@@ -53,3 +54,9 @@ Alt: Zewid Market Ethiopian Mekelesha Spice Mix 100 g in an opaque gold pouch wi
 These green Sidamo coffee beans are intended for customers who enjoy roasting coffee themselves. Roast the beans to your preferred level, then grind and brew them. They are particularly suitable for the Ethiopian coffee ceremony, where coffee is traditionally roasted fresh before serving.
 
 Alt: Zewid Market Sidamo unroasted Arabica coffee beans 1 kg in an opaque gold pouch with a bilingual label and website QR code
+
+## Abish – Fenugreek Seeds
+
+Whole fenugreek seeds, known as Abish, supplied in opaque resealable gold pouches. Available in 250 g, 500 g and 1 kg packs.
+
+Alt: Zewid Market Abish – Fenugreek Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code

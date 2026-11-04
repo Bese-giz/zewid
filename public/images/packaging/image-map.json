@@ -88,32 +88,58 @@
   },
   {
     "slug": "korerima",
+    "name": "Korerima – Ethiopian Cardamom Seeds",
+    "amharicName": "ኮረሪማ – የተፈለፈለ ፍሬ",
+    "form": "Whole seeds removed from pods",
     "fileName": "korerima-pouch.png",
-    "name": "Korerima – Ethiopian Cardamom Powder",
-    "amharicName": "ኮረሪማ",
+    "primaryImage": "/images/packaging/korerima-pouch.png",
     "netWeight": "250 g",
     "netWeightG": 250,
-    "shortDescription": "Aromatic ground Ethiopian cardamom seeds for spice blends, stews and spiced butter.",
-    "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
-    "primaryImage": "/images/packaging/korerima-pouch.png",
-    "images": [
-      "/images/packaging/korerima-pouch.png"
-    ],
-    "alt": "Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code",
-    "width": 2508,
-    "height": 2508,
-    "format": "png",
-    "transparentBackground": true,
-    "catalogAction": "new-product-draft",
-    "sha256": "f73223f60af99fb588efc52a2f1e9e53e57286c17325864f21e82b36621d4783",
-    "labelVersion": "2026-11-03-en-fi-qr",
+    "shortDescription": "Shelled Ethiopian cardamom seeds.",
+    "description": "Whole Korerima seeds removed from their pods (የተፈለፈለ ፍሬ), supplied as seeds rather than powder. Available in 250 g, 500 g and 1 kg opaque resealable gold pouches.",
+    "ingredientsEn": "Ethiopian cardamom seeds (Aframomum corrorima).",
+    "ingredientsFi": "Etiopialaisen kardemumman siemenet (Aframomum corrorima).",
     "labelLanguages": [
       "en",
       "fi"
     ],
     "qrTarget": "https://www.zewid.com",
-    "ingredientsEn": "Ground Ethiopian cardamom seeds (Aframomum corrorima).",
-    "ingredientsFi": "Jauhetut etiopialaisen kardemumman siemenet (Aframomum corrorima)."
+    "labelVersion": "2026-11-04-seeds-en-fi-qr",
+    "alt": "Zewid Market Korerima – Ethiopian Cardamom Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
+    "format": "png",
+    "transparentBackground": true,
+    "variants": [
+      {
+        "weightG": 250,
+        "netWeight": "250 g",
+        "fileName": "korerima-250g-pouch.png",
+        "primaryImage": "/images/packaging/korerima-250g-pouch.png",
+        "labelFile": "labels/png/korerima-250g-front.png",
+        "labelSvg": "labels/svg/korerima-250g-front.svg",
+        "sha256": "035afac6f8ae705c06b2090fd946f3da4d1cb0096310f2cb0a562003786eaaae"
+      },
+      {
+        "weightG": 500,
+        "netWeight": "500 g",
+        "fileName": "korerima-500g-pouch.png",
+        "primaryImage": "/images/packaging/korerima-500g-pouch.png",
+        "labelFile": "labels/png/korerima-500g-front.png",
+        "labelSvg": "labels/svg/korerima-500g-front.svg",
+        "sha256": "a65069c9cf11c4fb7e92713cf46478578fd7e0c8f85c85758dd467d1cec37d26"
+      },
+      {
+        "weightG": 1000,
+        "netWeight": "1 kg",
+        "fileName": "korerima-1000g-pouch.png",
+        "primaryImage": "/images/packaging/korerima-1000g-pouch.png",
+        "labelFile": "labels/png/korerima-1000g-front.png",
+        "labelSvg": "labels/svg/korerima-1000g-front.svg",
+        "sha256": "c4eed4f650be5085057ad2de5361af88a3625e90d46bd754552dddf91345c521"
+      }
+    ],
+    "sha256": "035afac6f8ae705c06b2090fd946f3da4d1cb0096310f2cb0a562003786eaaae"
   },
   {
     "slug": "shiro",
@@ -201,5 +227,60 @@
     "ingredientsEn": "Unroasted Arabica coffee beans.",
     "ingredientsFi": "Paahdamattomat arabica-kahvipavut.",
     "sha256": "8ec025b3ded5af7fcf812e6b37e6433e44bad6d6889c71884a6179fa1f9208c8"
+  },
+  {
+    "slug": "abish-fenugreek",
+    "name": "Abish – Fenugreek Seeds",
+    "amharicName": "አብሽ",
+    "form": "Whole seeds",
+    "fileName": "abish-fenugreek-pouch.png",
+    "primaryImage": "/images/packaging/abish-fenugreek-pouch.png",
+    "netWeight": "250 g",
+    "netWeightG": 250,
+    "shortDescription": "Whole fenugreek seeds.",
+    "description": "Whole fenugreek seeds, known as Abish, supplied in opaque resealable gold pouches. Available in 250 g, 500 g and 1 kg packs.",
+    "ingredientsEn": "Fenugreek seeds (Trigonella foenum-graecum).",
+    "ingredientsFi": "Sarviapilan siemenet (Trigonella foenum-graecum).",
+    "labelLanguages": [
+      "en",
+      "fi"
+    ],
+    "qrTarget": "https://www.zewid.com",
+    "labelVersion": "2026-11-04-seeds-en-fi-qr",
+    "alt": "Zewid Market Abish – Fenugreek Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code",
+    "width": 2508,
+    "height": 2508,
+    "format": "png",
+    "transparentBackground": true,
+    "variants": [
+      {
+        "weightG": 250,
+        "netWeight": "250 g",
+        "fileName": "abish-fenugreek-250g-pouch.png",
+        "primaryImage": "/images/packaging/abish-fenugreek-250g-pouch.png",
+        "labelFile": "labels/png/abish-fenugreek-250g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-250g-front.svg",
+        "sha256": "8e2e297c61f1d1e3c90f64ae4b85131867ff2b45c7921238e28420d35220926c"
+      },
+      {
+        "weightG": 500,
+        "netWeight": "500 g",
+        "fileName": "abish-fenugreek-500g-pouch.png",
+        "primaryImage": "/images/packaging/abish-fenugreek-500g-pouch.png",
+        "labelFile": "labels/png/abish-fenugreek-500g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-500g-front.svg",
+        "sha256": "6073bae413f28c8db001ca853d29ff57d147f845997bc26ca079ec80327cc145"
+      },
+      {
+        "weightG": 1000,
+        "netWeight": "1 kg",
+        "fileName": "abish-fenugreek-1000g-pouch.png",
+        "primaryImage": "/images/packaging/abish-fenugreek-1000g-pouch.png",
+        "labelFile": "labels/png/abish-fenugreek-1000g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-1000g-front.svg",
+        "sha256": "e6725f6bb8972bd766e0b0dda99cf72f7f74c180fcf474edaf33a2f34a09bb67"
+      }
+    ],
+    "sha256": "8e2e297c61f1d1e3c90f64ae4b85131867ff2b45c7921238e28420d35220926c"
   }
 ]

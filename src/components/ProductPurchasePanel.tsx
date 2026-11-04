@@ -7,6 +7,7 @@ import ProductAvailability from "./ProductAvailability";
 import ProductName from "./ProductName";
 import ProductOrderActions from "./ProductOrderActions";
 import ProductStatusTag from "./ProductStatusTag";
+import ProductGallery from "./ProductGallery";
 
 export default function ProductPurchasePanel({ product }: { product: Product }) {
   const [variantId, setVariantId] = useState(product.defaultVariantId);
@@ -14,6 +15,9 @@ export default function ProductPurchasePanel({ product }: { product: Product }) 
   const available = isProductPurchasable(selected);
 
   return <>
+    <div className="product-detail-media">
+      <ProductGallery key={selected.image} product={selected} />
+    </div>
     <div className={`product-detail-summary${selected.priceEur === null ? " product-detail-summary--unpriced" : ""}`}>
       <div className="product-detail-identity">
         <h1><ProductName product={product} /></h1>

@@ -5,7 +5,6 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/metadata";
 import ProductPurchasePanel from "@/components/ProductPurchasePanel";
 import OrderInformation from "@/components/OrderInformation";
-import ProductGallery from "@/components/ProductGallery";
 import ProductDetailSection from "@/components/ProductDetailSection";
 import { getProductDisplayName } from "@/lib/product-display";
 
@@ -49,10 +48,6 @@ export default async function ProductPage(props: { params: Promise<{ slug: strin
         </nav>
 
         <div className="product-detail-layout">
-          <div className="product-detail-media">
-            <ProductGallery key={product.slug} product={product} />
-          </div>
-
           <ProductPurchasePanel key={product.slug} product={product} />
 
           <section className="product-detail-information" aria-label="More product information">

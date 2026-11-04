@@ -46,6 +46,8 @@ Berbere, Korerima, Abish and Bula have 250 g, 500 g and 1 kg options. Coffee has
 
 Product detail pages present selectable size cards with the price of each option. Selecting a size updates the main price, weight, add-to-cart subtotal and WhatsApp enquiry. Cart lines, persisted carts and Stripe orders retain the exact selected pack ID.
 
+Abish and Korerima now use the supplied gold-pouch photos for each size. Selecting 250 g, 500 g or 1 kg also changes the detail photo and enlarged view; the matching photo is retained in the cart and Stripe catalog. Korerima is whole Ethiopian cardamom seeds removed from pods, with the supplied English and Amharic names replacing the former powder description. All accepted selling prices remain unchanged, including the separately confirmed €8.90 coffee option.
+
 ## Available on request
 
 Six Rekebot ceremony sets/tables, Alviia Luwam extensions, the two Zenith oils and Mitmita remain WhatsApp-only because these files contain no confirmed retail prices for them. Their existing photos and descriptions remain published. No zero prices or estimated prices are used.

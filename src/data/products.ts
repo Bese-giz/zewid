@@ -13,6 +13,8 @@ export interface ProductVariant {
   label: string;
   weightKg: number;
   priceEur: number | null;
+  image?: string;
+  imageAlt?: string;
 }
 
 export interface Product {
@@ -274,18 +276,18 @@ export const products: Product[] = [
   {
     "slug": "abish-fenugreek",
     "catalogItem": 3,
-    "name": "Ethiopian Abish (Fenugreek Seeds)",
+    "name": "Abish – Fenugreek Seeds",
     "amharicName": "አብሽ",
-    "shortDescription": "Whole fenugreek seeds for Ethiopian spice preparations and traditional cooking.",
-    "description": "Abish is used in Ethiopian and Eritrean kitchens for its distinctive aromatic, slightly bitter flavour. The seeds may be ground or used in traditional recipes and spice mixtures. The small container is convenient for keeping the seeds ready for cooking.",
+    "shortDescription": "Whole fenugreek seeds.",
+    "description": "Whole fenugreek seeds, known as Abish, supplied in opaque resealable gold pouches. Available in 250 g, 500 g and 1 kg packs.",
     "category": "food",
     "weight": "250 g pack",
     "weightKg": 0.25,
     "priceEur": 7.5,
     "availability": "in-stock",
-    "image": "/images/abish-fenugreek.png",
+    "image": "/images/packaging/abish-fenugreek-pouch.png?v=8e2e297c61f1",
     "images": [
-      "/images/abish-fenugreek.png"
+      "/images/packaging/abish-fenugreek-pouch.png?v=8e2e297c61f1"
     ],
     "features": [
       "Whole fenugreek seeds",
@@ -311,7 +313,7 @@ export const products: Product[] = [
       },
       {
         "label": "Packaging",
-        "value": "Lidded container"
+        "value": "Opaque resealable pouch"
       }
     ],
     "variants": [
@@ -319,25 +321,33 @@ export const products: Product[] = [
         "id": "abish-250g",
         "label": "250 g",
         "weightKg": 0.25,
-        "priceEur": 7.5
+        "priceEur": 7.5,
+        "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1",
+        "imageAlt": "Zewid Market Abish fenugreek seeds in a 250 g gold pouch"
       },
       {
         "id": "abish-500g",
         "label": "500 g",
         "weightKg": 0.5,
-        "priceEur": 13.5
+        "priceEur": 13.5,
+        "image": "/images/packaging/abish-fenugreek-500g-pouch.png?v=6073bae413f2",
+        "imageAlt": "Zewid Market Abish fenugreek seeds in a 500 g gold pouch"
       },
       {
         "id": "abish-1000g",
         "label": "1 kg",
         "weightKg": 1.0,
-        "priceEur": 25.0
+        "priceEur": 25.0,
+        "image": "/images/packaging/abish-fenugreek-1000g-pouch.png?v=e6725f6bb897",
+        "imageAlt": "Zewid Market Abish fenugreek seeds in a 1 kg gold pouch"
       }
     ],
     "defaultVariantId": "abish-250g",
     "legacyNames": [
-      "Ethiopian Abish (Fenugreek Seeds) – 200 g"
-    ]
+      "Ethiopian Abish (Fenugreek Seeds) – 200 g",
+      "Ethiopian Abish (Fenugreek Seeds)"
+    ],
+    "imageAlt": "Zewid Market Abish – Fenugreek Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code"
   },
   {
     "slug": "gaat-porridge",
@@ -1607,26 +1617,26 @@ export const products: Product[] = [
   },
   {
     "slug": "korerima",
-    "name": "Korerima – Ethiopian Cardamom Powder",
-    "amharicName": "ኮረሪማ",
-    "shortDescription": "Aromatic ground Ethiopian cardamom seeds for spice blends, stews and spiced butter.",
-    "description": "Korerima is Ethiopian cardamom, made from the seeds of Aframomum corrorima. Its warm, smoky and citrus-like aroma adds character to Ethiopian spice blends, stews and spiced butter. Add a small amount during cooking and adjust to taste.",
+    "name": "Korerima – Ethiopian Cardamom Seeds",
+    "amharicName": "ኮረሪማ – የተፈለፈለ ፍሬ",
+    "shortDescription": "Shelled Ethiopian cardamom seeds.",
+    "description": "Whole Korerima seeds removed from their pods (የተፈለፈለ ፍሬ), supplied as seeds rather than powder. Available in 250 g, 500 g and 1 kg opaque resealable gold pouches.",
     "weight": "250 g pack",
     "weightKg": 0.25,
-    "image": "/images/packaging/korerima-pouch.png?v=f73223f60af9",
-    "imageAlt": "Zewid Market Korerima 250 g in an opaque gold pouch with the new bilingual label and website QR code",
+    "image": "/images/packaging/korerima-pouch.png?v=035afac6f8ae",
+    "imageAlt": "Zewid Market Korerima – Ethiopian Cardamom Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code",
     "images": [
-      "/images/packaging/korerima-pouch.png?v=f73223f60af9"
+      "/images/packaging/korerima-pouch.png?v=035afac6f8ae"
     ],
     "features": [
-      "Ground Ethiopian cardamom seeds",
-      "For spice blends, stews and spiced butter",
+      "Whole Ethiopian cardamom seeds",
+      "Seeds removed from their pods",
       "Choice of pack sizes"
     ],
     "specifications": [
       {
         "label": "Product",
-        "value": "Ethiopian Cardamom Powder"
+        "value": "Ethiopian Cardamom Seeds"
       },
       {
         "label": "Net weight",
@@ -1635,6 +1645,10 @@ export const products: Product[] = [
       {
         "label": "Packaging",
         "value": "Pouch"
+      },
+      {
+        "label": "Form",
+        "value": "Whole seeds removed from pods (የተፈለፈለ ፍሬ)"
       }
     ],
     "category": "food",
@@ -1645,22 +1659,29 @@ export const products: Product[] = [
         "id": "korerima-250g",
         "label": "250 g",
         "weightKg": 0.25,
-        "priceEur": 17.5
+        "priceEur": 17.5,
+        "image": "/images/packaging/korerima-250g-pouch.png?v=035afac6f8ae",
+        "imageAlt": "Zewid Market Korerima whole Ethiopian cardamom seeds in a 250 g gold pouch"
       },
       {
         "id": "korerima-500g",
         "label": "500 g",
         "weightKg": 0.5,
-        "priceEur": 30.0
+        "priceEur": 30.0,
+        "image": "/images/packaging/korerima-500g-pouch.png?v=a65069c9cf11",
+        "imageAlt": "Zewid Market Korerima whole Ethiopian cardamom seeds in a 500 g gold pouch"
       },
       {
         "id": "korerima-1000g",
         "label": "1 kg",
         "weightKg": 1.0,
-        "priceEur": 55.0
+        "priceEur": 55.0,
+        "image": "/images/packaging/korerima-1000g-pouch.png?v=c4eed4f650be",
+        "imageAlt": "Zewid Market Korerima whole Ethiopian cardamom seeds in a 1 kg gold pouch"
       }
     ],
-    "defaultVariantId": "korerima-250g"
+    "defaultVariantId": "korerima-250g",
+    "legacyNames": ["Korerima – Ethiopian Cardamom Powder"]
   }
 ];
 
@@ -1683,5 +1704,7 @@ export function getSelectedProduct(product: Product, variantId?: string): Produc
   if (!product.variants?.length) return variantId === undefined ? product : undefined;
   const variant = getProductVariant(product, variantId);
   return variant ? { ...product, variants: undefined, defaultVariantId: undefined,
-    priceEur: variant.priceEur, weight: `${variant.label} pack`, weightKg: variant.weightKg } : undefined;
+    priceEur: variant.priceEur, weight: `${variant.label} pack`, weightKg: variant.weightKg,
+    ...(variant.image ? { image: variant.image, imageAlt: variant.imageAlt ?? product.imageAlt,
+      images: [variant.image, ...product.images.slice(1)] } : {}) } : undefined;
 }

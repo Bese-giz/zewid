@@ -1,0 +1,98 @@
+[
+  {
+    "file": "outputs/zewid-seed-labels/mockups/abish-fenugreek-250g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/abish-fenugreek-250g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/mockups/abish-fenugreek-500g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/abish-fenugreek-500g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/mockups/abish-fenugreek-1000g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/abish-fenugreek-1000g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/mockups/korerima-250g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/korerima-250g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/mockups/korerima-500g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/korerima-500g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/mockups/korerima-1000g-pouch.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  },
+  {
+    "file": "outputs/zewid-seed-labels/labels/png/korerima-1000g-front.png",
+    "decoded": "https://www.zewid.com",
+    "version": 2,
+    "mask": 5,
+    "errorCorrectionLevel": 0,
+    "quietZoneVerified": true
+  }
+]

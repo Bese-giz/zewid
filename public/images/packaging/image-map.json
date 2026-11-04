@@ -91,8 +91,8 @@
     "name": "Korerima – Ethiopian Cardamom Seeds",
     "amharicName": "ኮረሪማ – የተፈለፈለ ፍሬ",
     "form": "Whole seeds removed from pods",
-    "fileName": "korerima-250g-pouch.png",
-    "primaryImage": "/images/packaging/korerima-250g-pouch.png",
+    "fileName": "korerima-pouch.png",
+    "primaryImage": "/images/packaging/korerima-pouch.png",
     "netWeight": "250 g",
     "netWeightG": 250,
     "shortDescription": "Shelled Ethiopian cardamom seeds.",
@@ -116,8 +116,8 @@
         "netWeight": "250 g",
         "fileName": "korerima-250g-pouch.png",
         "primaryImage": "/images/packaging/korerima-250g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/korerima-250g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/korerima-250g-front.svg",
+        "labelFile": "labels/png/korerima-250g-front.png",
+        "labelSvg": "labels/svg/korerima-250g-front.svg",
         "sha256": "035afac6f8ae705c06b2090fd946f3da4d1cb0096310f2cb0a562003786eaaae"
       },
       {
@@ -125,8 +125,8 @@
         "netWeight": "500 g",
         "fileName": "korerima-500g-pouch.png",
         "primaryImage": "/images/packaging/korerima-500g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/korerima-500g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/korerima-500g-front.svg",
+        "labelFile": "labels/png/korerima-500g-front.png",
+        "labelSvg": "labels/svg/korerima-500g-front.svg",
         "sha256": "a65069c9cf11c4fb7e92713cf46478578fd7e0c8f85c85758dd467d1cec37d26"
       },
       {
@@ -134,8 +134,8 @@
         "netWeight": "1 kg",
         "fileName": "korerima-1000g-pouch.png",
         "primaryImage": "/images/packaging/korerima-1000g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/korerima-1000g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/korerima-1000g-front.svg",
+        "labelFile": "labels/png/korerima-1000g-front.png",
+        "labelSvg": "labels/svg/korerima-1000g-front.svg",
         "sha256": "c4eed4f650be5085057ad2de5361af88a3625e90d46bd754552dddf91345c521"
       }
     ],
@@ -143,32 +143,56 @@
   },
   {
     "slug": "shiro",
-    "fileName": "shiro-pouch.png",
-    "name": "Shiro",
-    "amharicName": "ሽሮ",
+    "name": "Mitin Shiro",
+    "amharicName": "ምጥን ሽሮ",
+    "fileName": "mitin-shiro-1000g-pouch.png",
     "netWeight": "1 kg",
     "netWeightG": 1000,
-    "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    "description": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    "primaryImage": "/images/packaging/shiro-pouch.png",
+    "primaryImage": "/images/packaging/mitin-shiro-1000g-pouch.png",
     "images": [
-      "/images/packaging/shiro-pouch.png"
+      "/images/packaging/mitin-shiro-1000g-pouch.png"
     ],
-    "alt": "Zewid Market Shiro 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
-    "width": 2508,
-    "height": 2508,
-    "format": "png",
-    "transparentBackground": true,
-    "catalogAction": "update-existing",
-    "sha256": "fa37bc794aae403bee87e6da87f7a13695c3d7746120e23f7e37f617b25be8a7",
-    "labelVersion": "2026-11-03-en-fi-qr",
+    "shortDescription": "Spiced chickpea stew powder.",
+    "description": "Mitin Shiro (ምጥን ሽሮ) is a seasoned chickpea powder for Ethiopian shiro stew. Supplied in opaque resealable gold pouches in 500 g and 1 kg sizes.",
+    "ingredientsEn": "Chickpea, garlic, onion, basil, rue, ajwain and peppers.",
+    "ingredientsFi": "Kikherne, valkosipuli, sipuli, basilika, ruuta, ajowan ja paprikat.",
     "labelLanguages": [
       "en",
       "fi"
     ],
     "qrTarget": "https://www.zewid.com",
-    "ingredientsEn": "Chickpea, garlic, onion, basil, rue, ajwain and peppers.",
-    "ingredientsFi": "Kikherne, valkosipuli, sipuli, basilika, ruuta, ajowan ja paprikat."
+    "labelVersion": "2026-11-04-mitin-shiro-en-fi-qr",
+    "width": 2508,
+    "height": 2508,
+    "format": "png",
+    "transparentBackground": true,
+    "labelSvg": "labels/svg/mitin-shiro-1000g-front.svg",
+    "variants": [
+      {
+        "weightG": 500,
+        "netWeight": "500 g",
+        "priceEur": 16,
+        "id": "shiro-500g",
+        "fileName": "mitin-shiro-500g-pouch.png",
+        "primaryImage": "/images/packaging/mitin-shiro-500g-pouch.png",
+        "labelFile": "labels/png/mitin-shiro-500g-front.png",
+        "labelSvg": "labels/svg/mitin-shiro-500g-front.svg",
+        "sha256": "86c81f846dc159219534a2367ebe62b6e710241f3a44c27840a6005a0d26da12"
+      },
+      {
+        "weightG": 1000,
+        "netWeight": "1 kg",
+        "priceEur": 30,
+        "id": "shiro-1000g",
+        "fileName": "mitin-shiro-1000g-pouch.png",
+        "primaryImage": "/images/packaging/mitin-shiro-1000g-pouch.png",
+        "labelFile": "labels/png/mitin-shiro-1000g-front.png",
+        "labelSvg": "labels/svg/mitin-shiro-1000g-front.svg",
+        "sha256": "fb371fb0c5443e3b26dce0880a7b24707179bb9707b34948bfc838d795197d06"
+      }
+    ],
+    "sha256": "fb371fb0c5443e3b26dce0880a7b24707179bb9707b34948bfc838d795197d06",
+    "alt": "Zewid Market Mitin Shiro 1 kg in an opaque gold pouch with English/Finnish ingredients and a website QR code"
   },
   {
     "slug": "mekelesha-spice",
@@ -233,8 +257,8 @@
     "name": "Abish – Fenugreek Seeds",
     "amharicName": "አብሽ",
     "form": "Whole seeds",
-    "fileName": "abish-fenugreek-250g-pouch.png",
-    "primaryImage": "/images/packaging/abish-fenugreek-250g-pouch.png",
+    "fileName": "abish-fenugreek-pouch.png",
+    "primaryImage": "/images/packaging/abish-fenugreek-pouch.png",
     "netWeight": "250 g",
     "netWeightG": 250,
     "shortDescription": "Whole fenugreek seeds.",
@@ -258,8 +282,8 @@
         "netWeight": "250 g",
         "fileName": "abish-fenugreek-250g-pouch.png",
         "primaryImage": "/images/packaging/abish-fenugreek-250g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/abish-fenugreek-250g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/abish-fenugreek-250g-front.svg",
+        "labelFile": "labels/png/abish-fenugreek-250g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-250g-front.svg",
         "sha256": "8e2e297c61f1d1e3c90f64ae4b85131867ff2b45c7921238e28420d35220926c"
       },
       {
@@ -267,8 +291,8 @@
         "netWeight": "500 g",
         "fileName": "abish-fenugreek-500g-pouch.png",
         "primaryImage": "/images/packaging/abish-fenugreek-500g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/abish-fenugreek-500g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/abish-fenugreek-500g-front.svg",
+        "labelFile": "labels/png/abish-fenugreek-500g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-500g-front.svg",
         "sha256": "6073bae413f28c8db001ca853d29ff57d147f845997bc26ca079ec80327cc145"
       },
       {
@@ -276,8 +300,8 @@
         "netWeight": "1 kg",
         "fileName": "abish-fenugreek-1000g-pouch.png",
         "primaryImage": "/images/packaging/abish-fenugreek-1000g-pouch.png",
-        "labelFile": "assets/packaging-labels/png/abish-fenugreek-1000g-front.png",
-        "labelSvg": "assets/packaging-labels/svg/abish-fenugreek-1000g-front.svg",
+        "labelFile": "labels/png/abish-fenugreek-1000g-front.png",
+        "labelSvg": "labels/svg/abish-fenugreek-1000g-front.svg",
         "sha256": "e6725f6bb8972bd766e0b0dda99cf72f7f74c180fcf474edaf33a2f34a09bb67"
       }
     ],

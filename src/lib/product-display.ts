@@ -21,7 +21,7 @@ const cardNames: Record<string, string> = {
   "mitmita": "Mitmita Chilli Blend",
   "bula": "Bula Enset Starch",
   "korerima": "Korerima Cardamom Seeds",
-  "shiro": "Shiro Powder",
+  "shiro": "Mitin Shiro",
   "buna-coffee": "Sidamo Green Coffee Beans",
   "abish-fenugreek": "Abish Fenugreek Seeds",
   "gaat-porridge": "Ga’at Porridge Mix",

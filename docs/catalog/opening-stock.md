@@ -7,7 +7,7 @@ Original purchase quantities, confirmed by the merchant on 4 November 2026 befor
 | White Teff Flour (Magna) | 50 | 5 kg bag |
 | Red Teff Flour | 50 | 5 kg bag |
 | Berbere – Ethiopian Spice Blend | 10 | kg shared across pack sizes |
-| Shiro | 5 | kg shared across pack sizes |
+| Mitin Shiro | 5 | kg shared across pack sizes |
 | Ethiopian Sorghum Flour (Mashila) – 5 kg | 31 | 5 kg bag |
 | Ethiopian Sidamo Arabica Green Coffee Beans | 20 | kg shared across pack sizes |
 | Abish – Fenugreek Seeds | 9.6 | kg shared across pack sizes |

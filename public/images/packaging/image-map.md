@@ -1,17 +1,17 @@
-# Zewid Market — current packaging images
+# Zewid Market - current packaging images
 
-Eight products have English/Finnish labels, website QR codes and transparent PNG pouches. Abish and Korerima include 250 g, 500 g and 1 kg images.
+Current English/Finnish labels, net weights, website QR codes and transparent PNG pouches. Mitin Shiro is supplied in 500 g and 1 kg.
 
 | Product | Default image | Sizes | Website path |
 | --- | --- | --- | --- |
 | Berbere – Ethiopian Spice Blend | `berbere-pouch.png` | 1 kg | `/images/packaging/berbere-pouch.png` |
 | Mitmita – Ethiopian Chilli Spice Blend | `mitmita-pouch.png` | 500 g | `/images/packaging/mitmita-pouch.png` |
 | Bula – Ethiopian Enset Starch | `bula-pouch.png` | 1 kg | `/images/packaging/bula-pouch.png` |
-| Korerima – Ethiopian Cardamom Seeds | `korerima-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/korerima-250g-pouch.png` |
-| Shiro | `shiro-pouch.png` | 1 kg | `/images/packaging/shiro-pouch.png` |
+| Korerima – Ethiopian Cardamom Seeds | `korerima-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/korerima-pouch.png` |
+| Mitin Shiro | `mitin-shiro-1000g-pouch.png` | 500 g, 1 kg | `/images/packaging/mitin-shiro-1000g-pouch.png` |
 | Ethiopian Mekelesha Spice Mix – 100 g | `mekelesha-spice-pouch.png` | 100 g | `/images/packaging/mekelesha-spice-pouch.png` |
 | Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg | `buna-coffee-pouch.png` | 1 kg | `/images/packaging/buna-coffee-pouch.png` |
-| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-250g-pouch.png` |
+| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-pouch.png` |
 
 ## Berbere – Ethiopian Spice Blend
 
@@ -37,11 +37,11 @@ Whole Korerima seeds removed from their pods (የተፈለፈለ ፍሬ), suppli
 
 Alt: Zewid Market Korerima – Ethiopian Cardamom Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code
 
-## Shiro
+## Mitin Shiro
 
-Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.
+Mitin Shiro (ምጥን ሽሮ) is a seasoned chickpea powder for Ethiopian shiro stew. Supplied in opaque resealable gold pouches in 500 g and 1 kg sizes.
 
-Alt: Zewid Market Shiro 1 kg in an opaque gold pouch with the new bilingual label and website QR code
+Alt: Zewid Market Mitin Shiro 1 kg in an opaque gold pouch with English/Finnish ingredients and a website QR code
 
 ## Ethiopian Mekelesha Spice Mix – 100 g
 

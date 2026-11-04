@@ -38,7 +38,7 @@ The user confirmed the 500 g coffee price of €8.90 and confirmed that all newl
 | Zemen injera maker, large | 46 cm maker | €140 |
 | Meshrefet | 1 basket | €12 |
 
-White and red teff remain €25 per 5 kg bag at every quantity. Shiro remains €30 per 1 kg pack. The supplied workbook treats complete sets as single retail units; no per-piece prices are inferred.
+White and red teff remain €25 per 5 kg bag at every quantity. Mitin Shiro (ምጥን ሽሮ) is €16 per 500 g pack and €30 per 1 kg pack. The supplied workbook treats complete sets as single retail units; no per-piece prices are inferred.
 
 ## Pack-size selection
 

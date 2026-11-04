@@ -42,7 +42,7 @@ CREATE OR REPLACE FUNCTION zewid_stock_snapshot(p_scope text) RETURNS jsonb LANG
   SELECT s.slug,s.name,s.image,s.unit,s.on_hand,s.availability,
     coalesce(h.held,0)::integer AS reserved,
     (s.on_hand-coalesce(h.held,0))::integer AS available,
-    coalesce((SELECT jsonb_agg(jsonb_build_object('variantId',k.variant_id,'label',k.label,'units',k.units,'priceCents',k.price_cents) ORDER BY k.units) FROM zewid_stock_sku k WHERE k.scope=s.scope AND k.slug=s.slug),'[]'::jsonb) AS options
+    coalesce((SELECT jsonb_agg(jsonb_build_object('variantId',k.variant_id,'label',k.label,'units',k.units,'priceCents',k.price_cents) ORDER BY k.units) FROM zewid_stock_sku k WHERE k.scope=s.scope AND k.slug=s.slug AND (k.variant_id<>'' OR NOT EXISTS (SELECT 1 FROM zewid_stock_sku sized WHERE sized.scope=k.scope AND sized.slug=k.slug AND sized.variant_id<>''))),'[]'::jsonb) AS options
   FROM zewid_stock s LEFT JOIN (
    SELECT l.slug,sum(l.units) AS held FROM zewid_stock_reservation_line l
    JOIN zewid_stock_reservation r ON r.id=l.reservation_id WHERE r.scope=p_scope AND r.status='held' GROUP BY l.slug

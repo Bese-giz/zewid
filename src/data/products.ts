@@ -151,22 +151,43 @@ export const products: Product[] = [
     "priceEur": 30,
     "weightKg": 1,
     "availability": "in-stock",
-    "name": "Shiro",
-    "amharicName": "ሽሮ",
+    "name": "Mitin Shiro",
+    "amharicName": "ምጥን ሽሮ",
     "weight": "1 kg pack",
-    "description": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
-    "image": "/images/packaging/shiro-pouch.png?v=fa37bc794aae",
-    "imageAlt": "Zewid Market Shiro 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
+    "description": "Mitin Shiro (ምጥን ሽሮ) is a seasoned chickpea powder for Ethiopian shiro stew. Supplied in opaque resealable gold pouches in 500 g and 1 kg sizes.",
+    "image": "/images/packaging/mitin-shiro-1000g-pouch.png?v=fb371fb0c544",
+    "imageAlt": "Zewid Market Mitin Shiro 1 kg in an opaque gold pouch with English/Finnish ingredients and a website QR code",
     "features": [
-      "Traditional shiro powder",
-      "Easy to prepare",
-      "Delicious flavor"
+      "Seasoned chickpea powder",
+      "Mitin Shiro / ምጥን ሽሮ",
+      "500 g and 1 kg packs"
     ],
     "category": "food",
-    "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
+    "shortDescription": "Spiced chickpea stew powder.",
     "images": [
-      "/images/packaging/shiro-pouch.png?v=fa37bc794aae",
-      "/images/products/food/shiro_enhanced_transparent.png"
+      "/images/packaging/mitin-shiro-1000g-pouch.png?v=fb371fb0c544"
+    ],
+    "variants": [
+      {
+        "id": "shiro-500g",
+        "label": "500 g",
+        "weightKg": 0.5,
+        "priceEur": 16,
+        "image": "/images/packaging/mitin-shiro-500g-pouch.png?v=86c81f846dc1",
+        "imageAlt": "Zewid Market Mitin Shiro 500 g gold pouch with bilingual label and website QR code"
+      },
+      {
+        "id": "shiro-1000g",
+        "label": "1 kg",
+        "weightKg": 1.0,
+        "priceEur": 30,
+        "image": "/images/packaging/mitin-shiro-1000g-pouch.png?v=fb371fb0c544",
+        "imageAlt": "Zewid Market Mitin Shiro 1 kg gold pouch with bilingual label and website QR code"
+      }
+    ],
+    "defaultVariantId": "shiro-1000g",
+    "legacyNames": [
+      "Shiro"
     ]
   },
   {

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/landing.png",
+        url: "/images/site/landing.png",
         width: 1852,
         height: 849,
         alt: "ZEWID Market – Ethiopian food, coffee and home essentials",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ZEWID Market – Your Ethiopian Market in Finland",
     description: "Ethiopian food, coffee and spices, with a growing collection of coffee ceremony and home essentials in Finland.",
-    images: ["/images/landing.png"],
+    images: ["/images/site/landing.png"],
   },
   robots: {
     index: true,
@@ -77,7 +77,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": site.name,
-    "image": `${site.url}/images/landing.png`,
+    "image": `${site.url}/images/site/landing.png`,
     "description": "Ethiopian food, coffee and spices, coffee ceremony accessories and home essentials in Finland.",
     "address": {
       "@type": "PostalAddress",

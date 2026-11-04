@@ -1,5 +1,5 @@
 import Image from "next/image";
-import marketLogo from "../../public/images/zewid-market-logo-new.png";
+import marketLogo from "../../public/images/brand/zewid-market-logo-new.png";
 
 export default function BrandMark() {
   return (

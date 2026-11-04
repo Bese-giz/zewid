@@ -51,7 +51,7 @@ export const products: Product[] = [
     "amharicName": "ነጭ ጤፍ",
     "weight": "5 kg bag",
     "description": "Premium Ethiopian white teff flour (Magna Teff) for baking authentic injera. Finely milled and imported directly from Ethiopia. Known for its delicate flavor, light color, and premium quality.",
-    "image": "/images/white_teff_bag_transparent_enhanced.png",
+    "image": "/images/products/food/white_teff_bag_transparent_enhanced.png",
     "features": [
       "100% Ethiopian white magna teff",
       "Perfect for authentic light injera",
@@ -61,7 +61,7 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "Premium Ethiopian white teff flour (Magna Teff) for baking authentic injera. Finely milled and imported directly from Ethiopia. Known for its delicate flavor, light color, and premium quality.",
     "images": [
-      "/images/white_teff_bag_transparent_enhanced.png"
+      "/images/products/food/white_teff_bag_transparent_enhanced.png"
     ]
   },
   {
@@ -73,7 +73,7 @@ export const products: Product[] = [
     "amharicName": "ቀይ ጤፍ",
     "weight": "5 kg bag",
     "description": "Rich, nutty Ethiopian red teff flour for dark injera. Full-bodied flavor with excellent nutritional value.",
-    "image": "/images/red_teff_flour_enhanced_transparent.png",
+    "image": "/images/products/food/red_teff_flour_enhanced_transparent.png",
     "features": [
       "100% Ethiopian red teff",
       "High in iron and fiber",
@@ -82,7 +82,7 @@ export const products: Product[] = [
     "category": "food",
     "shortDescription": "Rich, nutty Ethiopian red teff flour for dark injera. Full-bodied flavor with excellent nutritional value.",
     "images": [
-      "/images/red_teff_flour_enhanced_transparent.png"
+      "/images/products/food/red_teff_flour_enhanced_transparent.png"
     ]
   },
   {
@@ -104,7 +104,7 @@ export const products: Product[] = [
     "shortDescription": "A warming Ethiopian spice blend for stews, sauces, meat, vegetables and legumes.",
     "images": [
       "/images/packaging/berbere-pouch.png?v=bc39c379f211",
-      "/images/berbere_enhanced_transparent.png"
+      "/images/products/food/berbere_enhanced_transparent.png"
     ],
     "imageAlt": "Zewid Market Berbere 1 kg in an opaque gold pouch with the new bilingual label and website QR code",
     "specifications": [
@@ -166,7 +166,7 @@ export const products: Product[] = [
     "shortDescription": "Traditional Ethiopian Shiro powder. Easy to prepare and makes a delicious, savory stew.",
     "images": [
       "/images/packaging/shiro-pouch.png?v=fa37bc794aae",
-      "/images/shiro_enhanced_transparent.png"
+      "/images/products/food/shiro_enhanced_transparent.png"
     ]
   },
   {
@@ -181,7 +181,7 @@ export const products: Product[] = [
     ],
     "weight": "5 kg bag",
     "description": "Mashila is a grain used in Ethiopian and Eritrean cuisine. This finely milled sorghum flour has a mild flavour and works well in porridge, flatbreads and a variety of home-cooked recipes. The 5 kg bag is a practical size for households that cook with sorghum regularly.",
-    "image": "/images/mashila.png",
+    "image": "/images/products/food/mashila.png",
     "features": [
       "Finely milled sorghum flour",
       "Suitable for porridge, flatbreads and baking",
@@ -191,7 +191,7 @@ export const products: Product[] = [
     "shortDescription": "Traditional Ethiopian sorghum flour for porridge, flatbreads and everyday home cooking.",
     "category": "food",
     "images": [
-      "/images/mashila.png"
+      "/images/products/food/mashila.png"
     ],
     "specifications": [
       {
@@ -285,9 +285,9 @@ export const products: Product[] = [
     "weightKg": 0.25,
     "priceEur": 7.5,
     "availability": "in-stock",
-    "image": "/images/packaging/abish-fenugreek-pouch.png?v=8e2e297c61f1",
+    "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1",
     "images": [
-      "/images/packaging/abish-fenugreek-pouch.png?v=8e2e297c61f1"
+      "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1"
     ],
     "features": [
       "Whole fenugreek seeds",
@@ -361,9 +361,9 @@ export const products: Product[] = [
     "weightKg": 1,
     "priceEur": 7,
     "availability": "in-stock",
-    "image": "/images/gaat-porridge.png",
+    "image": "/images/products/food/gaat-porridge.png",
     "images": [
-      "/images/gaat-porridge.png"
+      "/images/products/food/gaat-porridge.png"
     ],
     "features": [
       "Traditional porridge blend",
@@ -405,7 +405,7 @@ export const products: Product[] = [
     "imageAlt": "Zewid Market Ethiopian Mekelesha Spice Mix 100 g in an opaque gold pouch with the new bilingual label and website QR code",
     "images": [
       "/images/packaging/mekelesha-spice-pouch.png?v=46dd05341c6b",
-      "/images/mekelesha-spice.png"
+      "/images/products/food/mekelesha-spice.png"
     ],
     "features": [
       "Traditional Ethiopian finishing spice",
@@ -447,10 +447,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 130,
     "availability": "in-stock",
-    "image": "/images/zemen-injera-40cm-box.png",
+    "image": "/images/products/kitchen/zemen-injera-40cm-box.png",
     "images": [
-      "/images/zemen-injera-40cm-box.png",
-      "/images/injera-maker.png"
+      "/images/products/kitchen/zemen-injera-40cm-box.png",
+      "/images/products/kitchen/injera-maker.png"
     ],
     "features": [
       "40 cm round cooking surface",
@@ -489,9 +489,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 15,
     "availability": "in-stock",
-    "image": "/images/coffee-roasting-pan.png",
+    "image": "/images/products/coffee/coffee-roasting-pan.png",
     "images": [
-      "/images/coffee-roasting-pan.png"
+      "/images/products/coffee/coffee-roasting-pan.png"
     ],
     "features": [
       "Traditional coffee preparation accessory",
@@ -525,9 +525,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 25,
     "availability": "in-stock",
-    "image": "/images/mogogo-controller.png",
+    "image": "/images/products/kitchen/mogogo-controller.png",
     "images": [
-      "/images/mogogo-controller.png"
+      "/images/products/kitchen/mogogo-controller.png"
     ],
     "features": [
       "Digital display",
@@ -561,10 +561,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 7,
     "availability": "in-stock",
-    "image": "/images/berele-glass-group.png",
+    "image": "/images/products/coffee/berele-glass-group.png",
     "images": [
-      "/images/berele-glass-group.png",
-      "/images/berele-glass.png"
+      "/images/products/coffee/berele-glass-group.png",
+      "/images/products/coffee/berele-glass.png"
     ],
     "features": [
       "Traditional Berele shape",
@@ -598,11 +598,11 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 13,
     "availability": "in-stock",
-    "image": "/images/incense-burner-figures.png",
+    "image": "/images/products/coffee/incense-burner-figures.png",
     "images": [
-      "/images/incense-burner-figures.png",
-      "/images/incense-burner-geometric.png",
-      "/images/incense-burner-box.png"
+      "/images/products/coffee/incense-burner-figures.png",
+      "/images/products/coffee/incense-burner-geometric.png",
+      "/images/products/coffee/incense-burner-box.png"
     ],
     "features": [
       "Decorative ceramic design",
@@ -641,10 +641,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 20,
     "availability": "in-stock",
-    "image": "/images/floral-coffee-cups-12.png",
+    "image": "/images/products/coffee/floral-coffee-cups-12.png",
     "images": [
-      "/images/floral-coffee-cups-12.png",
-      "/images/floral-coffee-cup.png"
+      "/images/products/coffee/floral-coffee-cups-12.png",
+      "/images/products/coffee/floral-coffee-cup.png"
     ],
     "features": [
       "12 matching cups",
@@ -678,10 +678,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 20,
     "availability": "in-stock",
-    "image": "/images/clay-spice-container.png",
+    "image": "/images/products/kitchen/clay-spice-container.png",
     "images": [
-      "/images/clay-spice-container.png",
-      "/images/clay-spice-container-open.png"
+      "/images/products/kitchen/clay-spice-container.png",
+      "/images/products/kitchen/clay-spice-container-open.png"
     ],
     "features": [
       "Multiple covered compartments",
@@ -719,10 +719,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 40,
     "availability": "in-stock",
-    "image": "/images/coffee-hot-plate.png",
+    "image": "/images/products/coffee/coffee-hot-plate.png",
     "images": [
-      "/images/coffee-hot-plate.png",
-      "/images/coffee-hot-plate-box.png"
+      "/images/products/coffee/coffee-hot-plate.png",
+      "/images/products/coffee/coffee-hot-plate-box.png"
     ],
     "features": [
       "1200 W rating",
@@ -761,9 +761,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 90,
     "availability": "in-stock",
-    "image": "/images/food-warmer-3-dish.png",
+    "image": "/images/products/kitchen/food-warmer-3-dish.png",
     "images": [
-      "/images/food-warmer-3-dish.png"
+      "/images/products/kitchen/food-warmer-3-dish.png"
     ],
     "features": [
       "Three covered serving dishes",
@@ -798,9 +798,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 27,
     "availability": "in-stock",
-    "image": "/images/coffee-set-18-piece.png",
+    "image": "/images/products/coffee/coffee-set-18-piece.png",
     "images": [
-      "/images/coffee-set-18-piece.png"
+      "/images/products/coffee/coffee-set-18-piece.png"
     ],
     "features": [
       "18-piece set",
@@ -834,9 +834,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 70,
     "availability": "in-stock",
-    "image": "/images/food-warmer-2-dish.png",
+    "image": "/images/products/kitchen/food-warmer-2-dish.png",
     "images": [
-      "/images/food-warmer-2-dish.png"
+      "/images/products/kitchen/food-warmer-2-dish.png"
     ],
     "features": [
       "Two covered dishes",
@@ -870,10 +870,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 50,
     "availability": "in-stock",
-    "image": "/images/coffee-set-23-piece.png",
+    "image": "/images/products/coffee/coffee-set-23-piece.png",
     "images": [
-      "/images/coffee-set-23-piece.png",
-      "/images/coffee-set-23-piece-box.png"
+      "/images/products/coffee/coffee-set-23-piece.png",
+      "/images/products/coffee/coffee-set-23-piece-box.png"
     ],
     "features": [
       "23-piece collection",
@@ -907,9 +907,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 22,
     "availability": "in-stock",
-    "image": "/images/amharic-alphabet-chart.png",
+    "image": "/images/products/culture/amharic-alphabet-chart.png",
     "images": [
-      "/images/amharic-alphabet-chart.png"
+      "/images/products/culture/amharic-alphabet-chart.png"
     ],
     "features": [
       "Amharic alphabet characters",
@@ -943,10 +943,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 23,
     "availability": "in-stock",
-    "image": "/images/snack-stand-3-tier-2.png",
+    "image": "/images/products/kitchen/snack-stand-3-tier-2.png",
     "images": [
-      "/images/snack-stand-3-tier-2.png",
-      "/images/snack-stand-3-tier.png"
+      "/images/products/kitchen/snack-stand-3-tier-2.png",
+      "/images/products/kitchen/snack-stand-3-tier.png"
     ],
     "features": [
       "Three-tier arrangement",
@@ -984,9 +984,9 @@ export const products: Product[] = [
     "weightKg": 0.25,
     "priceEur": 7,
     "availability": "in-stock",
-    "image": "/images/frankincense.png",
+    "image": "/images/products/coffee/frankincense.png",
     "images": [
-      "/images/frankincense.png"
+      "/images/products/coffee/frankincense.png"
     ],
     "features": [
       "Traditional incense resin",
@@ -1021,9 +1021,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 12.5,
     "availability": "in-stock",
-    "image": "/images/ketema-grass.png",
+    "image": "/images/products/coffee/ketema-grass.png",
     "images": [
-      "/images/ketema-grass.png"
+      "/images/products/coffee/ketema-grass.png"
     ],
     "features": [
       "Traditional coffee ceremony decoration",
@@ -1057,10 +1057,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 15,
     "availability": "in-stock",
-    "image": "/images/injera-tray-blue.png",
+    "image": "/images/products/kitchen/injera-tray-blue.png",
     "images": [
-      "/images/injera-tray-blue.png",
-      "/images/injera-tray-colors.png"
+      "/images/products/kitchen/injera-tray-blue.png",
+      "/images/products/kitchen/injera-tray-colors.png"
     ],
     "features": [
       "40 cm diameter",
@@ -1099,10 +1099,10 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 140,
     "availability": "in-stock",
-    "image": "/images/zemen-injera-46cm-box.png",
+    "image": "/images/products/kitchen/zemen-injera-46cm-box.png",
     "images": [
-      "/images/zemen-injera-46cm-box.png",
-      "/images/injera-maker.png"
+      "/images/products/kitchen/zemen-injera-46cm-box.png",
+      "/images/products/kitchen/injera-maker.png"
     ],
     "features": [
       "Large 46 cm cooking surface",
@@ -1141,9 +1141,9 @@ export const products: Product[] = [
     "weightKg": null,
     "priceEur": 12,
     "availability": "in-stock",
-    "image": "/images/meshrefet-basket.png",
+    "image": "/images/products/culture/meshrefet-basket.png",
     "images": [
-      "/images/meshrefet-basket.png"
+      "/images/products/culture/meshrefet-basket.png"
     ],
     "features": [
       "Round woven design",
@@ -1623,10 +1623,10 @@ export const products: Product[] = [
     "description": "Whole Korerima seeds removed from their pods (የተፈለፈለ ፍሬ), supplied as seeds rather than powder. Available in 250 g, 500 g and 1 kg opaque resealable gold pouches.",
     "weight": "250 g pack",
     "weightKg": 0.25,
-    "image": "/images/packaging/korerima-pouch.png?v=035afac6f8ae",
+    "image": "/images/packaging/korerima-250g-pouch.png?v=035afac6f8ae",
     "imageAlt": "Zewid Market Korerima – Ethiopian Cardamom Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code",
     "images": [
-      "/images/packaging/korerima-pouch.png?v=035afac6f8ae"
+      "/images/packaging/korerima-250g-pouch.png?v=035afac6f8ae"
     ],
     "features": [
       "Whole Ethiopian cardamom seeds",

@@ -7,11 +7,11 @@ Eight products have English/Finnish labels, website QR codes and transparent PNG
 | Berbere – Ethiopian Spice Blend | `berbere-pouch.png` | 1 kg | `/images/packaging/berbere-pouch.png` |
 | Mitmita – Ethiopian Chilli Spice Blend | `mitmita-pouch.png` | 500 g | `/images/packaging/mitmita-pouch.png` |
 | Bula – Ethiopian Enset Starch | `bula-pouch.png` | 1 kg | `/images/packaging/bula-pouch.png` |
-| Korerima – Ethiopian Cardamom Seeds | `korerima-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/korerima-pouch.png` |
+| Korerima – Ethiopian Cardamom Seeds | `korerima-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/korerima-250g-pouch.png` |
 | Shiro | `shiro-pouch.png` | 1 kg | `/images/packaging/shiro-pouch.png` |
 | Ethiopian Mekelesha Spice Mix – 100 g | `mekelesha-spice-pouch.png` | 100 g | `/images/packaging/mekelesha-spice-pouch.png` |
 | Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg | `buna-coffee-pouch.png` | 1 kg | `/images/packaging/buna-coffee-pouch.png` |
-| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-pouch.png` |
+| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-250g-pouch.png` |
 
 ## Berbere – Ethiopian Spice Blend
 

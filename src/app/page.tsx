@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <>
       <section className="market-hero" aria-labelledby="market-hero-title">
-        <Image src="/images/landing.png" alt="" fill priority sizes="100vw" className="market-hero__image" />
+        <Image src="/images/site/landing.png" alt="" fill priority sizes="100vw" className="market-hero__image" />
         <div className="market-hero__shade" />
         <div className="market-container market-hero__content">
           <div className="market-hero__copy">

@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="space-y-6">
             <div className="rounded-2xl overflow-hidden shadow-md relative h-64">
               <Image
-                src="/images/hero-injera.jpg"
+                src="/images/site/hero-injera.jpg"
                 alt="Ethiopian injera and food"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

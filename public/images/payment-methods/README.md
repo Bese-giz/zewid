@@ -2,7 +2,7 @@
 
 Files: cards, visa, mastercard, apple-pay, google-pay, klarna.
 
-Each is supplied as SVG (recommended for websites) and PNG. PNGs are 64 pixels high, suitable for displaying at 32 pixels high on high-density screens. SVGs stay sharp at any display size and preserve the provided artwork/proportions.
+The website uses the SVG files, which stay sharp at any display size and preserve the provided artwork/proportions. Unused PNG fallback exports are archived in the repository's local `photos-to-delete/unused/payment-methods/` folder and can be deleted. Source attribution and licensing files remain here.
 
 Website paths: `/images/payment-methods/apple-pay.svg`, `/images/payment-methods/google-pay.svg`, etc.
 

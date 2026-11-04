@@ -57,3 +57,7 @@ Six Rekebot ceremony sets/tables, Alviia Luwam extensions, the two Zenith oils a
 Original descriptions and verification notes remain in `website-orders.md` and `additional-products.draft.json`. The updated workbook confirms frankincense at 250 g. Product images can depict one of the offered package sizes; the selected retail size is shown beside the price and in the order. Electrical specifications, ingredients and allergens continue to use supplied product information without new claims.
 
 For future price changes, edit `src/data/products.ts`, sync the appropriate Stripe catalog and deploy. Preserve existing product slugs and pack IDs so carts and historical order references remain compatible.
+
+## Image organization
+
+Active photos are grouped by purpose and product category under `public/images/`; see its README. Print-label masters are retained in `assets/packaging-labels/`. All unused photos and previous archive contents are consolidated into the ignored local `photos-to-delete/` folder, which can be deleted after review. Existing gallery order and pack-specific photos are preserved, and old active image URLs continue to work through Next.js rewrites.

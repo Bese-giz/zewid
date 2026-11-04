@@ -26,6 +26,7 @@
 
 # Local retired-image backups; the live catalog never references these folders.
 /public/images/old-packaging-to-remove-*/
+/photos-to-delete/
 
 # debug
 npm-debug.log*

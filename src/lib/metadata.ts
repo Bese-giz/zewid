@@ -5,7 +5,7 @@ export function pageMetadata({
   title,
   description,
   path,
-  image = "/images/landing.png",
+  image = "/images/site/landing.png",
 }: {
   title: string;
   description: string;
@@ -16,7 +16,7 @@ export function pageMetadata({
   const images = [{
     url: image,
     alt: title,
-    ...(image === "/images/landing.png" ? { width: 1852, height: 849 } : {}),
+    ...(image === "/images/site/landing.png" ? { width: 1852, height: 849 } : {}),
   }];
 
   return {

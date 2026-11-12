@@ -6,6 +6,9 @@
 .product-name-primary--compact { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
 .product-name-secondary { display: block; margin-top: 6px; color: #425b46; font-size: max(12px, 0.65em); font-weight: 500; letter-spacing: normal; line-height: 1.55; }
 .product-name-secondary--compact { display: -webkit-box; overflow: hidden; margin-top: 4px; font-size: max(12px, 0.85em); -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.product-card-sizes { display: flex; flex-wrap: wrap; align-items: center; gap: 3px; margin-top: 6px; padding: 0; list-style: none; font-size: 11px; line-height: 1.5; }
+.product-card-size { padding: 2px 5px; border: 1px solid transparent; border-radius: 5px; color: #768173; }
+.product-card-size--priced { border-color: #bdcfb4; background: #edf3e8; color: #244b38; font-weight: 600; }
 
 .market-announcement { position: relative; display: flex; min-height: 35px; align-items: center; justify-content: center; padding: 7px 20px; background: #1f4436; color: #faf7ec; text-align: center; }
 .market-announcement__message { font-size: 13px; font-weight: 500; line-height: 1.5; animation: market-message-in 0.45s ease-out; }

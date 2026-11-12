@@ -65,6 +65,18 @@ export function getProductDisplayName(product: Pick<Product, "name" | "amharicNa
   return product.amharicName ? `${product.name} · ${product.amharicName}` : product.name;
 }
 
+export function getProductStartingPrice(product: Pick<Product, "priceEur" | "weight" | "variants">) {
+  const pricedVariants = product.variants?.filter(variant => variant.priceEur !== null && Number.isFinite(variant.priceEur) && variant.priceEur > 0) ?? [];
+  const variant = pricedVariants.reduce<(typeof pricedVariants)[number] | undefined>((lowest, current) =>
+    !lowest || current.priceEur! < lowest.priceEur! ? current : lowest, undefined);
+  return {
+    priceEur: variant?.priceEur ?? product.priceEur,
+    variantId: variant?.id,
+    unit: variant?.label ?? product.weight,
+    hasMultiplePrices: pricedVariants.length > 1,
+  };
+}
+
 export function getProductEnquiryMessage(product: Pick<Product, "name" | "amharicName" | "availability">, purchasable: boolean): string {
   if (product.availability === "on-request") {
     return `Hi ZEWID Market! I'd like to order ${getProductDisplayName(product)}.`;

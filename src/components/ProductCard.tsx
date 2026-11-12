@@ -7,7 +7,7 @@ import { isProductPurchasable, type Product } from "@/data/products";
 import { whatsappLink } from "@/lib/site";
 import ProductAvailability from "./ProductAvailability";
 import ProductStatusTag from "./ProductStatusTag";
-import { getProductDisplayName, getProductEnquiryMessage } from "@/lib/product-display";
+import { getProductDisplayName, getProductEnquiryMessage, getProductStartingPrice } from "@/lib/product-display";
 import ProductName from "./ProductName";
 import { useInventory } from "@/context/InventoryContext";
 
@@ -22,6 +22,7 @@ export default function ProductCard(product: Product) {
   const displayedAvailability = purchasable && stock.ready && !stocked ? "out-of-stock" : product.availability;
   const requestOnly = product.availability === "on-request";
   const hasSizes = (product.variants?.length ?? 0) > 1;
+  const startingPrice = getProductStartingPrice(product);
   const orderButtonClass = "flex min-h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#173f31] px-2 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#245b46] md:text-sm";
 
   return (
@@ -34,7 +35,14 @@ export default function ProductCard(product: Product) {
         <h3 className="text-sm font-semibold leading-snug tracking-[-0.015em] text-slate-900 md:text-base">
           <Link href={`/products/${slug}`} aria-label={getProductDisplayName(product)} className="hover:text-green-800"><ProductName product={product} compact /></Link>
         </h3>
-        <p className="mt-1 text-[11px] leading-relaxed text-slate-500 md:text-xs">{hasSizes ? product.variants!.map(variant => variant.label).join(" / ") : weight}</p>
+        {hasSizes ? <ul className="product-card-sizes" aria-label="Pack sizes">
+          {product.variants!.map(variant => {
+            const priced = variant.id === startingPrice.variantId;
+            return <li key={variant.id} className={`product-card-size${priced ? " product-card-size--priced" : ""}`}>
+              {variant.label}{priced && <span className="sr-only"> — size for the displayed starting price</span>}
+            </li>;
+          })}
+        </ul> : <p className="mt-1 text-[11px] leading-relaxed text-slate-500 md:text-xs">{weight}</p>}
         <div className="mb-2 mt-2">{requestOnly ? <ProductStatusTag availability={product.availability} compact /> : <ProductAvailability product={product} compact />}</div>
         <div className="mt-auto flex flex-col gap-1 border-t border-[#f0f0e9] pt-2">
           {available && hasSizes && <Link href={`/products/${slug}`} aria-label={`Choose a pack size for ${name}`} className={orderButtonClass}>Choose size</Link>}

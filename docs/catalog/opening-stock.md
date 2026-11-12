@@ -10,7 +10,8 @@ Original purchase quantities, confirmed by the merchant on 4 November 2026 befor
 | Mitin Shiro | 5 | kg shared across pack sizes |
 | Ethiopian Sorghum Flour (Mashila) – 5 kg | 31 | 5 kg bag |
 | Ethiopian Sidamo Arabica Green Coffee Beans | 20 | kg shared across pack sizes |
-| Abish – Fenugreek Seeds | 9.6 | kg shared across pack sizes |
+| Abish – Roasted Fenugreek Seeds | 9.6 | kg shared across pack sizes |
+| Abish Flour | 48 | 200 g packs |
 | Ethiopian Ga’at Porridge Mix – Barley & Rye, 1 kg | 10 | kg shared across pack sizes |
 | Ethiopian Mekelesha Spice Mix – 100 g | 2.5 | kg shared across pack sizes |
 | Zemen Electric Injera Maker (Mogogo / Mitad) – 40 cm | 3 | 40 cm |

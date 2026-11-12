@@ -10,6 +10,7 @@ export const openingStock: Record<string, { unit: "item" | "g"; quantity: number
   "mashila-sorghum": { unit: "item", quantity: 31 },
   "buna-coffee": { unit: "g", quantity: 20000 },
   "abish-fenugreek": { unit: "g", quantity: 9600 },
+  "abish-flour": { unit: "item", quantity: 48 },
   "zemen-injera-maker-40cm": { unit: "item", quantity: 3 },
   "coffee-roasting-pan": { unit: "item", quantity: 12 },
   "mogogo-temperature-controller": { unit: "item", quantity: 3 },

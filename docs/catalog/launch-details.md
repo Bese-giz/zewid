@@ -14,7 +14,8 @@ The user confirmed the 500 g coffee price of €8.90 and confirmed that all newl
 | Sidamo green coffee | 500 g / 1 kg | €8.90 / €15.90 |
 | Berbere | 250 g / 500 g / 1 kg | €9.50 / €17.50 / €30 |
 | Korerima | 250 g / 500 g / 1 kg | €17.50 / €30 / €55 |
-| Abish | 250 g / 500 g / 1 kg | €7.50 / €13.50 / €25 |
+| Roasted Abish | 250 g / 500 g / 1 kg | €7.50 / €13.50 / €25 |
+| Abish Flour | 200 g | €4.80 |
 | Bula | 250 g / 500 g / 1 kg | €7.50 / €12.50 / €22 |
 | Zemen injera maker, small | 40 cm maker | €130 |
 | Coffee roasting pan | 1 pan | €15 |

@@ -3,7 +3,7 @@ import type { Product } from "../data/products.ts";
 const shelfOrder = [
   "white-teff-flour", "red-teff-flour", "berbere", "mitmita",
   "shiro", "mashila-sorghum", "bula", "gaat-porridge",
-  "korerima", "abish-fenugreek", "mekelesha-spice",
+  "korerima", "abish-fenugreek", "abish-flour", "mekelesha-spice",
 ];
 const shelfRank = new Map(shelfOrder.map((slug, index) => [slug, index]));
 
@@ -23,7 +23,8 @@ const cardNames: Record<string, string> = {
   "korerima": "Korerima Cardamom Seeds",
   "shiro": "Mitin Shiro",
   "buna-coffee": "Sidamo Green Coffee Beans",
-  "abish-fenugreek": "Abish Fenugreek Seeds",
+  "abish-fenugreek": "Roasted Abish Seeds",
+  "abish-flour": "Abish Flour",
   "gaat-porridge": "Ga’at Porridge Mix",
   "mekelesha-spice": "Mekelesha Spice Mix",
   "zemen-injera-maker-40cm": "Zemen Injera Maker",

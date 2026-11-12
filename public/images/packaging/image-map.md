@@ -11,7 +11,8 @@ Current English/Finnish labels, net weights, website QR codes and transparent PN
 | Mitin Shiro | `mitin-shiro-1000g-pouch.png` | 500 g, 1 kg | `/images/packaging/mitin-shiro-1000g-pouch.png` |
 | Ethiopian Mekelesha Spice Mix – 100 g | `mekelesha-spice-pouch.png` | 100 g | `/images/packaging/mekelesha-spice-pouch.png` |
 | Ethiopian Sidamo Arabica Green Coffee Beans – 1 kg | `buna-coffee-pouch.png` | 1 kg | `/images/packaging/buna-coffee-pouch.png` |
-| Abish – Fenugreek Seeds | `abish-fenugreek-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-pouch.png` |
+| Abish – Roasted Fenugreek Seeds | `abish-fenugreek-250g-pouch.png` | 250 g, 500 g, 1 kg | `/images/packaging/abish-fenugreek-250g-pouch.png` |
+| Abish Flour – Ground Fenugreek | `abish-flour-200g-pouch.png` | 200 g | `/images/packaging/abish-flour-200g-pouch.png` |
 
 ## Berbere – Ethiopian Spice Blend
 
@@ -55,8 +56,14 @@ These green Sidamo coffee beans are intended for customers who enjoy roasting co
 
 Alt: Zewid Market Sidamo unroasted Arabica coffee beans 1 kg in an opaque gold pouch with a bilingual label and website QR code
 
-## Abish – Fenugreek Seeds
+## Abish – Roasted Fenugreek Seeds / የተቆላ አብሽ
 
-Whole fenugreek seeds, known as Abish, supplied in opaque resealable gold pouches. Available in 250 g, 500 g and 1 kg packs.
+Whole roasted fenugreek seeds, known as Abish. Use the seeds whole or grind them before seasoning stews and sauces. Packed in a resealable gold pouch.
 
-Alt: Zewid Market Abish – Fenugreek Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code
+Alt: Zewid Market Abish – Roasted Fenugreek Seeds 250 g in a gold pouch
+
+## Abish Flour – Ground Fenugreek / አብሽ ዱቄት
+
+Abish flour is ground fenugreek seed. The fine powder mixes easily into stews and sauces. Packed in a resealable gold pouch.
+
+Alt: Zewid Market Abish Flour – Ground Fenugreek 200 g in a gold pouch

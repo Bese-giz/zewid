@@ -297,28 +297,27 @@ export const products: Product[] = [
   {
     "slug": "abish-fenugreek",
     "catalogItem": 3,
-    "name": "Abish – Fenugreek Seeds",
-    "amharicName": "አብሽ",
-    "shortDescription": "Whole fenugreek seeds.",
-    "description": "Whole fenugreek seeds, known as Abish, supplied in opaque resealable gold pouches. Available in 250 g, 500 g and 1 kg packs.",
+    "name": "Abish – Roasted Fenugreek Seeds",
+    "amharicName": "የተቆላ አብሽ",
+    "shortDescription": "Roasted fenugreek seeds.",
+    "description": "Whole roasted fenugreek seeds, known as Abish. Use the seeds whole or grind them before seasoning stews and sauces. Packed in a resealable gold pouch.",
     "category": "food",
     "weight": "250 g pack",
     "weightKg": 0.25,
     "priceEur": 7.5,
     "availability": "in-stock",
-    "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1",
+    "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=7ec9edd4f217",
     "images": [
-      "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1"
+      "/images/packaging/abish-fenugreek-250g-pouch.png?v=7ec9edd4f217"
     ],
     "features": [
-      "Whole fenugreek seeds",
-      "Suitable for grinding and seasoning",
-      "Choice of pack sizes"
+      "Roasted fenugreek seeds",
+      "Resealable gold pouch"
     ],
     "specifications": [
       {
         "label": "Ingredient",
-        "value": "Fenugreek seeds"
+        "value": "Roasted fenugreek seeds"
       },
       {
         "label": "Botanical name",
@@ -326,15 +325,11 @@ export const products: Product[] = [
       },
       {
         "label": "Form",
-        "value": "Whole seeds"
+        "value": "Whole roasted seeds"
       },
       {
         "label": "Net weight",
         "value": "250 g / 500 g / 1 kg"
-      },
-      {
-        "label": "Packaging",
-        "value": "Opaque resealable pouch"
       }
     ],
     "variants": [
@@ -343,32 +338,72 @@ export const products: Product[] = [
         "label": "250 g",
         "weightKg": 0.25,
         "priceEur": 7.5,
-        "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=8e2e297c61f1",
-        "imageAlt": "Zewid Market Abish fenugreek seeds in a 250 g gold pouch"
+        "image": "/images/packaging/abish-fenugreek-250g-pouch.png?v=7ec9edd4f217",
+        "imageAlt": "Zewid Market Abish – Roasted Fenugreek Seeds 250 g in a gold pouch"
       },
       {
         "id": "abish-500g",
         "label": "500 g",
         "weightKg": 0.5,
         "priceEur": 13.5,
-        "image": "/images/packaging/abish-fenugreek-500g-pouch.png?v=6073bae413f2",
-        "imageAlt": "Zewid Market Abish fenugreek seeds in a 500 g gold pouch"
+        "image": "/images/packaging/abish-fenugreek-500g-pouch.png?v=243d4b07d93a",
+        "imageAlt": "Zewid Market Abish – Roasted Fenugreek Seeds 500 g in a gold pouch"
       },
       {
         "id": "abish-1000g",
         "label": "1 kg",
         "weightKg": 1.0,
         "priceEur": 25.0,
-        "image": "/images/packaging/abish-fenugreek-1000g-pouch.png?v=e6725f6bb897",
-        "imageAlt": "Zewid Market Abish fenugreek seeds in a 1 kg gold pouch"
+        "image": "/images/packaging/abish-fenugreek-1000g-pouch.png?v=c0961e16c5b3",
+        "imageAlt": "Zewid Market Abish – Roasted Fenugreek Seeds 1 kg in a gold pouch"
       }
     ],
     "defaultVariantId": "abish-250g",
     "legacyNames": [
       "Ethiopian Abish (Fenugreek Seeds) – 200 g",
-      "Ethiopian Abish (Fenugreek Seeds)"
+      "Ethiopian Abish (Fenugreek Seeds)",
+      "Abish – Fenugreek Seeds"
     ],
-    "imageAlt": "Zewid Market Abish – Fenugreek Seeds 250 g in an opaque gold pouch with a bilingual label and website QR code"
+    "imageAlt": "Zewid Market Abish – Roasted Fenugreek Seeds 250 g in a gold pouch"
+  },
+  {
+    "slug": "abish-flour",
+    "category": "food",
+    "name": "Abish Flour – Ground Fenugreek",
+    "amharicName": "አብሽ ዱቄት",
+    "shortDescription": "Ground fenugreek seeds.",
+    "description": "Abish flour is ground fenugreek seed. The fine powder mixes easily into stews and sauces. Packed in a resealable gold pouch.",
+    "features": [
+      "Ground fenugreek seeds",
+      "Resealable gold pouch"
+    ],
+    "specifications": [
+      {
+        "label": "Ingredient",
+        "value": "Ground fenugreek seeds"
+      },
+      {
+        "label": "Botanical name",
+        "value": "Trigonella foenum-graecum"
+      },
+      {
+        "label": "Form",
+        "value": "Ground seeds"
+      },
+      {
+        "label": "Net weight",
+        "value": "200 g"
+      }
+    ],
+    "image": "/images/packaging/abish-flour-200g-pouch.png?v=adfb8cbd09d9",
+    "images": [
+      "/images/packaging/abish-flour-200g-pouch.png?v=adfb8cbd09d9"
+    ],
+    "imageAlt": "Zewid Market Abish Flour – Ground Fenugreek 200 g in a gold pouch",
+    "priceEur": 4.8,
+    "weightKg": 0.2,
+    "weight": "200 g pack",
+    "availability": "in-stock"
   },
   {
     "slug": "gaat-porridge",

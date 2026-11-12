@@ -1,12 +1,14 @@
 # Catalog launch details
 
-Updated 4 November 2026. All 40 listings remain public, with 30 available to buy, nine available on request and Mitmita sold out. All supplied Amharic names and image galleries are retained.
+Updated 13 November 2026. All 41 listings remain public, with 31 available to buy, nine available on request and Mitmita sold out. All supplied Amharic names and image galleries are retained.
 
 ## Confirmed retail prices
 
 `retail-prices.json` records the selling-price handoff from `accepted-pack-prices.json` and the `Stock and profit` worksheet in `zewid-stock-costs-and-profit.xlsx`. Only selling prices and retail units are copied into the repository. Invoice purchase costs and projected profits remain in the source workbook.
 
 The user confirmed the 500 g coffee price of €8.90 and confirmed that all newly priced products should become available to buy. Prices include VAT as previously confirmed. The existing Finland delivery charge remains €8.90 per order.
+
+On 13 November 2026, the user confirmed Abish flour at €5 per 200 g pack. Roasted Abish seed prices remain unchanged. Product names display Amharic first in the primary style, with English below in the secondary style.
 
 | Product | Retail unit | Price |
 | --- | --- | ---: |
@@ -15,7 +17,7 @@ The user confirmed the 500 g coffee price of €8.90 and confirmed that all newl
 | Berbere | 250 g / 500 g / 1 kg | €9.50 / €17.50 / €30 |
 | Korerima | 250 g / 500 g / 1 kg | €17.50 / €30 / €55 |
 | Roasted Abish | 250 g / 500 g / 1 kg | €7.50 / €13.50 / €25 |
-| Abish Flour | 200 g | €4.80 |
+| Abish Flour | 200 g | €5 |
 | Bula | 250 g / 500 g / 1 kg | €7.50 / €12.50 / €22 |
 | Zemen injera maker, small | 40 cm maker | €130 |
 | Coffee roasting pan | 1 pan | €15 |
@@ -31,7 +33,7 @@ The user confirmed the 500 g coffee price of €8.90 and confirmed that all newl
 | Coffee cup, saucer and spoon set | 18-piece set | €27 |
 | Ceramic food warmer | 2-dish set | €70 |
 | Coffee ceremony set | 23-piece set | €50 |
-| Amharic alphabet chart | 1 chart | €22 |
+| Alphabet Chart (Tigrinya) | 1 chart | €22 |
 | Cake and snack stand | 3-tier stand | €23 |
 | Frankincense | 250 g pack | €7 |
 | Ketema grass | 1 bundle | €12.50 |

@@ -40,7 +40,7 @@ const cardNames: Record<string, string> = {
   "food-warmer-2-dish": "Two-Dish Serving Set",
   "coffee-set-18-piece": "Coffee Cup & Saucer Set",
   "coffee-ceremony-set-23-piece": "Coffee Ceremony Set",
-  "amharic-alphabet-chart": "Amharic Alphabet Chart",
+  "amharic-alphabet-chart": "Alphabet Chart (Tigrinya)",
   "snack-stand-3-tier": "Three-Tier Snack Stand",
   "ethiopian-frankincense": "Ethiopian Frankincense",
   "ketema-grass": "Ketema Ceremony Grass",

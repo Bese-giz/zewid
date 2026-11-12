@@ -400,7 +400,7 @@ export const products: Product[] = [
       "/images/packaging/abish-flour-200g-pouch.png?v=adfb8cbd09d9"
     ],
     "imageAlt": "Zewid Market Abish Flour – Ground Fenugreek 200 g in a gold pouch",
-    "priceEur": 4.8,
+    "priceEur": 5,
     "weightKg": 0.2,
     "weight": "200 g pack",
     "availability": "in-stock"
@@ -954,32 +954,34 @@ export const products: Product[] = [
   {
     "slug": "amharic-alphabet-chart",
     "catalogItem": 18,
-    "name": "Amharic Alphabet Learning Chart for Kids",
-    "amharicName": "የአማርኛ ፊደላት መማሪያ",
-    "shortDescription": "Colourful educational chart featuring Amharic letters, numbers and illustrations.",
-    "description": "Introduce children to the Amharic writing system with colourful letters, numbers and pictures. The chart offers a visual learning aid for families practising the language at home.",
+    "name": "Alphabet Chart (Tigrinya)",
+    "amharicName": "የትግርኛ ፊደላት መማሪያ",
+    "legacyNames": ["Amharic Alphabet Learning Chart for Kids"],
+    "shortDescription": "Colourful educational chart featuring Tigrinya letters, numbers and illustrations.",
+    "description": "Introduce children to the Tigrinya alphabet with colourful letters, numbers and pictures. The chart offers a visual learning aid for families practising Tigrinya at home.",
     "category": "culture",
     "weight": "1 chart",
     "weightKg": null,
     "priceEur": 22,
     "availability": "in-stock",
     "image": "/images/products/culture/amharic-alphabet-chart.png",
+    "imageAlt": "Tigrinya alphabet learning chart with letters, numbers and illustrations",
     "images": [
       "/images/products/culture/amharic-alphabet-chart.png"
     ],
     "features": [
-      "Amharic alphabet characters",
+      "Tigrinya alphabet characters",
       "Numbers and illustrations",
       "Child-friendly visual learning resource"
     ],
     "specifications": [
       {
         "label": "Language",
-        "value": "Amharic"
+        "value": "Tigrinya"
       },
       {
         "label": "Contents",
-        "value": "Ethiopian alphabet characters, numbers and pictures"
+        "value": "Tigrinya alphabet characters, numbers and pictures"
       },
       {
         "label": "Format",

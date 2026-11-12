@@ -54,7 +54,7 @@ The catalog uses a compact search and category-dropdown toolbar with product cou
 
 Catalog cards show one clean primary photograph, a short shelf name, the retail unit and a prominent price. Cart rows also use the compact shelf name; full supplied titles remain on detail pages, accessible cart labels and order data. Coming-soon and out-of-stock labels use non-interactive ticket-style tags in the card action area; available products show Add to cart in that position. A lighter WhatsApp enquiry link is provided beneath. Detail-page availability appears below the full product title. No availability or discount banners cover the photographs. To display a discount, set an optional `compareAtPriceEur` above the current selling `priceEur`: an inline label shows the reduction alongside the crossed-out previous price. `priceEur` remains the amount used by the cart and Stripe; comparison prices alone never change the amount charged. No discounts are currently configured.
 
-Supplied Amharic names are stored in `amharicName` and shown beneath English titles on cards, detail pages and cart rows, with `lang="am"` for the Amharic text. Catalog search, page titles and WhatsApp product enquiries include the supplied names. All 40 public products have supplied Amharic names, including ነጭ ጤፍ, ቀይ ጤፍ, በርበሬ and ሽሮ. Amharic text is smaller than English while retaining a 12 px minimum on compact cards. The newly published request items retain their original supplied Amharic names. English transliterations in parentheses are omitted from Amharic labels; existing prices, availability and slugs are unchanged.
+Supplied Amharic names are stored in `amharicName` and shown first in the primary title style on cards, detail pages and cart rows, with `lang="am"`. English titles appear below in a smaller secondary style, with `lang="en"` and a 12 px minimum. Compact cards limit both lines to two lines each. Catalog search, page titles and WhatsApp product enquiries include the supplied names. All public products retain their supplied Amharic names, including ነጭ ጤፍ, ቀይ ጤፍ, በርበሬ and ሽሮ. The newly published request items retain their original supplied Amharic names. English transliterations in parentheses are omitted from Amharic labels; product identifiers are unchanged.
 
 Photo swiping and mouse dragging are available only on product detail pages, with arrows, a small text-only photo counter and thumbnail selection. Keyboard users can focus the photo area and use Left/Right or Home/End. Catalog and homepage cards use one static linked photo. Single-photo detail pages have no carousel controls. Native scroll snapping and reduced-motion preferences are respected.
 
@@ -77,6 +77,7 @@ Existing confirmed selling prices per bag/pack:
 | Berbere | 250 g / 500 g / 1 kg | €9.50 / €17.50 / €30 |
 | Korerima | 250 g / 500 g / 1 kg | €17.50 / €30 / €55 |
 | Abish | 250 g / 500 g / 1 kg | €7.50 / €13.50 / €25 |
+| Abish flour | 200 g | €5 |
 | Bula | 250 g / 500 g / 1 kg | €7.50 / €12.50 / €22 |
 | Shiro | 1 kg | €30 |
 

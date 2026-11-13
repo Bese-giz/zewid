@@ -12,7 +12,7 @@ export default function ProductAvailability({ product, compact = false, showUnit
         <p className={compact ? "text-lg font-semibold leading-tight tracking-tight text-slate-900 md:text-xl" : "text-2xl font-semibold tracking-tight text-slate-900"}>
           {hasMultiplePrices && <span className="mr-1 text-xs font-normal text-slate-500">From</span>}
           {discount && <span className="sr-only">Sale price: </span>}{formatEuro(Math.round(priceEur * 100))}
-          {showUnit && (!compact || hasMultiplePrices) && <span className={compact ? "ml-1 text-xs font-medium tracking-normal text-[#365b43]" : "ml-2 text-sm font-normal text-slate-500"}>/ {unit}</span>}
+          {showUnit && !compact && <span className="ml-2 text-sm font-normal text-slate-500">/ {unit}</span>}
         </p>
         <p className={compact ? "text-[10px] text-slate-500" : "mt-0.5 text-xs text-slate-400"}>incl. VAT</p>
       </div>}

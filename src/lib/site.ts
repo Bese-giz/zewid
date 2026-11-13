@@ -2,6 +2,7 @@ export const site = {
   name: "ZEWID Market",
   url: "https://www.zewid.com",
   phone: "358417059015",
+  email: "info@zewid.com",
   deliveryTime: "1–2 days",
   deliveryArea: "All over Finland",
   deliveryFeeEur: 8.90,

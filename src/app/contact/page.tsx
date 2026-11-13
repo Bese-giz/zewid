@@ -1,11 +1,11 @@
-import { whatsappLink } from "@/lib/site";
+import { site, whatsappLink } from "@/lib/site";
 import OrderInformation from "@/components/OrderInformation";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact ZEWID Market about orders, payment and delivery. Reach us on WhatsApp, Facebook, or TikTok.",
+    "Contact ZEWID Market about orders, payment and delivery. Email info@zewid.com or reach us on WhatsApp, Facebook, or TikTok.",
   path: "/contact",
 });
 
@@ -55,6 +55,19 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+          </div>
+
+          <div className="md:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h2 className="text-xl font-bold text-gray-900 mb-2">Email us</h2>
+            <p className="text-gray-500 text-sm mb-4">
+              Get in touch about your order, products or delivery.
+            </p>
+            <a
+              href={`mailto:${site.email}`}
+              className="text-green-700 hover:text-green-800 font-semibold break-words"
+            >
+              {site.email}
+            </a>
           </div>
 
           {/* TikTok */}

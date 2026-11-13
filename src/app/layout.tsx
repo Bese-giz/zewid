@@ -87,6 +87,7 @@ export default function RootLayout({
     },
     "url": site.url,
     "telephone": `+${site.phone}`,
+    "email": site.email,
     "priceRange": "$$"
   };
 

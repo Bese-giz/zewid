@@ -118,6 +118,24 @@ export default function HomePage() {
           </a>
         </div>
       </section>
+      <section aria-labelledby="more-to-come-title" className="market-container pb-10 md:pb-16">
+        <div className="flex flex-col items-start gap-6 rounded-2xl border border-[#dce3d5] bg-[#f1f5ec] p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-10 md:p-10">
+          <div className="max-w-xl">
+            <h2 id="more-to-come-title" className="market-title text-3xl md:text-4xl">More items coming soon.</h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#52634f] md:text-base">
+              Stay tuned for new Ethiopian favourites for your kitchen, coffee table and home.
+            </p>
+          </div>
+          <a
+            href="https://www.facebook.com/share/18fkuFhBQe/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="market-button market-button--primary w-full shrink-0 sm:w-auto"
+          >
+            Follow us for updates <MarketIcon name="arrow" size={20} />
+          </a>
+        </div>
+      </section>
     </>
   );
 }
